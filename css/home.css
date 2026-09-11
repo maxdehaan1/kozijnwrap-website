@@ -8,19 +8,72 @@ body.home .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
 body.home .hero{position:relative;padding:96px 0 76px;background:linear-gradient(180deg,rgba(20,19,17,.68) 0%,rgba(20,19,17,.55) 55%,rgba(20,19,17,.82) 100%),url('../images/proces-squeegee.jpg');background-size:cover;background-position:center 62%;color:#fff;}
 .hero h1{font-size:clamp(2.1rem,5.4vw,3.4rem);max-width:16ch;color:#fff;}
 .hero p.lede{max-width:52ch;color:rgba(255,255,255,.9);font-size:1.15rem;}
-.fork{display:grid;grid-template-columns:7fr 5fr;gap:20px;margin:56px 0 40px;align-items:start;}
-@media (max-width:760px){ .fork{grid-template-columns:1fr;} }
-.path{padding:40px 34px;text-decoration:none;color:#fff;display:flex;flex-direction:column;min-height:300px;border-radius:2px;position:relative;}
-.path.herstel{background:var(--red);transform:rotate(-.4deg);}
-.path.wrap{background:var(--turq);transform:rotate(.4deg);}
-@media (max-width:760px){ .path.herstel, .path.wrap{transform:none;} }
-.path .tag{font-family:Arial,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;display:inline-block;width:fit-content;margin-bottom:22px;background:rgba(255,255,255,.22);}
+.fork{display:grid;grid-template-columns:7fr 5fr;gap:24px;margin:56px 0 40px;align-items:stretch;}
+@media (max-width:760px){ .fork{grid-template-columns:1fr;gap:28px;} }
+
+.path{
+  padding:36px 34px 34px;
+  text-decoration:none;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  min-height:300px;
+  border-radius:10px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 12px 26px -14px rgba(0,0,0,.4);
+  transition:transform .35s ease, box-shadow .35s ease;
+  opacity:0;
+  transform:translateY(26px);
+  animation:card-in .7s cubic-bezier(.22,.61,.36,1) forwards;
+}
+.path.herstel{background:var(--red);rotate:-.5deg;}
+.path.wrap{background:var(--turq);rotate:.5deg;animation-delay:.15s;}
+@media (max-width:760px){ .path.herstel, .path.wrap{rotate:0deg;} }
+
+.path:hover{transform:translateY(-8px);box-shadow:0 22px 36px -16px rgba(0,0,0,.45);}
+
+@keyframes card-in{ to{opacity:1;transform:translateY(0);} }
+
+/* Kozijnherstel-blok oogt zelf een beetje beschadigd: een loslatende hoek,
+   alsof de kleurlaag van het blok aan vervanging toe is — zelfde probleem
+   als waar de pagina over gaat. */
+.path.herstel::after{
+  content:"";
+  position:absolute;
+  top:0;right:0;
+  width:56px;height:56px;
+  background:linear-gradient(135deg,#e4d6bd 46%,#c3b190 58%,#a89572 100%);
+  clip-path:polygon(100% 0,0 0,100% 100%);
+  box-shadow:-8px 8px 14px rgba(0,0,0,.3);
+  transform-origin:top right;
+  transition:transform .4s ease;
+  pointer-events:none;
+}
+.path.herstel:hover::after{transform:rotate(-8deg) translate(-2px,2px);}
+
+.head-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px;}
+.path .tag{font-family:Arial,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;display:inline-block;width:fit-content;margin:0;background:rgba(255,255,255,.22);}
 .path h2{font-size:1.9rem;color:#fff;}
 .path p{color:rgba(255,255,255,.92);font-size:1.02rem;flex-grow:1;}
-.path .go{font-family:Arial,sans-serif;font-weight:700;font-size:.92rem;margin-top:20px;}
-.snapshot{position:absolute;top:28px;right:30px;width:92px;height:92px;border:5px solid #fff;box-shadow:0 6px 14px rgba(0,0,0,.35);transform:rotate(5deg);overflow:hidden;}
+.path .go{font-family:Arial,sans-serif;font-weight:700;font-size:.92rem;margin-top:20px;display:inline-flex;align-items:center;gap:6px;transition:gap .25s ease;}
+.path:hover .go{gap:11px;}
+
+.snapshot{width:84px;height:84px;border:5px solid #fff;box-shadow:0 6px 14px rgba(0,0,0,.35);rotate:6deg;overflow:hidden;flex-shrink:0;animation:bob 4.5s ease-in-out infinite;}
 .snapshot img{width:100%;height:100%;object-fit:cover;display:block;}
-@media (max-width:520px){ .snapshot{width:68px;height:68px;top:22px;right:22px;} }
+@media (max-width:520px){ .snapshot{width:64px;height:64px;} }
+
+.swatches{display:flex;flex-shrink:0;padding-top:8px;}
+.swatches span{display:block;width:28px;height:28px;border:3px solid #fff;border-radius:5px;box-shadow:0 4px 10px rgba(0,0,0,.3);margin-left:-9px;animation:bob 4.5s ease-in-out infinite;}
+.swatches span:nth-child(1){background:#d8c7a1;rotate:-10deg;animation-delay:.2s;}
+.swatches span:nth-child(2){background:#2c2c28;rotate:3deg;z-index:1;animation-delay:.5s;}
+.swatches span:nth-child(3){background:#eae7e1;rotate:15deg;animation-delay:.8s;}
+
+@keyframes bob{ 0%,100%{translate:0 0;} 50%{translate:0 -5px;} }
+
+@media (prefers-reduced-motion: reduce){
+  .path,.snapshot,.swatches span{animation:none;opacity:1;transform:none;}
+}
 .guide{padding:20px 0 64px;}
 .guide h3{font-size:1.3rem;max-width:22ch;}
 .compare{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ink);max-width:900px;margin-top:24px;}
