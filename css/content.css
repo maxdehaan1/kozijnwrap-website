@@ -1,19 +1,18 @@
 body{margin:0;background:var(--grey);color:var(--ink);font-family:'Newsreader',serif;font-size:19px;line-height:1.58;}
 h1,h2,h3{font-weight:600;line-height:1.14;margin:0 0 .4em;letter-spacing:-.01em;}
 p{margin:0 0 1em;max-width:64ch;}
-a{color:var(--red-deep);}
 body.page .wrap{max-width:740px;margin:0 auto;padding:0 24px;}
-body.page .hero{background:var(--red);color:#fff;padding:52px 0 44px;margin-bottom:8px;}
+body.page .hero{color:#fff;padding:52px 0 44px;margin-bottom:8px;}
 .hero .wrap{max-width:740px;}
 .hero .tag{font-family:Arial,sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:rgba(255,255,255,.22);padding:5px 12px;border-radius:20px;display:inline-block;margin-bottom:18px;}
-.hero h1{font-size:clamp(2rem,4.6vw,2.7rem);max-width:16ch;color:#fff;}
+.hero h1{font-size:clamp(2rem,4.6vw,2.7rem);max-width:17ch;color:#fff;}
 .hero p.lede{color:rgba(255,255,255,.92);font-size:1.08rem;max-width:56ch;}
 section{padding:42px 0;}
 section h2{font-size:1.55rem;}
 .signals{list-style:none;margin:0;padding:0;}
 .signals li{padding:13px 0 13px 30px;position:relative;border-bottom:1px solid #d9d5c9;font-size:1rem;}
 .signals li:last-child{border-bottom:none;}
-.signals li::before{content:"";position:absolute;left:2px;top:22px;width:9px;height:9px;border-radius:50%;background:var(--red);}
+.signals li::before{content:"";position:absolute;left:2px;top:22px;width:9px;height:9px;border-radius:50%;}
 .steps{counter-reset:step;list-style:none;margin:0;padding:0;}
 .steps li{counter-increment:step;padding:16px 0 16px 48px;position:relative;border-bottom:1px solid #d9d5c9;}
 .steps li:last-child{border-bottom:none;}
@@ -23,26 +22,33 @@ section h2{font-size:1.55rem;}
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ink);margin-top:8px;}
 @media (max-width:560px){ .facts{grid-template-columns:1fr;} }
 .fact{background:#fff;padding:18px 20px;}
-.fact .n{font-family:Arial,sans-serif;font-weight:700;color:var(--red-deep);font-size:.92rem;text-transform:uppercase;letter-spacing:.02em;}
+.fact .n{font-family:Arial,sans-serif;font-weight:700;font-size:.92rem;text-transform:uppercase;letter-spacing:.02em;}
 .fact p{font-size:.96rem;color:var(--sub);margin:4px 0 0;}
-.partybox{background:var(--ink);color:#fff;padding:36px 0;margin-top:8px;}
-.partybox .label{font-family:Arial,sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#c9c6bd;margin-bottom:14px;}
-.badge-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
-.badge{display:inline-flex;align-items:center;gap:6px;font-family:Arial,sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:10px 18px;border-radius:24px;}
-.badge.solid{background:var(--red);color:#fff;}
-.badge.gold{background:#3a3a34;color:var(--amber);border:1px solid var(--amber);}
-footer{background:var(--ink);color:#b9b7b0;padding:32px 0;font-size:.85rem;font-family:Arial,sans-serif;}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;max-width:1100px;}
-a{color:var(--turq-deep);}
-body.page .hero{background:var(--turq);color:#fff;padding:52px 0 44px;margin-bottom:8px;}
-.hero h1{font-size:clamp(2rem,4.6vw,2.7rem);max-width:17ch;color:#fff;}
 .materials{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ink);margin-top:8px;}
 @media (max-width:600px){ .materials{grid-template-columns:1fr;} }
 .material{background:#fff;padding:24px 22px;}
 .material h3{font-size:1.15rem;margin-bottom:6px;}
 .material p{font-size:.98rem;color:var(--sub);margin:0;}
-.signals li::before{content:"";position:absolute;left:2px;top:22px;width:9px;height:9px;border-radius:50%;background:var(--turq);}
-.fact .n{font-family:Arial,sans-serif;font-weight:700;color:var(--turq-deep);font-size:.92rem;text-transform:uppercase;letter-spacing:.02em;}
 .tip{margin-top:16px;font-size:.96rem;color:var(--sub);font-family:Arial,sans-serif;}
+.partybox{background:var(--ink);color:#fff;padding:36px 0;margin-top:8px;}
+.partybox .label{font-family:Arial,sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#c9c6bd;margin-bottom:14px;}
 .partybox h2{color:#fff;font-size:1.4rem;}
 .partybox p{color:#cfccc4;}
+.badge-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:Arial,sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:10px 18px;border-radius:24px;}
+.badge.gold{background:#3a3a34;color:var(--amber);border:1px solid var(--amber);}
+footer{background:var(--ink);color:#b9b7b0;padding:32px 0;font-size:.85rem;font-family:Arial,sans-serif;}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;max-width:1100px;}
+
+/* Kleurthema per pagina — kozijnherstel = rood, kozijnwrappen = groenblauw.
+   Gescoped op body-klasse zodat de twee pagina's elkaars kleuren niet overschrijven. */
+body.theme-herstel a{color:var(--red-deep);}
+body.theme-herstel .hero{background:var(--red);}
+body.theme-herstel .signals li::before{background:var(--red);}
+body.theme-herstel .fact .n{color:var(--red-deep);}
+body.theme-herstel .badge.solid{background:var(--red);color:#fff;}
+
+body.theme-wrap a{color:var(--turq-deep);}
+body.theme-wrap .hero{background:var(--turq);}
+body.theme-wrap .signals li::before{background:var(--turq);}
+body.theme-wrap .fact .n{color:var(--turq-deep);}
