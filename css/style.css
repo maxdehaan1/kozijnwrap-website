@@ -14,10 +14,16 @@
   h1,h2,h3{font-family:'Fraunces',serif;}
   header.site{padding:20px 0;}
   .nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;max-width:1100px;margin:0 auto;padding:0 24px;}
-  .brand{font-family:'Fraunces',serif;font-weight:700;text-decoration:none;color:var(--accent-deep);font-size:1.3rem;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:9px;}
-  .brand .logo-mark{flex-shrink:0;}
+  .brand{font-family:'Fraunces',serif;font-weight:700;text-decoration:none;color:var(--accent-deep);font-size:1.3rem;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:9px;transition:opacity .2s ease;}
+  .brand:hover{opacity:.75;}
+  .brand .logo-mark{flex-shrink:0;transition:transform .3s ease;}
+  .brand:hover .logo-mark{transform:rotate(-6deg) scale(1.08);}
   .navlinks{display:flex;flex-wrap:wrap;gap:22px;font-family:'Karla',Arial,sans-serif;font-size:.85rem;}
-  .navlinks a{color:var(--sub);text-decoration:none;}
+  .navlinks a{color:var(--sub);text-decoration:none;position:relative;padding-bottom:2px;transition:color .2s ease;}
+  .navlinks a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--accent);transition:right .25s ease;}
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks a:hover::after{right:0;}
   .navlinks a.current{color:var(--ink);font-weight:700;}
+  .navlinks a.current::after{right:0;background:var(--ink);}
   @media (max-width:560px){ .brand{font-size:1.15rem;} .navlinks{gap:12px;font-size:.8rem;} }
   footer a{color:#e7e5df;}
