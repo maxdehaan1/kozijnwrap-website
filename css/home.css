@@ -29,49 +29,12 @@ body.home .hero{position:relative;padding:96px 0 76px;background:linear-gradient
   transform:translateY(26px);
   animation:card-in .7s cubic-bezier(.22,.61,.36,1) forwards;
 }
-.path.herstel{background:var(--anthracite-deep);color:var(--cream-ink);}
+.path.herstel{background:var(--cream);color:var(--cream-ink);}
 .path.wrappen{background:var(--anthracite);animation-delay:.15s;}
 
 .path:hover{transform:translateY(-8px);box-shadow:0 22px 36px -16px rgba(0,0,0,.45);}
 
 @keyframes card-in{ to{opacity:1;transform:translateY(0);} }
-
-/* Kozijnherstel-blok "breekt" bij hover: het blok is opgebouwd uit twee
-   scherven die exact aansluiten in rust, en bij hover uit elkaar schuiven
-   zodat de donkere ondergrond als kloof zichtbaar wordt. */
-.path.herstel .shard{
-  position:absolute;
-  inset:0;
-  background:var(--cream);
-  transition:transform .5s cubic-bezier(.22,.9,.32,1), box-shadow .5s ease;
-  z-index:0;
-}
-.path.herstel .shard-a{
-  clip-path:polygon(0% 0%, 70% 0%, 62% 6%, 73% 13%, 57% 22%, 70% 32%, 54% 41%, 68% 52%, 50% 62%, 64% 72%, 48% 82%, 60% 92%, 52% 100%, 0% 100%);
-}
-.path.herstel .shard-b{
-  clip-path:polygon(70% 0%, 100% 0%, 100% 100%, 52% 100%, 60% 92%, 48% 82%, 64% 72%, 50% 62%, 68% 52%, 54% 41%, 70% 32%, 57% 22%, 73% 13%, 62% 6%);
-}
-.path.herstel:hover .shard-a{transform:translate(-9px,-5px) rotate(-1.4deg);box-shadow:6px 3px 12px rgba(0,0,0,.3);}
-.path.herstel:hover .shard-b{transform:translate(9px,5px) rotate(1.4deg);box-shadow:-6px -3px 12px rgba(0,0,0,.3);}
-@media (prefers-reduced-motion: reduce){
-  .path.herstel .shard{transition:none;}
-}
-
-.path.herstel::after{
-  content:"";
-  position:absolute;
-  top:0;right:0;
-  width:56px;height:56px;
-  background:linear-gradient(135deg,#7a7870 46%,#54524a 58%,#34383b 100%);
-  clip-path:polygon(100% 0,0 0,100% 100%);
-  box-shadow:-8px 8px 14px rgba(0,0,0,.3);
-  transform-origin:top right;
-  transition:transform .4s ease;
-  pointer-events:none;
-  z-index:2;
-}
-.path.herstel:hover::after{transform:rotate(-8deg) translate(-2px,2px);}
 
 .head-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px;position:relative;z-index:1;}
 .path .tag{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;display:inline-block;width:fit-content;margin:0;background:rgba(255,255,255,.22);}
@@ -83,7 +46,7 @@ body.home .hero{position:relative;padding:96px 0 76px;background:linear-gradient
 .path .go{font-family:'Karla',sans-serif;font-weight:700;font-size:.92rem;margin-top:20px;display:inline-flex;align-items:center;gap:6px;transition:gap .25s ease;position:relative;z-index:1;}
 .path:hover .go{gap:11px;}
 
-.snapshot{width:84px;height:84px;border:5px solid var(--cream);box-shadow:0 6px 14px rgba(0,0,0,.35);rotate:6deg;overflow:hidden;flex-shrink:0;animation:bob 4.5s ease-in-out infinite;}
+.snapshot{width:84px;height:84px;border:5px solid #fff;box-shadow:0 6px 14px rgba(0,0,0,.35);rotate:6deg;overflow:hidden;flex-shrink:0;animation:bob 4.5s ease-in-out infinite;}
 .snapshot img{width:100%;height:100%;object-fit:cover;display:block;}
 @media (max-width:520px){ .snapshot{width:64px;height:64px;} }
 
