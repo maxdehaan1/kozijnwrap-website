@@ -1,10 +1,10 @@
-body{margin:0;background:var(--grey);color:var(--ink);font-family:'Newsreader',serif;font-size:19px;line-height:1.58;}
+body{margin:0;background:var(--grey);color:var(--ink);font-family:'Karla',Arial,sans-serif;font-size:19px;line-height:1.58;}
 h1,h2,h3{font-weight:600;line-height:1.14;margin:0 0 .4em;letter-spacing:-.01em;}
 p{margin:0 0 1em;max-width:64ch;}
 body.page .wrap{max-width:740px;margin:0 auto;padding:0 24px;}
-body.page .hero{color:#fff;padding:52px 0 44px;margin-bottom:8px;}
+body.page .hero{padding:52px 0 44px;margin-bottom:8px;}
 .hero .wrap{max-width:740px;}
-.hero .tag{font-family:Arial,sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:rgba(255,255,255,.22);padding:5px 12px;border-radius:20px;display:inline-block;margin-bottom:18px;}
+.hero .tag{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:rgba(255,255,255,.22);padding:5px 12px;border-radius:20px;display:inline-block;margin-bottom:18px;}
 .hero h1{font-size:clamp(2rem,4.6vw,2.7rem);max-width:17ch;color:#fff;}
 .hero p.lede{color:rgba(255,255,255,.92);font-size:1.08rem;max-width:56ch;}
 section{padding:42px 0;}
@@ -16,20 +16,20 @@ section h2{font-size:1.55rem;}
 .steps{counter-reset:step;list-style:none;margin:0;padding:0;}
 .steps li{counter-increment:step;padding:16px 0 16px 48px;position:relative;border-bottom:1px solid #d9d5c9;}
 .steps li:last-child{border-bottom:none;}
-.steps li::before{content:counter(step);position:absolute;left:0;top:50%;transform:translateY(-50%);width:32px;height:32px;background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:.85rem;font-weight:700;}
+.steps li::before{content:counter(step);position:absolute;left:0;top:50%;transform:translateY(-50%);width:32px;height:32px;background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Karla',sans-serif;font-size:.85rem;font-weight:700;}
 .steps .stitle{font-weight:600;font-size:1.08rem;margin-bottom:2px;}
 .steps p{font-size:.98rem;color:var(--sub);margin:0;max-width:56ch;}
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ink);margin-top:8px;}
 @media (max-width:560px){ .facts{grid-template-columns:1fr;} }
 .fact{background:#fff;padding:18px 20px;}
-.fact .n{font-family:Arial,sans-serif;font-weight:700;font-size:.92rem;text-transform:uppercase;letter-spacing:.02em;}
+.fact .n{font-family:'Karla',sans-serif;font-weight:700;font-size:.92rem;text-transform:uppercase;letter-spacing:.02em;}
 .fact p{font-size:.96rem;color:var(--sub);margin:4px 0 0;}
 .materials{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ink);margin-top:8px;}
 @media (max-width:600px){ .materials{grid-template-columns:1fr;} }
 .material{background:#fff;padding:24px 22px;}
 .material h3{font-size:1.15rem;margin-bottom:6px;}
 .material p{font-size:.98rem;color:var(--sub);margin:0;}
-.tip{margin-top:16px;font-size:.96rem;color:var(--sub);font-family:Arial,sans-serif;}
+.tip{margin-top:16px;font-size:.96rem;color:var(--sub);font-family:'Karla',sans-serif;}
 .partner-story{background:#eef5f3;border:1px solid #cfe3de;border-radius:16px;padding:34px 36px;font-family:'Montserrat',Arial,sans-serif;}
 .partner-story .plabel{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5a8a7e;margin-bottom:10px;}
 .partner-story h2{font-family:'Montserrat',Arial,sans-serif;font-weight:600;color:#2c332f;font-size:1.4rem;}
@@ -40,42 +40,47 @@ section h2{font-size:1.55rem;}
 .partner-story .plink.outline{background:#fff;color:#4f7d73;border:1.5px solid #a7cec5;}
 .partner-story .plink.outline:hover{background:#f4faf9;}
 
-.partner-pending{background:#fff;border:2px dashed #b9d4d0;border-radius:16px;padding:34px 36px;}
-.partner-pending .plabel{font-family:Arial,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--turq-deep);margin-bottom:10px;}
+.partner-pending{background:#fff;border:2px dashed #c7c3b8;border-radius:16px;padding:34px 36px;}
+.partner-pending .plabel{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--anthracite);margin-bottom:10px;}
 .partner-pending h2{font-size:1.4rem;}
 .partner-pending p{font-size:1rem;line-height:1.7;color:var(--sub);max-width:68ch;}
 .partner-pending .plinks{margin-top:20px;}
-.partner-pending .plink{display:inline-flex;align-items:center;gap:6px;background:var(--turq);color:#fff;font-family:Arial,sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:12px 24px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
-.partner-pending .plink:hover{background:var(--turq-deep);transform:translateY(-1px);}
+.partner-pending .plink{display:inline-flex;align-items:center;gap:6px;background:var(--anthracite);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:12px 24px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
+.partner-pending .plink:hover{background:var(--anthracite-deep);transform:translateY(-1px);}
 
 .faq{margin-top:8px;}
 .faq details{border-bottom:1px solid #d9d5c9;padding:16px 0;}
 .faq details:last-child{border-bottom:none;}
 .faq summary{cursor:pointer;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;}
 .faq summary::-webkit-details-marker{display:none;}
-.faq summary::after{content:"+";font-family:Arial,sans-serif;font-weight:700;font-size:1.3rem;flex-shrink:0;color:var(--sub);transition:transform .25s ease;}
+.faq summary::after{content:"+";font-family:'Karla',sans-serif;font-weight:700;font-size:1.3rem;flex-shrink:0;color:var(--sub);transition:transform .25s ease;}
 .faq details[open] summary::after{transform:rotate(45deg);}
 .faq .a{margin-top:10px;color:var(--sub);font-size:.98rem;max-width:64ch;}
 
 .partybox{background:var(--ink);color:#fff;padding:36px 0;margin-top:8px;}
-.partybox .label{font-family:Arial,sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#c9c6bd;margin-bottom:14px;}
+.partybox .label{font-family:'Karla',sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#c9c6bd;margin-bottom:14px;}
 .partybox h2{color:#fff;font-size:1.4rem;}
 .partybox p{color:#cfccc4;}
 .badge-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
-.badge{display:inline-flex;align-items:center;gap:6px;font-family:Arial,sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:10px 18px;border-radius:24px;}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:10px 18px;border-radius:24px;}
 .badge.gold{background:#3a3a34;color:var(--amber);border:1px solid var(--amber);}
-footer{background:var(--ink);color:#b9b7b0;padding:32px 0;font-size:.85rem;font-family:Arial,sans-serif;}
+footer{background:var(--ink);color:#b9b7b0;padding:32px 0;font-size:.85rem;font-family:'Karla',sans-serif;}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;max-width:1100px;}
 
-/* Kleurthema per pagina — kozijnherstel = rood, kozijnwrappen = groenblauw.
-   Gescoped op body-klasse zodat de twee pagina's elkaars kleuren niet overschrijven. */
-body.theme-herstel a{color:var(--red-deep);}
-body.theme-herstel .hero{background:var(--red);}
-body.theme-herstel .signals li::before{background:var(--red);}
-body.theme-herstel .fact .n{color:var(--red-deep);}
-body.theme-herstel .badge.solid{background:var(--red);color:#fff;}
+/* Kleurthema per pagina — kozijnherstel = crème (het resultaat van herstel is
+   vaak een klassiek crème-wit kozijn), kozijnwrappen = antraciet (de meest
+   gekozen wrap-kleur). Gescoped op body-klasse zodat de pagina's elkaars
+   kleuren niet overschrijven. */
+body.theme-herstel a{color:var(--cream-ink);}
+body.theme-herstel .hero{background:var(--cream);color:var(--cream-ink);}
+body.theme-herstel .hero .tag{background:rgba(58,50,38,.12);}
+body.theme-herstel .hero h1{color:var(--cream-ink);}
+body.theme-herstel .hero p.lede{color:rgba(58,50,38,.82);}
+body.theme-herstel .signals li::before{background:var(--cream-ink);}
+body.theme-herstel .fact .n{color:var(--cream-ink);}
+body.theme-herstel .badge.solid{background:var(--cream);color:var(--cream-ink);}
 
-body.theme-wrap a{color:var(--turq-deep);}
-body.theme-wrap .hero{background:var(--turq);}
-body.theme-wrap .signals li::before{background:var(--turq);}
-body.theme-wrap .fact .n{color:var(--turq-deep);}
+body.theme-wrap a{color:var(--anthracite);}
+body.theme-wrap .hero{background:var(--anthracite);color:#fff;}
+body.theme-wrap .signals li::before{background:var(--anthracite);}
+body.theme-wrap .fact .n{color:var(--anthracite);}
