@@ -41,20 +41,21 @@ section h2{font-size:1.55rem;}
 .partner-story .plink.outline:hover{background:#f4faf9;}
 
 .partner-pending{background:#fff;border:2px dashed #c7c3b8;border-radius:16px;padding:34px 36px;}
-.partner-pending .plabel{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--anthracite);margin-bottom:10px;}
+.partner-pending .plabel{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
 .partner-pending h2{font-size:1.4rem;}
 .partner-pending p{font-size:1rem;line-height:1.7;color:var(--sub);max-width:68ch;}
 .partner-pending .plinks{margin-top:20px;}
-.partner-pending .plink{display:inline-flex;align-items:center;gap:6px;background:var(--anthracite);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:12px 24px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
-.partner-pending .plink:hover{background:var(--anthracite-deep);transform:translateY(-1px);}
+.partner-pending .plink{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:12px 24px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
+.partner-pending .plink:hover{background:var(--accent-deep);transform:translateY(-1px);}
 
 .faq{margin-top:8px;}
 .faq details{border-bottom:1px solid #d9d5c9;padding:16px 0;}
 .faq details:last-child{border-bottom:none;}
 .faq summary{cursor:pointer;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;}
 .faq summary::-webkit-details-marker{display:none;}
-.faq summary::after{content:"+";font-family:'Karla',sans-serif;font-weight:700;font-size:1.3rem;flex-shrink:0;color:var(--sub);transition:transform .25s ease;}
-.faq details[open] summary::after{transform:rotate(45deg);}
+.faq summary::after{content:"+";font-family:'Karla',sans-serif;font-weight:700;font-size:1.3rem;flex-shrink:0;color:var(--sub);transition:transform .25s ease, color .2s ease;}
+.faq summary:hover::after{color:var(--accent);}
+.faq details[open] summary::after{transform:rotate(45deg);color:var(--accent);}
 .faq .a{margin-top:10px;color:var(--sub);font-size:.98rem;max-width:64ch;}
 
 .partybox{background:var(--ink);color:#fff;padding:36px 0;margin-top:8px;}
@@ -63,7 +64,7 @@ section h2{font-size:1.55rem;}
 .partybox p{color:#cfccc4;}
 .badge-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
 .badge{display:inline-flex;align-items:center;gap:6px;font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:10px 18px;border-radius:24px;}
-.badge.gold{background:#3a3a34;color:var(--amber);border:1px solid var(--amber);}
+.badge.gold{background:#3a3a34;color:var(--accent);border:1px solid var(--accent);}
 footer{background:var(--ink);color:#b9b7b0;padding:32px 0;font-size:.85rem;font-family:'Karla',sans-serif;}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;max-width:1100px;}
 
@@ -71,7 +72,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
    vaak een klassiek crème-wit kozijn), kozijnwrappen = antraciet (de meest
    gekozen wrap-kleur). Gescoped op body-klasse zodat de pagina's elkaars
    kleuren niet overschrijven. */
-body.theme-herstel a{color:var(--cream-ink);}
+body.theme-herstel a{color:var(--accent-deep);}
 body.theme-herstel .hero{background:var(--cream);color:var(--cream-ink);}
 body.theme-herstel .hero .tag{background:rgba(58,50,38,.12);}
 body.theme-herstel .hero h1{color:var(--cream-ink);}
@@ -80,7 +81,7 @@ body.theme-herstel .signals li::before{background:var(--cream-ink);}
 body.theme-herstel .fact .n{color:var(--cream-ink);}
 body.theme-herstel .badge.solid{background:var(--cream);color:var(--cream-ink);}
 
-body.theme-wrap a{color:var(--anthracite);}
+body.theme-wrap a{color:var(--accent-deep);}
 body.theme-wrap .hero{background:var(--anthracite);color:#fff;}
 body.theme-wrap .signals li::before{background:var(--anthracite);}
 body.theme-wrap .fact .n{color:var(--anthracite);}

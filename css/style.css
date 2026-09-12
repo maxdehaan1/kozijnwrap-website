@@ -7,7 +7,8 @@
     --anthracite: #34383b;
     --anthracite-deep: #24272a;
     --sub: #6b685f;
-    --amber: #b8934a;
+    --accent: #a9863f;
+    --accent-deep: #8a6c30;
   }
   *{box-sizing:border-box;}
   h1,h2,h3{font-family:'Fraunces',serif;}
