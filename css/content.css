@@ -40,6 +40,14 @@ section h2{font-size:1.55rem;}
 .partner-story .plink.outline{background:#fff;color:#4f7d73;border:1.5px solid #a7cec5;}
 .partner-story .plink.outline:hover{background:#f4faf9;}
 
+.partner-pending{background:#fff;border:2px dashed #b9d4d0;border-radius:16px;padding:34px 36px;}
+.partner-pending .plabel{font-family:Arial,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--turq-deep);margin-bottom:10px;}
+.partner-pending h2{font-size:1.4rem;}
+.partner-pending p{font-size:1rem;line-height:1.7;color:var(--sub);max-width:68ch;}
+.partner-pending .plinks{margin-top:20px;}
+.partner-pending .plink{display:inline-flex;align-items:center;gap:6px;background:var(--turq);color:#fff;font-family:Arial,sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:12px 24px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
+.partner-pending .plink:hover{background:var(--turq-deep);transform:translateY(-1px);}
+
 .faq{margin-top:8px;}
 .faq details{border-bottom:1px solid #d9d5c9;padding:16px 0;}
 .faq details:last-child{border-bottom:none;}
