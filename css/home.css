@@ -53,6 +53,30 @@ body.home .hero{position:relative;padding:96px 0 76px;background:linear-gradient
 }
 .path.herstel:hover::after{transform:rotate(-8deg) translate(-2px,2px);}
 
+/* Scheur die verschijnt bij hover — extra visuele hint dat dit over schade gaat. */
+.path.herstel .crack{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.25));
+}
+.path.herstel .crack path{
+  fill:none;
+  stroke:rgba(20,14,10,.6);
+  stroke-width:3;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-dasharray:520;
+  stroke-dashoffset:520;
+  transition:stroke-dashoffset .55s cubic-bezier(.3,.8,.4,1);
+}
+.path.herstel:hover .crack path{stroke-dashoffset:0;}
+@media (prefers-reduced-motion: reduce){
+  .path.herstel .crack path{transition:none;}
+}
+
 .head-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px;}
 .path .tag{font-family:Arial,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;display:inline-block;width:fit-content;margin:0;background:rgba(255,255,255,.22);}
 .path h2{font-size:1.9rem;color:#fff;}
