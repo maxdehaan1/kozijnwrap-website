@@ -108,5 +108,11 @@ body.home .hero{position:relative;padding:96px 0 76px;background:linear-gradient
 .compare p{font-size:.98rem;color:var(--sub);margin:0;}
 .tip{margin-top:2px;background:var(--ink);color:var(--grey);padding:18px 24px;font-size:.96rem;font-family:'Karla',sans-serif;}
 .tip b{color:#fff;}
+
+.blog-teaser{padding:8px 0 60px;text-align:center;}
+.blog-teaser .teaser-arrow{display:block;margin:0 auto 6px;}
+.blog-teaser p{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;margin:0 0 18px;color:var(--ink);}
+.blog-teaser .teaser-link{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:13px 26px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
+.blog-teaser .teaser-link:hover{background:var(--accent-deep);transform:translateY(-2px);}
 footer{background:var(--ink);color:#b9b7b0;padding:32px 0;font-size:.85rem;font-family:'Karla',sans-serif;margin-top:40px;}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
