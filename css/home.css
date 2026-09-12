@@ -30,6 +30,32 @@ body.home .hero{position:relative;padding:96px 0 76px;background:linear-gradient
   animation:card-in .7s cubic-bezier(.22,.61,.36,1) forwards;
 }
 .path.herstel{background:var(--cream);color:var(--cream-ink);}
+
+/* Vertakt breukpatroon, in een getinte versie van de eigen kaartkleur —
+   oogt als beschadiging in het materiaal zelf, geen losse animatie. */
+.path.herstel .damage{
+  position:absolute;
+  right:0;
+  bottom:0;
+  width:62%;
+  height:62%;
+  pointer-events:none;
+  z-index:0;
+}
+.path.herstel .damage path{
+  fill:none;
+  stroke:#b7a37e;
+  stroke-width:2.4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  opacity:.55;
+  transition:opacity .3s ease;
+}
+.path.herstel .damage path:first-child{
+  fill:#b7a37e;
+  stroke:none;
+}
+.path.herstel:hover .damage path{opacity:.8;}
 .path.wrappen{background:var(--anthracite);animation-delay:.15s;}
 
 .path:hover{transform:translateY(-8px);box-shadow:0 22px 36px -16px rgba(0,0,0,.45);}
