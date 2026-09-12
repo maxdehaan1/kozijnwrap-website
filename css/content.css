@@ -30,6 +30,15 @@ section h2{font-size:1.55rem;}
 .material h3{font-size:1.15rem;margin-bottom:6px;}
 .material p{font-size:.98rem;color:var(--sub);margin:0;}
 .tip{margin-top:16px;font-size:.96rem;color:var(--sub);font-family:Arial,sans-serif;}
+.faq{margin-top:8px;}
+.faq details{border-bottom:1px solid #d9d5c9;padding:16px 0;}
+.faq details:last-child{border-bottom:none;}
+.faq summary{cursor:pointer;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:"+";font-family:Arial,sans-serif;font-weight:700;font-size:1.3rem;flex-shrink:0;color:var(--sub);transition:transform .25s ease;}
+.faq details[open] summary::after{transform:rotate(45deg);}
+.faq .a{margin-top:10px;color:var(--sub);font-size:.98rem;max-width:64ch;}
+
 .partybox{background:var(--ink);color:#fff;padding:36px 0;margin-top:8px;}
 .partybox .label{font-family:Arial,sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#c9c6bd;margin-bottom:14px;}
 .partybox h2{color:#fff;font-size:1.4rem;}

@@ -1,9 +1,10 @@
 # kozijnwrap.nl
 
-Onafhankelijk kozijnadvies-platform, onderdeel van iWrap. Splitst bezoekers in twee paden:
-kozijnherstel (kunststof kozijnen, Renolit folie, uitgevoerd door iWrap zelf) en
-kozijnwrappen (omkleuren van nog goede aluminium/kunststof kozijnen, doorverwijzing naar
-een nog te kiezen externe partij).
+Onafhankelijk kozijnadvies-platform. Splitst bezoekers in twee paden:
+kozijnherstel (kunststof kozijnen, Renolit folie — aanbevolen partner: iWrap, op basis van
+reputatie en reviews) en kozijnwrappen (omkleuren van nog goede aluminium/kunststof kozijnen,
+doorverwijzing naar een nog te kiezen partner). De site presenteert zich als onafhankelijk
+vergelijkingsplatform, niet als eigendom van iWrap.
 
 ## Structuur
 
