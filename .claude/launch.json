@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "kozijnwrap-static",
+      "name": "kozijnwrap",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4173", "--directory", "/Users/maxdehaan/Downloads/kozijnwrap-project"],
-      "port": 4173
+      "runtimeArgs": ["/Users/maxdehaan/Downloads/kozijnwrap-project/serve.py"],
+      "port": 4321
     }
   ]
 }

@@ -1,29 +1,102 @@
+/* ---------------------------------------------------------------------------
+   Gedeelde basis voor élke pagina: kleuren, typografie, header, footer en de
+   twee soorten kanttekening. Paginaspecifiek werk staat in home.css (de
+   landingspagina), content.css (tekstpagina's en blog) en blog.css.
+   --------------------------------------------------------------------------- */
+
 :root{
-    --grey: #f7f4ee;
-    --ink: #26241f;
-    --white: #ffffff;
-    --cream: #f1e8d3;
-    --cream-ink: #3a3226;
-    --anthracite: #34383b;
-    --anthracite-deep: #24272a;
-    --sub: #6b685f;
-    --accent: #a9863f;
-    --accent-deep: #8a6c30;
-  }
-  *{box-sizing:border-box;}
-  h1,h2,h3{font-family:'Fraunces',serif;}
-  header.site{padding:20px 0;}
-  .nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;max-width:1100px;margin:0 auto;padding:0 24px;}
-  .brand{font-family:'Fraunces',serif;font-weight:700;text-decoration:none;color:var(--accent-deep);font-size:1.3rem;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:9px;transition:opacity .2s ease;}
-  .brand:hover{opacity:.75;}
-  .brand .logo-mark{flex-shrink:0;transition:transform .3s ease;}
-  .brand:hover .logo-mark{transform:rotate(-6deg) scale(1.08);}
-  .navlinks{display:flex;flex-wrap:wrap;gap:22px;font-family:'Karla',Arial,sans-serif;font-size:.85rem;}
-  .navlinks a{color:var(--sub);text-decoration:none;position:relative;padding-bottom:2px;transition:color .2s ease;}
-  .navlinks a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--accent);transition:right .25s ease;}
-  .navlinks a:hover{color:var(--ink);}
-  .navlinks a:hover::after{right:0;}
-  .navlinks a.current{color:var(--ink);font-weight:700;}
-  .navlinks a.current::after{right:0;background:var(--ink);}
-  @media (max-width:560px){ .brand{font-size:1.15rem;} .navlinks{gap:12px;font-size:.8rem;} }
-  footer a{color:#e7e5df;}
+  --grey:#f7f4ee;
+  --ink:#26241f;
+  --white:#ffffff;
+  --cream:#f1e8d3;
+  --cream-ink:#3a3226;
+  --anthracite:#34383b;
+  --anthracite-deep:#24272a;
+  --sub:#6b685f;
+  --line:#d9d5c9;
+  /* Twee tinten goud met een duidelijke taakverdeling: --accent voor lijnen,
+     iconen en randen, --accent-deep overal waar tekst bovenop komt. Het lichte
+     goud haalt met wit maar 3,4:1 en blijft daarom uit knoppen. */
+  --accent:#a9863f;
+  --accent-deep:#8a6c30;
+  --accent-light:#d4ab5c; /* tegenhanger voor tekst op de donkere vlakken */
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  background:var(--grey);
+  color:var(--ink);
+  font-family:'Karla',Arial,sans-serif;
+  font-size:19px;
+  line-height:1.58;
+}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.14;margin:0 0 .4em;letter-spacing:-.01em;}
+p{margin:0 0 1em;}
+a{color:inherit;}
+img{max-width:100%;height:auto;}
+
+/* Toetsenbordfocus: een witte ring tegen het element aan met een goudkleurige
+   ring daaromheen. Die combinatie blijft zichtbaar op de crème, de witte én
+   de antracietvlakken — één enkele kleur lukt dat op geen van drieën. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible{
+  outline:3px solid var(--accent);
+  outline-offset:3px;
+  box-shadow:0 0 0 3px rgba(255,255,255,.85);
+  border-radius:3px;
+}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:#fff;padding:12px 20px;font-family:'Karla',sans-serif;font-size:.9rem;font-weight:700;text-decoration:none;border-radius:0 0 8px 0;}
+.skip:focus{left:0;}
+
+/* Header ------------------------------------------------------------------ */
+
+header.site{padding:20px 0;}
+.nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;max-width:1100px;margin:0 auto;padding:0 24px;}
+.brand{font-family:'Fraunces',serif;font-weight:700;text-decoration:none;color:var(--accent-deep);font-size:1.3rem;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:9px;transition:opacity .2s ease;}
+.brand:hover{opacity:.75;}
+.brand .logo-mark{flex-shrink:0;transition:transform .3s ease;}
+.brand:hover .logo-mark{transform:rotate(-6deg) scale(1.08);}
+.navlinks{display:flex;flex-wrap:wrap;gap:22px;font-family:'Karla',Arial,sans-serif;font-size:.85rem;}
+.navlinks a{color:var(--sub);text-decoration:none;position:relative;padding-bottom:2px;transition:color .2s ease;}
+.navlinks a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--accent);transition:right .25s ease;}
+.navlinks a:hover{color:var(--ink);}
+.navlinks a:hover::after{right:0;}
+.navlinks a.current{color:var(--ink);font-weight:700;}
+.navlinks a.current::after{right:0;background:var(--ink);}
+@media (max-width:560px){ .brand{font-size:1.15rem;} .navlinks{gap:12px;font-size:.8rem;} }
+
+/* Kanttekeningen ----------------------------------------------------------- */
+
+/* Bewust twee soorten, met een duidelijk verschil in gewicht: .callout voor
+   iets dat de lezer écht moet meenemen, .note voor een terzijde. Eerder deden
+   beide zich voor als .tip, met per stylesheet een andere uitwerking. */
+.callout{
+  background:#fff;
+  border-left:4px solid var(--accent);
+  border-radius:0 10px 10px 0;
+  padding:20px 24px;
+  margin:22px 0;
+  font-size:1rem;
+  line-height:1.6;
+  max-width:none;
+  box-shadow:0 8px 20px -16px rgba(0,0,0,.4);
+}
+.callout b{color:var(--accent-deep);}
+.callout>:last-child{margin-bottom:0;}
+
+.note{margin-top:16px;font-size:.96rem;color:var(--sub);font-family:'Karla',sans-serif;}
+
+/* Footer ------------------------------------------------------------------- */
+
+footer{background:var(--ink);color:#97948d;padding:38px 0 34px;font-size:.85rem;font-family:'Karla',sans-serif;}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px 48px;align-items:flex-start;max-width:1100px;}
+footer .fbrand strong{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:#fff;display:block;margin-bottom:6px;}
+footer .fbrand p{max-width:44ch;margin:0;line-height:1.5;}
+footer .flinks{line-height:1.9;}
+footer a{color:#e7e5df;text-decoration:none;}
+footer a:hover{color:#fff;text-decoration:underline;}

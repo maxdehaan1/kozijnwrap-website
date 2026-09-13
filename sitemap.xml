@@ -5,43 +5,43 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://kozijnwrap.nl/kozijnherstel.html</loc>
-    <priority>0.8</priority>
+    <loc>https://kozijnwrap.nl/blog/houtnerffolie-renolit-exofol</loc>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://kozijnwrap.nl/kozijnwrappen.html</loc>
-    <priority>0.8</priority>
+    <loc>https://kozijnwrap.nl/blog/kozijn-vervangen-of-herstellen</loc>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://kozijnwrap.nl/blog/</loc>
+    <loc>https://kozijnwrap.nl/blog/kozijn-wrappen-of-schilderen</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kozijnwrap.nl/blog/kozijnen-laten-wrappen</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kozijnwrap.nl/blog/kozijnherstel-kosten</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kozijnwrap.nl/blog/ral-7016-antraciet-kozijnen</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kozijnwrap.nl/blog/renolit-folie-uitgelegd</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kozijnwrap.nl/blog</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://kozijnwrap.nl/blog/kozijnherstel-kosten.html</loc>
-    <priority>0.6</priority>
+    <loc>https://kozijnwrap.nl/kozijnherstel</loc>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kozijnwrap.nl/blog/renolit-folie-uitgelegd.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://kozijnwrap.nl/blog/houtnerffolie-renolit-exofol.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://kozijnwrap.nl/blog/kozijnen-laten-wrappen.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://kozijnwrap.nl/blog/ral-7016-antraciet-kozijnen.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://kozijnwrap.nl/blog/kozijn-vervangen-of-herstellen.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://kozijnwrap.nl/blog/kozijn-wrappen-of-schilderen.html</loc>
-    <priority>0.6</priority>
+    <loc>https://kozijnwrap.nl/kozijnwrappen</loc>
+    <priority>0.8</priority>
   </url>
 </urlset>

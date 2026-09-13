@@ -1,81 +1,117 @@
-body{margin:0;background:var(--grey);color:var(--ink);font-family:'Karla',Arial,sans-serif;font-size:19px;line-height:1.58;}
-h1,h2,h3{font-weight:600;line-height:1.14;margin:0 0 .4em;letter-spacing:-.01em;}
-p{margin:0 0 1em;max-width:64ch;}
+/* ---------------------------------------------------------------------------
+   Tekstpagina's (body.page): kozijnherstel, kozijnwrappen en de blog. De
+   basistypografie, header, footer en kanttekeningen staan in style.css.
+   --------------------------------------------------------------------------- */
+
+body.page p{max-width:64ch;}
 body.page .wrap{max-width:740px;margin:0 auto;padding:0 24px;}
 body.page .hero{padding:52px 0 44px;margin-bottom:8px;box-shadow:0 8px 20px -12px rgba(0,0,0,.18);position:relative;z-index:1;}
 .hero .wrap{max-width:740px;}
 .hero .tag{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:rgba(255,255,255,.22);padding:5px 12px;border-radius:20px;display:inline-block;margin-bottom:18px;}
-.hero h1{font-size:clamp(2rem,4.6vw,2.7rem);max-width:17ch;color:#fff;}
+.hero h1{font-size:clamp(2rem,4.6vw,2.7rem);max-width:20ch;color:#fff;text-wrap:balance;}
 .hero p.lede{color:rgba(255,255,255,.92);font-size:1.08rem;max-width:56ch;}
+.doodle-line{display:block;margin:2px 0 16px;}
+.lead-out{margin-top:16px;}
+
 section{padding:42px 0;}
 section h2{font-size:1.55rem;}
+/* Vervangt het tien keer herhaalde style="padding-top:0" in de HTML. */
+section.tight{padding-top:0;}
+
 .signals{list-style:none;margin:0;padding:0;}
-.signals li{padding:13px 0 13px 30px;position:relative;border-bottom:1px solid #d9d5c9;font-size:1rem;}
+.signals li{padding:13px 0 13px 30px;position:relative;border-bottom:1px solid var(--line);font-size:1rem;}
 .signals li:last-child{border-bottom:none;}
 .signals li::before{content:"";position:absolute;left:2px;top:50%;transform:translateY(-50%);width:9px;height:9px;border-radius:50%;}
+
 .steps{counter-reset:step;list-style:none;margin:0;padding:0;}
-.steps li{counter-increment:step;padding:16px 0 16px 48px;position:relative;border-bottom:1px solid #d9d5c9;}
+.steps li{counter-increment:step;padding:16px 0 16px 48px;position:relative;border-bottom:1px solid var(--line);}
 .steps li:last-child{border-bottom:none;}
 .steps li::before{content:counter(step);position:absolute;left:0;top:50%;transform:translateY(-50%);width:32px;height:32px;background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Karla',sans-serif;font-size:.85rem;font-weight:700;}
 .steps .stitle{font-weight:600;font-size:1.08rem;margin-bottom:2px;}
 .steps p{font-size:.98rem;color:var(--sub);margin:0;max-width:56ch;}
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ink);margin-top:8px;}
+
+.facts,.materials{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ink);margin-top:8px;}
 @media (max-width:560px){ .facts{grid-template-columns:1fr;} }
+@media (max-width:600px){ .materials{grid-template-columns:1fr;} }
 .fact{background:#fff;padding:18px 20px;}
 .fact .n{font-family:'Karla',sans-serif;font-weight:700;font-size:.92rem;text-transform:uppercase;letter-spacing:.02em;}
 .fact p{font-size:.96rem;color:var(--sub);margin:4px 0 0;}
-.materials{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ink);margin-top:8px;}
-@media (max-width:600px){ .materials{grid-template-columns:1fr;} }
 .material{background:#fff;padding:24px 22px;}
 .material h3{font-size:1.15rem;margin-bottom:6px;}
 .material p{font-size:.98rem;color:var(--sub);margin:0;}
-.tip{margin-top:16px;font-size:.96rem;color:var(--sub);font-family:'Karla',sans-serif;}
+
+/* Beeld --------------------------------------------------------------------- */
+
+figure{margin:26px 0;}
+figure img{display:block;width:100%;border-radius:10px;}
+figcaption{font-family:'Karla',sans-serif;font-size:.85rem;color:var(--sub);margin-top:9px;line-height:1.45;}
+
+/* Voor en na naast elkaar. Het label ligt óp de foto, zodat de twee beelden
+   niet uit elkaar getrokken worden door een regel tekst ertussen. */
+.beforeafter{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0 8px;}
+@media (max-width:560px){ .beforeafter{grid-template-columns:1fr;} }
+.beforeafter figure{margin:0;position:relative;}
+.beforeafter img{aspect-ratio:4/3;object-fit:cover;box-shadow:0 10px 24px -18px rgba(0,0,0,.6);}
+.beforeafter .ba-label{position:absolute;top:12px;left:12px;font-family:'Karla',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.94);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.18);}
+.beforeafter figcaption{margin-top:8px;}
+
+/* Partnerblokken ------------------------------------------------------------ */
+
+/* Leent bewust de huisstijl van iWrap zelf (Montserrat, salie) zodat zichtbaar
+   is dat hier een andere partij aan het woord is. */
 .partner-story{background:#eef5f3;border:1px solid #cfe3de;border-radius:16px;padding:34px 36px;font-family:'Montserrat',Arial,sans-serif;}
-.partner-story .plabel{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5a8a7e;margin-bottom:10px;}
+.partner-story .plabel{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#4e7a6f;margin-bottom:10px;}
 .partner-story h2{font-family:'Montserrat',Arial,sans-serif;font-weight:600;color:#2c332f;font-size:1.4rem;}
 .partner-story p{font-size:1rem;line-height:1.7;color:#4a534f;max-width:68ch;}
 .partner-story .plinks{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;}
-.partner-story .plink{display:inline-flex;align-items:center;gap:6px;background:#a7cec5;color:#fff;font-weight:600;font-size:.92rem;text-decoration:none;padding:12px 24px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
-.partner-story .plink:hover{background:#8fbdb2;transform:translateY(-1px);}
-.partner-story .plink.outline{background:#fff;color:#4f7d73;border:1.5px solid #a7cec5;}
+.partner-story .plink{display:inline-flex;align-items:center;gap:6px;background:#4f7d73;color:#fff;font-weight:600;font-size:.92rem;text-decoration:none;padding:12px 24px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
+.partner-story .plink:hover{background:#3f675e;transform:translateY(-1px);}
+.partner-story .plink.outline{background:#fff;color:#3f675e;border:1.5px solid #a7cec5;}
 .partner-story .plink.outline:hover{background:#f4faf9;}
 
 .partner-pending{background:#fff;border:2px dashed #c7c3b8;border-radius:16px;padding:34px 36px;}
-.partner-pending .plabel{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.partner-pending .plabel{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:10px;}
 .partner-pending h2{font-size:1.4rem;}
 .partner-pending p{font-size:1rem;line-height:1.7;color:var(--sub);max-width:68ch;}
 .partner-pending .plinks{margin-top:20px;}
-.partner-pending .plink{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:12px 24px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
-.partner-pending .plink:hover{background:var(--accent-deep);transform:translateY(-1px);}
+.partner-pending .plink{display:inline-flex;align-items:center;gap:6px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:12px 24px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
+.partner-pending .plink:hover{background:#73591f;transform:translateY(-1px);}
+
+/* Veelgestelde vragen -------------------------------------------------------- */
 
 .faq{margin-top:8px;}
-.faq details{border-bottom:1px solid #d9d5c9;}
+.faq details{border-bottom:1px solid var(--line);}
 .faq details:last-child{border-bottom:none;}
 .faq summary{cursor:pointer;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 12px;margin:0 -12px;border-radius:8px;transition:background .2s ease;}
 .faq summary:hover{background:rgba(169,134,63,.08);}
 .faq summary::-webkit-details-marker{display:none;}
 .faq summary::after{content:"+";font-family:'Karla',sans-serif;font-weight:700;font-size:1.3rem;flex-shrink:0;color:var(--sub);transition:transform .25s ease, color .2s ease;}
-.faq summary:hover::after{color:var(--accent);}
-.faq details[open] summary::after{transform:rotate(45deg);color:var(--accent);}
+.faq summary:hover::after{color:var(--accent-deep);}
+.faq details[open] summary::after{transform:rotate(45deg);color:var(--accent-deep);}
 .faq .a{margin:-6px 12px 16px;color:var(--sub);font-size:.98rem;max-width:64ch;}
+
+/* Aanbevolen partij ---------------------------------------------------------- */
 
 .partybox{background:var(--ink);color:#fff;padding:36px 0;margin-top:8px;}
 .partybox .label{font-family:'Karla',sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#c9c6bd;margin-bottom:14px;}
 .partybox h2{color:#fff;font-size:1.4rem;}
 .partybox p{color:#cfccc4;}
-.badge-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.badge-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;}
 .badge{display:inline-flex;align-items:center;gap:6px;font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:10px 18px;border-radius:24px;transition:transform .2s ease, box-shadow .2s ease, background .2s ease;}
 .badge:hover{transform:translateY(-2px);box-shadow:0 6px 14px -6px rgba(0,0,0,.35);}
-.badge.gold{background:#3a3a34;color:var(--accent);border:1px solid var(--accent);}
+.badge.gold{background:#3a3a34;color:var(--accent-light);border:1px solid var(--accent);}
 .badge.gold:hover{background:#454540;}
-footer{background:var(--ink);color:#b9b7b0;padding:32px 0;font-size:.85rem;font-family:'Karla',sans-serif;}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;max-width:1100px;}
 
 /* Kleurthema per pagina — kozijnherstel = crème (het resultaat van herstel is
    vaak een klassiek crème-wit kozijn), kozijnwrappen = antraciet (de meest
-   gekozen wrap-kleur). Gescoped op body-klasse zodat de pagina's elkaars
+   gekozen wrap-kleur). Gescoped op de body-klasse zodat de pagina's elkaars
    kleuren niet overschrijven. */
-body.theme-herstel a{color:var(--accent-deep);}
+/* Alleen links in lopende tekst en lijsten krijgen de accentkleur. De regel
+   stond eerder op `body.theme-… a` en won het daardoor van de kaarten, het
+   kruimelpad en de footerlinks, die daardoor allemaal goud werden. */
+body.page p a,
+body.page li a{color:var(--accent-deep);}
+
 body.theme-herstel .hero{background:var(--cream);color:var(--cream-ink);}
 body.theme-herstel .hero .tag{background:rgba(58,50,38,.12);}
 body.theme-herstel .hero h1{color:var(--cream-ink);}
@@ -84,12 +120,10 @@ body.theme-herstel .signals li::before{background:var(--cream-ink);}
 body.theme-herstel .fact .n{color:var(--cream-ink);}
 body.theme-herstel .badge.solid{background:var(--cream);color:var(--cream-ink);}
 
-body.theme-wrap a{color:var(--accent-deep);}
 body.theme-wrap .hero{background:var(--anthracite);color:#fff;}
 body.theme-wrap .signals li::before{background:var(--anthracite);}
 body.theme-wrap .fact .n{color:var(--anthracite);}
 
-body.theme-blog a{color:var(--accent-deep);}
 body.theme-blog .hero{background:var(--ink);color:#fff;}
-body.theme-blog .signals li::before{background:var(--accent);}
+body.theme-blog .signals li::before{background:var(--accent-deep);}
 body.theme-blog .fact .n{color:var(--accent-deep);}

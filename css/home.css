@@ -1,15 +1,31 @@
-body{margin:0;background:var(--grey);color:var(--ink);font-family:'Karla',Arial,sans-serif;font-size:19px;line-height:1.55;}
-h1,h2,h3{font-weight:600;line-height:1.1;margin:0 0 .35em;letter-spacing:-.01em;}
-p{margin:0 0 1em;}
-a{color:inherit;}
+/* ---------------------------------------------------------------------------
+   Alleen de landingspagina (body.home). Basistypografie, header en footer
+   staan in style.css.
+   --------------------------------------------------------------------------- */
+
+body.home h1,body.home h2{line-height:1.1;}
 body.home .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+body.home footer{margin-top:40px;}
 .doodle{display:block;margin-top:2px;}
-.nav .sub{font-size:.8rem;color:var(--sub);letter-spacing:.03em;text-transform:uppercase;font-family:'Karla',sans-serif;}
-body.home .hero{position:relative;padding:96px 0 76px;background:linear-gradient(180deg,rgba(36,33,28,.68) 0%,rgba(36,33,28,.55) 55%,rgba(36,33,28,.82) 100%),url('../images/proces-squeegee.jpg');background-size:cover;background-position:center 62%;color:#fff;}
+
+body.home .hero{
+  position:relative;
+  padding:96px 0 76px;
+  color:#fff;
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center 62%;
+  background-image:linear-gradient(180deg,rgba(36,33,28,.68) 0%,rgba(36,33,28,.55) 55%,rgba(36,33,28,.82) 100%),url('/images/proces-squeegee.jpg');
+  /* WebP waar de browser 'm aankan; de regel hierboven blijft de terugval. */
+  background-image:linear-gradient(180deg,rgba(36,33,28,.68) 0%,rgba(36,33,28,.55) 55%,rgba(36,33,28,.82) 100%),image-set(url('/images/proces-squeegee.webp') type('image/webp'),url('/images/proces-squeegee.jpg') type('image/jpeg'));
+}
 .hero h1{font-size:clamp(2.1rem,5.4vw,3.4rem);max-width:16ch;color:#fff;}
-.hero p.lede{max-width:52ch;color:rgba(255,255,255,.9);font-size:1.15rem;}
+.hero p.lede{max-width:52ch;margin-top:18px;color:rgba(255,255,255,.9);font-size:1.15rem;}
 .hero .trust{margin:18px 0 0;font-family:'Karla',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:rgba(255,255,255,.88);display:inline-flex;align-items:center;gap:9px;}
 .hero .trust::before{content:"✓";flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.22);font-size:.68rem;}
+
+/* De tweesplitsing ---------------------------------------------------------- */
+
 .fork{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:56px 0 40px;align-items:stretch;}
 @media (max-width:760px){ .fork{grid-template-columns:1fr;gap:28px;} }
 
@@ -27,13 +43,21 @@ body.home .hero{position:relative;padding:96px 0 76px;background:linear-gradient
   transition:transform .25s cubic-bezier(.2,.7,.3,1.3), box-shadow .25s ease;
   cursor:pointer;
   opacity:0;
+  /* De intro-animatie schuift met `translate`, niet met `transform`. Een
+     animatie met fill-mode forwards houdt de eigenschap die hij aanstuurt
+     permanent vast — stond dat op transform, dan kwam :hover er nooit meer
+     doorheen. */
   translate:0 26px;
   animation:card-in .7s cubic-bezier(.22,.61,.36,1) forwards;
 }
 .path.herstel{background:var(--cream);color:var(--cream-ink);}
+.path.wrappen{background:var(--anthracite);animation-delay:.15s;}
 
-/* Vertakt breukpatroon, in een getinte versie van de eigen kaartkleur —
-   verschijnt alleen bij hover, oogt als beschadiging in het materiaal zelf. */
+.path:hover{transform:translateY(-8px) scale(1.035);box-shadow:0 22px 36px -16px rgba(0,0,0,.45);}
+@keyframes card-in{ to{opacity:1;translate:0 0;} }
+
+/* Vertakt breukpatroon in een getinte versie van de kaartkleur zelf —
+   verschijnt alleen bij hover, oogt als beschadiging in het materiaal. */
 .path.herstel .damage{
   position:absolute;
   right:0;
@@ -46,43 +70,32 @@ body.home .hero{position:relative;padding:96px 0 76px;background:linear-gradient
   transition:opacity .35s ease;
 }
 .path.herstel:hover .damage{opacity:1;}
-.path.herstel .damage path{
-  fill:none;
-  stroke:#a08a5f;
-  stroke-width:2.4;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  opacity:.75;
-}
-.path.herstel .damage path:first-child{
-  fill:#a08a5f;
-  stroke:none;
-}
-@media (prefers-reduced-motion: reduce){
-  .path.herstel .damage{transition:none;}
-}
-.path.wrappen{background:var(--anthracite);animation-delay:.15s;}
-
-.path:hover{transform:translateY(-8px) scale(1.035);box-shadow:0 22px 36px -16px rgba(0,0,0,.45);}
-@media (prefers-reduced-motion: reduce){
-  .path:hover{transform:none;}
-}
-
-@keyframes card-in{ to{opacity:1;translate:0 0;} }
+.path.herstel .damage path{fill:none;stroke:#a08a5f;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:.75;}
+.path.herstel .damage path:first-child{fill:#a08a5f;stroke:none;}
 
 .head-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px;position:relative;z-index:1;}
+/* De polaroid is fors hoger dan de kleurstalen ernaast. Een gelijke minimum-
+   hoogte voor de bovenrij laat de koppen van beide kaarten op dezelfde lijn
+   beginnen; onder 760px staan ze onder elkaar en is het niet nodig. */
+@media (min-width:761px){ .head-row{min-height:94px;} }
+@media (min-width:901px){ .head-row{min-height:123px;} }
 .path .tag{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;display:inline-block;width:fit-content;margin:0;background:rgba(255,255,255,.22);}
 .path.herstel .tag{background:rgba(58,50,38,.12);color:var(--cream-ink);}
-.path h2{font-size:1.9rem;color:#fff;position:relative;z-index:1;}
+/* Vaste hoogte van twee regels, zodat de twee koppen naast elkaar op dezelfde
+   hoogte beginnen ook als er maar één regel tekst in past. */
+.path h2{font-size:1.9rem;color:#fff;position:relative;z-index:1;min-height:2.2em;text-wrap:balance;}
 .path.herstel h2{color:var(--cream-ink);}
 .path p{color:rgba(255,255,255,.92);font-size:1.02rem;flex-grow:1;position:relative;z-index:1;}
 .path.herstel p{color:rgba(58,50,38,.82);}
 .path .go{font-family:'Karla',sans-serif;font-weight:700;font-size:.92rem;margin-top:20px;display:inline-flex;align-items:center;gap:6px;transition:gap .25s ease;position:relative;z-index:1;}
 .path:hover .go{gap:11px;}
+@media (max-width:760px){ .path h2{min-height:0;} }
 
-.snapshot{width:84px;height:84px;border:5px solid #fff;box-shadow:0 6px 14px rgba(0,0,0,.35);rotate:6deg;overflow:hidden;flex-shrink:0;animation:bob 4.5s ease-in-out infinite;}
-.snapshot img{width:100%;height:100%;object-fit:cover;display:block;}
-@media (max-width:520px){ .snapshot{width:64px;height:64px;} }
+/* De polaroid moet op één blik leesbaar zijn: op 84px zag je niet wát je zag. */
+.snapshot{width:148px;border:6px solid #fff;box-shadow:0 8px 18px rgba(0,0,0,.35);rotate:6deg;overflow:hidden;flex-shrink:0;animation:bob 4.5s ease-in-out infinite;}
+.snapshot img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+@media (max-width:900px){ .snapshot{width:112px;border-width:5px;} }
+@media (max-width:520px){ .snapshot{width:92px;border-width:4px;} }
 
 .swatches{display:flex;flex-shrink:0;padding-top:14px;}
 .swatches span{display:block;width:38px;height:38px;border:4px solid #fff;border-radius:6px;box-shadow:0 4px 10px rgba(0,0,0,.3);margin-left:-13px;animation:bob 4.5s ease-in-out infinite;}
@@ -96,8 +109,13 @@ body.home .hero{position:relative;padding:96px 0 76px;background:linear-gradient
 
 @media (prefers-reduced-motion: reduce){
   .path{animation:none;opacity:1;translate:0;}
+  .path:hover{transform:none;}
+  .path.herstel .damage{transition:none;}
   .snapshot,.swatches span{animation:none;}
 }
+
+/* Vergelijking en doorverwijzing -------------------------------------------- */
+
 .guide{padding:20px 0 64px;}
 .guide h3{font-size:1.3rem;}
 .compare{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ink);margin-top:24px;}
@@ -107,13 +125,14 @@ body.home .hero{position:relative;padding:96px 0 76px;background:linear-gradient
 .compare .left .h{color:var(--cream-ink);}
 .compare .right .h{color:var(--anthracite);}
 .compare p{font-size:.98rem;color:var(--sub);margin:0;}
-.tip{margin-top:2px;background:var(--ink);color:var(--grey);padding:18px 24px;font-size:.96rem;font-family:'Karla',sans-serif;}
-.tip b{color:#fff;}
+
+/* Donker adviesblok onder de vergelijking. Heette .tip, maar die naam betekende
+   op de blog iets heel anders — vandaar de eigen naam. */
+.tip-dark{margin-top:2px;background:var(--ink);color:var(--grey);padding:18px 24px;font-size:.96rem;font-family:'Karla',sans-serif;}
+.tip-dark b{color:#fff;}
 
 .blog-teaser{padding:8px 0 60px;text-align:center;}
 .blog-teaser .teaser-arrow{display:block;margin:0 auto 6px;}
 .blog-teaser p{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;margin:0 0 18px;color:var(--ink);}
-.blog-teaser .teaser-link{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:13px 26px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
-.blog-teaser .teaser-link:hover{background:var(--accent-deep);transform:translateY(-2px);}
-footer{background:var(--ink);color:#b9b7b0;padding:32px 0;font-size:.85rem;font-family:'Karla',sans-serif;margin-top:40px;}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.blog-teaser .teaser-link{display:inline-flex;align-items:center;gap:8px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:13px 26px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
+.blog-teaser .teaser-link:hover{background:#73591f;transform:translateY(-2px);}

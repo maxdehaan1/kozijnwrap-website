@@ -1,5 +1,11 @@
-/* Blog-specifieke stijlen — bouwt voort op content.css (.wrap, .hero, section)
-   en gebruikt het bestaande theme-systeem (body.theme-blog in content.css). */
+/* ---------------------------------------------------------------------------
+   Blogoverzicht en artikelen. Bouwt voort op content.css (.wrap, .hero,
+   section, figure) en op het themasysteem daar (body.theme-blog).
+   --------------------------------------------------------------------------- */
+
+/* Artikelkoppen zijn een stuk langer dan paginakoppen; op 20ch braken ze in
+   vier korte regeltjes terwijl er ruimte zat naast stond. */
+body.theme-blog .hero h1{max-width:27ch;font-size:clamp(1.85rem,4.2vw,2.45rem);}
 
 .breadcrumb{font-family:'Karla',sans-serif;font-size:.82rem;color:rgba(255,255,255,.62);margin-bottom:14px;}
 .breadcrumb a{color:rgba(255,255,255,.88);text-decoration:none;}
@@ -8,21 +14,39 @@
 .post-tag{font-family:'Karla',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 11px;border-radius:20px;display:inline-block;width:fit-content;}
 .post-tag.herstel{background:var(--cream);color:var(--cream-ink);}
 .post-tag.wrappen{background:var(--anthracite);color:#fff;}
+.hero .post-tag.wrappen{box-shadow:inset 0 0 0 1px rgba(255,255,255,.28);}
+
+.article-title{margin-top:14px;}
+.article-meta{font-family:'Karla',sans-serif;font-size:.85rem;color:rgba(255,255,255,.65);margin-top:14px;}
+
+/* Overzicht ------------------------------------------------------------------ */
 
 .blog-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px;}
 @media (max-width:640px){ .blog-grid{grid-template-columns:1fr;} }
 .post-card{background:#fff;border-radius:12px;padding:26px 24px;text-decoration:none;color:var(--ink);box-shadow:0 8px 20px -14px rgba(0,0,0,.22);transition:transform .25s ease, box-shadow .25s ease;display:flex;flex-direction:column;}
 .post-card:hover{transform:translateY(-4px);box-shadow:0 16px 26px -16px rgba(0,0,0,.28);}
 .post-card .post-tag{margin-bottom:14px;}
-.post-card h2{font-size:1.25rem;margin:0 0 10px;line-height:1.2;}
+.post-card h2{font-size:1.25rem;margin:0 0 10px;line-height:1.2;text-wrap:balance;}
 .post-card p{color:var(--sub);font-size:.96rem;flex-grow:1;margin:0 0 16px;max-width:none;}
 .post-card .read{font-family:'Karla',sans-serif;font-weight:700;font-size:.85rem;color:var(--accent-deep);}
+@media (prefers-reduced-motion: reduce){ .post-card:hover{transform:none;} }
 
-.article-meta{font-family:'Karla',sans-serif;font-size:.85rem;color:rgba(255,255,255,.65);margin-top:14px;}
+/* Diagrammen ----------------------------------------------------------------- */
+
+/* Getekend in plaats van gefotografeerd: voor deze onderwerpen bestaat geen
+   eerlijke foto, en een diagram legt de opbouw beter uit dan een plaatje. */
+.diagram{background:#fff;border:1px solid #e6e1d3;border-radius:12px;padding:26px 26px 20px;margin:26px 0;}
+.diagram svg{display:block;width:100%;height:auto;}
+.diagram figcaption{margin-top:14px;padding-top:14px;border-top:1px solid #efeade;}
+.diagram .dg-label{font-family:'Karla',sans-serif;font-size:13px;font-weight:700;fill:var(--ink);}
+.diagram .dg-sub{font-family:'Karla',sans-serif;font-size:11.5px;fill:#6b685f;}
+.diagram .dg-num{font-family:'Karla',sans-serif;font-size:12px;font-weight:700;fill:#fff;}
+
+/* Afsluitende doorverwijzing -------------------------------------------------- */
 
 .article-cta{background:#fff;border:1px solid #e4dfd0;border-radius:14px;padding:28px 30px;margin-top:8px;}
 .article-cta .post-tag{margin-bottom:12px;}
 .article-cta h3{margin:0 0 8px;font-size:1.2rem;}
 .article-cta p{color:var(--sub);margin:0 0 18px;max-width:none;}
-.article-cta a.cta-link{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:11px 22px;border-radius:120px;transition:background .2s ease;}
-.article-cta a.cta-link:hover{background:var(--accent-deep);}
+.article-cta a.cta-link{display:inline-flex;align-items:center;gap:6px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:11px 22px;border-radius:120px;transition:background .2s ease;}
+.article-cta a.cta-link:hover{background:#73591f;}
