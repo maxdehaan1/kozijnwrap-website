@@ -46,6 +46,22 @@ body.theme-blog .hero h1{max-width:27ch;font-size:clamp(1.85rem,4.2vw,2.45rem);}
 .diagram .dg-sub{font-family:'Karla',sans-serif;font-size:13px;fill:#6b685f;}
 .diagram .dg-num{font-family:'Karla',sans-serif;font-size:13px;font-weight:700;fill:#fff;}
 
+/* Auteursregel ---------------------------------------------------------------- */
+
+/* Wie dit schreef hoort onder elk artikel te staan. Niet als advertentie maar als
+   bronvermelding: dat dit uit tien jaar praktijk komt, is precies wat het advies
+   geloofwaardig maakt. */
+.author-box{border-top:1px solid var(--line);margin-top:40px;padding-top:30px;}
+.author-inner{display:flex;gap:20px;align-items:flex-start;background:#fff;border:1px solid #e6e1d3;border-radius:14px;padding:24px 26px;}
+.author-mark{flex-shrink:0;width:52px;height:52px;border-radius:12px;background:var(--anthracite-deep);color:var(--cream);font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;display:flex;align-items:center;justify-content:center;letter-spacing:-.02em;}
+.author-box p{margin:0;max-width:62ch;}
+.author-name{font-family:'Fraunces',serif;font-size:1.1rem;margin-bottom:6px !important;}
+.author-box p:not(.author-name):not(.author-links){color:var(--sub);font-size:.96rem;line-height:1.55;}
+.author-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px !important;font-family:'Karla',sans-serif;font-size:.9rem;font-weight:700;}
+.author-links a{color:var(--accent-deep);text-decoration:none;}
+.author-links a:hover{text-decoration:underline;}
+@media (max-width:520px){ .author-inner{flex-direction:column;gap:14px;padding:22px;} }
+
 /* Afsluitende doorverwijzing -------------------------------------------------- */
 
 .article-cta{background:#fff;border:1px solid #e4dfd0;border-radius:14px;padding:28px 30px;margin-top:8px;}

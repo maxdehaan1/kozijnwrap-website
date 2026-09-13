@@ -97,6 +97,11 @@ footer{background:var(--ink);color:#97948d;padding:38px 0 34px;font-size:.85rem;
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px 48px;align-items:flex-start;max-width:1100px;}
 footer .fbrand strong{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:#fff;display:block;margin-bottom:6px;}
 footer .fbrand p{max-width:44ch;margin:0;line-height:1.5;}
+footer .fbrand .fby{margin-top:8px;color:#b9b7b0;}
+/* Deze link staat in een <p> en kreeg daardoor het donkere accentgoud van de
+   lopende tekst — op de donkere footer maar 3,1:1. */
+footer .fbrand .fby a{color:#fff;text-decoration:underline;}
+footer .fbrand .fby a:hover{color:#fff;text-decoration:none;}
 footer .flinks{line-height:1.9;}
 footer a{color:#e7e5df;text-decoration:none;}
 footer a:hover{color:#fff;text-decoration:underline;}

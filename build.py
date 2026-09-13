@@ -34,6 +34,23 @@ FOOTER = [("index", "/", "Overzicht")] + NAV + [
     ("over-deze-site", "/over-deze-site", "Over deze site"),
 ]
 
+# iWrap staat op één plek gedefinieerd, want reviewscore en aantal veranderen.
+# Deze gegevens komen terug in de auteursregel onder elk artikel, in de footer en
+# in de structured data.
+IWRAP = {
+    "naam": "iWrap",
+    "site": "https://iwrap.nl",
+    "offerte": "https://iwrap.nl/contact/",
+    "reviews_score": "4,9",
+    "reviews_aantal": "81",
+    "reviews_url": "https://maps.app.goo.gl/C77mS69nK3GGyqz9A?g_st=ic",
+    "pitch": (
+        "Al meer dan tien jaar gespecialiseerd in het herstellen van kunststof "
+        "kozijnen met Renolit folie, door heel Nederland, met gecertificeerde "
+        "vakmensen in vaste dienst."
+    ),
+}
+
 FAVICON = (
     "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>"
     "<rect width='64' height='64' rx='14' fill='%2324272a'/>"
@@ -114,10 +131,50 @@ def render_footer(slug):
         "      <strong>kozijnwrap.nl</strong>\n"
         "      <p>Uitleg over het herstellen en wrappen van kozijnen, zodat je weet "
         "waar je aan begint voordat je een offerte aanvraagt.</p>\n"
+        '      <p class="fby">Gemaakt door <a href="%s?utm_source=kozijnwrap.nl&amp;utm_medium=footer" '
+        'target="_blank" rel="noopener">%s</a>, specialist in kozijnherstel met Renolit folie.</p>\n'
         "    </div>\n"
         '    <div class="flinks">%s</div>\n'
         "  </div>\n"
-        "</footer>" % links
+        "</footer>" % (IWRAP["site"], IWRAP["naam"], links)
+    )
+
+
+def render_author_box(slug):
+    """Auteursregel onder elk blogartikel.
+
+    De artikelen waren tot nu toe anoniem: je kon er vier lezen zonder te weten
+    wie ze geschreven had. Dat is zonde van het vertrouwen — juist het feit dat
+    dit uit de praktijk komt maakt het advies geloofwaardig — en het laat de
+    lezer zonder merknaam achter op het moment dat hij verder gaat zoeken.
+    """
+    if not slug.startswith("blog/") or slug == "blog/index":
+        return ""
+    return (
+        '\n<aside class="author-box">\n'
+        '  <div class="wrap">\n'
+        '    <div class="author-inner">\n'
+        '      <span class="author-mark" aria-hidden="true">iW</span>\n'
+        "      <div>\n"
+        '        <p class="author-name">Geschreven door <strong>%s</strong></p>\n'
+        "        <p>%s</p>\n"
+        '        <p class="author-links">\n'
+        '          <a href="%s?utm_source=kozijnwrap.nl&amp;utm_medium=auteur" target="_blank" rel="noopener">Bekijk %s.nl →</a>\n'
+        '          <a href="%s" target="_blank" rel="noopener">★ %s uit %s Google-reviews</a>\n'
+        "        </p>\n"
+        "      </div>\n"
+        "    </div>\n"
+        "  </div>\n"
+        "</aside>\n"
+        % (
+            IWRAP["naam"],
+            IWRAP["pitch"],
+            IWRAP["site"],
+            IWRAP["naam"].lower(),
+            IWRAP["reviews_url"],
+            IWRAP["reviews_score"],
+            IWRAP["reviews_aantal"],
+        )
     )
 
 
@@ -131,10 +188,17 @@ def render_head(meta, ver):
     # naar de schone URL's, zodat canonical en schema niet uit elkaar lopen.
     jsonld = json.dumps(meta.get("jsonld", []), ensure_ascii=False)
     jsonld = jsonld.replace(".html", "").replace(SITE + "/blog/\"", SITE + "/blog\"")
+    schema = json.loads(jsonld)
+    for b in schema:
+        # De artikelen stonden op naam van de site zelf, een uitgever zonder
+        # gezicht. iWrap is de partij met de ervaring; dat hoort in het schema
+        # te staan, net als in de auteursregel onder het artikel.
+        if b.get("@type") == "BlogPosting":
+            b["author"] = {"@type": "Organization", "name": IWRAP["naam"], "url": IWRAP["site"]}
     blocks = "\n".join(
         '<script type="application/ld+json">\n%s\n</script>'
         % json.dumps(b, ensure_ascii=False, separators=(",", ":"))
-        for b in json.loads(jsonld)
+        for b in schema
     )
 
     css = "\n".join(
@@ -212,7 +276,7 @@ def build():
             '<body class="%s">\n\n'
             '<a class="skip" href="#inhoud">Naar de inhoud</a>\n\n'
             "%s\n\n"
-            '<main id="inhoud">\n\n%s\n\n</main>\n\n'
+            '<main id="inhoud">\n\n%s\n%s\n</main>\n\n'
             "%s\n\n"
             "</body>\n"
             "</html>\n"
@@ -221,6 +285,7 @@ def build():
                 meta["bodyClass"],
                 render_nav(meta["slug"]),
                 body,
+                render_author_box(meta["slug"]),
                 render_footer(meta["slug"]),
             )
         )

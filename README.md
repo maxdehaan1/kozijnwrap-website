@@ -88,8 +88,10 @@ Gebruik in de bronbestanden root-relatieve links (`/blog/renolit-folie-uitgelegd
 - **Het domein `kozijnwrap.nl` is nog niet aan Vercel gekoppeld** — het wijst op dit moment
   naar een parkeerpagina, terwijl alle canonicals en de sitemap er al naar verwijzen.
   Zolang dat zo is, levert de SEO niets op.
-- Reviewcijfers iWrap (4,9★, 81 reviews) staan hardcoded op kozijnherstel.html — bijwerken
-  als het aantal wijzigt. Net als de bedragen in de keuzehulp — die staan in
+- Reviewcijfers en de omschrijving van iWrap staan in het blok `IWRAP` bovenin `build.py`.
+  Daaruit komen de auteursregel onder elk blogartikel, de footerregel en de `author` in de
+  structured data. Eén plek aanpassen dus. Op kozijnherstel.html staan ze daarnaast nog
+  in de lopende tekst — die twee even meenemen als het aantal wijzigt. Net als de bedragen in de keuzehulp — die staan in
   `src/pages/keuzehulp.html` in `PRIJS` (per omvang, bij de uitkomst folieherstel) en in het
   veld `prijs` op de uitkomst `vervangen` — en verder in het kostenartikel en in het blok
   "Ook als het maar om een paar dorpels gaat".

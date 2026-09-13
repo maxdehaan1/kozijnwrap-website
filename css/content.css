@@ -143,3 +143,7 @@ body.theme-wrap .fact .n{color:var(--anthracite);}
 body.theme-blog .hero{background:var(--ink);color:#fff;}
 body.theme-blog .signals li::before{background:var(--accent-deep);}
 body.theme-blog .fact .n{color:var(--accent-deep);}
+
+/* Wie de pagina schrijft, direct onder de inleiding in de gekleurde band. */
+.hero-by{font-family:'Karla',sans-serif;font-size:.88rem;margin:14px 0 0;opacity:.8;}
+body.theme-herstel .hero-by{color:var(--cream-ink);}
