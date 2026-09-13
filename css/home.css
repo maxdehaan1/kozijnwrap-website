@@ -114,31 +114,40 @@ body.home .hero{
   .snapshot,.swatches span{animation:none;}
 }
 
-/* Vergelijking en doorverwijzing -------------------------------------------- */
+/* Keuzehulp en doorverwijzing ------------------------------------------------ */
 
 .guide{padding:20px 0 64px;}
 .guide h3{font-size:1.3rem;}
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ink);margin-top:24px;}
-@media (max-width:640px){ .compare{grid-template-columns:1fr;} }
-.compare div{background:var(--white);padding:22px 24px;}
-.compare .h{font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:8px;text-transform:uppercase;letter-spacing:.02em;}
-.compare .left .h{color:var(--cream-ink);}
-.compare .right .h{color:var(--anthracite);}
-.compare p{font-size:.98rem;color:var(--sub);margin:0;}
-
-/* Donker adviesblok onder de vergelijking. Heette .tip, maar die naam betekende
-   op de blog iets heel anders — vandaar de eigen naam. */
-.tip-dark{margin-top:2px;background:var(--ink);color:var(--grey);padding:18px 24px;font-size:.96rem;font-family:'Karla',sans-serif;}
+/* Donker blok met het hardnekkigste misverstand in deze markt. Heette .tip, maar
+   die naam betekende op de blog iets heel anders — vandaar de eigen naam. */
+.tip-dark{margin-top:26px;border-radius:10px;background:var(--ink);color:var(--grey);padding:20px 26px;font-size:.96rem;font-family:'Karla',sans-serif;}
 .tip-dark b{color:#fff;}
 
-/* De keuzehulp is het punt waar iemand van twijfel naar een antwoord gaat;
-   die staat daarom direct onder de vergelijking, niet ergens onderaan. */
-.kh-teaser{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;background:var(--cream);border-radius:12px;padding:26px 30px;margin-top:28px;}
-.kh-teaser h3{font-size:1.25rem;margin:0 0 6px;color:var(--cream-ink);}
-.kh-teaser p{margin:0;font-size:1rem;color:rgba(58,50,38,.82);max-width:52ch;}
-.kh-teaser-link{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:14px 28px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
-.kh-teaser-link:hover{background:#73591f;transform:translateY(-2px);}
-@media (prefers-reduced-motion: reduce){ .kh-teaser-link:hover{transform:none;} }
+/* De keuzehulp staat op de plek waar eerder een vergelijkingstabel stond die
+   hetzelfde deed als de twee kaarten erboven. Nu één blok dat vooral duidelijk
+   maakt dat je er een prijsindicatie krijgt — dat is de reden om 'm te doen. */
+.kh-panel{background:var(--cream);border-radius:14px;padding:40px 40px 36px;margin-top:28px;text-align:center;}
+.kh-panel-label{display:inline-block;font-family:'Karla',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(58,50,38,.62);margin-bottom:12px;}
+.kh-panel h3{font-size:clamp(1.45rem,3.2vw,1.95rem);color:var(--cream-ink);margin:0 0 12px;text-wrap:balance;}
+.kh-panel p{max-width:56ch;margin:0 auto 22px;color:rgba(58,50,38,.85);font-size:1.02rem;}
+.kh-panel-punten{list-style:none;margin:0 0 26px;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;}
+.kh-panel-punten li{display:inline-flex;align-items:center;gap:9px;font-family:'Karla',sans-serif;font-size:.94rem;font-weight:500;color:var(--cream-ink);}
+.kh-panel-punten li::before{content:"✓";flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--accent-deep);color:#fff;font-size:.66rem;}
+.kh-panel-punten li:first-child{font-weight:700;}
+.kh-panel-link{display:inline-flex;align-items:center;gap:8px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:1rem;text-decoration:none;padding:16px 34px;border-radius:120px;box-shadow:0 10px 24px -14px rgba(58,50,38,.9);transition:background .2s ease, transform .2s ease;}
+.kh-panel-link:hover{background:#73591f;transform:translateY(-2px);}
+@media (prefers-reduced-motion: reduce){ .kh-panel-link:hover{transform:none;} }
+/* Op een smal scherm wordt gecentreerde lopende tekst een rommelige ruit; links
+   uitlijnen leest daar rustiger. De kop blijft wel gecentreerd. */
+@media (max-width:560px){
+  .kh-panel{padding:30px 22px 28px;text-align:left;}
+  .kh-panel h3{text-align:center;}
+  .kh-panel-label{display:block;text-align:center;}
+  .kh-panel p{margin-bottom:20px;}
+  .kh-panel-punten{flex-direction:column;align-items:flex-start;gap:9px;}
+  .kh-panel-link{width:100%;justify-content:center;}
+}
+
 
 .blog-teaser{padding:8px 0 60px;text-align:center;}
 .blog-teaser .teaser-arrow{display:block;margin:0 auto 6px;}
