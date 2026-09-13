@@ -2,6 +2,13 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/blog/houtnerffolie-renolit-exofol",
+      "destination": "/blog/renolit-folie-uitgelegd",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/images/(.*)",

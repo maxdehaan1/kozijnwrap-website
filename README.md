@@ -99,5 +99,13 @@ Gebruik in de bronbestanden root-relatieve links (`/blog/renolit-folie-uitgelegd
   "kozijn 20 jaar oud — vervangen of niet". Schrijf ze vanuit wat iemand ziét, niet vanuit
   de vakterm: daar zit de kleine particuliere klus, en daar schrijven de grote
   kozijnleveranciers niet over omdat die vervangingsopdrachten willen.
-- houtnerffolie.nl overlapt met twee blogartikelen hier. Check in Search Console of die site
-  verkeer krijgt: zo ja, smal houden op het product; zo nee, 301 hierheen.
+- **Feiten die op meerdere pagina's staan** en dus samen bijgewerkt moeten worden: de
+  bedragen (€500 / €500–€3.000 / €800–€2.500 vervanging), "tien jaar fabrieksgarantie op de
+  folie, vijf jaar op de montage", en "profiel 50–75 jaar". Houd het bij die ene formulering:
+  Renolit folie is één product met één garantietermijn, ongeacht kleur of structuur. Eerder
+  stonden er drie verschillende levensduren op de site en dat is voor een klant alleen maar
+  verwarrend.
+- houtnerffolie.nl blijft de plek voor de diepte: decors, kleuren en specificaties. Het
+  artikel [renolit-folie-uitgelegd](src/pages/blog/renolit-folie-uitgelegd.html) legt de
+  basis uit en verwijst daarheen in plaats van het over te doen. Ga daar geen kleurenoverzicht
+  of specificatietabel bouwen, dan concurreren de twee sites alsnog met elkaar.

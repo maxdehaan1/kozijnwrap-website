@@ -20,12 +20,18 @@ SITE = "https://kozijnwrap.nl"
 
 # Navigatie en footer worden hieruit gegenereerd; de volgorde is de volgorde
 # waarin ze in de balk staan.
+# Hoofdnavigatie. "Overzicht" staat hier bewust niet in: het logo linksboven is
+# al de weg naar de homepage, en met vijf items wikkelde de balk op een telefoon
+# naar twee regels. In de footer staat hij wel.
 NAV = [
-    ("index", "/", "Overzicht"),
     ("keuzehulp", "/keuzehulp", "Keuzehulp"),
     ("kozijnherstel", "/kozijnherstel", "Kozijnherstel"),
     ("kozijnwrappen", "/kozijnwrappen", "Kozijnwrappen"),
     ("blog/index", "/blog", "Blog"),
+]
+
+FOOTER = [("index", "/", "Overzicht")] + NAV + [
+    ("over-deze-site", "/over-deze-site", "Over deze site"),
 ]
 
 FAVICON = (
@@ -98,12 +104,9 @@ def render_nav(slug):
 
 def render_footer(slug):
     current = "blog/index" if slug.startswith("blog/") else slug
-    items = [(s, u, label) for s, u, label in NAV if s != current]
-    # Staat bewust niet in de hoofdnavigatie — wel op elke pagina bereikbaar,
-    # want de herkomst van de site hoort niet op één pagina verstopt te zitten.
-    if slug != "over-deze-site":
-        items.append(("over-deze-site", "/over-deze-site", "Over deze site"))
-    links = " · ".join('<a href="%s">%s</a>' % (u, label) for _, u, label in items)
+    links = " · ".join(
+        '<a href="%s">%s</a>' % (u, label) for s, u, label in FOOTER if s != current
+    )
     return (
         "<footer>\n"
         '  <div class="wrap">\n'
