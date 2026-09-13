@@ -1,12 +1,12 @@
 <!--
 {
   "slug": "keuzehulp",
-  "title": "Keuzehulp: herstellen, wrappen of vervangen? | Kozijnwrap.nl",
-  "description": "Vier vragen over je kozijn, en je weet of folieherstel volstaat, of je beter kunt wrappen, of dat vervanging de enige echte optie is.",
+  "title": "Keuzehulp: wat heeft jouw kozijn nodig, en wat kost het? | Kozijnwrap.nl",
+  "description": "Vier vragen over je kozijn, en je weet of folieherstel volstaat — met meteen een prijsindicatie voor jouw situatie. Je hoeft geen gegevens achter te laten.",
   "bodyClass": "page theme-herstel",
   "ogType": "website",
-  "ogTitle": "Keuzehulp: moet jouw kozijn hersteld, gewrapt of vervangen worden?",
-  "ogDescription": "Vier vragen, en je weet waar je aan toe bent. Inclusief een eerlijk antwoord als folie jouw probleem niet oplost.",
+  "ogTitle": "Keuzehulp: wat heeft jouw kozijn nodig, en wat kost het?",
+  "ogDescription": "Vier vragen, en je weet waar je aan toe bent — inclusief een prijsindicatie. En een eerlijk antwoord als folie jouw probleem niet oplost.",
   "css": ["style", "content", "keuzehulp"],
   "jsonld": [
     {
@@ -23,8 +23,8 @@
 <section class="hero">
   <div class="wrap">
     <span class="tag">Keuzehulp</span>
-    <h1>Herstellen, wrappen of toch vervangen?</h1>
-    <p class="lede">Vier vragen over je kozijn, en je weet waar je aan toe bent — inclusief een eerlijk antwoord als folie jouw probleem niet oplost.</p>
+    <h1>Wat heeft jouw kozijn nodig, en wat kost het?</h1>
+    <p class="lede">Vier vragen, en je weet of herstel volstaat, of je beter kunt wrappen, of dat vervangen de enige echte optie is — <b>met meteen een prijsindicatie</b> voor jouw situatie. Je hoeft geen gegevens achter te laten.</p>
   </div>
 </section>
 
@@ -89,7 +89,7 @@
     },
     omvang: {
       vraag: "Om hoeveel gaat het?",
-      hint: "Dit bepaalt vooral de prijs, niet of het kan.",
+      hint: "Dit bepaalt niet óf het kan, maar wel wat het ongeveer kost — je krijgt er meteen een bedrag bij.",
       opties: [
         { label: "Een paar dorpels of losse delen", sub: "bijvoorbeeld alleen de onderdorpels aan de zonkant", uitkomst: "herstel", omvang: "klein" },
         { label: "Een paar kozijnen", sub: "de kozijnen aan één gevel of verdieping", uitkomst: "herstel", omvang: "middel" },
@@ -131,6 +131,7 @@
       verdict: "Vervangen",
       titel: "Hier lost nieuwe folie je probleem niet mee op",
       tekst: "Tocht, klemmen of kieren betekent dat het probleem in het profiel zelf zit, of in het hang- en sluitwerk. Een nieuwe toplaag maakt het kozijn mooier, maar verandert daar niets aan — en dan heb je over twee jaar hetzelfde probleem plus de kosten van het foliewerk. Hiervoor moet je bij een kozijnleverancier zijn.",
+      prijs: "Een kunststof kozijn vervangen kost doorgaans €800 tot €2.500 per stuk, afhankelijk van afmeting, glassoort en montage.",
       tweede: { label: "Lees de volledige afweging", href: "/blog/kozijn-vervangen-of-herstellen" }
     },
     hout: {
@@ -203,10 +204,13 @@
       "<h2 tabindex=\"-1\" id=\"kh-uitkomst-titel\">" + u.titel + "</h2>" +
       "<p>" + u.tekst + "</p>";
 
-    if (omvang && PRIJS[omvang]) {
-      html += '<p class="kh-price">' + PRIJS[omvang] + "</p>" +
+    var bedrag = (omvang && PRIJS[omvang]) || u.prijs;
+    if (bedrag) {
+      html += '<div class="kh-prijsblok">' +
+        '<span class="kh-prijslabel">Prijsindicatie</span>' +
+        '<p class="kh-price">' + bedrag + "</p>" +
         '<p class="kh-hint">Een vast bedrag bestaat niet — afmetingen, bereikbaarheid en de staat van de oude folie bepalen mee. ' +
-        '<a href="/blog/kozijnherstel-kosten">Zo is de prijs opgebouwd.</a></p>';
+        '<a href="/blog/kozijnherstel-kosten">Zo is de prijs opgebouwd.</a></p></div>';
     }
 
     html += '<div class="kh-actions">';

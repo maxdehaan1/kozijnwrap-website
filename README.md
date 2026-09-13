@@ -86,9 +86,10 @@ Gebruik in de bronbestanden root-relatieve links (`/blog/renolit-folie-uitgelegd
   naar een parkeerpagina, terwijl alle canonicals en de sitemap er al naar verwijzen.
   Zolang dat zo is, levert de SEO niets op.
 - Reviewcijfers iWrap (4,9★, 81 reviews) staan hardcoded op kozijnherstel.html — bijwerken
-  als het aantal wijzigt. Net als de bedragen in de keuzehulp (`PRIJS` in
-  `src/pages/keuzehulp.html`), het kostenartikel en het blok "Ook als het maar om een paar
-  dorpels gaat".
+  als het aantal wijzigt. Net als de bedragen in de keuzehulp — die staan in
+  `src/pages/keuzehulp.html` in `PRIJS` (per omvang, bij de uitkomst folieherstel) en in het
+  veld `prijs` op de uitkomst `vervangen` — en verder in het kostenartikel en in het blok
+  "Ook als het maar om een paar dorpels gaat".
 - Nog geen aparte "Over deze site"-pagina. De disclosure staat nu alleen op de
   kozijnwrappen-pagina ("Deze site is gemaakt vanuit iWrap").
 - Geen analytics. De uitgaande links naar iwrap.nl hebben wel UTM-tags
