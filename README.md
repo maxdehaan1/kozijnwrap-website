@@ -1,9 +1,25 @@
 # kozijnwrap.nl
 
-Adviessite over kozijnherstel en kozijnwrappen. Splitst bezoekers in twee paden:
-kozijnherstel (kunststof kozijnen met Renolit folie — aanbevolen partner: iWrap, op basis van
-specialisatie en reviews) en kozijnwrappen (omkleuren van nog goede aluminium/kunststof
-kozijnen, partner nog te kiezen). Daarnaast een blog met achtergrondartikelen.
+Adviessite over kozijnherstel en kozijnwrappen, gemaakt vanuit iWrap.
+
+## Wat deze site moet doen
+
+iwrap.nl staat al bovenaan op "kunststof kozijnen herstellen" en vangt de mensen die al
+weten wat ze zoeken. Deze site vangt de fase daarvóór: iemand die ziet dat zijn kozijnen
+er niet meer uitzien en nog niet weet dat folieherstel bestaat. Die zoekt op wat hij
+ziet ("folie laat los", "dorpel verkleurd") of op het woord dat hij kent ("wrappen").
+
+**De site kiest, iwrap.nl offreert.** Er staat bewust geen formulier op kozijnwrap.nl —
+elke conversie loopt via het bestaande offerteformulier op iwrap.nl, zodat er geen tweede
+inbox en geen tweede proces ontstaat. De keuzehulp doet de diagnose die anders per mail
+beantwoord zou moeten worden.
+
+De doelgroep is de **kleine particuliere klus** (een paar dorpels, rond de €500): het beste
+rendement per uur, geen aanbesteding, snel betaald. De site zegt daarom expliciet dat een
+kleine opdracht welkom is — vrijwel niemand neemt dat uit zichzelf aan.
+
+Wrappen doet iWrap niet zelf. Die helft van de site is er om wrappen-zoekers te vangen die
+eigenlijk herstel nodig hebben; de échte wrapvraag loopt eerlijk dood.
 
 ## Bewerken en bouwen
 
@@ -31,8 +47,9 @@ vercel.json           cleanUrls, cachekoppen, securitykoppen
 src/pages/            De bron van elke pagina (metadata + inhoud)
 
 index.html            Landingspagina — de tweesplitsing        (gegenereerd)
+keuzehulp.html        4 vragen → uitkomst, de conversiemotor   (gegenereerd)
 kozijnherstel.html    Kozijnherstel + aanbeveling iWrap         (gegenereerd)
-kozijnwrappen.html    Kozijnwrappen + nog open aanbeveling      (gegenereerd)
+kozijnwrappen.html    Kozijnwrappen, eerlijk doodlopend         (gegenereerd)
 404.html              Niet-gevonden-pagina                      (gegenereerd)
 blog/                 Overzicht + 7 artikelen                   (gegenereerd)
 sitemap.xml                                                     (gegenereerd)
@@ -42,6 +59,7 @@ css/
   home.css            Alleen index.html (hero, de twee kleurblokken, polaroid)
   content.css         Tekstpagina's en blog (hero-band, checklists, feiten, partnerblokken)
   blog.css            Blogoverzicht, artikelen, diagrammen
+  keuzehulp.css       Alleen de keuzehulp
 
 images/               Elke foto als .webp met een .jpg ernaast als terugval
 ```
@@ -67,10 +85,18 @@ Gebruik in de bronbestanden root-relatieve links (`/blog/renolit-folie-uitgelegd
 - **Het domein `kozijnwrap.nl` is nog niet aan Vercel gekoppeld** — het wijst op dit moment
   naar een parkeerpagina, terwijl alle canonicals en de sitemap er al naar verwijzen.
   Zolang dat zo is, levert de SEO niets op.
-- Aanbevolen partij voor kozijnwrappen nog niet gekozen (placeholder op kozijnwrappen.html).
 - Reviewcijfers iWrap (4,9★, 81 reviews) staan hardcoded op kozijnherstel.html — bijwerken
-  als het aantal wijzigt.
-- Geen contactgegevens en geen conversiepad: de enige actie op de site is een mailto naar
-  iWrap, wat wringt met de onafhankelijke toon. Eigen mailadres + een "Over deze site"-pagina
-  zou dat oplossen.
-- Geen analytics, dus er is nog niets te meten.
+  als het aantal wijzigt. Net als de bedragen in de keuzehulp (`PRIJS` in
+  `src/pages/keuzehulp.html`), het kostenartikel en het blok "Ook als het maar om een paar
+  dorpels gaat".
+- Nog geen aparte "Over deze site"-pagina. De disclosure staat nu alleen op de
+  kozijnwrappen-pagina ("Deze site is gemaakt vanuit iWrap").
+- Geen analytics. De uitgaande links naar iwrap.nl hebben wel UTM-tags
+  (`utm_medium=keuzehulp`), dus in de statistieken van iwrap.nl is te zien hoeveel
+  aanvragen hiervandaan komen.
+- Content die nog mist: pagina's die aansluiten op wat mensen zién in plaats van op de
+  vakterm — "folie laat los", "dorpel verkleurd", "kozijn vergeeld". Dat is waar de kleine
+  particuliere klus vandaan moet komen, en waar de grote kozijnleveranciers niet over
+  schrijven.
+- houtnerffolie.nl overlapt met twee blogartikelen hier. Check in Search Console of die site
+  verkeer krijgt: zo ja, smal houden op het product; zo nee, 301 hierheen.

@@ -22,6 +22,7 @@ SITE = "https://kozijnwrap.nl"
 # waarin ze in de balk staan.
 NAV = [
     ("index", "/", "Overzicht"),
+    ("keuzehulp", "/keuzehulp", "Keuzehulp"),
     ("kozijnherstel", "/kozijnherstel", "Kozijnherstel"),
     ("kozijnwrappen", "/kozijnwrappen", "Kozijnwrappen"),
     ("blog/index", "/blog", "Blog"),

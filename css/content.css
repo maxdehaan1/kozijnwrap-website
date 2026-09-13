@@ -55,6 +55,14 @@ figcaption{font-family:'Karla',sans-serif;font-size:.85rem;color:var(--sub);marg
 .beforeafter .ba-label{position:absolute;top:12px;left:12px;font-family:'Karla',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.94);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.18);}
 .beforeafter figcaption{margin-top:8px;}
 
+/* Instapdrempel wegnemen: dit blok zegt expliciet dat een kleine klus welkom
+   is. Vrijwel niemand met twee verweerde dorpels neemt aan dat een specialist
+   daarvoor langskomt — en dat kost aanvragen. */
+.small-jobs{background:var(--cream);border-radius:12px;padding:24px 28px;margin:26px 0 0;}
+.small-jobs h3{font-size:1.15rem;margin:0 0 8px;color:var(--cream-ink);}
+.small-jobs p{margin:0;font-size:1rem;color:rgba(58,50,38,.85);max-width:60ch;}
+.small-jobs p + p{margin-top:10px;}
+
 /* Partnerblokken ------------------------------------------------------------ */
 
 /* Leent bewust de huisstijl van iWrap zelf (Montserrat, salie) zodat zichtbaar
@@ -99,6 +107,7 @@ figcaption{font-family:'Karla',sans-serif;font-size:.85rem;color:var(--sub);marg
 .badge-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;}
 .badge{display:inline-flex;align-items:center;gap:6px;font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:10px 18px;border-radius:24px;transition:transform .2s ease, box-shadow .2s ease, background .2s ease;}
 .badge:hover{transform:translateY(-2px);box-shadow:0 6px 14px -6px rgba(0,0,0,.35);}
+.badge.solid{background:var(--cream);color:var(--cream-ink);}
 .badge.gold{background:#3a3a34;color:var(--accent-light);border:1px solid var(--accent);}
 .badge.gold:hover{background:#454540;}
 
@@ -118,7 +127,6 @@ body.theme-herstel .hero h1{color:var(--cream-ink);}
 body.theme-herstel .hero p.lede{color:rgba(58,50,38,.82);}
 body.theme-herstel .signals li::before{background:var(--cream-ink);}
 body.theme-herstel .fact .n{color:var(--cream-ink);}
-body.theme-herstel .badge.solid{background:var(--cream);color:var(--cream-ink);}
 
 body.theme-wrap .hero{background:var(--anthracite);color:#fff;}
 body.theme-wrap .signals li::before{background:var(--anthracite);}

@@ -131,6 +131,15 @@ body.home .hero{
 .tip-dark{margin-top:2px;background:var(--ink);color:var(--grey);padding:18px 24px;font-size:.96rem;font-family:'Karla',sans-serif;}
 .tip-dark b{color:#fff;}
 
+/* De keuzehulp is het punt waar iemand van twijfel naar een antwoord gaat;
+   die staat daarom direct onder de vergelijking, niet ergens onderaan. */
+.kh-teaser{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;background:var(--cream);border-radius:12px;padding:26px 30px;margin-top:28px;}
+.kh-teaser h3{font-size:1.25rem;margin:0 0 6px;color:var(--cream-ink);}
+.kh-teaser p{margin:0;font-size:1rem;color:rgba(58,50,38,.82);max-width:52ch;}
+.kh-teaser-link{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:14px 28px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
+.kh-teaser-link:hover{background:#73591f;transform:translateY(-2px);}
+@media (prefers-reduced-motion: reduce){ .kh-teaser-link:hover{transform:none;} }
+
 .blog-teaser{padding:8px 0 60px;text-align:center;}
 .blog-teaser .teaser-arrow{display:block;margin:0 auto 6px;}
 .blog-teaser p{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;margin:0 0 18px;color:var(--ink);}

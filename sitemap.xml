@@ -37,6 +37,10 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://kozijnwrap.nl/keuzehulp</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://kozijnwrap.nl/kozijnherstel</loc>
     <priority>0.8</priority>
   </url>

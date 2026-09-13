@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keuzehulp: herstellen, wrappen of vervangen? | Kozijnwrap.nl</title>
+<meta name="description" content="Vier vragen over je kozijn, en je weet of folieherstel volstaat, of je beter kunt wrappen, of dat vervanging de enige echte optie is.">
+<link rel="canonical" href="https://kozijnwrap.nl/keuzehulp">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2324272a'/><rect x='10' y='10' width='19' height='19' rx='2' fill='%23f1e8d3'/><rect x='35' y='10' width='19' height='19' rx='2' fill='%2334383b'/><rect x='10' y='35' width='19' height='19' rx='2' fill='%2334383b'/><rect x='35' y='35' width='19' height='19' rx='2' fill='%23f1e8d3'/></svg>">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="Kozijnwrap.nl">
+<meta property="og:url" content="https://kozijnwrap.nl/keuzehulp">
+<meta property="og:title" content="Keuzehulp: moet jouw kozijn hersteld, gewrapt of vervangen worden?">
+<meta property="og:description" content="Vier vragen, en je weet waar je aan toe bent. Inclusief een eerlijk antwoord als folie jouw probleem niet oplost.">
+<meta property="og:image" content="https://kozijnwrap.nl/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Keuzehulp: moet jouw kozijn hersteld, gewrapt of vervangen worden?">
+<meta name="twitter:description" content="Vier vragen, en je weet waar je aan toe bent. Inclusief een eerlijk antwoord als folie jouw probleem niet oplost.">
+<meta name="twitter:image" content="https://kozijnwrap.nl/images/og-image.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Overzicht","item":"https://kozijnwrap.nl/"},{"@type":"ListItem","position":2,"name":"Keuzehulp","item":"https://kozijnwrap.nl/keuzehulp"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=70258406">
+<link rel="stylesheet" href="/css/content.css?v=70258406">
+<link rel="stylesheet" href="/css/keuzehulp.css?v=70258406">
+</head>
+<body class="page theme-herstel">
+
+<a class="skip" href="#inhoud">Naar de inhoud</a>
+
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="/"><svg class="logo-mark" width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#24272a"/><rect x="10" y="10" width="19" height="19" rx="2" fill="#f1e8d3"/><rect x="35" y="10" width="19" height="19" rx="2" fill="#34383b"/><rect x="10" y="35" width="19" height="19" rx="2" fill="#34383b"/><rect x="35" y="35" width="19" height="19" rx="2" fill="#f1e8d3"/></svg> kozijnwrap.nl</a>
+    <nav class="navlinks" aria-label="Hoofdnavigatie">
+      <a href="/">Overzicht</a>
+      <a class="current" href="/keuzehulp">Keuzehulp</a>
+      <a href="/kozijnherstel">Kozijnherstel</a>
+      <a href="/kozijnwrappen">Kozijnwrappen</a>
+      <a href="/blog">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inhoud">
+
+<section class="hero">
+  <div class="wrap">
+    <span class="tag">Keuzehulp</span>
+    <h1>Herstellen, wrappen of toch vervangen?</h1>
+    <p class="lede">Vier vragen over je kozijn, en je weet waar je aan toe bent — inclusief een eerlijk antwoord als folie jouw probleem niet oplost.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kh" id="kh">
+
+      <noscript>
+        <p class="callout">De keuzehulp heeft JavaScript nodig. Geen probleem — dezelfde vragen staan uitgeschreven in het artikel
+          <a href="/blog/kozijn-vervangen-of-herstellen">Kozijn vervangen of herstellen?</a></p>
+      </noscript>
+
+      <div id="kh-vraag" hidden>
+        <p class="kh-progress" id="kh-teller">Vraag 1 van 4</p>
+        <div class="kh-bar"><span id="kh-balk" style="width:25%"></span></div>
+        <h2 id="kh-titel" tabindex="-1"></h2>
+        <p class="kh-hint" id="kh-hint"></p>
+        <ul class="kh-options" id="kh-opties"></ul>
+        <button class="kh-back" id="kh-terug" type="button" hidden>← Vorige vraag</button>
+      </div>
+
+      <div id="kh-uitkomst" hidden aria-live="polite"></div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  "use strict";
+
+  var OFFERTE = "https://iwrap.nl/contact/?utm_source=kozijnwrap.nl&utm_medium=keuzehulp&utm_campaign=";
+
+  var STAPPEN = {
+    materiaal: {
+      vraag: "Waarvan is je kozijn gemaakt?",
+      hint: "Kunststof voelt glad en licht aan, aluminium hard en koud. Twijfel je? Kies dan &lsquo;weet ik niet&rsquo; — dan lopen we gewoon door.",
+      opties: [
+        { label: "Kunststof", sub: "de meest voorkomende soort bij woningen van na 1980", next: "sluiting" },
+        { label: "Aluminium", sub: "vaak bij nieuwbouw, bedrijfspanden en schuifpuien", uitkomst: "aluminium" },
+        { label: "Hout", sub: "geschilderd, met zichtbare houtnerf in het profiel zelf", uitkomst: "hout" },
+        { label: "Weet ik niet", sub: "geen probleem, we gaan verder met de volgende vraag", next: "sluiting" }
+      ]
+    },
+    sluiting: {
+      vraag: "Sluit het raam of de deur nog goed?",
+      hint: "Dit is de belangrijkste vraag van de vier. Tocht of klemmen wijst op het profiel of het hang- en sluitwerk — en dat los je niet op met een nieuwe toplaag.",
+      opties: [
+        { label: "Ja, het sluit prima", sub: "geen tocht, klemt niet, geen zichtbare kieren", next: "schade" },
+        { label: "Nee, het tocht of klemt", sub: "of er zitten kieren, of het raam sluit niet meer goed aan", uitkomst: "vervangen" }
+      ]
+    },
+    schade: {
+      vraag: "Wat zie je aan het kozijn?",
+      hint: "Kijk vooral naar de hoeken, de randen en de zonkant — daar begint het altijd.",
+      opties: [
+        { label: "De kleur is vervaagd, dof of vergeeld", sub: "vaak duidelijk verschil tussen de zon- en de schaduwkant", next: "omvang" },
+        { label: "De folie laat los of bladdert", sub: "meestal het eerst op hoeken en profielranden", next: "omvang" },
+        { label: "Krassen of stootschade in de toplaag", sub: "het profiel eronder is nog heel", next: "omvang" },
+        { label: "Niets, het ziet er nog goed uit", sub: "ik wil puur een andere kleur of uitstraling", uitkomst: "wrappen" }
+      ]
+    },
+    omvang: {
+      vraag: "Om hoeveel gaat het?",
+      hint: "Dit bepaalt vooral de prijs, niet of het kan.",
+      opties: [
+        { label: "Een paar dorpels of losse delen", sub: "bijvoorbeeld alleen de onderdorpels aan de zonkant", uitkomst: "herstel", omvang: "klein" },
+        { label: "Een paar kozijnen", sub: "de kozijnen aan één gevel of verdieping", uitkomst: "herstel", omvang: "middel" },
+        { label: "De hele woning", sub: "alle kozijnen in één keer", uitkomst: "herstel", omvang: "groot" },
+        { label: "Meerdere panden", sub: "een VvE, een complex of een woningcorporatie", uitkomst: "herstel", omvang: "zakelijk" }
+      ]
+    }
+  };
+
+  var PRIJS = {
+    klein:    "Een paar dorpels ligt meestal rond de €500.",
+    middel:   "Voor een deel van een woning ligt het doorgaans tussen de €500 en €3.000.",
+    groot:    "Voor een hele woning ligt het doorgaans tussen de €500 en €3.000, afhankelijk van het aantal kozijnen en de afmetingen.",
+    zakelijk: "Bij meerdere panden hangt de prijs sterk af van de omvang — dat vraagt om een opname ter plaatse."
+  };
+
+  var UITKOMSTEN = {
+    herstel: {
+      type: "go",
+      verdict: "Folieherstel",
+      titel: "Je kozijn is nog goed — alleen de toplaag is op",
+      tekst: "Het profiel sluit nog goed en is technisch in orde. Wat je ziet is de folie: die veroudert door zon en weer, terwijl het kozijn eronder nog decennia meegaat. Die laag vervangen is een fractie van de kosten van een nieuw kozijn, en het is in een of twee dagen gebeurd.",
+      cta: "Offerte aanvragen bij iWrap",
+      ctaHref: OFFERTE + "herstel",
+      ctaHint: "Je kunt bij de aanvraag meteen foto&rsquo;s meesturen, dan weet je snel waar je aan toe bent.",
+      tweede: { label: "Lees eerst hoe herstel werkt", href: "/kozijnherstel" }
+    },
+    wrappen: {
+      type: "stop",
+      verdict: "Kozijnwrappen",
+      titel: "Dit is een stijlkeuze, geen herstelvraag",
+      tekst: "Er is niets mis met je kozijn — je wilt een andere kleur of uitstraling. Dat heet wrappen, en dat is ander werk dan herstel. <b>Wij voeren wrappen zelf niet uit</b>, dus we sturen je liever eerlijk door dan dat we doen alsof. Op de wrappen-pagina staat waar je op moet letten bij het kiezen van een partij.",
+      cta: "Waar je op moet letten bij wrappen",
+      ctaHref: "/kozijnwrappen",
+      tweede: { label: "Wrappen of schilderen?", href: "/blog/kozijn-wrappen-of-schilderen" }
+    },
+    vervangen: {
+      type: "stop",
+      verdict: "Vervangen",
+      titel: "Hier lost nieuwe folie je probleem niet mee op",
+      tekst: "Tocht, klemmen of kieren betekent dat het probleem in het profiel zelf zit, of in het hang- en sluitwerk. Een nieuwe toplaag maakt het kozijn mooier, maar verandert daar niets aan — en dan heb je over twee jaar hetzelfde probleem plus de kosten van het foliewerk. Hiervoor moet je bij een kozijnleverancier zijn.",
+      tweede: { label: "Lees de volledige afweging", href: "/blog/kozijn-vervangen-of-herstellen" }
+    },
+    hout: {
+      type: "stop",
+      verdict: "Houten kozijn",
+      titel: "Houten kozijnen worden geschilderd, niet gefolied",
+      tekst: "Folie hoort op kunststof en aluminium. Een houten kozijn heeft schilderwerk nodig, en bij houtrot eerst houtherstel. Een schilder of houtrotspecialist is hier het juiste adres.",
+      tweede: { label: "Terug naar het overzicht", href: "/" }
+    },
+    aluminium: {
+      type: "stop",
+      verdict: "Aluminium kozijn",
+      titel: "Bij aluminium gaat het om de coating, niet om folie",
+      tekst: "Aluminium kozijnen hebben een gemoffelde fabriekscoating in plaats van een folielaag. Verweert die, dan is spuiten of wrappen de route — niet folieherstel. <b>Wij werken uitsluitend met kunststof kozijnen</b>, dus hiervoor kunnen we je niet helpen.",
+      cta: "Lees meer over wrappen op aluminium",
+      ctaHref: "/kozijnwrappen",
+      tweede: { label: "Terug naar het overzicht", href: "/" }
+    }
+  };
+
+  var VOLGORDE = ["materiaal", "sluiting", "schade", "omvang"];
+
+  var elVraag = document.getElementById("kh-vraag");
+  var elUit = document.getElementById("kh-uitkomst");
+  var elTitel = document.getElementById("kh-titel");
+  var elHint = document.getElementById("kh-hint");
+  var elOpties = document.getElementById("kh-opties");
+  var elTeller = document.getElementById("kh-teller");
+  var elBalk = document.getElementById("kh-balk");
+  var elTerug = document.getElementById("kh-terug");
+
+  var pad = [];
+
+  function toonVraag(id, verplaatsFocus) {
+    var stap = STAPPEN[id];
+    var nr = VOLGORDE.indexOf(id) + 1;
+
+    elTeller.textContent = "Vraag " + nr + " van " + VOLGORDE.length;
+    elBalk.style.width = (nr / VOLGORDE.length) * 100 + "%";
+    elTitel.textContent = stap.vraag;
+    elHint.innerHTML = stap.hint;
+    elOpties.innerHTML = "";
+
+    stap.opties.forEach(function (opt) {
+      var li = document.createElement("li");
+      var knop = document.createElement("button");
+      knop.type = "button";
+      knop.className = "kh-opt";
+      knop.innerHTML = '<span class="kh-mark" aria-hidden="true"></span><span><b>' +
+        opt.label + "</b><small>" + opt.sub + "</small></span>";
+      knop.addEventListener("click", function () {
+        pad.push(id);
+        if (opt.uitkomst) toonUitkomst(opt.uitkomst, opt.omvang);
+        else toonVraag(opt.next, true);
+      });
+      li.appendChild(knop);
+      elOpties.appendChild(li);
+    });
+
+    elTerug.hidden = pad.length === 0;
+    elUit.hidden = true;
+    elVraag.hidden = false;
+    if (verplaatsFocus) elTitel.focus();
+  }
+
+  function toonUitkomst(naam, omvang) {
+    var u = UITKOMSTEN[naam];
+    var html = '<div class="kh-result ' + u.type + '">' +
+      '<span class="kh-verdict">' + u.verdict + "</span>" +
+      "<h2 tabindex=\"-1\" id=\"kh-uitkomst-titel\">" + u.titel + "</h2>" +
+      "<p>" + u.tekst + "</p>";
+
+    if (omvang && PRIJS[omvang]) {
+      html += '<p class="kh-price">' + PRIJS[omvang] + "</p>" +
+        '<p class="kh-hint">Een vast bedrag bestaat niet — afmetingen, bereikbaarheid en de staat van de oude folie bepalen mee. ' +
+        '<a href="/blog/kozijnherstel-kosten">Zo is de prijs opgebouwd.</a></p>';
+    }
+
+    html += '<div class="kh-actions">';
+    if (u.cta) html += '<a class="kh-cta" href="' + u.ctaHref + '">' + u.cta + " →</a>";
+    if (u.tweede) html += '<a class="kh-cta ghost" href="' + u.tweede.href + '">' + u.tweede.label + "</a>";
+    html += "</div>";
+
+    if (u.ctaHint) html += '<p class="kh-hint" style="margin:14px 0 0;">' + u.ctaHint + "</p>";
+    html += "</div>" +
+      '<p class="kh-restart">Klopt dit niet met wat je ziet? <button type="button" id="kh-opnieuw">Begin opnieuw</button></p>';
+
+    elUit.innerHTML = html;
+    elVraag.hidden = true;
+    elUit.hidden = false;
+    document.getElementById("kh-uitkomst-titel").focus();
+    document.getElementById("kh-opnieuw").addEventListener("click", start);
+  }
+
+  function start() {
+    pad = [];
+    toonVraag("materiaal", false);
+  }
+
+  elTerug.addEventListener("click", function () {
+    var vorige = pad.pop();
+    if (vorige) toonVraag(vorige, true);
+  });
+
+  start();
+})();
+</script>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">
+      <strong>kozijnwrap.nl</strong>
+      <p>Uitleg over het herstellen en wrappen van kozijnen, zodat je weet waar je aan begint voordat je een offerte aanvraagt.</p>
+    </div>
+    <div class="flinks"><a href="/">Overzicht</a> · <a href="/kozijnherstel">Kozijnherstel</a> · <a href="/kozijnwrappen">Kozijnwrappen</a> · <a href="/blog">Blog</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
