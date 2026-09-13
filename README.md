@@ -37,7 +37,8 @@ de URL, en die wordt bij het bouwen bepaald.
 Elke bron in `src/pages/` begint met een JSON-blok in een HTML-comment (titel, omschrijving,
 body-klasse, welke stylesheets, structured data), gevolgd door de inhoud van de pagina.
 Een nieuwe pagina toevoegen = één bestand in `src/pages/` zetten en bouwen; staat hij ook in
-de navigatie, dan zet je hem in de lijst `NAV` bovenin `build.py`.
+de navigatie, dan zet je hem in de lijst `NAV` bovenin `build.py` (`FOOTER` staat daar
+direct onder, voor pagina's die alleen onderaan hoeven te staan).
 
 ## Structuur
 
@@ -48,10 +49,11 @@ src/pages/            De bron van elke pagina (metadata + inhoud)
 
 index.html            Landingspagina — de tweesplitsing        (gegenereerd)
 keuzehulp.html        4 vragen → uitkomst, de conversiemotor   (gegenereerd)
-kozijnherstel.html    Kozijnherstel + aanbeveling iWrap         (gegenereerd)
+kozijnherstel.html    Kozijnherstel, het werk dat iWrap doet   (gegenereerd)
 kozijnwrappen.html    Kozijnwrappen, eerlijk doodlopend         (gegenereerd)
+over-deze-site.html   Herkomst en disclosure                    (gegenereerd)
 404.html              Niet-gevonden-pagina                      (gegenereerd)
-blog/                 Overzicht + 7 artikelen                   (gegenereerd)
+blog/                 Overzicht + 10 artikelen                  (gegenereerd)
 sitemap.xml                                                     (gegenereerd)
 
 css/
@@ -67,7 +69,8 @@ images/               Elke foto als .webp met een .jpg ernaast als terugval
 ## Huisstijl
 
 - **Letters**: Fraunces (koppen) en Karla (lopende tekst). Montserrat staat alléén op
-  kozijnherstel.html, voor het iWrap-blok — dat leent bewust de huisstijl van de partner.
+  kozijnherstel.html, voor het iWrap-blok — dat leent bewust de eigen huisstijl van iWrap,
+  zodat zichtbaar is dat daar het uitvoerende bedrijf aan het woord is.
 - **Kleur**: crème (`--cream`) voor kozijnherstel, antraciet (`--anthracite`) voor
   kozijnwrappen, goud als accent door de hele site.
 - **Let op bij het goud**: `--accent` is voor lijnen, randen en iconen. Zodra er tekst
@@ -90,8 +93,6 @@ Gebruik in de bronbestanden root-relatieve links (`/blog/renolit-folie-uitgelegd
   `src/pages/keuzehulp.html` in `PRIJS` (per omvang, bij de uitkomst folieherstel) en in het
   veld `prijs` op de uitkomst `vervangen` — en verder in het kostenartikel en in het blok
   "Ook als het maar om een paar dorpels gaat".
-- Nog geen aparte "Over deze site"-pagina. De disclosure staat nu alleen op de
-  kozijnwrappen-pagina ("Deze site is gemaakt vanuit iWrap").
 - Geen analytics. De uitgaande links naar iwrap.nl hebben wel UTM-tags
   (`utm_medium=keuzehulp`), dus in de statistieken van iwrap.nl is te zien hoeveel
   aanvragen hiervandaan komen.
