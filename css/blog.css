@@ -36,11 +36,15 @@ body.theme-blog .hero h1{max-width:27ch;font-size:clamp(1.85rem,4.2vw,2.45rem);}
 /* Getekend in plaats van gefotografeerd: voor deze onderwerpen bestaat geen
    eerlijke foto, en een diagram legt de opbouw beter uit dan een plaatje. */
 .diagram{background:#fff;border:1px solid #e6e1d3;border-radius:12px;padding:26px 26px 20px;margin:26px 0;}
-.diagram svg{display:block;width:100%;height:auto;}
+/* Een diagram dat in een kolom van 320px wordt geperst, schaalt zijn labels mee
+   tot ze onleesbaar zijn. Onder de minimumbreedte schuift hij daarom horizontaal
+   in plaats van verder te krimpen — het bijschrift blijft wél gewoon staan. */
+.diagram .dg-scroll{overflow-x:auto;overscroll-behavior-x:contain;}
+.diagram svg{display:block;width:100%;height:auto;min-width:520px;}
 .diagram figcaption{margin-top:14px;padding-top:14px;border-top:1px solid #efeade;}
-.diagram .dg-label{font-family:'Karla',sans-serif;font-size:13px;font-weight:700;fill:var(--ink);}
-.diagram .dg-sub{font-family:'Karla',sans-serif;font-size:11.5px;fill:#6b685f;}
-.diagram .dg-num{font-family:'Karla',sans-serif;font-size:12px;font-weight:700;fill:#fff;}
+.diagram .dg-label{font-family:'Karla',sans-serif;font-size:15px;font-weight:700;fill:var(--ink);}
+.diagram .dg-sub{font-family:'Karla',sans-serif;font-size:13px;fill:#6b685f;}
+.diagram .dg-num{font-family:'Karla',sans-serif;font-size:13px;font-weight:700;fill:#fff;}
 
 /* Afsluitende doorverwijzing -------------------------------------------------- */
 

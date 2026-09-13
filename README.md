@@ -94,9 +94,10 @@ Gebruik in de bronbestanden root-relatieve links (`/blog/renolit-folie-uitgelegd
 - Geen analytics. De uitgaande links naar iwrap.nl hebben wel UTM-tags
   (`utm_medium=keuzehulp`), dus in de statistieken van iwrap.nl is te zien hoeveel
   aanvragen hiervandaan komen.
-- Content die nog mist: pagina's die aansluiten op wat mensen zién in plaats van op de
-  vakterm — "folie laat los", "dorpel verkleurd", "kozijn vergeeld". Dat is waar de kleine
-  particuliere klus vandaan moet komen, en waar de grote kozijnleveranciers niet over
-  schrijven.
+- De symptoompagina's staan er (folie laat los, kozijn verkleurd, onderdorpel, schilderen).
+  Kandidaten voor een volgende ronde: krassen en stootschade, kozijn schoonmaken, en
+  "kozijn 20 jaar oud — vervangen of niet". Schrijf ze vanuit wat iemand ziét, niet vanuit
+  de vakterm: daar zit de kleine particuliere klus, en daar schrijven de grote
+  kozijnleveranciers niet over omdat die vervangingsopdrachten willen.
 - houtnerffolie.nl overlapt met twee blogartikelen hier. Check in Search Console of die site
   verkeer krijgt: zo ja, smal houden op het product; zo nee, 301 hierheen.
