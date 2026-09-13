@@ -101,7 +101,7 @@ Gebruik in de bronbestanden root-relatieve links (`/blog/renolit-folie-uitgelegd
   de vakterm: daar zit de kleine particuliere klus, en daar schrijven de grote
   kozijnleveranciers niet over omdat die vervangingsopdrachten willen.
 - **Feiten die op meerdere pagina's staan** en dus samen bijgewerkt moeten worden: de
-  bedragen (€500 / €500–€3.000 / €800–€2.500 vervanging), "tien jaar fabrieksgarantie op de
+  bedragen (€500 voor een paar dorpels, €500–€3.000 voor een woning, €1.200–€2.500 per kozijn bij vervanging — dat laatste is nadrukkelijk alléén het kozijn met glas en montage, zónder stucwerk, schilderwerk, vensterbanken en afvoer), "tien jaar fabrieksgarantie op de
   folie, vijf jaar op de montage", en "profiel 50–75 jaar". Houd het bij die ene formulering:
   Renolit folie is één product met één garantietermijn, ongeacht kleur of structuur. Eerder
   stonden er drie verschillende levensduren op de site en dat is voor een klant alleen maar
