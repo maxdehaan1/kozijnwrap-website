@@ -64,4 +64,8 @@
     <loc>https://kozijnwrap.nl/kozijnwrappen</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://kozijnwrap.nl/over-deze-site</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>

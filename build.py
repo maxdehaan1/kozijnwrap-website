@@ -98,9 +98,12 @@ def render_nav(slug):
 
 def render_footer(slug):
     current = "blog/index" if slug.startswith("blog/") else slug
-    links = " · ".join(
-        '<a href="%s">%s</a>' % (u, label) for s, u, label in NAV if s != current
-    )
+    items = [(s, u, label) for s, u, label in NAV if s != current]
+    # Staat bewust niet in de hoofdnavigatie — wel op elke pagina bereikbaar,
+    # want de herkomst van de site hoort niet op één pagina verstopt te zitten.
+    if slug != "over-deze-site":
+        items.append(("over-deze-site", "/over-deze-site", "Over deze site"))
+    links = " · ".join('<a href="%s">%s</a>' % (u, label) for _, u, label in items)
     return (
         "<footer>\n"
         '  <div class="wrap">\n'
