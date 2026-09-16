@@ -55,7 +55,9 @@ summary:focus-visible,
 
 /* Header ------------------------------------------------------------------ */
 
-header.site{padding:20px 0;}
+/* Eigen stapelcontext boven de hero: die heeft z-index 1, waardoor het
+   uitklapmenu er anders achter verdwijnt. */
+header.site{padding:20px 0;position:relative;z-index:70;}
 .nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;max-width:1100px;margin:0 auto;padding:0 24px;}
 .brand{font-family:'Fraunces',serif;font-weight:700;text-decoration:none;color:var(--accent-deep);font-size:1.3rem;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:9px;transition:opacity .2s ease;}
 .brand:hover{opacity:.75;}
@@ -68,7 +70,97 @@ header.site{padding:20px 0;}
 .navlinks a:hover::after{right:0;}
 .navlinks a.current{color:var(--ink);font-weight:700;}
 .navlinks a.current::after{right:0;background:var(--ink);}
-@media (max-width:560px){ .brand{font-size:1.15rem;} .navlinks{gap:12px;font-size:.8rem;} }
+.nav-right{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;}
+
+/* Uitklapmenu ---------------------------------------------------------------- */
+
+/* De artikelen waren alleen via het blogoverzicht te vinden. Dit paneel laat
+   vanuit elke pagina zien wat er is. Opent op hover én op toetsenbordfocus:
+   :focus-within op de wrapper vangt de focus op de Blog-link zelf, waarna de
+   links in het paneel zichtbaar en dus tabbaar worden. */
+.has-dd{position:relative;}
+.dd-caret{font-size:.62em;opacity:.55;margin-left:1px;}
+.dd{
+  position:absolute;
+  top:100%;
+  right:0;
+  left:auto;
+  translate:0 8px;
+  z-index:60;
+  min-width:520px;
+  padding:22px 26px 18px;
+  background:#fff;
+  border:1px solid #e6e1d3;
+  border-radius:14px;
+  box-shadow:0 24px 48px -24px rgba(38,36,31,.45);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .18s ease, translate .18s ease, visibility 0s .18s;
+}
+/* Onzichtbare brug, zodat het paneel niet dichtklapt als je er met de muis
+   naartoe beweegt. */
+.dd::before{content:"";position:absolute;top:-10px;left:0;right:0;height:10px;}
+.has-dd:hover .dd,
+.has-dd:focus-within .dd{opacity:1;visibility:visible;translate:0 0;transition-delay:0s;}
+
+.dd-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;}
+.dd-kop{font-family:'Karla',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--sub);margin:0 0 8px;padding-bottom:7px;border-bottom:1px solid #eee7d8;}
+.dd-col ul{list-style:none;margin:0;padding:0;}
+.dd-col li + li{margin-top:1px;}
+.dd .dd-col a{display:block;padding:7px 9px;margin:0 -9px;border-radius:7px;font-size:.88rem;line-height:1.35;color:var(--ink);text-decoration:none;transition:background .15s ease, color .15s ease;}
+.dd .dd-col a::after{display:none;}
+.dd .dd-col a:hover{background:rgba(169,134,63,.1);color:var(--accent-deep);}
+.dd-alle{display:inline-block;margin-top:16px;padding-top:14px;border-top:1px solid #eee7d8;width:100%;font-family:'Karla',sans-serif;font-size:.83rem;font-weight:700;color:var(--accent-deep);text-decoration:none;}
+.dd-alle::after{display:none;}
+.dd-alle:hover{text-decoration:underline;}
+
+/* Knop naar de uitvoerende partij -------------------------------------------- */
+
+/* Het enige gevulde, donkere element in de balk, en daarmee vanzelf het eerste
+   waar je oog op valt. De gouden gloed ademt langzaam — genoeg om op te vallen,
+   te traag om af te leiden. */
+.nav-cta{
+  display:inline-flex;
+  flex-direction:column;
+  gap:1px;
+  padding:9px 20px;
+  border-radius:120px;
+  background:var(--anthracite-deep);
+  color:#fff;
+  text-decoration:none;
+  line-height:1.2;
+  position:relative;
+  overflow:hidden;
+  animation:cta-glow 4s ease-in-out infinite;
+  transition:background .2s ease, transform .2s ease;
+}
+.nav-cta-sub{font-family:'Karla',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-light);}
+.nav-cta-main{font-family:'Karla',sans-serif;font-size:.92rem;font-weight:700;white-space:nowrap;}
+.nav-cta:hover{background:#171a1c;transform:translateY(-2px);}
+/* Glans die bij hover één keer overloopt. */
+.nav-cta::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(212,171,92,.3) 50%,transparent 65%);translate:-100% 0;}
+.nav-cta:hover::after{animation:cta-sheen .75s ease-out;}
+@keyframes cta-glow{0%,100%{box-shadow:0 0 0 0 rgba(169,134,63,0);}50%{box-shadow:0 0 0 5px rgba(169,134,63,.16);}}
+@keyframes cta-sheen{to{translate:100% 0;}}
+
+@media (prefers-reduced-motion: reduce){
+  .nav-cta{animation:none;}
+  .nav-cta:hover{transform:none;}
+  .nav-cta:hover::after{animation:none;}
+  .dd{transition:none;}
+}
+
+@media (max-width:900px){ .dd{min-width:0;width:min(92vw,520px);} }
+/* Onder deze breedte is hoveren geen bruikbare interactie meer; de Blog-link
+   gaat dan gewoon naar het overzicht. */
+@media (max-width:760px){ .dd{display:none;} .dd-caret{display:none;} }
+@media (max-width:560px){
+  .brand{font-size:1.15rem;}
+  .navlinks{gap:12px;font-size:.8rem;}
+  .nav-right{gap:10px 14px;width:100%;justify-content:space-between;}
+  .nav-cta{padding:8px 16px;}
+  .nav-cta-main{font-size:.85rem;}
+}
 
 /* Kanttekeningen ----------------------------------------------------------- */
 

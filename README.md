@@ -40,6 +40,11 @@ Een nieuwe pagina toevoegen = één bestand in `src/pages/` zetten en bouwen; st
 de navigatie, dan zet je hem in de lijst `NAV` bovenin `build.py` (`FOOTER` staat daar
 direct onder, voor pagina's die alleen onderaan hoeven te staan).
 
+Een **blogartikel** komt vanzelf in het uitklapmenu onder "Blog" te staan zodra je in
+het metadatablok `navLabel` (korte menuregel), `groep` (`herstel` of `wrappen`) en
+`orde` (volgnummer binnen die kolom) invult. Laat je `navLabel` weg, dan staat het
+artikel wel op het blogoverzicht maar niet in het menu.
+
 ## Structuur
 
 ```

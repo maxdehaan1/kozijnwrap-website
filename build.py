@@ -101,21 +101,81 @@ def fonts_href(extra_montserrat):
     return "https://fonts.googleapis.com/css2?" + "&".join(fams) + "&display=swap"
 
 
+def blog_menu():
+    """Artikelen voor het uitklapmenu, gegroepeerd en op volgorde.
+
+    Komt uit de bronbestanden zelf, zodat een nieuw artikel automatisch in de
+    navigatie verschijnt zonder dat hier iets bij hoeft.
+    """
+    groepen = {"herstel": [], "wrappen": []}
+    for path in SRC.glob("blog/*.html"):
+        meta, _ = read_page(path)
+        if not meta.get("navLabel"):
+            continue
+        groepen[meta.get("groep", "herstel")].append(
+            (meta.get("orde", 99), meta["navLabel"], url_for(meta["slug"]))
+        )
+    for g in groepen.values():
+        g.sort()
+    return groepen
+
+
 def render_nav(slug):
     current = "blog/index" if slug.startswith("blog/") else slug
-    links = "\n".join(
-        '      <a %shref="%s">%s</a>' % ('class="current" ' if s == current else "", u, label)
-        for s, u, label in NAV
+    groepen = blog_menu()
+
+    def kolom(titel, items):
+        regels = "\n".join(
+            '            <li><a href="%s">%s</a></li>' % (u, label) for _, label, u in items
+        )
+        return (
+            '          <div class="dd-col">\n'
+            '            <p class="dd-kop">%s</p>\n'
+            '            <ul>\n%s\n            </ul>\n'
+            "          </div>" % (titel, regels)
+        )
+
+    links = []
+    for s_, u, label in NAV:
+        cls = 'class="current" ' if s_ == current else ""
+        if s_ != "blog/index":
+            links.append('      <a %shref="%s">%s</a>' % (cls, u, label))
+            continue
+        # De blogartikelen waren alleen via het overzicht te vinden. Dit paneel
+        # laat vanuit elke pagina zien wat er is, gegroepeerd per onderwerp.
+        links.append(
+            '      <div class="has-dd">\n'
+            '        <a %shref="%s" aria-haspopup="true">%s <span class="dd-caret" aria-hidden="true">&#9662;</span></a>\n'
+            '        <div class="dd">\n'
+            '          <div class="dd-cols">\n%s\n%s\n          </div>\n'
+            '          <a class="dd-alle" href="/blog">Alle artikelen &rarr;</a>\n'
+            "        </div>\n"
+            "      </div>"
+            % (cls, u, label,
+               kolom("Kozijnherstel", groepen["herstel"]),
+               kolom("Kozijnwrappen", groepen["wrappen"]))
+        )
+
+    offerte = (
+        '    <a class="nav-cta" href="%s?utm_source=kozijnwrap.nl&amp;utm_medium=header" '
+        'target="_blank" rel="noopener">\n'
+        '      <span class="nav-cta-sub">Uitvoerende partij</span>\n'
+        '      <span class="nav-cta-main">Offerte bij %s <span aria-hidden="true">&rarr;</span></span>\n'
+        "    </a>" % (IWRAP["offerte"], IWRAP["naam"])
     )
+
     return (
         '<header class="site">\n'
         '  <div class="nav">\n'
         '    <a class="brand" href="/">%s kozijnwrap.nl</a>\n'
+        '    <div class="nav-right">\n'
         '    <nav class="navlinks" aria-label="Hoofdnavigatie">\n'
         "%s\n"
         "    </nav>\n"
+        "%s\n"
+        "    </div>\n"
         "  </div>\n"
-        "</header>" % (LOGO_MARK, links)
+        "</header>" % (LOGO_MARK, "\n".join(links), offerte)
     )
 
 
