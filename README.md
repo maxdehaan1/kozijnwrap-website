@@ -76,6 +76,10 @@ images/               Elke foto als .webp met een .jpg ernaast als terugval
 - **Letters**: Fraunces (koppen) en Karla (lopende tekst). Montserrat staat alléén op
   kozijnherstel.html, voor het iWrap-blok — dat leent bewust de eigen huisstijl van iWrap,
   zodat zichtbaar is dat daar het uitvoerende bedrijf aan het woord is.
+- **Beeldmerk**: een kozijn van voren met de onderdorpel in goud — de dorpel is bijna
+  altijd het eerst versleten, en goud staat voor de nieuwe folie. Staat als `LOGO_MARK`
+  en `FAVICON` in `build.py`; die twee moeten gelijk blijven.
+- **Slogan**: "Weet wat je kozijn nodig heeft" — constante `SLOGAN` in `build.py`.
 - **Kleur**: crème (`--cream`) voor kozijnherstel, antraciet (`--anthracite`) voor
   kozijnwrappen, goud als accent door de hele site.
 - **Let op bij het goud**: `--accent` is voor lijnen, randen en iconen. Zodra er tekst
@@ -109,8 +113,12 @@ Gebruik in de bronbestanden root-relatieve links (`/blog/renolit-folie-uitgelegd
   de vakterm: daar zit de kleine particuliere klus, en daar schrijven de grote
   kozijnleveranciers niet over omdat die vervangingsopdrachten willen.
 - **Feiten die op meerdere pagina's staan** en dus samen bijgewerkt moeten worden: de
-  bedragen (€500 voor een paar dorpels, €500–€3.000 voor een woning, €1.200–€2.500 per kozijn bij vervanging — dat laatste is nadrukkelijk alléén het kozijn met glas en montage, zónder stucwerk, schilderwerk, vensterbanken en afvoer), "tien jaar fabrieksgarantie op de
-  folie, vijf jaar op de montage", en "profiel 50–75 jaar". Houd het bij die ene formulering:
+  bedragen, "tien jaar fabrieksgarantie op de folie, vijf jaar op de montage", en
+  "profiel 50–75 jaar". Voor de prijzen geldt: **alleen een paar dorpels/losse delen krijgt
+  een bedrag (rond €500)**. Daarboven noemen we bewust geen bandbreedte — de prijs hangt af
+  van het type kozijn en het aantal strekkende meters en loopt te sterk uiteen. Vervanging
+  staat op €1.200–€2.500 per kozijn, nadrukkelijk alléén het kozijn met glas en montage,
+  zónder stucwerk, schilderwerk, vensterbanken en afvoer. Houd het bij die ene formulering:
   Renolit folie is één product met één garantietermijn, ongeacht kleur of structuur. Eerder
   stonden er drie verschillende levensduren op de site en dat is voor een klant alleen maar
   verwarrend.

@@ -51,24 +51,25 @@ IWRAP = {
     ),
 }
 
+# Het beeldmerk: een kozijn van voren, met de onderdorpel in goud. Dat is precies
+# het verhaal van de site — de dorpel is bijna altijd het eerst versleten, en goud
+# staat voor de nieuwe folie. Leesbaar tot 16px, waar een fijnere tekening dichtslibt.
 FAVICON = (
     "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>"
     "<rect width='64' height='64' rx='14' fill='%2324272a'/>"
-    "<rect x='10' y='10' width='19' height='19' rx='2' fill='%23f1e8d3'/>"
-    "<rect x='35' y='10' width='19' height='19' rx='2' fill='%2334383b'/>"
-    "<rect x='10' y='35' width='19' height='19' rx='2' fill='%2334383b'/>"
-    "<rect x='35' y='35' width='19' height='19' rx='2' fill='%23f1e8d3'/></svg>"
+    "<path d='M14 12h36v36H14z M22 20v20h20V20z' fill='%23f1e8d3' fill-rule='evenodd'/>"
+    "<path d='M14 40h36v8H14z' fill='%23a9863f'/></svg>"
 )
 
 LOGO_MARK = (
     '<svg class="logo-mark" width="26" height="26" viewBox="0 0 64 64" aria-hidden="true">'
     '<rect width="64" height="64" rx="14" fill="#24272a"/>'
-    '<rect x="10" y="10" width="19" height="19" rx="2" fill="#f1e8d3"/>'
-    '<rect x="35" y="10" width="19" height="19" rx="2" fill="#34383b"/>'
-    '<rect x="10" y="35" width="19" height="19" rx="2" fill="#34383b"/>'
-    '<rect x="35" y="35" width="19" height="19" rx="2" fill="#f1e8d3"/></svg>'
+    '<path d="M14 12h36v36H14z M22 20v20h20V20z" fill="#f1e8d3" fill-rule="evenodd"/>'
+    '<path d="M14 40h36v8H14z" fill="#a9863f"/></svg>'
 )
 
+# Staat onder de merknaam in de footer. Eén plek, dus makkelijk te wisselen.
+SLOGAN = "Weet wat je kozijn nodig heeft"
 
 def url_for(slug):
     """Schone URL zonder .html — vercel.json heeft cleanUrls aan staan."""
@@ -189,6 +190,7 @@ def render_footer(slug):
         '  <div class="wrap">\n'
         '    <div class="fbrand">\n'
         "      <strong>kozijnwrap.nl</strong>\n"
+        '      <p class="fslogan">%s</p>\n'
         "      <p>Uitleg over het herstellen en wrappen van kozijnen, zodat je weet "
         "waar je aan begint voordat je een offerte aanvraagt.</p>\n"
         '      <p class="fby">Gemaakt door <a href="%s?utm_source=kozijnwrap.nl&amp;utm_medium=footer" '
@@ -196,7 +198,7 @@ def render_footer(slug):
         "    </div>\n"
         '    <div class="flinks">%s</div>\n'
         "  </div>\n"
-        "</footer>" % (IWRAP["site"], IWRAP["naam"], links)
+        "</footer>" % (SLOGAN, IWRAP["site"], IWRAP["naam"], links)
     )
 
 

@@ -2,11 +2,11 @@
 {
   "slug": "keuzehulp",
   "title": "Keuzehulp: wat heeft jouw kozijn nodig, en wat kost het? | Kozijnwrap.nl",
-  "description": "Vier vragen over je kozijn, en je weet of folieherstel volstaat — met meteen een prijsindicatie voor jouw situatie. Je hoeft geen gegevens achter te laten.",
+  "description": "Vier vragen over je kozijn, en je weet of folieherstel volstaat en wat dat qua kosten betekent. Je hoeft geen gegevens achter te laten.",
   "bodyClass": "page theme-herstel",
   "ogType": "website",
   "ogTitle": "Keuzehulp: wat heeft jouw kozijn nodig, en wat kost het?",
-  "ogDescription": "Vier vragen, en je weet waar je aan toe bent — inclusief een prijsindicatie. En een eerlijk antwoord als folie jouw probleem niet oplost.",
+  "ogDescription": "Vier vragen, en je weet waar je aan toe bent — inclusief wat het kost. En een eerlijk antwoord als folie jouw probleem niet oplost.",
   "css": ["style", "content", "keuzehulp"],
   "jsonld": [
     {
@@ -24,7 +24,7 @@
   <div class="wrap">
     <span class="tag">Keuzehulp</span>
     <h1>Wat heeft jouw kozijn nodig, en wat kost het?</h1>
-    <p class="lede">Vier vragen, en je weet of herstel volstaat, of je beter kunt wrappen, of dat vervangen de enige echte optie is — <b>met meteen een prijsindicatie</b> voor jouw situatie. Je hoeft geen gegevens achter te laten.</p>
+    <p class="lede">Vier vragen, en je weet of herstel volstaat, of je beter kunt wrappen, of dat vervangen de enige echte optie is — <b>en wat dat qua kosten betekent</b>. Je hoeft geen gegevens achter te laten.</p>
     <p class="hero-by">Opgesteld door <b>iWrap</b>, al meer dan tien jaar gespecialiseerd in kozijnherstel met Renolit folie.</p>
   </div>
 </section>
@@ -90,7 +90,7 @@
     },
     omvang: {
       vraag: "Om hoeveel gaat het?",
-      hint: "Dit bepaalt niet óf het kan, maar wel wat het ongeveer kost — je krijgt er meteen een bedrag bij.",
+      hint: "Dit bepaalt niet óf het kan, maar wel wat het gaat kosten.",
       opties: [
         { label: "Een paar dorpels of losse delen", sub: "bijvoorbeeld alleen de onderdorpels aan de zonkant", uitkomst: "herstel", omvang: "klein" },
         { label: "Een paar kozijnen", sub: "de kozijnen aan één gevel of verdieping", uitkomst: "herstel", omvang: "middel" },
@@ -102,9 +102,9 @@
 
   var PRIJS = {
     klein:    "Een paar dorpels ligt meestal rond de €500.",
-    middel:   "Voor een deel van een woning ligt het doorgaans tussen de €500 en €3.000.",
-    groot:    "Voor een hele woning ligt het doorgaans tussen de €500 en €3.000, afhankelijk van het aantal kozijnen en de afmetingen.",
-    zakelijk: "Bij meerdere panden hangt de prijs sterk af van de omvang — dat vraagt om een opname ter plaatse."
+    middel:   "Hiervoor is op afstand geen zinnig bedrag te noemen.",
+    groot:    "Hiervoor is op afstand geen zinnig bedrag te noemen.",
+    zakelijk: "Hiervoor is op afstand geen zinnig bedrag te noemen."
   };
 
   var UITKOMSTEN = {
@@ -210,8 +210,10 @@
       html += '<div class="kh-prijsblok">' +
         '<span class="kh-prijslabel">Prijsindicatie</span>' +
         '<p class="kh-price">' + bedrag + "</p>" +
-        '<p class="kh-hint">Een vast bedrag bestaat niet — afmetingen, bereikbaarheid en de staat van de oude folie bepalen mee. ' +
-        '<a href="/blog/kozijnherstel-kosten">Zo is de prijs opgebouwd.</a></p></div>';
+        '<p class="kh-hint">' + (omvang && omvang !== "klein"
+          ? "De prijs hangt af van het type kozijn en het aantal strekkende meters, en dat loopt flink uiteen. Een serieuze prijs vraagt om een offerte op maat. "
+          : "Afmetingen, bereikbaarheid en de staat van de oude folie bepalen mee. ") +
+        '<a href="/blog/kozijnherstel-kosten">Wat de prijs bepaalt.</a></p></div>';
     }
 
     html += '<div class="kh-actions">';

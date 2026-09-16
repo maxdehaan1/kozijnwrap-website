@@ -197,3 +197,6 @@ footer .fbrand .fby a:hover{color:#fff;text-decoration:none;}
 footer .flinks{line-height:1.9;}
 footer a{color:#e7e5df;text-decoration:none;}
 footer a:hover{color:#fff;text-decoration:underline;}
+
+/* Slogan onder de merknaam in de footer. */
+footer .fbrand .fslogan{font-family:'Fraunces',serif;font-size:1.02rem;color:var(--accent-light);margin:2px 0 8px;}
