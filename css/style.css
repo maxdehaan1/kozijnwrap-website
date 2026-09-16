@@ -5,23 +5,23 @@
    --------------------------------------------------------------------------- */
 
 :root{
-  --grey:#F4F6F4;
-  --ink:#15211C;
+  --grey:#F6F8F5;
+  --ink:#1E2C26;
   --white:#ffffff;
-  --cream:#E4EDE7;
-  --cream-ink:#1B332A;
-  --anthracite:#24453A;
-  --anthracite-deep:#16291F;
-  --sub:#5A665F;
-  --line:#D5DED7;
+  --cream:#E9F0EA;
+  --cream-ink:#26382F;
+  --anthracite:#3A5C4F;
+  --anthracite-deep:#22342C;
+  --sub:#64726A;
+  --line:#DBE4DD;
   /* Diep groen als merkkleur: het verbindt deze site met iWrap en
      houtnerffolie.nl, en het draagt het argument — herstellen in plaats van
      vervangen. Taakverdeling: --accent voor lijnen, iconen en randen,
      --accent-deep overal waar tekst bovenop komt (die haalt 7,0:1 met wit),
      --accent-light voor tekst op de donkere vlakken. */
-  --accent:#2F7355;
-  --accent-deep:#1E5540;
-  --accent-light:#8FC7A9; /* tegenhanger voor tekst op de donkere vlakken */
+  --accent:#4F8A6B;
+  --accent-deep:#3A6E56;
+  --accent-light:#A7CFB6; /* tegenhanger voor tekst op de donkere vlakken */
 }
 
 *{box-sizing:border-box;}
@@ -66,9 +66,9 @@ header.site{padding:20px 0;position:relative;z-index:70;}
    cursieve schreef boven een zware schreefloze, strak op elkaar gestapeld. */
 .brand{display:inline-flex;flex-direction:column;line-height:.8;text-decoration:none;transition:opacity .2s ease;}
 .brand:hover{opacity:.72;}
-.brand .w1{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:400;font-size:1.16rem;letter-spacing:-.005em;color:var(--accent);margin-left:.55em;}
+.brand .w1{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:400;font-size:1.16rem;letter-spacing:-.005em;color:var(--accent-deep);margin-left:.55em;}
 .brand .w2{font-family:'Karla',Arial,sans-serif;font-weight:800;font-size:1.54rem;letter-spacing:-.045em;color:var(--ink);}
-.brand .tld{font-size:.4em;font-weight:700;letter-spacing:0;vertical-align:super;margin-left:.1em;color:var(--accent-deep);}
+.brand .tld{font-size:.4em;font-weight:700;letter-spacing:0;vertical-align:super;margin-left:.1em;color:var(--accent-deep);opacity:.75;}
 
 .navlinks{display:flex;flex-wrap:wrap;gap:22px;font-family:'Karla',Arial,sans-serif;font-size:.85rem;}
 .navlinks a{color:var(--sub);text-decoration:none;position:relative;padding-bottom:2px;transition:color .2s ease;}
@@ -99,7 +99,7 @@ header.site{padding:20px 0;position:relative;z-index:70;}
   background:#fff;
   border:1px solid #dce4dd;
   border-radius:14px;
-  box-shadow:0 24px 48px -24px rgba(21,33,28,.45);
+  box-shadow:0 24px 48px -24px rgba(30,44,38,.45);
   opacity:0;
   visibility:hidden;
   transition:opacity .18s ease, translate .18s ease, visibility 0s .18s;
@@ -116,7 +116,7 @@ header.site{padding:20px 0;position:relative;z-index:70;}
 .dd-col li + li{margin-top:1px;}
 .dd .dd-col a{display:block;padding:7px 9px;margin:0 -9px;border-radius:7px;font-size:.88rem;line-height:1.35;color:var(--ink);text-decoration:none;transition:background .15s ease, color .15s ease;}
 .dd .dd-col a::after{display:none;}
-.dd .dd-col a:hover{background:rgba(47,115,85,.1);color:var(--accent-deep);}
+.dd .dd-col a:hover{background:rgba(79,138,107,.1);color:var(--accent-deep);}
 .dd-alle{display:inline-block;margin-top:16px;padding-top:14px;border-top:1px solid #e2eae3;width:100%;font-family:'Karla',sans-serif;font-size:.83rem;font-weight:700;color:var(--accent-deep);text-decoration:none;}
 .dd-alle::after{display:none;}
 .dd-alle:hover{text-decoration:underline;}
@@ -143,11 +143,11 @@ header.site{padding:20px 0;position:relative;z-index:70;}
 }
 .nav-cta-sub{font-family:'Karla',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-light);}
 .nav-cta-main{font-family:'Karla',sans-serif;font-size:.92rem;font-weight:700;white-space:nowrap;}
-.nav-cta:hover{background:#0e1813;transform:translateY(-2px);}
+.nav-cta:hover{background:#16211C;transform:translateY(-2px);}
 /* Glans die bij hover één keer overloopt. */
-.nav-cta::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(143,199,169,.3) 50%,transparent 65%);translate:-100% 0;}
+.nav-cta::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(167,207,182,.3) 50%,transparent 65%);translate:-100% 0;}
 .nav-cta:hover::after{animation:cta-sheen .75s ease-out;}
-@keyframes cta-glow{0%,100%{box-shadow:0 0 0 0 rgba(47,115,85,0);}50%{box-shadow:0 0 0 5px rgba(47,115,85,.16);}}
+@keyframes cta-glow{0%,100%{box-shadow:0 0 0 0 rgba(79,138,107,0);}50%{box-shadow:0 0 0 5px rgba(79,138,107,.16);}}
 @keyframes cta-sheen{to{translate:100% 0;}}
 
 @media (prefers-reduced-motion: reduce){
@@ -203,8 +203,29 @@ footer .fbrand .fby{margin-top:8px;color:#b4c0b8;}
 footer .fbrand .fby a{color:#fff;text-decoration:underline;}
 footer .fbrand .fby a:hover{color:#fff;text-decoration:none;}
 footer .flinks{line-height:1.9;}
-footer a{color:#e3ebe5;text-decoration:none;}
+footer a{color:#e7eee9;text-decoration:none;}
 footer a:hover{color:#fff;text-decoration:underline;}
 
 /* Slogan onder de merknaam in de footer. */
 footer .fbrand .fslogan{font-family:'Fraunces',serif;font-size:1.02rem;color:var(--accent-light);margin:2px 0 8px;}
+
+/* Verfijning ---------------------------------------------------------------- */
+
+/* Rustige scroll-onthulling, volledig in CSS. Bewust zonder JavaScript: een
+   onthulling die van een script afhangt kan inhoud onzichtbaar laten als dat
+   script om wat voor reden ook niet draait. Nu is zichtbaar de standaard — deze
+   regels doen alleen iets in browsers die scroll-tijdlijnen ondersteunen, en de
+   animatie staat op `both`, zodat alles wat al in beeld staat meteen af is. */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    main > *:not(:first-child){
+      animation:reveal-in linear both;
+      animation-timeline:view();
+      animation-range:entry 0% entry 18%;
+    }
+    @keyframes reveal-in{ from{opacity:0;translate:0 20px;} to{opacity:1;translate:0 0;} }
+  }
+}
+
+/* Een streep in de merkkleur boven de footer, als afsluiting van de pagina. */
+footer{border-top:3px solid var(--accent);}

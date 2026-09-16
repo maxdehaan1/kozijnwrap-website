@@ -32,7 +32,7 @@
 }
 .kh-opt:hover{border-color:var(--accent);background:#fafcfa;transform:translateX(3px);}
 .kh-opt .kh-mark{flex-shrink:0;width:22px;height:22px;border-radius:50%;border:2px solid #cbd6cd;transition:border-color .18s ease, background .18s ease;}
-.kh-opt:hover .kh-mark{border-color:var(--accent);background:rgba(47,115,85,.14);}
+.kh-opt:hover .kh-mark{border-color:var(--accent);background:rgba(79,138,107,.14);}
 .kh-opt b{display:block;font-weight:700;}
 .kh-opt small{display:block;color:var(--sub);font-size:.87rem;margin-top:2px;line-height:1.4;}
 
@@ -48,9 +48,9 @@
 /* De prijsindicatie is voor veel bezoekers de reden om de keuzehulp in te vullen,
    dus die krijgt een eigen vlak in plaats van een regel tussen de tekst. */
 .kh-prijsblok{background:var(--cream);border-radius:10px;padding:18px 20px;margin:22px 0 4px;}
-.kh-prijslabel{display:inline-block;font-family:'Karla',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(27,51,42,.7);margin-bottom:4px;}
+.kh-prijslabel{display:inline-block;font-family:'Karla',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(38,56,47,.7);margin-bottom:4px;}
 .kh-result .kh-price{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;color:var(--cream-ink);margin:0 0 8px;}
-.kh-result .kh-prijsblok .kh-hint{margin:0;font-size:.9rem;color:rgba(27,51,42,.78);}
+.kh-result .kh-prijsblok .kh-hint{margin:0;font-size:.9rem;color:rgba(38,56,47,.78);}
 .kh-result .kh-prijsblok .kh-hint a{color:var(--accent-deep);}
 
 /* Groen als wij kunnen helpen, neutraal als we eerlijk doorverwijzen. */
@@ -61,7 +61,7 @@
 
 .kh-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;}
 .kh-cta{display:inline-flex;align-items:center;gap:7px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:14px 26px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
-.kh-cta:hover{background:#164534;transform:translateY(-2px);}
+.kh-cta:hover{background:#2C5744;transform:translateY(-2px);}
 .kh-cta.ghost{background:#fff;color:var(--accent-deep);border:1.5px solid #d5ded7;}
 .kh-cta.ghost:hover{background:#f2f6f2;color:var(--accent-deep);}
 body.page .kh-actions a{color:inherit;}

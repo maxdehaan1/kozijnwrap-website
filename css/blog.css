@@ -70,6 +70,6 @@ body.theme-blog .hero h1{max-width:27ch;font-size:clamp(1.85rem,4.2vw,2.45rem);}
 .article-cta p{color:var(--sub);margin:0 0 18px;max-width:none;}
 .article-cta .cta-row{display:flex;flex-wrap:wrap;gap:10px;}
 .article-cta a.cta-link{display:inline-flex;align-items:center;gap:6px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:11px 22px;border-radius:120px;transition:background .2s ease;}
-.article-cta a.cta-link:hover{background:#164534;}
+.article-cta a.cta-link:hover{background:#2C5744;}
 .article-cta a.cta-link.ghost{background:#fff;color:var(--accent-deep);border:1.5px solid #d9e1da;}
 .article-cta a.cta-link.ghost:hover{background:#f2f6f2;}

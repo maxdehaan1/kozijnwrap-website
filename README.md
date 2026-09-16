@@ -71,6 +71,14 @@ css/
 images/               Elke foto als .webp met een .jpg ernaast als terugval
 ```
 
+## Bewegingen
+
+De scroll-onthulling van secties draait op `animation-timeline: view()` — dus volledig in
+CSS, zónder JavaScript. Dat is een bewuste keuze: een onthulling die van een script afhangt
+kan inhoud onzichtbaar laten als dat script niet draait, en dat risico is een decoratie niet
+waard. Zichtbaar is nu de standaard; browsers zonder ondersteuning tonen alles gewoon
+statisch. Alles staat achter `prefers-reduced-motion: no-preference`.
+
 ## Huisstijl
 
 - **Letters**: Fraunces (koppen) en Karla (lopende tekst). Montserrat staat alléén op
@@ -89,9 +97,10 @@ images/               Elke foto als .webp met een .jpg ernaast als terugval
   houtnerffolie.nl (donkergroen), en het draagt het argument — herstellen in plaats van
   vervangen. Alles loopt via de variabelen in `:root` in `style.css`.
 - **Taakverdeling van het groen**: `--accent` voor lijnen, randen, iconen en het cursieve
-  deel van het woordmerk; `--accent-deep` overal waar tekst bovenop komt (8,7:1 met wit);
+  deel van het woordmerk; `--accent-deep` overal waar tekst bovenop komt (5,9:1 met wit);
   `--accent-light` voor tekst op de donkere vlakken. De laagste combinatie op de site zit
-  op 5,2:1 — ruim boven de norm van 4,5:1.
+  op 4,7:1 — boven de norm van 4,5:1. Let op: `--accent` zelf haalt op de achtergrond
+  maar 3,8:1 en mag daarom nooit als tekstkleur worden gebruikt, alleen voor randen.
 - **Wat níet meekleurt**: de kleurstalen op de wrappen-kaart, de RAL-staaltjes, en de
   materiaalkleuren in de doorsnede-diagrammen (foliekleur, verf, vuil, glas, kozijnprofiel).
   Die stellen echte dingen voor en horen eruit te zien zoals ze zijn.

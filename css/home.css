@@ -15,9 +15,9 @@ body.home .hero{
   background-repeat:no-repeat;
   background-size:cover;
   background-position:center 62%;
-  background-image:linear-gradient(180deg,rgba(21,33,28,.68) 0%,rgba(21,33,28,.55) 55%,rgba(21,33,28,.82) 100%),url('/images/proces-squeegee.jpg');
+  background-image:linear-gradient(180deg,rgba(30,44,38,.68) 0%,rgba(30,44,38,.55) 55%,rgba(30,44,38,.82) 100%),url('/images/proces-squeegee.jpg');
   /* WebP waar de browser 'm aankan; de regel hierboven blijft de terugval. */
-  background-image:linear-gradient(180deg,rgba(21,33,28,.68) 0%,rgba(21,33,28,.55) 55%,rgba(21,33,28,.82) 100%),image-set(url('/images/proces-squeegee.webp') type('image/webp'),url('/images/proces-squeegee.jpg') type('image/jpeg'));
+  background-image:linear-gradient(180deg,rgba(30,44,38,.68) 0%,rgba(30,44,38,.55) 55%,rgba(30,44,38,.82) 100%),image-set(url('/images/proces-squeegee.webp') type('image/webp'),url('/images/proces-squeegee.jpg') type('image/jpeg'));
 }
 .hero h1{font-size:clamp(2.1rem,5.4vw,3.4rem);max-width:16ch;color:#fff;}
 .hero p.lede{max-width:52ch;margin-top:18px;color:rgba(255,255,255,.9);font-size:1.15rem;}
@@ -70,8 +70,8 @@ body.home .hero{
   transition:opacity .35s ease;
 }
 .path.herstel:hover .damage{opacity:1;}
-.path.herstel .damage path{fill:none;stroke:#7e9385;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:.75;}
-.path.herstel .damage path:first-child{fill:#7e9385;stroke:none;}
+.path.herstel .damage path{fill:none;stroke:#8aa294;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:.75;}
+.path.herstel .damage path:first-child{fill:#8aa294;stroke:none;}
 
 .head-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px;position:relative;z-index:1;}
 /* De polaroid is fors hoger dan de kleurstalen ernaast. Een gelijke minimum-
@@ -80,13 +80,13 @@ body.home .hero{
 @media (min-width:761px){ .head-row{min-height:94px;} }
 @media (min-width:901px){ .head-row{min-height:123px;} }
 .path .tag{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;display:inline-block;width:fit-content;margin:0;background:rgba(255,255,255,.22);}
-.path.herstel .tag{background:rgba(27,51,42,.12);color:var(--cream-ink);}
+.path.herstel .tag{background:rgba(38,56,47,.12);color:var(--cream-ink);}
 /* Vaste hoogte van twee regels, zodat de twee koppen naast elkaar op dezelfde
    hoogte beginnen ook als er maar één regel tekst in past. */
 .path h2{font-size:1.9rem;color:#fff;position:relative;z-index:1;min-height:2.2em;text-wrap:balance;}
 .path.herstel h2{color:var(--cream-ink);}
 .path p{color:rgba(255,255,255,.92);font-size:1.02rem;flex-grow:1;position:relative;z-index:1;}
-.path.herstel p{color:rgba(27,51,42,.82);}
+.path.herstel p{color:rgba(38,56,47,.82);}
 .path .go{font-family:'Karla',sans-serif;font-weight:700;font-size:.92rem;margin-top:20px;display:inline-flex;align-items:center;gap:6px;transition:gap .25s ease;position:relative;z-index:1;}
 .path:hover .go{gap:11px;}
 @media (max-width:760px){ .path h2{min-height:0;} }
@@ -127,15 +127,15 @@ body.home .hero{
    hetzelfde deed als de twee kaarten erboven. Nu één blok dat vooral duidelijk
    maakt dat je er een prijsindicatie krijgt — dat is de reden om 'm te doen. */
 .kh-panel{background:var(--cream);border-radius:14px;padding:40px 40px 36px;margin-top:28px;text-align:center;}
-.kh-panel-label{display:inline-block;font-family:'Karla',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(27,51,42,.62);margin-bottom:12px;}
+.kh-panel-label{display:inline-block;font-family:'Karla',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(38,56,47,.62);margin-bottom:12px;}
 .kh-panel h3{font-size:clamp(1.45rem,3.2vw,1.95rem);color:var(--cream-ink);margin:0 0 12px;text-wrap:balance;}
-.kh-panel p{max-width:56ch;margin:0 auto 22px;color:rgba(27,51,42,.85);font-size:1.02rem;}
+.kh-panel p{max-width:56ch;margin:0 auto 22px;color:rgba(38,56,47,.85);font-size:1.02rem;}
 .kh-panel-punten{list-style:none;margin:0 0 26px;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;}
 .kh-panel-punten li{display:inline-flex;align-items:center;gap:9px;font-family:'Karla',sans-serif;font-size:.94rem;font-weight:500;color:var(--cream-ink);}
 .kh-panel-punten li::before{content:"✓";flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--accent-deep);color:#fff;font-size:.66rem;}
 .kh-panel-punten li:first-child{font-weight:700;}
-.kh-panel-link{display:inline-flex;align-items:center;gap:8px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:1rem;text-decoration:none;padding:16px 34px;border-radius:120px;box-shadow:0 10px 24px -14px rgba(27,51,42,.9);transition:background .2s ease, transform .2s ease;}
-.kh-panel-link:hover{background:#164534;transform:translateY(-2px);}
+.kh-panel-link{display:inline-flex;align-items:center;gap:8px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:1rem;text-decoration:none;padding:16px 34px;border-radius:120px;box-shadow:0 10px 24px -14px rgba(38,56,47,.9);transition:background .2s ease, transform .2s ease;}
+.kh-panel-link:hover{background:#2C5744;transform:translateY(-2px);}
 @media (prefers-reduced-motion: reduce){ .kh-panel-link:hover{transform:none;} }
 /* Op een smal scherm wordt gecentreerde lopende tekst een rommelige ruit; links
    uitlijnen leest daar rustiger. De kop blijft wel gecentreerd. */
@@ -153,4 +153,4 @@ body.home .hero{
 .blog-teaser .teaser-arrow{display:block;margin:0 auto 6px;}
 .blog-teaser p{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;margin:0 0 18px;color:var(--ink);}
 .blog-teaser .teaser-link{display:inline-flex;align-items:center;gap:8px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:13px 26px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
-.blog-teaser .teaser-link:hover{background:#164534;transform:translateY(-2px);}
+.blog-teaser .teaser-link:hover{background:#2C5744;transform:translateY(-2px);}
