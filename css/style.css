@@ -66,13 +66,17 @@ header.site{padding:20px 0;position:relative;z-index:70;}
    cursieve schreef boven een zware schreefloze, strak op elkaar gestapeld. */
 .brand{display:inline-flex;flex-direction:column;line-height:.8;text-decoration:none;transition:opacity .2s ease;}
 .brand:hover{opacity:.72;}
-.brand-lockup{display:flex;flex-direction:column;}
+/* Woordmerk en slogan naast elkaar in plaats van gestapeld: drie regels onder
+   elkaar maakten van het logo een tekstblok, en er stond ruim 250px ongebruikte
+   ruimte naast. Zo blijft de balk ook laag. */
+.brand-lockup{display:flex;align-items:center;gap:20px;}
 .brand .w1{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:400;font-size:1.34rem;letter-spacing:-.005em;color:var(--accent-deep);margin-left:.55em;}
 .brand .w2{font-family:'Karla',Arial,sans-serif;font-weight:800;font-size:1.82rem;letter-spacing:-.045em;color:var(--ink);}
 /* De slogan hangt onder het woordmerk en lijnt uit met "wrap", niet met het
    ingesprongen "kozijn". Staat alleen op de homepage: daar introduceer je het
    merk, elders kost hij alleen ruimte. */
-.brand-slogan{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:.82rem;color:var(--sub);margin:7px 0 0;padding-left:1px;letter-spacing:.005em;}
+.brand-slogan{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:.92rem;line-height:1.32;color:var(--sub);margin:0;padding-left:20px;border-left:1px solid var(--line);max-width:19ch;}
+@media (max-width:1000px){ .brand-slogan{display:none;} }
 .brand .tld{font-size:.4em;font-weight:700;letter-spacing:0;vertical-align:super;margin-left:.1em;color:var(--accent-deep);opacity:.75;}
 
 .navlinks{display:flex;flex-wrap:wrap;gap:22px;font-family:'Karla',Arial,sans-serif;font-size:.85rem;}
@@ -169,7 +173,6 @@ header.site{padding:20px 0;position:relative;z-index:70;}
 @media (max-width:560px){
   .brand .w1{font-size:1.06rem;}
   .brand .w2{font-size:1.42rem;}
-  .brand-slogan{font-size:.76rem;margin-top:5px;}
   .navlinks{gap:12px;font-size:.8rem;}
   .nav-right{gap:10px 14px;width:100%;justify-content:space-between;}
   .nav-cta{padding:8px 16px;}
