@@ -69,6 +69,9 @@ css/
   keuzehulp.css       Alleen de keuzehulp
 
 images/               Elke foto als .webp met een .jpg ernaast als terugval
+  og-image-v2.jpg     Deelafbeelding (WhatsApp, LinkedIn). Geef die bij elke herziening
+                      een nieuw volgnummer: /images/ staat op een cache van een jaar met
+                      immutable, dus onder dezelfde naam blijft de oude hangen.
 ```
 
 ## Bewegingen
@@ -92,7 +95,11 @@ statisch. Alles staat achter `prefers-reduced-motion: no-preference`.
 - **Favicon**: wél een beeldmerk, want een woordmerk van twee regels is op 16px
   onleesbaar. Een kozijn van voren met de onderdorpel in goud — de dorpel is bijna altijd
   het eerst versleten. Staat als `FAVICON` in `build.py`.
-- **Slogan**: "Weet wat je kozijn nodig heeft" — constante `SLOGAN` in `build.py`.
+- **Slogan**: "Weet wat je kozijn nodig heeft" — constante `SLOGAN` in `build.py`. Staat
+  als lockup onder het woordmerk in de header (alléén op de homepage), in de footer, en
+  op de deelafbeelding.
+- **Accentstreep** onder koppen: `.rule` — twee gestapelde balken, kort en zwaar boven
+  lang en licht. Dezelfde opbouw als het woordmerk. Verving een handgetekend golfje.
 - **Kleur**: diep groen als merkkleur. Dat verbindt deze site met iWrap (salie) en
   houtnerffolie.nl (donkergroen), en het draagt het argument — herstellen in plaats van
   vervangen. Alles loopt via de variabelen in `:root` in `style.css`.

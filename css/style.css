@@ -66,8 +66,13 @@ header.site{padding:20px 0;position:relative;z-index:70;}
    cursieve schreef boven een zware schreefloze, strak op elkaar gestapeld. */
 .brand{display:inline-flex;flex-direction:column;line-height:.8;text-decoration:none;transition:opacity .2s ease;}
 .brand:hover{opacity:.72;}
-.brand .w1{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:400;font-size:1.16rem;letter-spacing:-.005em;color:var(--accent-deep);margin-left:.55em;}
-.brand .w2{font-family:'Karla',Arial,sans-serif;font-weight:800;font-size:1.54rem;letter-spacing:-.045em;color:var(--ink);}
+.brand-lockup{display:flex;flex-direction:column;}
+.brand .w1{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:400;font-size:1.34rem;letter-spacing:-.005em;color:var(--accent-deep);margin-left:.55em;}
+.brand .w2{font-family:'Karla',Arial,sans-serif;font-weight:800;font-size:1.82rem;letter-spacing:-.045em;color:var(--ink);}
+/* De slogan hangt onder het woordmerk en lijnt uit met "wrap", niet met het
+   ingesprongen "kozijn". Staat alleen op de homepage: daar introduceer je het
+   merk, elders kost hij alleen ruimte. */
+.brand-slogan{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:.82rem;color:var(--sub);margin:7px 0 0;padding-left:1px;letter-spacing:.005em;}
 .brand .tld{font-size:.4em;font-weight:700;letter-spacing:0;vertical-align:super;margin-left:.1em;color:var(--accent-deep);opacity:.75;}
 
 .navlinks{display:flex;flex-wrap:wrap;gap:22px;font-family:'Karla',Arial,sans-serif;font-size:.85rem;}
@@ -162,8 +167,9 @@ header.site{padding:20px 0;position:relative;z-index:70;}
    gaat dan gewoon naar het overzicht. */
 @media (max-width:760px){ .dd{display:none;} .dd-caret{display:none;} }
 @media (max-width:560px){
-  .brand .w1{font-size:.94rem;}
-  .brand .w2{font-size:1.2rem;}
+  .brand .w1{font-size:1.06rem;}
+  .brand .w2{font-size:1.42rem;}
+  .brand-slogan{font-size:.76rem;margin-top:5px;}
   .navlinks{gap:12px;font-size:.8rem;}
   .nav-right{gap:10px 14px;width:100%;justify-content:space-between;}
   .nav-cta{padding:8px 16px;}
@@ -229,3 +235,19 @@ footer .fbrand .fslogan{font-family:'Fraunces',serif;font-size:1.02rem;color:var
 
 /* Een streep in de merkkleur boven de footer, als afsluiting van de pagina. */
 footer{border-top:3px solid var(--accent);}
+
+/* Accentstreep onder een kop. Verving een handgetekend golfje dat niet paste bij
+   de rest; deze opbouw — kort en zwaar boven lang en licht — is dezelfde als die
+   van het woordmerk. */
+.rule{display:block;margin:6px 0 20px;}
+.rule::before,.rule::after{content:"";display:block;height:4px;border-radius:4px;}
+.rule::before{width:52px;background:var(--accent);}
+.rule::after{width:104px;margin-top:5px;background:var(--line);opacity:.85;}
+body.home .rule::before,
+body.theme-wrap .rule::before,
+body.theme-blog .rule::before{background:var(--accent-light);}
+body.home .rule::after,
+body.theme-wrap .rule::after,
+body.theme-blog .rule::after{background:rgba(255,255,255,.28);}
+body.theme-herstel .rule::before{background:var(--accent-deep);}
+body.theme-herstel .rule::after{background:rgba(38,56,47,.22);}

@@ -121,6 +121,9 @@ def blog_menu():
 
 def render_nav(slug):
     current = "blog/index" if slug.startswith("blog/") else slug
+    slogan_regel = (
+        '      <p class="brand-slogan">%s</p>\n' % SLOGAN if slug == "index" else ""
+    )
     groepen = blog_menu()
 
     def kolom(titel, items):
@@ -166,7 +169,10 @@ def render_nav(slug):
     return (
         '<header class="site">\n'
         '  <div class="nav">\n'
-        '    <a class="brand" href="/" aria-label="kozijnwrap.nl, naar de homepage">%s</a>\n'
+        '    <div class="brand-lockup">\n'
+        '      <a class="brand" href="/" aria-label="kozijnwrap.nl, naar de homepage">%s</a>\n'
+        '%s'
+        '    </div>\n'
         '    <div class="nav-right">\n'
         '    <nav class="navlinks" aria-label="Hoofdnavigatie">\n'
         "%s\n"
@@ -174,7 +180,7 @@ def render_nav(slug):
         "%s\n"
         "    </div>\n"
         "  </div>\n"
-        "</header>" % (WORDMARK, "\n".join(links), offerte)
+        "</header>" % (WORDMARK, slogan_regel, "\n".join(links), offerte)
     )
 
 
@@ -242,7 +248,9 @@ def render_head(meta, ver):
     url = SITE + url_for(meta["slug"])
     og_title = meta.get("ogTitle") or meta["title"]
     og_desc = meta.get("ogDescription") or meta["description"]
-    img = SITE + "/images/og-image.jpg"
+    # Nieuwe bestandsnaam bij elke herziening: /images/ staat op een cache van een
+    # jaar met immutable, dus onder dezelfde naam zou de oude afbeelding blijven hangen.
+    img = SITE + "/images/og-image-v2.jpg"
 
     # De losse .html-URL's uit de oorspronkelijke structured data meeschrijven
     # naar de schone URL's, zodat canonical en schema niet uit elkaar lopen.
