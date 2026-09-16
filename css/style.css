@@ -59,10 +59,15 @@ summary:focus-visible,
    uitklapmenu er anders achter verdwijnt. */
 header.site{padding:20px 0;position:relative;z-index:70;}
 .nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;max-width:1100px;margin:0 auto;padding:0 24px;}
-.brand{font-family:'Fraunces',serif;font-weight:700;text-decoration:none;color:var(--accent-deep);font-size:1.3rem;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:9px;transition:opacity .2s ease;}
-.brand:hover{opacity:.75;}
-.brand .logo-mark{flex-shrink:0;transition:transform .3s ease;}
-.brand:hover .logo-mark{transform:rotate(-6deg) scale(1.08);}
+/* Woordmerk. De naam is echte tekst — geen plaatje — dus voorleessoftware en
+   zoekmachines lezen 'm gewoon. De spanning zit in het contrast: een lichte
+   cursieve schreef boven een zware schreefloze, strak op elkaar gestapeld. */
+.brand{display:inline-flex;flex-direction:column;line-height:.8;text-decoration:none;transition:opacity .2s ease;}
+.brand:hover{opacity:.72;}
+.brand .w1{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:400;font-size:1.16rem;letter-spacing:-.005em;color:var(--accent-deep);margin-left:.55em;}
+.brand .w2{font-family:'Karla',Arial,sans-serif;font-weight:800;font-size:1.54rem;letter-spacing:-.045em;color:var(--ink);}
+.brand .tld{font-size:.4em;font-weight:700;letter-spacing:0;vertical-align:super;margin-left:.1em;color:var(--accent-deep);}
+
 .navlinks{display:flex;flex-wrap:wrap;gap:22px;font-family:'Karla',Arial,sans-serif;font-size:.85rem;}
 .navlinks a{color:var(--sub);text-decoration:none;position:relative;padding-bottom:2px;transition:color .2s ease;}
 .navlinks a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--accent);transition:right .25s ease;}
@@ -155,7 +160,8 @@ header.site{padding:20px 0;position:relative;z-index:70;}
    gaat dan gewoon naar het overzicht. */
 @media (max-width:760px){ .dd{display:none;} .dd-caret{display:none;} }
 @media (max-width:560px){
-  .brand{font-size:1.15rem;}
+  .brand .w1{font-size:.94rem;}
+  .brand .w2{font-size:1.2rem;}
   .navlinks{gap:12px;font-size:.8rem;}
   .nav-right{gap:10px 14px;width:100%;justify-content:space-between;}
   .nav-cta{padding:8px 16px;}

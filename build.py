@@ -61,11 +61,9 @@ FAVICON = (
     "<path d='M14 40h36v8H14z' fill='%23a9863f'/></svg>"
 )
 
-LOGO_MARK = (
-    '<svg class="logo-mark" width="26" height="26" viewBox="0 0 64 64" aria-hidden="true">'
-    '<rect width="64" height="64" rx="14" fill="#24272a"/>'
-    '<path d="M14 12h36v36H14z M22 20v20h20V20z" fill="#f1e8d3" fill-rule="evenodd"/>'
-    '<path d="M14 40h36v8H14z" fill="#a9863f"/></svg>'
+WORDMARK = (
+    '<span class="w1">kozijn</span>'
+    '<span class="w2">wrap<span class="tld">.nl</span></span>'
 )
 
 # Staat onder de merknaam in de footer. Eén plek, dus makkelijk te wisselen.
@@ -94,8 +92,8 @@ def css_version():
 
 def fonts_href(extra_montserrat):
     fams = [
-        "family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700",
-        "family=Karla:wght@400;500;700",
+        "family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400",
+        "family=Karla:wght@400;500;700;800",
     ]
     if extra_montserrat:
         fams.append("family=Montserrat:wght@400;500;600;700")
@@ -168,7 +166,7 @@ def render_nav(slug):
     return (
         '<header class="site">\n'
         '  <div class="nav">\n'
-        '    <a class="brand" href="/">%s kozijnwrap.nl</a>\n'
+        '    <a class="brand" href="/" aria-label="kozijnwrap.nl, naar de homepage">%s</a>\n'
         '    <div class="nav-right">\n'
         '    <nav class="navlinks" aria-label="Hoofdnavigatie">\n'
         "%s\n"
@@ -176,7 +174,7 @@ def render_nav(slug):
         "%s\n"
         "    </div>\n"
         "  </div>\n"
-        "</header>" % (LOGO_MARK, "\n".join(links), offerte)
+        "</header>" % (WORDMARK, "\n".join(links), offerte)
     )
 
 

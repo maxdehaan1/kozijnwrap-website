@@ -76,9 +76,14 @@ images/               Elke foto als .webp met een .jpg ernaast als terugval
 - **Letters**: Fraunces (koppen) en Karla (lopende tekst). Montserrat staat alléén op
   kozijnherstel.html, voor het iWrap-blok — dat leent bewust de eigen huisstijl van iWrap,
   zodat zichtbaar is dat daar het uitvoerende bedrijf aan het woord is.
-- **Beeldmerk**: een kozijn van voren met de onderdorpel in goud — de dorpel is bijna
-  altijd het eerst versleten, en goud staat voor de nieuwe folie. Staat als `LOGO_MARK`
-  en `FAVICON` in `build.py`; die twee moeten gelijk blijven.
+- **Woordmerk**: de naam ís het logo — `kozijn` in Fraunces cursief boven `wrap.nl` in
+  Karla 800, strak gestapeld. De spanning zit in het contrast tussen de lichte schreef en
+  de zware schreefloze, niet in een icoon. Het blijft échte tekst (geen plaatje), dus
+  voorleessoftware en zoekmachines lezen de naam gewoon. Markup staat als `WORDMARK` in
+  `build.py`, opmaak onder `.brand` in `style.css`; die twee horen bij elkaar.
+- **Favicon**: wél een beeldmerk, want een woordmerk van twee regels is op 16px
+  onleesbaar. Een kozijn van voren met de onderdorpel in goud — de dorpel is bijna altijd
+  het eerst versleten. Staat als `FAVICON` in `build.py`.
 - **Slogan**: "Weet wat je kozijn nodig heeft" — constante `SLOGAN` in `build.py`.
 - **Kleur**: crème (`--cream`) voor kozijnherstel, antraciet (`--anthracite`) voor
   kozijnwrappen, goud als accent door de hele site.
