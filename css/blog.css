@@ -35,15 +35,15 @@ body.theme-blog .hero h1{max-width:27ch;font-size:clamp(1.85rem,4.2vw,2.45rem);}
 
 /* Getekend in plaats van gefotografeerd: voor deze onderwerpen bestaat geen
    eerlijke foto, en een diagram legt de opbouw beter uit dan een plaatje. */
-.diagram{background:#fff;border:1px solid #e6e1d3;border-radius:12px;padding:26px 26px 20px;margin:26px 0;}
+.diagram{background:#fff;border:1px solid #dce4dd;border-radius:12px;padding:26px 26px 20px;margin:26px 0;}
 /* Een diagram dat in een kolom van 320px wordt geperst, schaalt zijn labels mee
    tot ze onleesbaar zijn. Onder de minimumbreedte schuift hij daarom horizontaal
    in plaats van verder te krimpen — het bijschrift blijft wél gewoon staan. */
 .diagram .dg-scroll{overflow-x:auto;overscroll-behavior-x:contain;}
 .diagram svg{display:block;width:100%;height:auto;min-width:520px;}
-.diagram figcaption{margin-top:14px;padding-top:14px;border-top:1px solid #efeade;}
+.diagram figcaption{margin-top:14px;padding-top:14px;border-top:1px solid #e7ede7;}
 .diagram .dg-label{font-family:'Karla',sans-serif;font-size:15px;font-weight:700;fill:var(--ink);}
-.diagram .dg-sub{font-family:'Karla',sans-serif;font-size:13px;fill:#6b685f;}
+.diagram .dg-sub{font-family:'Karla',sans-serif;font-size:13px;fill:#5a665f;}
 .diagram .dg-num{font-family:'Karla',sans-serif;font-size:13px;font-weight:700;fill:#fff;}
 
 /* Auteursregel ---------------------------------------------------------------- */
@@ -52,7 +52,7 @@ body.theme-blog .hero h1{max-width:27ch;font-size:clamp(1.85rem,4.2vw,2.45rem);}
    bronvermelding: dat dit uit tien jaar praktijk komt, is precies wat het advies
    geloofwaardig maakt. */
 .author-box{border-top:1px solid var(--line);margin-top:40px;padding-top:30px;}
-.author-inner{display:flex;gap:20px;align-items:flex-start;background:#fff;border:1px solid #e6e1d3;border-radius:14px;padding:24px 26px;}
+.author-inner{display:flex;gap:20px;align-items:flex-start;background:#fff;border:1px solid #dce4dd;border-radius:14px;padding:24px 26px;}
 .author-mark{flex-shrink:0;width:52px;height:52px;border-radius:12px;background:var(--anthracite-deep);color:var(--cream);font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;display:flex;align-items:center;justify-content:center;letter-spacing:-.02em;}
 .author-box p{margin:0;max-width:62ch;}
 .author-name{font-family:'Fraunces',serif;font-size:1.1rem;margin-bottom:6px !important;}
@@ -64,12 +64,12 @@ body.theme-blog .hero h1{max-width:27ch;font-size:clamp(1.85rem,4.2vw,2.45rem);}
 
 /* Afsluitende doorverwijzing -------------------------------------------------- */
 
-.article-cta{background:#fff;border:1px solid #e4dfd0;border-radius:14px;padding:28px 30px;margin-top:8px;}
+.article-cta{background:#fff;border:1px solid #dbe3dc;border-radius:14px;padding:28px 30px;margin-top:8px;}
 .article-cta .post-tag{margin-bottom:12px;}
 .article-cta h3{margin:0 0 8px;font-size:1.2rem;}
 .article-cta p{color:var(--sub);margin:0 0 18px;max-width:none;}
 .article-cta .cta-row{display:flex;flex-wrap:wrap;gap:10px;}
 .article-cta a.cta-link{display:inline-flex;align-items:center;gap:6px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:11px 22px;border-radius:120px;transition:background .2s ease;}
-.article-cta a.cta-link:hover{background:#73591f;}
-.article-cta a.cta-link.ghost{background:#fff;color:var(--accent-deep);border:1.5px solid #e0d9c6;}
-.article-cta a.cta-link.ghost:hover{background:#faf7f0;}
+.article-cta a.cta-link:hover{background:#164534;}
+.article-cta a.cta-link.ghost{background:#fff;color:var(--accent-deep);border:1.5px solid #d9e1da;}
+.article-cta a.cta-link.ghost:hover{background:#f2f6f2;}

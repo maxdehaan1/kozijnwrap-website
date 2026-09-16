@@ -56,9 +56,9 @@ IWRAP = {
 # staat voor de nieuwe folie. Leesbaar tot 16px, waar een fijnere tekening dichtslibt.
 FAVICON = (
     "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>"
-    "<rect width='64' height='64' rx='14' fill='%2324272a'/>"
-    "<path d='M14 12h36v36H14z M22 20v20h20V20z' fill='%23f1e8d3' fill-rule='evenodd'/>"
-    "<path d='M14 40h36v8H14z' fill='%23a9863f'/></svg>"
+    "<rect width='64' height='64' rx='14' fill='%2315211C'/>"
+    "<path d='M14 12h36v36H14z M22 20v20h20V20z' fill='%23E4EDE7' fill-rule='evenodd'/>"
+    "<path d='M14 40h36v8H14z' fill='%232F7355'/></svg>"
 )
 
 WORDMARK = (

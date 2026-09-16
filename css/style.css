@@ -5,21 +5,23 @@
    --------------------------------------------------------------------------- */
 
 :root{
-  --grey:#f7f4ee;
-  --ink:#26241f;
+  --grey:#F4F6F4;
+  --ink:#15211C;
   --white:#ffffff;
-  --cream:#f1e8d3;
-  --cream-ink:#3a3226;
-  --anthracite:#34383b;
-  --anthracite-deep:#24272a;
-  --sub:#6b685f;
-  --line:#d9d5c9;
-  /* Twee tinten goud met een duidelijke taakverdeling: --accent voor lijnen,
-     iconen en randen, --accent-deep overal waar tekst bovenop komt. Het lichte
-     goud haalt met wit maar 3,4:1 en blijft daarom uit knoppen. */
-  --accent:#a9863f;
-  --accent-deep:#8a6c30;
-  --accent-light:#d4ab5c; /* tegenhanger voor tekst op de donkere vlakken */
+  --cream:#E4EDE7;
+  --cream-ink:#1B332A;
+  --anthracite:#24453A;
+  --anthracite-deep:#16291F;
+  --sub:#5A665F;
+  --line:#D5DED7;
+  /* Diep groen als merkkleur: het verbindt deze site met iWrap en
+     houtnerffolie.nl, en het draagt het argument — herstellen in plaats van
+     vervangen. Taakverdeling: --accent voor lijnen, iconen en randen,
+     --accent-deep overal waar tekst bovenop komt (die haalt 7,0:1 met wit),
+     --accent-light voor tekst op de donkere vlakken. */
+  --accent:#2F7355;
+  --accent-deep:#1E5540;
+  --accent-light:#8FC7A9; /* tegenhanger voor tekst op de donkere vlakken */
 }
 
 *{box-sizing:border-box;}
@@ -64,7 +66,7 @@ header.site{padding:20px 0;position:relative;z-index:70;}
    cursieve schreef boven een zware schreefloze, strak op elkaar gestapeld. */
 .brand{display:inline-flex;flex-direction:column;line-height:.8;text-decoration:none;transition:opacity .2s ease;}
 .brand:hover{opacity:.72;}
-.brand .w1{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:400;font-size:1.16rem;letter-spacing:-.005em;color:var(--accent-deep);margin-left:.55em;}
+.brand .w1{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:400;font-size:1.16rem;letter-spacing:-.005em;color:var(--accent);margin-left:.55em;}
 .brand .w2{font-family:'Karla',Arial,sans-serif;font-weight:800;font-size:1.54rem;letter-spacing:-.045em;color:var(--ink);}
 .brand .tld{font-size:.4em;font-weight:700;letter-spacing:0;vertical-align:super;margin-left:.1em;color:var(--accent-deep);}
 
@@ -95,9 +97,9 @@ header.site{padding:20px 0;position:relative;z-index:70;}
   min-width:520px;
   padding:22px 26px 18px;
   background:#fff;
-  border:1px solid #e6e1d3;
+  border:1px solid #dce4dd;
   border-radius:14px;
-  box-shadow:0 24px 48px -24px rgba(38,36,31,.45);
+  box-shadow:0 24px 48px -24px rgba(21,33,28,.45);
   opacity:0;
   visibility:hidden;
   transition:opacity .18s ease, translate .18s ease, visibility 0s .18s;
@@ -109,13 +111,13 @@ header.site{padding:20px 0;position:relative;z-index:70;}
 .has-dd:focus-within .dd{opacity:1;visibility:visible;translate:0 0;transition-delay:0s;}
 
 .dd-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;}
-.dd-kop{font-family:'Karla',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--sub);margin:0 0 8px;padding-bottom:7px;border-bottom:1px solid #eee7d8;}
+.dd-kop{font-family:'Karla',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--sub);margin:0 0 8px;padding-bottom:7px;border-bottom:1px solid #e2eae3;}
 .dd-col ul{list-style:none;margin:0;padding:0;}
 .dd-col li + li{margin-top:1px;}
 .dd .dd-col a{display:block;padding:7px 9px;margin:0 -9px;border-radius:7px;font-size:.88rem;line-height:1.35;color:var(--ink);text-decoration:none;transition:background .15s ease, color .15s ease;}
 .dd .dd-col a::after{display:none;}
-.dd .dd-col a:hover{background:rgba(169,134,63,.1);color:var(--accent-deep);}
-.dd-alle{display:inline-block;margin-top:16px;padding-top:14px;border-top:1px solid #eee7d8;width:100%;font-family:'Karla',sans-serif;font-size:.83rem;font-weight:700;color:var(--accent-deep);text-decoration:none;}
+.dd .dd-col a:hover{background:rgba(47,115,85,.1);color:var(--accent-deep);}
+.dd-alle{display:inline-block;margin-top:16px;padding-top:14px;border-top:1px solid #e2eae3;width:100%;font-family:'Karla',sans-serif;font-size:.83rem;font-weight:700;color:var(--accent-deep);text-decoration:none;}
 .dd-alle::after{display:none;}
 .dd-alle:hover{text-decoration:underline;}
 
@@ -141,11 +143,11 @@ header.site{padding:20px 0;position:relative;z-index:70;}
 }
 .nav-cta-sub{font-family:'Karla',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-light);}
 .nav-cta-main{font-family:'Karla',sans-serif;font-size:.92rem;font-weight:700;white-space:nowrap;}
-.nav-cta:hover{background:#171a1c;transform:translateY(-2px);}
+.nav-cta:hover{background:#0e1813;transform:translateY(-2px);}
 /* Glans die bij hover één keer overloopt. */
-.nav-cta::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(212,171,92,.3) 50%,transparent 65%);translate:-100% 0;}
+.nav-cta::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(143,199,169,.3) 50%,transparent 65%);translate:-100% 0;}
 .nav-cta:hover::after{animation:cta-sheen .75s ease-out;}
-@keyframes cta-glow{0%,100%{box-shadow:0 0 0 0 rgba(169,134,63,0);}50%{box-shadow:0 0 0 5px rgba(169,134,63,.16);}}
+@keyframes cta-glow{0%,100%{box-shadow:0 0 0 0 rgba(47,115,85,0);}50%{box-shadow:0 0 0 5px rgba(47,115,85,.16);}}
 @keyframes cta-sheen{to{translate:100% 0;}}
 
 @media (prefers-reduced-motion: reduce){
@@ -191,17 +193,17 @@ header.site{padding:20px 0;position:relative;z-index:70;}
 
 /* Footer ------------------------------------------------------------------- */
 
-footer{background:var(--ink);color:#97948d;padding:38px 0 34px;font-size:.85rem;font-family:'Karla',sans-serif;}
+footer{background:var(--ink);color:#9aa79e;padding:38px 0 34px;font-size:.85rem;font-family:'Karla',sans-serif;}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px 48px;align-items:flex-start;max-width:1100px;}
 footer .fbrand strong{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:#fff;display:block;margin-bottom:6px;}
 footer .fbrand p{max-width:44ch;margin:0;line-height:1.5;}
-footer .fbrand .fby{margin-top:8px;color:#b9b7b0;}
+footer .fbrand .fby{margin-top:8px;color:#b4c0b8;}
 /* Deze link staat in een <p> en kreeg daardoor het donkere accentgoud van de
    lopende tekst — op de donkere footer maar 3,1:1. */
 footer .fbrand .fby a{color:#fff;text-decoration:underline;}
 footer .fbrand .fby a:hover{color:#fff;text-decoration:none;}
 footer .flinks{line-height:1.9;}
-footer a{color:#e7e5df;text-decoration:none;}
+footer a{color:#e3ebe5;text-decoration:none;}
 footer a:hover{color:#fff;text-decoration:underline;}
 
 /* Slogan onder de merknaam in de footer. */

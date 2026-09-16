@@ -7,7 +7,7 @@
 .kh-step[hidden]{display:none !important;}
 
 .kh-progress{font-family:'Karla',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sub);margin-bottom:10px;}
-.kh-bar{height:4px;border-radius:4px;background:#e6e1d3;overflow:hidden;margin-bottom:28px;}
+.kh-bar{height:4px;border-radius:4px;background:#dce4dd;overflow:hidden;margin-bottom:28px;}
 .kh-bar span{display:block;height:100%;background:var(--accent);border-radius:4px;transition:width .3s ease;}
 
 .kh h2{font-size:1.6rem;margin-bottom:6px;text-wrap:balance;}
@@ -21,7 +21,7 @@
   width:100%;
   text-align:left;
   background:#fff;
-  border:1.5px solid #e0dbcc;
+  border:1.5px solid #d9e1da;
   border-radius:11px;
   padding:17px 20px;
   font-family:'Karla',Arial,sans-serif;
@@ -30,9 +30,9 @@
   cursor:pointer;
   transition:border-color .18s ease, background .18s ease, transform .18s ease;
 }
-.kh-opt:hover{border-color:var(--accent);background:#fffdf8;transform:translateX(3px);}
-.kh-opt .kh-mark{flex-shrink:0;width:22px;height:22px;border-radius:50%;border:2px solid #d3cdbb;transition:border-color .18s ease, background .18s ease;}
-.kh-opt:hover .kh-mark{border-color:var(--accent);background:rgba(169,134,63,.14);}
+.kh-opt:hover{border-color:var(--accent);background:#fafcfa;transform:translateX(3px);}
+.kh-opt .kh-mark{flex-shrink:0;width:22px;height:22px;border-radius:50%;border:2px solid #cbd6cd;transition:border-color .18s ease, background .18s ease;}
+.kh-opt:hover .kh-mark{border-color:var(--accent);background:rgba(47,115,85,.14);}
 .kh-opt b{display:block;font-weight:700;}
 .kh-opt small{display:block;color:var(--sub);font-size:.87rem;margin-top:2px;line-height:1.4;}
 
@@ -41,29 +41,29 @@
 
 /* Uitkomst ------------------------------------------------------------------- */
 
-.kh-result{border-radius:14px;padding:30px 32px;border:1px solid #e4dfd0;background:#fff;}
+.kh-result{border-radius:14px;padding:30px 32px;border:1px solid #dbe3dc;background:#fff;}
 .kh-result .kh-verdict{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:20px;display:inline-block;margin-bottom:14px;}
 .kh-result h2{font-size:1.5rem;}
 .kh-result p{font-size:1rem;max-width:58ch;}
 /* De prijsindicatie is voor veel bezoekers de reden om de keuzehulp in te vullen,
    dus die krijgt een eigen vlak in plaats van een regel tussen de tekst. */
 .kh-prijsblok{background:var(--cream);border-radius:10px;padding:18px 20px;margin:22px 0 4px;}
-.kh-prijslabel{display:inline-block;font-family:'Karla',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(58,50,38,.7);margin-bottom:4px;}
+.kh-prijslabel{display:inline-block;font-family:'Karla',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(27,51,42,.7);margin-bottom:4px;}
 .kh-result .kh-price{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;color:var(--cream-ink);margin:0 0 8px;}
-.kh-result .kh-prijsblok .kh-hint{margin:0;font-size:.9rem;color:rgba(58,50,38,.78);}
+.kh-result .kh-prijsblok .kh-hint{margin:0;font-size:.9rem;color:rgba(27,51,42,.78);}
 .kh-result .kh-prijsblok .kh-hint a{color:var(--accent-deep);}
 
 /* Groen als wij kunnen helpen, neutraal als we eerlijk doorverwijzen. */
 .kh-result.go{border-left:5px solid var(--accent);}
 .kh-result.go .kh-verdict{background:var(--cream);color:var(--cream-ink);}
-.kh-result.stop{border-left:5px solid #b9b3a3;}
-.kh-result.stop .kh-verdict{background:#ece8dd;color:#5c574a;}
+.kh-result.stop{border-left:5px solid #aeb8b0;}
+.kh-result.stop .kh-verdict{background:#e6ebe6;color:#4d5a51;}
 
 .kh-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;}
 .kh-cta{display:inline-flex;align-items:center;gap:7px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:14px 26px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
-.kh-cta:hover{background:#73591f;transform:translateY(-2px);}
-.kh-cta.ghost{background:#fff;color:var(--accent-deep);border:1.5px solid #ddd6c4;}
-.kh-cta.ghost:hover{background:#faf7f0;color:var(--accent-deep);}
+.kh-cta:hover{background:#164534;transform:translateY(-2px);}
+.kh-cta.ghost{background:#fff;color:var(--accent-deep);border:1.5px solid #d5ded7;}
+.kh-cta.ghost:hover{background:#f2f6f2;color:var(--accent-deep);}
 body.page .kh-actions a{color:inherit;}
 
 .kh-restart{margin-top:20px;font-size:.9rem;color:var(--sub);font-family:'Karla',sans-serif;}

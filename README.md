@@ -85,11 +85,16 @@ images/               Elke foto als .webp met een .jpg ernaast als terugval
   onleesbaar. Een kozijn van voren met de onderdorpel in goud — de dorpel is bijna altijd
   het eerst versleten. Staat als `FAVICON` in `build.py`.
 - **Slogan**: "Weet wat je kozijn nodig heeft" — constante `SLOGAN` in `build.py`.
-- **Kleur**: crème (`--cream`) voor kozijnherstel, antraciet (`--anthracite`) voor
-  kozijnwrappen, goud als accent door de hele site.
-- **Let op bij het goud**: `--accent` is voor lijnen, randen en iconen. Zodra er tekst
-  bovenop komt gebruik je `--accent-deep` (op licht) of `--accent-light` (op donker) —
-  `--accent` haalt met wit maar 3,4:1 en zakt daarmee onder de toegankelijkheidsnorm.
+- **Kleur**: diep groen als merkkleur. Dat verbindt deze site met iWrap (salie) en
+  houtnerffolie.nl (donkergroen), en het draagt het argument — herstellen in plaats van
+  vervangen. Alles loopt via de variabelen in `:root` in `style.css`.
+- **Taakverdeling van het groen**: `--accent` voor lijnen, randen, iconen en het cursieve
+  deel van het woordmerk; `--accent-deep` overal waar tekst bovenop komt (8,7:1 met wit);
+  `--accent-light` voor tekst op de donkere vlakken. De laagste combinatie op de site zit
+  op 5,2:1 — ruim boven de norm van 4,5:1.
+- **Wat níet meekleurt**: de kleurstalen op de wrappen-kaart, de RAL-staaltjes, en de
+  materiaalkleuren in de doorsnede-diagrammen (foliekleur, verf, vuil, glas, kozijnprofiel).
+  Die stellen echte dingen voor en horen eruit te zien zoals ze zijn.
 
 ## URL's
 
