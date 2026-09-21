@@ -138,13 +138,16 @@ Gebruik in de bronbestanden root-relatieve links (`/blog/renolit-folie-uitgelegd
   "kozijn 20 jaar oud — vervangen of niet". Schrijf ze vanuit wat iemand ziét, niet vanuit
   de vakterm: daar zit de kleine particuliere klus, en daar schrijven de grote
   kozijnleveranciers niet over omdat die vervangingsopdrachten willen.
-- **Feiten die op meerdere pagina's staan** en dus samen bijgewerkt moeten worden: de
-  bedragen, "tien jaar fabrieksgarantie op de folie, vijf jaar op de montage", en
-  "profiel 50–75 jaar". Voor de prijzen geldt: **alleen een paar dorpels/losse delen krijgt
-  een bedrag (rond €500)**. Daarboven noemen we bewust geen bandbreedte — de prijs hangt af
-  van het type kozijn en het aantal strekkende meters en loopt te sterk uiteen. Vervanging
-  staat op €1.200–€2.500 per kozijn, nadrukkelijk alléén het kozijn met glas en montage,
-  zónder stucwerk, schilderwerk, vensterbanken en afvoer. Houd het bij die ene formulering:
+- **Er staan geen bedragen meer op de site.** Die zijn eruit gehaald omdat ze alleen
+  klopten bij een paar strekkende meter en daarboven niet in te schatten zijn: een
+  richtprijs die niet opgaat is verwarrend en schrikt af bij klussen die juist
+  overzichtelijk zijn. Hetzelfde geldt op iwrap.nl. Zet er dus ook geen nieuwe
+  bandbreedte in — ook niet voor vervangen. Het argument tegen vervangen zit niet in het
+  getal maar in wat er níet in zo'n offerte staat: stucwerk aan de dagkanten,
+  schilderwerk binnen, vensterbanken en de afvoer van het oude kozijn.
+- **Feiten die op meerdere pagina's staan** en dus samen bijgewerkt moeten worden:
+  "tien jaar fabrieksgarantie op de folie, vijf jaar op de montage" en "profiel 50–75
+  jaar". Houd het bij die ene formulering:
   Renolit folie is één product met één garantietermijn, ongeacht kleur of structuur. Eerder
   stonden er drie verschillende levensduren op de site en dat is voor een klant alleen maar
   verwarrend.
