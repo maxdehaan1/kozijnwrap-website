@@ -120,6 +120,10 @@
 (function () {
   "use strict";
 
+  // De knop naar iWrap. Nu komt de klant op de contactpagina van iwrap.nl; na de
+  // overstap naar de nieuwe site stuurt iwrap.nl deze link (aan de utm-codes
+  // herkend) door naar het offerteformulier, en een VvE naar de pagina voor
+  // VvE's. Wat de klant zag (klacht) gaat mee, zodat dat in de aanvraag staat.
   var OFFERTE = "https://iwrap.nl/contact/?utm_source=kozijnwrap.nl&utm_medium=keuzehulp&utm_campaign=";
 
   var STAPPEN = {
@@ -145,9 +149,9 @@
       vraag: "Wat zie je aan het kozijn?",
       hint: "Kijk vooral naar de hoeken, de randen en de zonkant — daar begint het altijd.",
       opties: [
-        { label: "De kleur is vervaagd, dof of vergeeld", sub: "vaak duidelijk verschil tussen de zon- en de schaduwkant", next: "omvang" },
-        { label: "De folie laat los of bladdert", sub: "meestal het eerst op hoeken en profielranden", next: "omvang" },
-        { label: "Krassen of stootschade in de toplaag", sub: "het profiel eronder is nog heel", next: "omvang" },
+        { label: "De kleur is vervaagd, dof of vergeeld", sub: "vaak duidelijk verschil tussen de zon- en de schaduwkant", next: "omvang", klacht: "verweerd" },
+        { label: "De folie laat los of bladdert", sub: "meestal het eerst op hoeken en profielranden", next: "omvang", klacht: "laat-los" },
+        { label: "Krassen of stootschade in de toplaag", sub: "het profiel eronder is nog heel", next: "omvang", klacht: "scheuren" },
         { label: "Niets, het ziet er nog goed uit", sub: "ik wil puur een andere kleur of uitstraling", uitkomst: "wrappen" }
       ]
     },
@@ -228,6 +232,7 @@
   var elTerug = document.getElementById("kh-terug");
 
   var pad = [];
+  var klacht = "";   // wat de klant zag, gaat mee naar de aanvraag op iwrap.nl
 
   function toonVraag(id, verplaatsFocus) {
     var stap = STAPPEN[id];
@@ -248,6 +253,7 @@
         opt.label + "</b><small>" + opt.sub + "</small></span>";
       knop.addEventListener("click", function () {
         pad.push(id);
+        if (opt.klacht) klacht = opt.klacht;
         if (opt.uitkomst) toonUitkomst(opt.uitkomst, opt.omvang);
         else toonVraag(opt.next, true);
       });
@@ -271,7 +277,7 @@
     var bedrag = (omvang && PRIJS[omvang]) || u.prijs;
     if (bedrag) {
       html += '<div class="kh-prijsblok">' +
-        '<span class="kh-prijslabel">Prijsindicatie</span>' +
+        '<span class="kh-prijslabel">Wat kost het?</span>' +
         '<p class="kh-price">' + bedrag + "</p>" +
         '<p class="kh-hint">' + (omvang && omvang !== "klein"
           ? "De prijs hangt af van het type kozijn en het aantal strekkende meters, en dat loopt flink uiteen. Een serieuze prijs vraagt om een offerte op maat. "
@@ -280,7 +286,12 @@
     }
 
     html += '<div class="kh-actions">';
-    if (u.cta) html += '<a class="kh-cta" href="' + u.ctaHref + '">' + u.cta + " →</a>";
+    var href = u.ctaHref, label = u.cta;
+    if (naam === "herstel") {
+      href = OFFERTE + (omvang === "zakelijk" ? "herstel-zakelijk" : "herstel") + (klacht ? "&klacht=" + klacht : "");
+      if (omvang === "zakelijk") label = "Vraag iWrap om een opname";
+    }
+    if (u.cta) html += '<a class="kh-cta" href="' + href + '">' + label + " →</a>";
     if (u.tweede) html += '<a class="kh-cta ghost" href="' + u.tweede.href + '">' + u.tweede.label + "</a>";
     html += "</div>";
 

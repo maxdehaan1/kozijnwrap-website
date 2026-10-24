@@ -41,8 +41,10 @@ IWRAP = {
     "naam": "iWrap",
     "site": "https://iwrap.nl",
     "offerte": "https://iwrap.nl/contact/",
+    # Score en aantal komen uit reviews.json van iwrap.nl (staat naast deze map,
+    # zie _iwrap_reviews hieronder), zodat de sites hetzelfde zeggen.
     "reviews_score": "4,9",
-    "reviews_aantal": "81",
+    "reviews_aantal": "82",
     "reviews_url": "https://maps.app.goo.gl/C77mS69nK3GGyqz9A?g_st=ic",
     "pitch": (
         "Al meer dan tien jaar gespecialiseerd in het herstellen van kunststof "
@@ -50,6 +52,21 @@ IWRAP = {
         "vakmensen in vaste dienst."
     ),
 }
+
+def _iwrap_reviews():
+    """Reviewscore en -aantal uit ../iwrap-project/reviews.json, het bestand dat
+    iwrap.nl bijhoudt (python3 reviews.py daar). Ontbreekt het, dan blijven de
+    getallen hierboven staan."""
+    pad = Path(__file__).resolve().parent.parent / "iwrap-project" / "reviews.json"
+    try:
+        r = json.loads(pad.read_text(encoding="utf-8"))
+        IWRAP["reviews_score"] = str(r["score"]).replace(".", ",")
+        IWRAP["reviews_aantal"] = str(r["aantal"])
+    except (OSError, ValueError, KeyError):
+        pass
+
+
+_iwrap_reviews()
 
 # Het beeldmerk: een kozijn van voren, met de onderdorpel in goud. Dat is precies
 # het verhaal van de site — de dorpel is bijna altijd het eerst versleten, en goud
@@ -335,6 +352,9 @@ def build():
     pages = sorted(SRC.rglob("*.html"))
     for path in pages:
         meta, body = read_page(path)
+        # Het reviewcijfer van iWrap in de lopende tekst, zodat het nergens vastligt.
+        body = body.replace("{{iwrap.reviews_score}}", IWRAP["reviews_score"]) \
+                   .replace("{{iwrap.reviews_aantal}}", IWRAP["reviews_aantal"])
         out = ROOT / (meta["slug"] + ".html")
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(

@@ -155,3 +155,20 @@ Gebruik in de bronbestanden root-relatieve links (`/blog/renolit-folie-uitgelegd
   artikel [renolit-folie-uitgelegd](src/pages/blog/renolit-folie-uitgelegd.html) legt de
   basis uit en verwijst daarheen in plaats van het over te doen. Ga daar geen kleurenoverzicht
   of specificatietabel bouwen, dan concurreren de twee sites alsnog met elkaar.
+
+## Samenwerking met iwrap.nl
+
+- **De knop na de keuzehulp** gaat naar `iwrap.nl/contact/?utm_source=kozijnwrap.nl&utm_medium=keuzehulp`,
+  met `utm_campaign=herstel` (of `herstel-zakelijk` bij "meerdere panden") en, als de klant
+  bij vraag 3 iets koos, `klacht=verweerd|laat-los|scheuren`. Zolang iwrap.nl op WordPress
+  draait komt de klant op de contactpagina daar. Na de overstap stuurt de nieuwe iwrap.nl
+  deze link door naar het offerteformulier (een VvE naar de VvE-pagina), en staat de klacht
+  en "kozijnwrap.nl (keuzehulp)" als herkomst in de aanvraag. Die doorverwijzingen staan in
+  `vercel.json` van iwrap.nl. Verander de utm-codes hier dus niet zonder ze daar mee te
+  veranderen.
+- **Het reviewcijfer** komt uit `reviews.json` van iwrap.nl (`../iwrap-project/`), via
+  `{{iwrap.reviews_score}}` en `{{iwrap.reviews_aantal}}` in de bron. Na `python3 reviews.py`
+  in iwrap-project: ook hier `python3 build.py`.
+- **Het domein kozijnwrap.nl** moet in het DNS naar Vercel wijzen (bij GPO hosting):
+  A-record `@` naar `76.76.21.21`, CNAME `www` naar `cname.vercel-dns.com`, en het domein
+  toegevoegd in het Vercel-project. Op 24 oktober 2026 wees het nog naar de oude hosting.
