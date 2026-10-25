@@ -55,8 +55,7 @@ IWRAP = {
     "reviews": [],
     "pitch": (
         "Al " + IWRAP_JAREN + " jaar gespecialiseerd in het herstellen van kunststof "
-        "kozijnen met Renolit folie, door heel Nederland, met gecertificeerde "
-        "vakmensen in vaste dienst."
+        "kozijnen met Renolit folie, door heel Nederland. Wij besteden niets uit."
     ),
 }
 
