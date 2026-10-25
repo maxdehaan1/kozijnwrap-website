@@ -13,6 +13,7 @@ import json
 from html import escape
 import re
 import hashlib
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -38,6 +39,9 @@ FOOTER = [("index", "/", "Overzicht")] + NAV + [
 # iWrap staat op één plek gedefinieerd, want reviewscore en aantal veranderen.
 # Deze gegevens komen terug in de auteursregel onder elk artikel, in de footer en
 # in de structured data.
+# Sinds 2014: het aantal jaren rekent zichzelf uit ({{iwrap.jaren}} in de bron).
+IWRAP_JAREN = str(time.localtime().tm_year - 2014)
+
 IWRAP = {
     "naam": "iWrap",
     "site": "https://iwrap.nl",
@@ -49,7 +53,7 @@ IWRAP = {
     "reviews_url": "https://search.google.com/local/reviews?placeid=ChIJyzBbwf-FxkcRIdeuLPGJt9U",
     "reviews": [],
     "pitch": (
-        "Al meer dan tien jaar gespecialiseerd in het herstellen van kunststof "
+        "Al " + IWRAP_JAREN + " jaar gespecialiseerd in het herstellen van kunststof "
         "kozijnen met Renolit folie, door heel Nederland, met gecertificeerde "
         "vakmensen in vaste dienst."
     ),
@@ -403,6 +407,7 @@ def build():
                    .replace("{{iwrap.reviews_score_tekst}}", IWRAP["reviews_score"]) \
                    .replace("{{iwrap.reviews_aantal_tekst}}", IWRAP["reviews_aantal"]) \
                    .replace("{{iwrap.reviews_url}}", IWRAP["reviews_url"]) \
+                   .replace("{{iwrap.jaren}}", IWRAP_JAREN) \
                    .replace("{{iwrap.reviewkaarten}}", render_reviewkaarten())
         auteur = render_author_box(meta["slug"])
         live = "\n" + LIVE_REVIEWS if ("data-rv" in body + auteur or "iwrapReviews" in body) else ""
