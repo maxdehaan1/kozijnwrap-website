@@ -175,4 +175,6 @@ Gebruik in de bronbestanden root-relatieve links (`/blog/renolit-folie-uitgelegd
   `iwrap-website.vercel.app`; het script probeert ze allebei.
 - **Het domein kozijnwrap.nl** moet in het DNS naar Vercel wijzen (bij GPO hosting):
   A-record `@` naar `76.76.21.21`, CNAME `www` naar `cname.vercel-dns.com`, en het domein
-  toegevoegd in het Vercel-project. Op 24 oktober 2026 wees het nog naar de oude hosting.
+  toegevoegd in het Vercel-project. Op 25 oktober 2026 wees het nog naar de oude hosting en
+  stond het domein nog niet in Vercel. De stappen staan in `../iwrap-project/LIVEGANG.md`
+  (stap 4), het draaiboek voor de livegang van alle sites.
