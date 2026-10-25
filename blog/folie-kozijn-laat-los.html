@@ -29,9 +29,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Karla:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css?v=de9af21b">
-<link rel="stylesheet" href="/css/content.css?v=de9af21b">
-<link rel="stylesheet" href="/css/blog.css?v=de9af21b">
+<link rel="stylesheet" href="/css/style.css?v=250e18cb">
+<link rel="stylesheet" href="/css/content.css?v=250e18cb">
+<link rel="stylesheet" href="/css/blog.css?v=250e18cb">
 </head>
 <body class="page theme-blog">
 
@@ -176,7 +176,7 @@
         <p>Al meer dan tien jaar gespecialiseerd in het herstellen van kunststof kozijnen met Renolit folie, door heel Nederland, met gecertificeerde vakmensen in vaste dienst.</p>
         <p class="author-links">
           <a href="https://iwrap.nl?utm_source=kozijnwrap.nl&amp;utm_medium=auteur" target="_blank" rel="noopener">Bekijk iwrap.nl →</a>
-          <a href="https://maps.app.goo.gl/C77mS69nK3GGyqz9A?g_st=ic" target="_blank" rel="noopener">★ 4,9 uit 82 Google-reviews</a>
+          <a href="https://search.google.com/local/reviews?placeid=ChIJyzBbwf-FxkcRIdeuLPGJt9U" target="_blank" rel="noopener">★ <span data-rv="score">4,9</span> uit <span data-rv="aantal">84</span> Google-reviews</a>
         </p>
       </div>
     </div>
@@ -197,5 +197,28 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  var velden = document.querySelectorAll("[data-rv]");
+  function zet(d) {
+    window.iwrapReviews = d;
+    velden.forEach(function (v) { v.textContent = v.getAttribute("data-rv") === "score" ? d.score_tekst : String(d.aantal); });
+  }
+  try {
+    var b = JSON.parse(sessionStorage.getItem("iwrap-reviews"));
+    if (b && b.d && Date.now() - b.t < 1800000) return zet(b.d);
+  } catch (e) {}
+  if (!window.fetch) return;
+  var bronnen = ["https://iwrap.nl/api/reviews", "https://iwrap-website.vercel.app/api/reviews"];
+  (function probeer(i) {
+    if (i >= bronnen.length) return;
+    fetch(bronnen[i]).then(function (r) { if (!r.ok) throw r; return r.json(); }).then(function (d) {
+      if (!d || !d.aantal) throw d;
+      try { sessionStorage.setItem("iwrap-reviews", JSON.stringify({ t: Date.now(), d: d })); } catch (e) {}
+      zet(d);
+    }).catch(function () { probeer(i + 1); });
+  })(0);
+})();
+</script>
 </body>
 </html>

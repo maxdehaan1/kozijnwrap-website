@@ -10,6 +10,7 @@ Gebruik:  python3 build.py
 """
 
 import json
+from html import escape
 import re
 import hashlib
 from pathlib import Path
@@ -44,8 +45,9 @@ IWRAP = {
     # Score en aantal komen uit reviews.json van iwrap.nl (staat naast deze map,
     # zie _iwrap_reviews hieronder), zodat de sites hetzelfde zeggen.
     "reviews_score": "4,9",
-    "reviews_aantal": "82",
-    "reviews_url": "https://maps.app.goo.gl/C77mS69nK3GGyqz9A?g_st=ic",
+    "reviews_aantal": "84",
+    "reviews_url": "https://search.google.com/local/reviews?placeid=ChIJyzBbwf-FxkcRIdeuLPGJt9U",
+    "reviews": [],
     "pitch": (
         "Al meer dan tien jaar gespecialiseerd in het herstellen van kunststof "
         "kozijnen met Renolit folie, door heel Nederland, met gecertificeerde "
@@ -62,8 +64,50 @@ def _iwrap_reviews():
         r = json.loads(pad.read_text(encoding="utf-8"))
         IWRAP["reviews_score"] = str(r["score"]).replace(".", ",")
         IWRAP["reviews_aantal"] = str(r["aantal"])
+        IWRAP["reviews_url"] = "https://search.google.com/local/reviews?placeid=" + r["place_id"]
+        IWRAP["reviews"] = r["reviews"]
     except (OSError, ValueError, KeyError):
         pass
+
+
+def render_reviewkaarten(aantal=2):
+    """Twee echte reviews van iWrap, elk aan te klikken naar Google. Van ongeveer
+    dezelfde lengte, zodat ze naast elkaar netjes even hoog zijn."""
+    kaarten = [r for r in IWRAP["reviews"] if 120 <= len(r["tekst"]) <= 230][:aantal]
+    return '<div class="pquotes">\n' + "\n".join(
+        '  <a class="pquote" href="%s" target="_blank" rel="noopener">'
+        '<span class="pq-sterren" role="img" aria-label="5 van de 5 sterren">★★★★★</span>'
+        "<span class=\"pq-tekst\">%s</span><span class=\"pq-naam\">%s, op Google</span></a>"
+        % (escape(r.get("url") or IWRAP["reviews_url"]), escape(r["tekst"]), escape(r["naam"]))
+        for r in kaarten) + "\n</div>"
+
+
+# Het cijfer van iWrap live: de API van iwrap.nl heeft het van Google. Lukt het
+# ophalen niet, dan blijft de stand van de laatste build staan. Tot iwrap.nl naar
+# de nieuwe site is overgezet, antwoordt alleen het Vercel-adres.
+LIVE_REVIEWS = """<script>
+(function () {
+  var velden = document.querySelectorAll("[data-rv]");
+  function zet(d) {
+    window.iwrapReviews = d;
+    velden.forEach(function (v) { v.textContent = v.getAttribute("data-rv") === "score" ? d.score_tekst : String(d.aantal); });
+  }
+  try {
+    var b = JSON.parse(sessionStorage.getItem("iwrap-reviews"));
+    if (b && b.d && Date.now() - b.t < 1800000) return zet(b.d);
+  } catch (e) {}
+  if (!window.fetch) return;
+  var bronnen = ["https://iwrap.nl/api/reviews", "https://iwrap-website.vercel.app/api/reviews"];
+  (function probeer(i) {
+    if (i >= bronnen.length) return;
+    fetch(bronnen[i]).then(function (r) { if (!r.ok) throw r; return r.json(); }).then(function (d) {
+      if (!d || !d.aantal) throw d;
+      try { sessionStorage.setItem("iwrap-reviews", JSON.stringify({ t: Date.now(), d: d })); } catch (e) {}
+      zet(d);
+    }).catch(function () { probeer(i + 1); });
+  })(0);
+})();
+</script>"""
 
 
 _iwrap_reviews()
@@ -243,7 +287,7 @@ def render_author_box(slug):
         "        <p>%s</p>\n"
         '        <p class="author-links">\n'
         '          <a href="%s?utm_source=kozijnwrap.nl&amp;utm_medium=auteur" target="_blank" rel="noopener">Bekijk %s.nl →</a>\n'
-        '          <a href="%s" target="_blank" rel="noopener">★ %s uit %s Google-reviews</a>\n'
+        '          <a href="%s" target="_blank" rel="noopener">★ <span data-rv="score">%s</span> uit <span data-rv="aantal">%s</span> Google-reviews</a>\n'
         "        </p>\n"
         "      </div>\n"
         "    </div>\n"
@@ -353,8 +397,15 @@ def build():
     for path in pages:
         meta, body = read_page(path)
         # Het reviewcijfer van iWrap in de lopende tekst, zodat het nergens vastligt.
-        body = body.replace("{{iwrap.reviews_score}}", IWRAP["reviews_score"]) \
-                   .replace("{{iwrap.reviews_aantal}}", IWRAP["reviews_aantal"])
+        # Cijfer en aantal als los veld, zodat LIVE_REVIEWS er de live stand in zet.
+        body = body.replace("{{iwrap.reviews_score}}", '<span data-rv="score">%s</span>' % IWRAP["reviews_score"]) \
+                   .replace("{{iwrap.reviews_aantal}}", '<span data-rv="aantal">%s</span>' % IWRAP["reviews_aantal"]) \
+                   .replace("{{iwrap.reviews_score_tekst}}", IWRAP["reviews_score"]) \
+                   .replace("{{iwrap.reviews_aantal_tekst}}", IWRAP["reviews_aantal"]) \
+                   .replace("{{iwrap.reviews_url}}", IWRAP["reviews_url"]) \
+                   .replace("{{iwrap.reviewkaarten}}", render_reviewkaarten())
+        auteur = render_author_box(meta["slug"])
+        live = "\n" + LIVE_REVIEWS if ("data-rv" in body + auteur or "iwrapReviews" in body) else ""
         out = ROOT / (meta["slug"] + ".html")
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(
@@ -365,7 +416,7 @@ def build():
             '<a class="skip" href="#inhoud">Naar de inhoud</a>\n\n'
             "%s\n\n"
             '<main id="inhoud">\n\n%s\n%s\n</main>\n\n'
-            "%s\n\n"
+            "%s\n%s\n"
             "</body>\n"
             "</html>\n"
             % (
@@ -373,8 +424,9 @@ def build():
                 meta["bodyClass"],
                 render_nav(meta["slug"]),
                 body,
-                render_author_box(meta["slug"]),
+                auteur,
                 render_footer(meta["slug"]),
+                live,
             )
         )
         print("  %s" % out.relative_to(ROOT))

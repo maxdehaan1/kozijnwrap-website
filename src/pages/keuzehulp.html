@@ -233,6 +233,13 @@
     html += "</div>";
 
     if (u.ctaHint) html += '<p class="kh-hint" style="margin:14px 0 0;">' + u.ctaHint + "</p>";
+    if (naam === "herstel") {
+      // Het cijfer van iWrap: live als het al binnen is, anders dat van de laatste build.
+      var rv = window.iwrapReviews || { score_tekst: "{{iwrap.reviews_score_tekst}}", aantal: "{{iwrap.reviews_aantal_tekst}}" };
+      html += '<a class="kh-reviews" href="{{iwrap.reviews_url}}" target="_blank" rel="noopener">' +
+        '<span class="kh-sterren" aria-hidden="true">★★★★★</span> <b>' + rv.score_tekst + "</b> uit " + rv.aantal +
+        " Google-reviews &middot; duizenden klanten gingen je voor</a>";
+    }
     html += "</div>" +
       '<p class="kh-restart">Klopt dit niet met wat je ziet? <button type="button" id="kh-opnieuw">Begin opnieuw</button></p>';
 

@@ -59,12 +59,17 @@
 .kh-result.stop{border-left:5px solid #aeb8b0;}
 .kh-result.stop .kh-verdict{background:#e6ebe6;color:#4d5a51;}
 
+.kh-reviews{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin-top:16px;font-size:.92rem;color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;}
+.kh-reviews:hover{border-bottom-color:currentColor;color:var(--ink);}
+.kh-sterren{color:#c98a0c;letter-spacing:.06em;}
 .kh-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;}
 .kh-cta{display:inline-flex;align-items:center;gap:7px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:14px 26px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
 .kh-cta:hover{background:#2C5744;transform:translateY(-2px);}
 .kh-cta.ghost{background:#fff;color:var(--accent-deep);border:1.5px solid #d5ded7;}
 .kh-cta.ghost:hover{background:#f2f6f2;color:var(--accent-deep);}
-body.page .kh-actions a{color:inherit;}
+/* Op de contentpagina's krijgt elke link de linkkleur; hier niet: de hoofdknop is wit op groen. */
+body.page .kh-actions a.kh-cta{color:#fff;}
+body.page .kh-actions a.kh-cta.ghost{color:var(--accent-deep);}
 
 .kh-restart{margin-top:20px;font-size:.9rem;color:var(--sub);font-family:'Karla',sans-serif;}
 .kh-restart button{background:none;border:none;padding:0;font:inherit;color:var(--accent-deep);text-decoration:underline;cursor:pointer;}

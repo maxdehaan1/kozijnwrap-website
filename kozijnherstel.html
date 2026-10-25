@@ -29,8 +29,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Karla:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css?v=de9af21b">
-<link rel="stylesheet" href="/css/content.css?v=de9af21b">
+<link rel="stylesheet" href="/css/style.css?v=250e18cb">
+<link rel="stylesheet" href="/css/content.css?v=250e18cb">
 </head>
 <body class="page theme-herstel">
 
@@ -204,10 +204,14 @@
       <h2>Dit werk doen wij zelf: iWrap</h2>
       <p>Open kaart, want dat is wel zo prettig: deze site is gemaakt vanuit iWrap. Wij herstellen zelf kunststof kozijnen met Renolit folie — al meer dan tien jaar, door heel Nederland, met gecertificeerde vakmensen in vaste dienst in plaats van wisselende onderaannemers per project.</p>
       <p>Dat betekent dat we niet neutraal zijn over wíe het werk uitvoert, en we doen ook niet alsof. Waar we wél onafhankelijk in zijn, is de vraag of herstel in jouw geval de juiste oplossing is. Je leest hier net zo goed wanneer je beter kunt vervangen, wanneer het een wrapvraag is, en wanneer je bij een schilder of kozijnleverancier moet zijn — dat is werk dat wij niet doen, en dan zeggen we dat gewoon.</p>
-      <p>Na te zoeken: een score van 4,9 uit 82 Google-reviews, opgebouwd over jaren, van particulieren tot VvE's en woningcorporaties.</p>
+      <p>Duizenden klanten gingen je voor, van particulieren tot VvE's en woningcorporaties. Na te zoeken: gemiddeld een <span data-rv="score">4,9</span> uit <span data-rv="aantal">84</span> Google-reviews. Twee ervan:</p>
+      <div class="pquotes">
+  <a class="pquote" href="https://search.google.com/local/reviews?placeid=ChIJyzBbwf-FxkcRIdeuLPGJt9U" target="_blank" rel="noopener"><span class="pq-sterren" role="img" aria-label="5 van de 5 sterren">★★★★★</span><span class="pq-tekst">Onze kunststof kozijnen waren na 29 jaar toe aan herstel van de beschadigde folie. Na onderling overleg met de leverancier van deze kozijnen hebben zij iWrap voor ons benaderd voor een offerte.</span><span class="pq-naam">Ben Vervloet, op Google</span></a>
+  <a class="pquote" href="https://search.google.com/local/reviews?placeid=ChIJyzBbwf-FxkcRIdeuLPGJt9U" target="_blank" rel="noopener"><span class="pq-sterren" role="img" aria-label="5 van de 5 sterren">★★★★★</span><span class="pq-tekst">Max van iWrap is vandaag gekomen om onze onderdorpel opnieuw van een mooie folie te voorzien. Na ca. 20 jaar was er een scheur in gekomen door de volle zon. Snel en netjes uitgevoerd, ik ben er heel blij mee.</span><span class="pq-naam">Daan, op Google</span></a>
+</div>
       <div class="plinks">
         <a class="plink" href="https://iwrap.nl" target="_blank" rel="noopener">Bekijk iWrap.nl →</a>
-        <a class="plink outline" href="https://maps.app.goo.gl/C77mS69nK3GGyqz9A?g_st=ic" target="_blank" rel="noopener">★ Lees de Google-reviews</a>
+        <a class="plink outline" href="https://search.google.com/local/reviews?placeid=ChIJyzBbwf-FxkcRIdeuLPGJt9U" target="_blank" rel="noopener">★ Lees alle 84 reviews</a>
       </div>
     </div>
   </div>
@@ -266,7 +270,7 @@
     <p>Je kunt bij de aanvraag meteen foto's meesturen, dan weet je snel waar je aan toe bent. Een paar dorpels is daarbij net zo goed een opdracht als een hele woning.</p>
     <div class="badge-row">
       <a class="badge solid" href="https://iwrap.nl/contact/?utm_source=kozijnwrap.nl&amp;utm_medium=partybox&amp;utm_campaign=herstel" target="_blank" rel="noopener">Offerte aanvragen →</a>
-      <a class="badge gold" href="https://maps.app.goo.gl/C77mS69nK3GGyqz9A?g_st=ic" target="_blank" rel="noopener">★ 4,9 op Google (82 reviews)</a>
+      <a class="badge gold" href="https://search.google.com/local/reviews?placeid=ChIJyzBbwf-FxkcRIdeuLPGJt9U" target="_blank" rel="noopener"><span>★ <span data-rv="score">4,9</span> uit <span data-rv="aantal">84</span> Google-reviews</span></a>
     </div>
   </div>
 </div>
@@ -285,5 +289,28 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  var velden = document.querySelectorAll("[data-rv]");
+  function zet(d) {
+    window.iwrapReviews = d;
+    velden.forEach(function (v) { v.textContent = v.getAttribute("data-rv") === "score" ? d.score_tekst : String(d.aantal); });
+  }
+  try {
+    var b = JSON.parse(sessionStorage.getItem("iwrap-reviews"));
+    if (b && b.d && Date.now() - b.t < 1800000) return zet(b.d);
+  } catch (e) {}
+  if (!window.fetch) return;
+  var bronnen = ["https://iwrap.nl/api/reviews", "https://iwrap-website.vercel.app/api/reviews"];
+  (function probeer(i) {
+    if (i >= bronnen.length) return;
+    fetch(bronnen[i]).then(function (r) { if (!r.ok) throw r; return r.json(); }).then(function (d) {
+      if (!d || !d.aantal) throw d;
+      try { sessionStorage.setItem("iwrap-reviews", JSON.stringify({ t: Date.now(), d: d })); } catch (e) {}
+      zet(d);
+    }).catch(function () { probeer(i + 1); });
+  })(0);
+})();
+</script>
 </body>
 </html>

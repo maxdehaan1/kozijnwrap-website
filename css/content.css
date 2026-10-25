@@ -75,6 +75,13 @@ figcaption{font-family:'Karla',sans-serif;font-size:.85rem;color:var(--sub);marg
 .partner-story .plabel{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-light);margin-bottom:10px;}
 .partner-story h2{color:#fff;font-size:1.45rem;}
 .partner-story p{font-size:1rem;line-height:1.7;color:#c9d6cd;max-width:68ch;}
+/* Een paar reviews van iWrap in het donkere vlak, elk aan te klikken naar Google. */
+.pquotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:20px;}
+.pquote{display:flex;flex-direction:column;gap:9px;background:rgba(255,255,255,.06);border:1px solid rgba(167,207,182,.28);border-radius:14px;padding:18px 20px;color:#e7eee9;text-decoration:none;transition:background .2s ease,transform .2s ease;}
+.pquote:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);color:#e7eee9;}
+.pq-sterren{color:#f0b429;letter-spacing:.08em;font-size:.95rem;line-height:1;}
+.pq-tekst{font-size:.95rem;line-height:1.6;}
+.pq-naam{margin-top:auto;font-family:'Karla',sans-serif;font-size:.82rem;font-weight:700;color:var(--accent-light);}
 .partner-story .plinks{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;}
 .partner-story .plink{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--ink);font-family:'Karla',sans-serif;font-weight:700;font-size:.92rem;text-decoration:none;padding:12px 24px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
 .partner-story .plink:hover{background:#e3ede6;transform:translateY(-1px);}

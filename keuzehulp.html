@@ -26,9 +26,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Karla:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css?v=de9af21b">
-<link rel="stylesheet" href="/css/content.css?v=de9af21b">
-<link rel="stylesheet" href="/css/keuzehulp.css?v=de9af21b">
+<link rel="stylesheet" href="/css/style.css?v=250e18cb">
+<link rel="stylesheet" href="/css/content.css?v=250e18cb">
+<link rel="stylesheet" href="/css/keuzehulp.css?v=250e18cb">
 </head>
 <body class="page theme-herstel">
 
@@ -296,6 +296,13 @@
     html += "</div>";
 
     if (u.ctaHint) html += '<p class="kh-hint" style="margin:14px 0 0;">' + u.ctaHint + "</p>";
+    if (naam === "herstel") {
+      // Het cijfer van iWrap: live als het al binnen is, anders dat van de laatste build.
+      var rv = window.iwrapReviews || { score_tekst: "4,9", aantal: "84" };
+      html += '<a class="kh-reviews" href="https://search.google.com/local/reviews?placeid=ChIJyzBbwf-FxkcRIdeuLPGJt9U" target="_blank" rel="noopener">' +
+        '<span class="kh-sterren" aria-hidden="true">★★★★★</span> <b>' + rv.score_tekst + "</b> uit " + rv.aantal +
+        " Google-reviews &middot; duizenden klanten gingen je voor</a>";
+    }
     html += "</div>" +
       '<p class="kh-restart">Klopt dit niet met wat je ziet? <button type="button" id="kh-opnieuw">Begin opnieuw</button></p>';
 
@@ -334,5 +341,28 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  var velden = document.querySelectorAll("[data-rv]");
+  function zet(d) {
+    window.iwrapReviews = d;
+    velden.forEach(function (v) { v.textContent = v.getAttribute("data-rv") === "score" ? d.score_tekst : String(d.aantal); });
+  }
+  try {
+    var b = JSON.parse(sessionStorage.getItem("iwrap-reviews"));
+    if (b && b.d && Date.now() - b.t < 1800000) return zet(b.d);
+  } catch (e) {}
+  if (!window.fetch) return;
+  var bronnen = ["https://iwrap.nl/api/reviews", "https://iwrap-website.vercel.app/api/reviews"];
+  (function probeer(i) {
+    if (i >= bronnen.length) return;
+    fetch(bronnen[i]).then(function (r) { if (!r.ok) throw r; return r.json(); }).then(function (d) {
+      if (!d || !d.aantal) throw d;
+      try { sessionStorage.setItem("iwrap-reviews", JSON.stringify({ t: Date.now(), d: d })); } catch (e) {}
+      zet(d);
+    }).catch(function () { probeer(i + 1); });
+  })(0);
+})();
+</script>
 </body>
 </html>

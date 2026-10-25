@@ -166,9 +166,13 @@ Gebruik in de bronbestanden root-relatieve links (`/blog/renolit-folie-uitgelegd
   en "kozijnwrap.nl (keuzehulp)" als herkomst in de aanvraag. Die doorverwijzingen staan in
   `vercel.json` van iwrap.nl. Verander de utm-codes hier dus niet zonder ze daar mee te
   veranderen.
-- **Het reviewcijfer** komt uit `reviews.json` van iwrap.nl (`../iwrap-project/`), via
-  `{{iwrap.reviews_score}}` en `{{iwrap.reviews_aantal}}` in de bron. Na `python3 reviews.py`
-  in iwrap-project: ook hier `python3 build.py`.
+- **Het reviewcijfer van iWrap loopt live mee.** Bij het bouwen komt het uit `reviews.json`
+  van iwrap.nl (`../iwrap-project/`), via `{{iwrap.reviews_score}}` en
+  `{{iwrap.reviews_aantal}}` in de bron; `{{iwrap.reviewkaarten}}` zet er twee echte reviews
+  bij. In de browser haalt een klein script (`LIVE_REVIEWS` in `build.py`) daarna de live
+  stand op bij `iwrap.nl/api/reviews`, die hem van Google heeft. Zo klopt het aantal ook
+  tussen twee builds door. Tot iwrap.nl is overgezet antwoordt alleen
+  `iwrap-website.vercel.app`; het script probeert ze allebei.
 - **Het domein kozijnwrap.nl** moet in het DNS naar Vercel wijzen (bij GPO hosting):
   A-record `@` naar `76.76.21.21`, CNAME `www` naar `cname.vercel-dns.com`, en het domein
   toegevoegd in het Vercel-project. Op 24 oktober 2026 wees het nog naar de oude hosting.
