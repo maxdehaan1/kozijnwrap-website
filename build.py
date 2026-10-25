@@ -34,6 +34,7 @@ NAV = [
 
 FOOTER = [("index", "/", "Overzicht")] + NAV + [
     ("over-deze-site", "/over-deze-site", "Over deze site"),
+    ("privacy", "/over-deze-site#privacy", "Privacy"),
 ]
 
 # iWrap staat op één plek gedefinieerd, want reviewscore en aantal veranderen.
@@ -85,6 +86,10 @@ def render_reviewkaarten(aantal=2):
         % (escape(r.get("url") or IWRAP["reviews_url"]), escape(r["tekst"]), escape(r["naam"]))
         for r in kaarten) + "\n</div>"
 
+
+# Bezoekers tellen met Vercel Web Analytics: zonder cookies, dus zonder banner.
+# Werkt pas als Analytics aanstaat in het Vercel-project (zie LIVEGANG.md van iwrap).
+ANALYTICS = '\n<script defer src="/_vercel/insights/script.js"></script>'
 
 # Het cijfer van iWrap live: de API van iwrap.nl heeft het van Google. Lukt het
 # ophalen niet, dan blijft de stand van de laatste build staan. Tot iwrap.nl naar
@@ -155,14 +160,13 @@ def css_version():
     return h.hexdigest()[:8]
 
 
-def fonts_href(extra_montserrat):
-    fams = [
-        "family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400",
-        "family=Karla:wght@400;500;700;800",
-    ]
+def fonts_href(extra_montserrat, ver):
+    """De lettertypen staan op de site zelf (css/fonts.css, fonts/): zo gaat het
+    IP-adres van een bezoeker niet naar Google en is er geen cookiebanner nodig."""
+    uit = '<link rel="stylesheet" href="/css/fonts.css?v=%s">\n' % ver
     if extra_montserrat:
-        fams.append("family=Montserrat:wght@400;500;600;700")
-    return "https://fonts.googleapis.com/css2?" + "&".join(fams) + "&display=swap"
+        uit += '<link rel="stylesheet" href="/css/fonts-montserrat.css?v=%s">\n' % ver
+    return uit
 
 
 def blog_menu():
@@ -368,10 +372,7 @@ def render_head(meta, ver):
 <meta name="twitter:description" content="{ogdesc}">
 <meta name="twitter:image" content="{img}">
 {jsonld}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="{fonts}" rel="stylesheet">
-{css}{preload}""".format(
+{fonts}{css}{preload}""".format(
         title=meta["title"],
         desc=meta["description"],
         url=url,
@@ -381,7 +382,7 @@ def render_head(meta, ver):
         ogdesc=og_desc,
         img=img,
         jsonld=blocks,
-        fonts=fonts_href(meta.get("fonts") == "Montserrat"),
+        fonts=fonts_href(meta.get("fonts") == "Montserrat", ver),
         css=css,
         preload=preload,
     )
@@ -421,7 +422,7 @@ def build():
             '<a class="skip" href="#inhoud">Naar de inhoud</a>\n\n'
             "%s\n\n"
             '<main id="inhoud">\n\n%s\n%s\n</main>\n\n'
-            "%s\n%s\n"
+            "%s\n%s%s\n"
             "</body>\n"
             "</html>\n"
             % (
@@ -432,6 +433,7 @@ def build():
                 auteur,
                 render_footer(meta["slug"]),
                 live,
+                "" if meta.get("noindex") else ANALYTICS,
             )
         )
         print("  %s" % out.relative_to(ROOT))
