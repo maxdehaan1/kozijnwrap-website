@@ -8,7 +8,7 @@
 body.theme-blog:not(.breed-pagina) .hero h1{max-width:27ch;font-size:clamp(2.1rem,1.4rem + 2.6vw,3.1rem);}
 
 .breadcrumb{font-family:var(--sans);font-size:.95rem;color:var(--sub);margin-bottom:14px;}
-.breadcrumb a{color:var(--accent-deep);text-decoration:none;font-weight:500;}
+.breadcrumb a{color:var(--merk);text-decoration:none;font-weight:500;}
 .breadcrumb a:hover{text-decoration:underline;}
 
 
@@ -33,15 +33,15 @@ body.theme-blog:not(.breed-pagina) .hero h1{max-width:27ch;font-size:clamp(2.1re
 
 /* Afsluitend kader in een artikel ------------------------------------------- */
 
-/* Dezelfde vorm als "Volgende stap" onderaan de andere pagina's: wit, met het label in mint en een
+/* Dezelfde vorm als "Volgende stap" onderaan de andere pagina's: wit, met het label in de kleur van de site en een
    ronde knop. De tekst verschilt per artikel. */
 .article-cta{background:#fff;border:1px solid var(--rand-zacht);border-radius:28px;padding:28px 32px 30px;margin-top:44px;}
 .article-cta .volgende-label{display:block;margin-bottom:6px;}
 .article-cta h3{margin:0 0 8px;font-size:clamp(1.35rem,1.15rem + .8vw,1.75rem);letter-spacing:-.028em;line-height:1.2;}
 .article-cta p{color:var(--sub);margin:0 0 20px;max-width:none;}
 .article-cta .cta-row{display:flex;flex-wrap:wrap;gap:10px;}
-.article-cta a.cta-link{display:inline-flex;align-items:center;gap:6px;min-height:54px;padding:15px 28px;border-radius:999px;background:var(--accent-deep);color:#fff;font-family:var(--sans);font-weight:600;font-size:1.04rem;text-decoration:none;transition:background .2s ease,transform .2s ease;}
-.article-cta a.cta-link:hover{background:#244840;transform:translateY(-1px);}
+.article-cta a.cta-link{display:inline-flex;align-items:center;gap:6px;min-height:54px;padding:15px 28px;border-radius:999px;background:var(--merk);color:#fff;font-family:var(--sans);font-weight:600;font-size:1.04rem;text-decoration:none;transition:background .2s ease,transform .2s ease;}
+.article-cta a.cta-link:hover{background:var(--merk-hover);transform:translateY(-1px);}
 .article-cta a.cta-link.ghost{background:#fff;color:var(--ink);border:1px solid rgba(34,38,42,.16);}
 .article-cta a.cta-link.ghost:hover{border-color:rgba(34,38,42,.34);background:#fff;}
 @media (prefers-reduced-motion: reduce){ .article-cta a.cta-link:hover{transform:none;} }

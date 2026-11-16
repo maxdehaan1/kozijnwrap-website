@@ -18,13 +18,13 @@ body.page .hero{position:relative;z-index:1;background:var(--gloed),var(--paper)
 section{padding:clamp(40px,5vw,60px) 0;}
 section h2{font-size:clamp(1.7rem,1.3rem + 1.4vw,2.3rem);}
 
-/* Lijsten in de lopende tekst: een mint bolletje en een dunne lijn ertussen. */
+/* Lijsten in de lopende tekst: een bolletje in de kleur van de site en een dunne lijn ertussen. */
 .signals{list-style:none;margin:0;padding:0;}
 .signals li{position:relative;padding:14px 0 14px 32px;border-bottom:1px solid var(--line);border-radius:7px;font-size:1.02rem;transition:background .18s ease;}
 .signals li:last-child{border-bottom:none;}
-.signals li::before{content:"";position:absolute;left:2px;top:50%;transform:translateY(-50%);width:10px;height:10px;border-radius:50%;background:var(--accent-light);}
+.signals li::before{content:"";position:absolute;left:2px;top:50%;transform:translateY(-50%);width:10px;height:10px;border-radius:50%;background:var(--merk-licht);}
 /* Alleen regels die een link zijn, lichten op. */
-.signals li:has(a):hover{background:rgba(63,116,104,.07);}
+.signals li:has(a):hover{background:rgba(var(--merk-rgb),.07);}
 
 /* Beeld ---------------------------------------------------------------------- */
 
@@ -43,7 +43,7 @@ figcaption{font-family:var(--sans);font-size:.97rem;color:var(--sub);margin-top:
 
 /* Een kleine klus is welkom: bijna niemand met twee verweerde dorpels neemt aan dat een
    specialist daarvoor langskomt. */
-.small-jobs{background:var(--mint-wash);border-radius:22px;padding:26px 30px;margin:26px 0 0;}
+.small-jobs{background:var(--merk-wash);border-radius:22px;padding:26px 30px;margin:26px 0 0;}
 .small-jobs h3{font-size:1.22rem;margin:0 0 8px;}
 .small-jobs p{margin:0;font-size:1.02rem;color:#3a4047;max-width:60ch;}
 
@@ -54,11 +54,11 @@ figcaption{font-family:var(--sans);font-size:.97rem;color:var(--sub);margin-top:
 .faq details{border-bottom:1px solid var(--line);}
 .faq details:last-child{border-bottom:none;}
 .faq summary{cursor:pointer;font-weight:600;font-size:1.1rem;letter-spacing:-.015em;line-height:1.35;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 12px;margin:0 -12px;border-radius:12px;transition:background .2s ease;}
-.faq summary:hover{background:rgba(63,116,104,.08);}
+.faq summary:hover{background:rgba(var(--merk-rgb),.08);}
 .faq summary::-webkit-details-marker{display:none;}
 .faq summary::after{content:"+";font-family:var(--sans);font-weight:700;font-size:1.3rem;flex-shrink:0;color:var(--sub);transition:transform .25s ease,color .2s ease;}
-.faq summary:hover::after{color:var(--accent-deep);}
-.faq details[open] summary::after{transform:rotate(45deg);color:var(--accent-deep);}
+.faq summary:hover::after{color:var(--merk);}
+.faq details[open] summary::after{transform:rotate(45deg);color:var(--merk);}
 .faq .a{margin:-6px 0 20px;color:#3a4047;font-size:1.02rem;max-width:64ch;}
 
 /* Links in de lopende tekst ------------------------------------------------------ */
@@ -66,6 +66,6 @@ figcaption{font-family:var(--sans);font-size:.97rem;color:var(--sub);margin-top:
 /* Alleen gewone links (zonder klasse) krijgen de linkkleur en een dunne onderstreping; knoppen,
    kaarten en tegels houden hun eigen opmaak. */
 body.page main p a:not([class]),
-body.page main li a:not([class]){color:var(--accent-deep);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:rgba(47,90,80,.4);transition:text-decoration-color .2s ease;}
+body.page main li a:not([class]){color:var(--merk);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:rgba(var(--merk-rgb),.4);transition:text-decoration-color .2s ease;}
 body.page main p a:not([class]):hover,
 body.page main li a:not([class]):hover{text-decoration-color:currentColor;}

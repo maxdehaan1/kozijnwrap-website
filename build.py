@@ -147,15 +147,25 @@ LIVE_REVIEWS = """<script>
 
 _iwrap_reviews()
 
-# Het beeldmerk: een kozijn van voren, met de onderdorpel in goud. Dat is precies
-# het verhaal van de site — de dorpel is bijna altijd het eerst versleten, en goud
-# staat voor de nieuwe folie. Leesbaar tot 16px, waar een fijnere tekening dichtslibt.
+# De kleuren van de site (css/style.css): "nacht" (nachtblauw, standaard), "hemel" (hemelsblauw),
+# "messing" (antraciet met messing) of "baksteen". Een ander palet: verander PALET en bouw opnieuw.
+PALET = "nacht"
+PALETTEN = {
+    "nacht": {"merk": "1F3D63", "licht": "9FBBE0", "papier": "F6F5F1"},
+    "hemel": {"merk": "175A99", "licht": "8EC0EA", "papier": "F4F7FA"},
+    "messing": {"merk": "2A2E33", "licht": "D4B97F", "papier": "F7F5F0"},
+    "baksteen": {"merk": "8F3E24", "licht": "E2A78C", "papier": "F8F5F1"},
+}
+
+# Het beeldmerk: een kozijn van voren, met de onderdorpel in een lichte kleur. Dat is het verhaal
+# van de site: de dorpel is bijna altijd het eerst versleten. In de kleuren van het palet; leesbaar
+# tot 16px, waar een fijnere tekening dichtslibt.
 FAVICON = (
     "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>"
-    "<rect width='64' height='64' rx='14' fill='%232F5A50'/>"
-    "<path d='M14 12h36v36H14z M22 20v20h20V20z' fill='%23F7F6F3' fill-rule='evenodd'/>"
-    "<path d='M14 40h36v8H14z' fill='%23A3CDC2'/></svg>"
-)
+    "<rect width='64' height='64' rx='14' fill='%%23%(merk)s'/>"
+    "<path d='M14 12h36v36H14z M22 20v20h20V20z' fill='%%23%(papier)s' fill-rule='evenodd'/>"
+    "<path d='M14 40h36v8H14z' fill='%%23%(licht)s'/></svg>"
+) % PALETTEN[PALET]
 
 WORDMARK = (
     '<span class="w1">kozijn</span>'
@@ -551,7 +561,7 @@ def render_head(meta, ver):
     og_desc = meta.get("ogDescription") or meta["description"]
     # Nieuwe bestandsnaam bij elke herziening: /images/ staat op een cache van een
     # jaar met immutable, dus onder dezelfde naam zou de oude afbeelding blijven hangen.
-    img = SITE + "/images/og-image-v3.jpg"
+    img = SITE + "/images/og-image-v4.jpg"
 
     # De losse .html-URL's uit de oorspronkelijke structured data meeschrijven
     # naar de schone URL's, zodat canonical en schema niet uit elkaar lopen.
@@ -677,7 +687,7 @@ def build():
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(
             "<!DOCTYPE html>\n"
-            '<html lang="nl">\n'
+            '<html lang="nl"%s>\n'
             "<head>\n%s\n</head>\n"
             '<body class="%s">\n\n'
             '<a class="skip" href="#inhoud">Naar de inhoud</a>\n%s\n\n'
@@ -687,6 +697,7 @@ def build():
             "</body>\n"
             "</html>\n"
             % (
+                (' data-palet="%s"' % PALET) if PALET != "nacht" else "",
                 render_head(meta, ver),
                 meta["bodyClass"],
                 SPRITE,

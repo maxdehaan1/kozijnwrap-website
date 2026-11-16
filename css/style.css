@@ -6,37 +6,67 @@
    --------------------------------------------------------------------------- */
 
 :root{
-  /* Sinds 16 november 2026 dezelfde stijl en kleuren als iwrap.nl en houtnerffolie.nl: het mint
-     van iWrap, het papier als achtergrond, witte vlakken met een zachte rand, een mintgloed
-     bovenaan en het lettertype van het apparaat zelf. De oude namen blijven, zodat de rest van
-     de opmaak gewoon meeloopt. Voor oudere bezoekers: tekst 18px, grijs dat 7:1 haalt. */
-  --grey:#f7f6f3;            /* achtergrond: het papier van iwrap.nl */
-  --paper:#f7f6f3;
-  --ink:#22262a;
-  --white:#ffffff;
-  --cream:#eef6f3;           /* licht mint vlak */
-  --cream-ink:#22262a;
-  --anthracite:#2f5a50;      /* donker mint: de kaart en de knoppen */
-  --anthracite-deep:#22262a;
-  --sub:#50575e;
-  --line:#e3e1db;
-  --rand-zacht:rgba(34,38,42,.08);
-  --accent:#3f7468;          /* mint als lijn- en tekstkleur (5,4:1 op wit) */
-  --accent-deep:#2f5a50;     /* knoppen en links (7,9:1 met wit) */
-  --accent-light:#a3cdc2;    /* het mint van het logo: vlakken, en tekst op donker */
-  --mint:#a3cdc2;
-  --mint-soft:#dbece7;
-  --mint-wash:#eef6f3;
-  --gloed:radial-gradient(55% 120% at 78% -20%, rgba(163,205,194,.42), rgba(163,205,194,0) 70%),
-          radial-gradient(45% 90% at 8% -30%, rgba(163,205,194,.22), rgba(163,205,194,0) 70%);
+  /* De kleuren van kozijnwrap.nl. Sinds 17 november 2026 heeft de site een eigen kleur (Max: "voer
+     deze website uit maar dan met andere kleuren"), en zit het mint van iWrap alleen nog op de
+     plekken waar iWrap in beeld komt: het blok onderaan (de brug), de knop "Offerte bij iWrap",
+     het label "Herstellen" en de uitkomst herstel. Zo zie je meteen wat van de site zelf is en wat
+     van het bedrijf dat het werk doet. Er zijn vier paletten; dit is Nachtblauw. Een ander palet:
+     zet PALET in build.py op "hemel", "messing" of "baksteen" (de blokken staan hieronder).
+     Voor oudere bezoekers: tekst 18px, grijs en de tekstkleur halen 7:1 op wit, knoppen ook.
+
+     --merk         knoppen, links, alles wat je kunt aanklikken
+     --merk-hover   dezelfde, iets donkerder (onder de muis)
+     --merk-tekst   opschriften, iconen en kleine tekst in de kleur van de site
+     --merk-licht   lijntjes, bolletjes, het balkje dat meeloopt
+     --merk-vlak    zachte vlakjes met donkere tekst erop (nummers, het actieve icoon)
+     --merk-zacht   randjes en sporen
+     --merk-wash    heel lichte vlakken (kanttekening, keuzehulp, "eerst even dit")
+     --op-donker    lichte tekst op een vlak in --merk
+     --schade       versleten, schade (terracotta) */
+  --merk:#1f3d63; --merk-hover:#162f4e; --merk-tekst:#2b5689; --merk-licht:#9fbbe0;
+  --merk-vlak:#d6e3f3; --merk-zacht:#dde7f3; --merk-wash:#eef3f9; --op-donker:#d5e0ee;
+  --merk-rgb:31,61,99; --merk-licht-rgb:122,160,208;
+  --paper:#f6f5f1; --ink:#1e2531; --sub:#4d5664; --schade:#a8523a;
+
+  /* iWrap: het mint van het logo, op alle paletten hetzelfde */
+  --iwrap:#2f5a50; --iwrap-hover:#244840; --iwrap-mint:#a3cdc2; --iwrap-zacht:#dbece7; --iwrap-wash:#eef6f3;
+  --iwrap-tekst:#3f7468; --iwrap-op-donker:#dfe9e6; --iwrap-rgb:47,90,80;
+  --iwrap-gloed:radial-gradient(55% 120% at 78% -20%, rgba(163,205,194,.42), rgba(163,205,194,0) 70%),
+                radial-gradient(45% 90% at 8% -30%, rgba(163,205,194,.22), rgba(163,205,194,0) 70%);
+
+  /* neutraal */
+  --white:#ffffff; --line:#e3e1db; --rand-zacht:rgba(34,38,42,.08);
+  --gloed:radial-gradient(55% 120% at 78% -20%, rgba(var(--merk-licht-rgb),.34), rgba(var(--merk-licht-rgb),0) 70%),
+          radial-gradient(45% 90% at 8% -30%, rgba(var(--merk-licht-rgb),.2), rgba(var(--merk-licht-rgb),0) 70%);
   --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif;
+}
+/* Hemelsblauw: fris en helder, sluit aan op de lucht in het 3D-beeld */
+:root[data-palet="hemel"]{
+  --merk:#175a99; --merk-hover:#124a80; --merk-tekst:#175a99; --merk-licht:#8ec0ea;
+  --merk-vlak:#d4e8f8; --merk-zacht:#dcebf8; --merk-wash:#eef6fd; --op-donker:#d8e9f7;
+  --merk-rgb:23,90,153; --merk-licht-rgb:110,170,225;
+  --paper:#f4f7fa; --ink:#1b2632; --sub:#4b5765; --schade:#a8523a;
+}
+/* Antraciet en messing: de kleur van de populairste kozijnen, met warm messing */
+:root[data-palet="messing"]{
+  --merk:#2a2e33; --merk-hover:#1b1e22; --merk-tekst:#74572a; --merk-licht:#d4b97f;
+  --merk-vlak:#ede0c4; --merk-zacht:#eee4d0; --merk-wash:#f8f3e9; --op-donker:#e9dcc2;
+  --merk-rgb:42,46,51; --merk-licht-rgb:214,184,128;
+  --paper:#f7f5f0; --ink:#22262a; --sub:#53585e; --schade:#a8523a;
+}
+/* Baksteen: warm, de kleur van de Hollandse gevel waar het kozijn in zit */
+:root[data-palet="baksteen"]{
+  --merk:#8f3e24; --merk-hover:#75311b; --merk-tekst:#8f3e24; --merk-licht:#e2a78c;
+  --merk-vlak:#f4dccf; --merk-zacht:#f2e2d8; --merk-wash:#fbf2ec; --op-donker:#f7ddd0;
+  --merk-rgb:143,62,36; --merk-licht-rgb:220,150,120;
+  --paper:#f8f5f1; --ink:#26211f; --sub:#5a524e; --schade:#b42318;
 }
 
 *{box-sizing:border-box;}
 
 body{
   margin:0;
-  background:var(--grey);
+  background:var(--paper);
   color:var(--ink);
   font-family:var(--sans);
   font-size:18px;
@@ -58,7 +88,7 @@ a:focus-visible,
 button:focus-visible,
 summary:focus-visible,
 [tabindex]:focus-visible{
-  outline:3px solid var(--accent);
+  outline:3px solid var(--merk-tekst);
   outline-offset:3px;
   box-shadow:0 0 0 3px rgba(255,255,255,.85);
   border-radius:4px;
@@ -83,16 +113,16 @@ header.site{
 .nav{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"brand links knoppen";align-items:center;gap:8px 28px;max-width:1100px;margin:0 auto;padding:0 24px;}
 
 /* Woordmerk: de naam is echte tekst, geen plaatje, dus voorleessoftware en zoekmachines lezen hem
-   gewoon. "kozijn" in mint, "wrap" extra vet. */
+   gewoon. "kozijn" in de kleur van de site, "wrap" extra vet. */
 .brand{grid-area:brand;display:inline-flex;align-items:baseline;line-height:1;text-decoration:none;transition:opacity .2s ease;}
 .brand:hover{opacity:.72;}
-.brand .w1{font-family:var(--sans);font-weight:500;font-size:1.5rem;letter-spacing:-.04em;color:var(--accent);}
+.brand .w1{font-family:var(--sans);font-weight:500;font-size:1.5rem;letter-spacing:-.04em;color:var(--merk-tekst);}
 .brand .w2{font-family:var(--sans);font-weight:800;font-size:1.5rem;letter-spacing:-.045em;color:var(--ink);}
-.brand .tld{font-size:.5em;font-weight:600;letter-spacing:0;margin-left:.06em;color:var(--accent);}
+.brand .tld{font-size:.5em;font-weight:600;letter-spacing:0;margin-left:.06em;color:var(--merk-tekst);}
 
 .navlinks{grid-area:links;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 26px;font-family:var(--sans);font-size:.98rem;font-weight:500;letter-spacing:-.01em;}
 .navlinks a{color:#3a4047;text-decoration:none;position:relative;padding:8px 0 6px;transition:color .2s ease;}
-.navlinks a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;border-radius:2px;background:var(--accent-light);transition:right .25s ease;}
+.navlinks a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;border-radius:2px;background:var(--merk-licht);transition:right .25s ease;}
 .navlinks a:hover{color:var(--ink);}
 .navlinks a:hover::after,.navlinks a.current::after{right:0;}
 .navlinks a.current{color:var(--ink);font-weight:600;}
@@ -101,10 +131,10 @@ header.site{
 .nav-knoppen{grid-area:knoppen;display:flex;align-items:center;gap:10px;}
 .nav-kh,.nav-cta{display:inline-flex;align-items:center;min-height:46px;padding:10px 20px;border-radius:999px;font-family:var(--sans);font-size:.98rem;font-weight:600;letter-spacing:-.01em;line-height:1.2;white-space:nowrap;text-decoration:none;transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;}
 .nav-kh{color:var(--ink);background:rgba(255,255,255,.7);border:1px solid rgba(34,38,42,.18);}
-.nav-kh:hover,.nav-kh.current{border-color:var(--accent);color:var(--accent-deep);}
+.nav-kh:hover,.nav-kh.current{border-color:var(--merk-tekst);color:var(--merk);}
 /* Het enige gevulde, donkere element in de balk: daar valt je oog vanzelf eerst op. */
-.nav-cta{background:var(--accent-deep);color:#fff;}
-.nav-cta:hover{background:#244840;transform:translateY(-1px);}
+.nav-cta{background:var(--iwrap);color:#fff;}
+.nav-cta:hover{background:var(--iwrap-hover);transform:translateY(-1px);}
 @media (prefers-reduced-motion: reduce){ .nav-cta:hover{transform:none;} }
 
 @media (max-width:1080px){
@@ -125,8 +155,8 @@ header.site{
 
 /* Een kanttekening die de lezer echt moet meenemen. */
 .callout{
-  background:var(--mint-wash);
-  border-left:4px solid var(--accent-light);
+  background:var(--merk-wash);
+  border-left:4px solid var(--merk-licht);
   border-radius:0 20px 20px 0;
   padding:22px 26px;
   margin:24px 0;
@@ -134,7 +164,7 @@ header.site{
   line-height:1.6;
   max-width:none;
 }
-.callout b{color:var(--accent-deep);}
+.callout b{color:var(--merk);}
 .callout>:last-child{margin-bottom:0;}
 
 
@@ -146,14 +176,14 @@ footer{background:#efede8;color:#3a4047;padding:64px 0 52px;font-size:1rem;font-
 .fgrid{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:34px 40px;}
 .fbrand .brand .w1,.fbrand .brand .w2{font-size:1.4rem;}
 .fbrand p{max-width:40ch;margin:10px 0 0;line-height:1.55;}
-.fbrand .fslogan{font-weight:600;color:var(--accent);margin-top:8px;}
+.fbrand .fslogan{font-weight:600;color:var(--merk-tekst);margin-top:8px;}
 .fby{display:inline-flex;align-items:center;gap:10px;margin-top:20px;color:var(--sub);text-decoration:none;font-size:.96rem;padding:8px 14px 8px 12px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid var(--rand-zacht);transition:border-color .2s ease;}
 .fby img{height:18px;width:auto;}
 .fby:hover{border-color:rgba(34,38,42,.2);}
 .fkop{font-weight:700;color:var(--ink);margin:6px 0 12px;font-size:1rem;}
 .fkolom ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;}
 .fkolom a{color:#3a4047;text-decoration:none;line-height:1.4;}
-.fkolom a:hover{color:var(--accent-deep);text-decoration:underline;text-underline-offset:3px;}
+.fkolom a:hover{color:var(--merk);text-decoration:underline;text-underline-offset:3px;}
 .fkolom a[aria-current]{color:var(--ink);font-weight:600;}
 @media (max-width:900px){ .fgrid{grid-template-columns:repeat(3,minmax(0,1fr));} .fbrand{grid-column:1/-1;} }
 @media (max-width:560px){ .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 20px;} }

@@ -25,8 +25,8 @@
 .hk-beeld canvas.hk-in{animation:hk-in .5s ease;}
 @keyframes hk-in{from{opacity:.15;}to{opacity:1;}}
 .hk-status{position:absolute;left:16px;top:16px;margin:0;max-width:calc(100% - 32px);padding:8px 15px;border-radius:999px;background:rgba(255,255,255,.94);color:var(--ink);font-size:.98rem;font-weight:700;letter-spacing:-.01em;line-height:1.25;box-shadow:0 6px 18px -10px rgba(0,0,0,.45);transition:background .3s ease,color .3s ease;}
-.hk-status.hk-rood{background:#a8523a;color:#fff;}
-.hk-status.hk-mint{background:var(--mint);color:var(--ink);}
+.hk-status.hk-rood{background:var(--schade);color:#fff;}
+.hk-status.hk-mint{background:var(--iwrap-mint);color:var(--ink);}
 .hk-status.hk-donker{background:var(--ink);color:#fff;}
 .hk-pauze{position:absolute;right:14px;bottom:14px;width:46px;height:46px;border:0;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 6px 18px -10px rgba(0,0,0,.5);cursor:pointer;}
 .hk-pauze::before,.hk-pauze::after{content:"";position:absolute;top:50%;left:50%;}
@@ -37,18 +37,18 @@
 /* De vier keuzes: een kaart per keuze, de gekozen kaart open met een balkje dat meeloopt */
 .hk-opties{display:flex;flex-direction:column;gap:10px;}
 .hk-keus{background:#fff;border:1px solid var(--rand-zacht);border-radius:22px;overflow:hidden;transition:border-color .25s ease,box-shadow .25s ease;}
-.hk-keus:has(.is-nu){border-color:rgba(63,116,104,.45);box-shadow:0 22px 40px -30px rgba(47,90,80,.55);}
+.hk-keus:has(.is-nu){border-color:rgba(var(--merk-rgb),.45);box-shadow:0 22px 40px -30px rgba(var(--merk-rgb),.55);}
 .hk-optie{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"icoon naam" "icoon kort";gap:2px 14px;align-items:center;width:100%;padding:14px 16px;border:0;background:none;color:var(--ink);font:inherit;text-align:left;cursor:pointer;}
 .hk-optie .optie-icoon{grid-area:icoon;width:46px;height:46px;margin:0;border-radius:14px;}
 .hk-optie .optie-icoon .icoon{width:24px;height:24px;}
-.hk-optie.is-nu .optie-icoon{background:var(--mint);}
+.hk-optie.is-nu .optie-icoon{background:var(--merk-vlak);}
 .hk-naam{grid-area:naam;font-size:1.14rem;font-weight:700;letter-spacing:-.018em;line-height:1.2;}
 .hk-kort{grid-area:kort;font-size:.98rem;color:var(--sub);line-height:1.35;}
 .hk-balk{position:absolute;left:16px;right:16px;bottom:0;height:3px;border-radius:3px;background:transparent;overflow:hidden;}
-.hk-optie.is-nu .hk-balk{background:var(--mint-soft);}
-.hk-balk i{display:block;height:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;}
-.hk-optie:hover .hk-naam{color:var(--accent-deep);}
-.hk-optie:focus-visible{outline:3px solid var(--accent);outline-offset:-3px;border-radius:22px;}
+.hk-optie.is-nu .hk-balk{background:var(--merk-zacht);}
+.hk-balk i{display:block;height:100%;background:var(--merk-tekst);transform:scaleX(0);transform-origin:left;}
+.hk-optie:hover .hk-naam{color:var(--merk);}
+.hk-optie:focus-visible{outline:3px solid var(--merk-tekst);outline-offset:-3px;border-radius:22px;}
 .hk-paneel{display:none;padding:12px 18px 16px 76px;font-size:1.02rem;line-height:1.5;color:#3a4047;}
 .hk-optie[aria-expanded="true"] + .hk-paneel{display:block;}
 .hk-paneel p{margin:0;}
@@ -64,18 +64,18 @@
 .onder-raster{margin:26px 0 0;font-size:1.06rem;color:#3a4047;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;}
 
 /* De eerste vraag van de keuzehulp, op de homepage zelf: één klik en je zit in vraag twee. */
-.kh-start{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center;background:var(--accent-deep);color:#fff;border-radius:36px;padding:clamp(28px,4.6vw,60px);}
-.kh-start::before{content:"";position:absolute;right:-12%;bottom:-70%;width:80%;height:150%;background:radial-gradient(closest-side,rgba(163,205,194,.32),rgba(163,205,194,0));pointer-events:none;}
+.kh-start{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center;background:var(--merk);color:#fff;border-radius:36px;padding:clamp(28px,4.6vw,60px);}
+.kh-start::before{content:"";position:absolute;right:-12%;bottom:-70%;width:80%;height:150%;background:radial-gradient(closest-side,rgba(var(--merk-licht-rgb),.32),rgba(var(--merk-licht-rgb),0));pointer-events:none;}
 .kh-start > *{position:relative;}
-.kh-start .opschrift{color:var(--mint);}
+.kh-start .opschrift{color:var(--merk-vlak);}
 .kh-start h2{color:#fff;font-size:clamp(2rem,1.35rem + 2.2vw,3rem);line-height:1.05;letter-spacing:-.037em;margin:0 0 .35em;}
-.kh-start p{color:#dfe9e6;font-size:1.08rem;max-width:44ch;margin:0;}
+.kh-start p{color:var(--op-donker);font-size:1.08rem;max-width:44ch;margin:0;}
 .kh-vraag-kaart{background:#fff;color:var(--ink);border-radius:28px;padding:clamp(20px,2.6vw,30px);box-shadow:0 30px 60px -36px rgba(0,0,0,.55);}
 .kh-teller{font-size:.98rem;color:var(--sub) !important;margin:0 0 4px !important;}
 .kh-vraag-kaart h3{font-size:1.4rem;margin:0 0 16px;}
 .kh-keuzes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .kh-keuzes a{display:flex;flex-direction:column;gap:3px;min-height:72px;padding:14px 16px;border-radius:18px;border:1.5px solid var(--line);color:var(--ink);text-decoration:none;font-weight:700;font-size:1.06rem;line-height:1.25;transition:border-color .2s ease,background .2s ease;}
 .kh-keuzes small{font-weight:400;font-size:.95rem;color:var(--sub);}
-.kh-keuzes a:hover{border-color:var(--accent);background:var(--mint-wash);}
+.kh-keuzes a:hover{border-color:var(--merk-tekst);background:var(--merk-wash);}
 @media (max-width:860px){ .kh-start{grid-template-columns:1fr;} }
 @media (max-width:420px){ .kh-keuzes{grid-template-columns:1fr;} .kh-keuzes a{min-height:0;} }

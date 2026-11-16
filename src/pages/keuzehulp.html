@@ -235,7 +235,8 @@
       href = OFFERTE + (omvang === "zakelijk" ? "herstel-zakelijk" : "herstel") + (klacht ? "&klacht=" + klacht : "");
       if (omvang === "zakelijk") label = "Vraag iWrap om een opname";
     }
-    if (u.cta) html += '<a class="kh-cta" href="' + href + '">' + label + " →</a>";
+    // de knop naar iWrap in het mint van iWrap, de andere in de kleur van de site
+    if (u.cta) html += '<a class="kh-cta' + (naam === "herstel" ? " iwrap" : "") + '" href="' + href + '">' + label + " →</a>";
     if (u.tweede) html += '<a class="kh-cta ghost" href="' + u.tweede.href + '">' + u.tweede.label + "</a>";
     html += "</div>";
 

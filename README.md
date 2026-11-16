@@ -156,46 +156,52 @@ statisch. Alles staat achter `prefers-reduced-motion: no-preference`.
 
 ## Huisstijl
 
-Sinds 16 november 2026 **dezelfde stijl als iwrap.nl en houtnerffolie.nl** ("iets meer Apple"):
-licht en rustig, de kleuren van iWrap (mint `#a3cdc2`, donker mint `#2f5a50` voor knoppen en
-links, mint `#3f7468` als tekstkleur, papier `#f7f6f3`, antraciet `#22262a`), een zachte
-mintgloed bovenaan elke pagina, een wit doorschijnend menu dat blijft staan (op een telefoon
-scrolt het mee), witte vlakken met een zachte rand, en een lichte voet. Elke paginakop is licht
-(daarvoor had elk thema een eigen gekleurde band); donker mint is er alleen voor wat je moet doen: de knoppen, de keuzehulp op de homepage, de iWrap-stap van de route en de optie herstellen. De oude variabelenamen (`--cream`, `--anthracite`, `--accent`) staan nog in
-`style.css` maar wijzen naar de nieuwe kleuren.
+Licht en rustig, "iets meer Apple" (sinds 16 november 2026): het lettertype van het apparaat
+zelf, grote strakke koppen, een zachte gloed bovenaan elke pagina, een wit doorschijnend menu dat
+blijft staan (op een telefoon scrolt het mee), witte vlakken met een zachte rand en een lichte voet.
+
+**Kleur (sinds 17 november 2026).** kozijnwrap.nl heeft een eigen kleur (Max: "voer deze website
+uit maar dan met andere kleuren"), en het mint van iWrap staat alleen nog waar iWrap in beeld komt:
+de brug onderaan, de knop "Offerte bij iWrap", de iWrap-stap van de route, het label "Herstellen"
+en "Dit doet iWrap", en de uitkomst herstel (in de hero, de vergelijking en de keuzehulp). Zo zie
+je meteen wat van de site zelf is en wat van het bedrijf dat het werk doet.
+
+Er zijn vier paletten, allemaal getoetst op 7:1 voor knoppen en grijze tekst:
+
+| Palet | `PALET` | Karakter | Merk | Tekst | Licht | Papier |
+|---|---|---|---|---|---|---|
+| **Nachtblauw** (in gebruik) | `nacht` | betrouwbaar en rustig, als een consumentengids | `#1f3d63` | `#2b5689` | `#9fbbe0` | `#f6f5f1` |
+| Hemelsblauw | `hemel` | fris, sluit aan op de lucht in het 3D-beeld | `#175a99` | `#175a99` | `#8ec0ea` | `#f4f7fa` |
+| Antraciet en messing | `messing` | chic, architectonisch | `#2a2e33` | `#74572a` | `#d4b97f` | `#f7f5f0` |
+| Baksteen | `baksteen` | warm, de Hollandse gevel | `#8f3e24` | `#8f3e24` | `#e2a78c` | `#f8f5f1` |
+
+Een ander palet: zet `PALET` in `build.py` op de naam en bouw opnieuw (de site krijgt dan
+`data-palet` op `<html>`; de blokken staan bovenin `css/style.css`). Het favicon kleurt mee; de
+deelafbeelding maak je opnieuw met `python3 tools/maak_og.py` (geef hem een nieuw nummer).
+
+De kleuren lopen via variabelen in `:root` (zie het commentaar daar): `--merk` (knoppen, links),
+`--merk-hover`, `--merk-tekst` (opschriften, iconen), `--merk-licht` (lijntjes, balkjes),
+`--merk-vlak` (zachte vlakjes met donkere tekst), `--merk-zacht`, `--merk-wash`, `--op-donker`
+(lichte tekst op `--merk`) en `--schade` (terracotta). Het mint van iWrap: `--iwrap`,
+`--iwrap-mint`, `--iwrap-wash` en verder. Zet nergens een losse kleurcode in de opmaak.
 
 - **Letters**: het lettertype van het apparaat zelf (San Francisco op een Mac en iPhone,
-  Segoe UI op Windows, Roboto op Android), `--sans` in `style.css`. Koppen vet en strak,
-  lopende tekst 18px. Er wordt geen lettertype meer geladen; `css/fonts*.css` en `fonts/`
-  (Karla, Fraunces, Montserrat) worden niet meer gebruikt.
+  Segoe UI op Windows, Roboto op Android), `--sans`. Koppen vet en strak, lopende tekst 18px.
+  `css/fonts*.css` en `fonts/` worden niet meer gebruikt.
 - **Voor oudere bezoekers**: kleine teksten minstens 15px, grijs dat 7:1 haalt, knoppen
-  minstens 50px hoog en geen piepkleine hoofdletters met spaties ertussen (labels als
-  "Kozijnherstel" zijn gewone letters in het mint).
-- **Woordmerk**: de naam ís het logo: `kozijn` in mint (normaal gewicht) direct gevolgd door
-  `wrap` in antraciet (extra vet), met `.nl` klein erachter. Het blijft échte tekst (geen
-  plaatje), dus voorleessoftware en zoekmachines lezen de naam gewoon. Markup staat als
-  `WORDMARK` in `build.py`, opmaak onder `.brand` in `style.css`; die twee horen bij elkaar.
-- **Deelafbeelding**: `images/og-image-v3.jpg` (woordmerk, slogan en de werkfoto, in de
-  nieuwe stijl).
-- **Favicon**: wél een beeldmerk, want een woordmerk is op 16px onleesbaar. Een kozijn van
-  voren met de onderdorpel in mint, op donker mint: de dorpel is bijna altijd het eerst
-  versleten. Staat als `FAVICON` in `build.py`.
-- **Slogan**: "Weet wat je kozijn nodig heeft" — constante `SLOGAN` in `build.py`. Staat
-  als lockup onder het woordmerk in de header (alléén op de homepage), in de footer, en
-  op de deelafbeelding.
-- **Accentstreep** onder koppen: `.rule` — twee gestapelde balken, kort en zwaar boven
-  lang en licht. Dezelfde opbouw als het woordmerk. Verving een handgetekend golfje.
-- **Kleur**: diep groen als merkkleur. Dat verbindt deze site met iWrap (salie) en
-  houtnerffolie.nl (donkergroen), en het draagt het argument — herstellen in plaats van
-  vervangen. Alles loopt via de variabelen in `:root` in `style.css`.
-- **Taakverdeling van het groen**: `--accent` voor lijnen, randen, iconen en het cursieve
-  deel van het woordmerk; `--accent-deep` overal waar tekst bovenop komt (5,9:1 met wit);
-  `--accent-light` voor tekst op de donkere vlakken. De laagste combinatie op de site zit
-  op 4,7:1 — boven de norm van 4,5:1. Let op: `--accent` zelf haalt op de achtergrond
-  maar 3,8:1 en mag daarom nooit als tekstkleur worden gebruikt, alleen voor randen.
-- **Wat níet meekleurt**: de kleurstalen op de wrappen-kaart, de RAL-staaltjes, en de
-  materiaalkleuren in de doorsnede-diagrammen (foliekleur, verf, vuil, glas, kozijnprofiel).
-  Die stellen echte dingen voor en horen eruit te zien zoals ze zijn.
+  minstens 50px hoog en geen piepkleine hoofdletters met spaties ertussen.
+- **Woordmerk**: de naam is het logo: `kozijn` in `--merk-tekst` (normaal gewicht) direct
+  gevolgd door `wrap` in de inktkleur (extra vet), met `.nl` klein erachter. Echte tekst, dus
+  voorleessoftware en zoekmachines lezen de naam gewoon. `WORDMARK` in `build.py`, `.brand` in
+  `style.css`.
+- **Deelafbeelding**: `images/og-image-v4.jpg`: woordmerk, "Herstellen of wrappen?" en hetzelfde
+  3D-kozijn half crème en half antraciet. Gemaakt met `tools/maak_og.py`.
+- **Favicon**: een kozijn van voren met de onderdorpel in de lichte kleur van het palet: de
+  dorpel is bijna altijd het eerst versleten. `FAVICON` in `build.py`, kleurt mee met `PALET`.
+- **Slogan**: "Weet wat je kozijn nodig heeft" (`SLOGAN` in `build.py`): in de footer en als
+  opschrift boven de hero.
+- **Wat níet meekleurt**: het 3D-kozijn, de RAL-staaltjes en de materiaalkleuren in de
+  diagrammen (folie, verf, vuil, glas, profiel). Die stellen echte dingen voor.
 
 ## URL's
 
@@ -208,16 +214,16 @@ Gebruik in de bronbestanden root-relatieve links (`/blog/renolit-folie-uitgelegd
 - **Het domein `kozijnwrap.nl` is nog niet aan Vercel gekoppeld** — het wijst op dit moment
   naar een parkeerpagina, terwijl alle canonicals en de sitemap er al naar verwijzen.
   Zolang dat zo is, levert de SEO niets op.
-- Reviewcijfers en de omschrijving van iWrap staan in het blok `IWRAP` bovenin `build.py`.
-  Daaruit komen de auteursregel onder elk blogartikel, de footerregel en de `author` in de
+- Reviewcijfers en de gegevens van iWrap staan in het blok `IWRAP` bovenin `build.py`.
+  Daaruit komen de brug naar iWrap, de regel boven elk artikel en de `author` in de
   structured data. Eén plek aanpassen dus. Op kozijnherstel.html staan ze daarnaast nog
   in de lopende tekst — die twee even meenemen als het aantal wijzigt. Net als de bedragen in de keuzehulp — die staan in
   `src/pages/keuzehulp.html` in `PRIJS` (per omvang, bij de uitkomst folieherstel) en in het
   veld `prijs` op de uitkomst `vervangen` — en verder in het kostenartikel en in het blok
   "Ook als het maar om een paar dorpels gaat".
-- Geen analytics. De uitgaande links naar iwrap.nl hebben wel UTM-tags
-  (`utm_medium=keuzehulp`), dus in de statistieken van iwrap.nl is te zien hoeveel
-  aanvragen hiervandaan komen.
+- Bezoekers worden geteld met Vercel Web Analytics (zonder cookies). De uitgaande links naar
+  iwrap.nl hebben UTM-tags (`utm_source=kozijnwrap.nl`, `utm_medium` per plek), dus in de
+  statistieken van iwrap.nl is te zien hoeveel aanvragen hiervandaan komen.
 - De symptoompagina's staan er (folie laat los, kozijn verkleurd, onderdorpel, schilderen).
   Kandidaten voor een volgende ronde: krassen en stootschade, kozijn schoonmaken, en
   "kozijn 20 jaar oud — vervangen of niet". Schrijf ze vanuit wat iemand ziét, niet vanuit

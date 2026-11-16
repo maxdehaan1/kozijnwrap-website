@@ -5,9 +5,9 @@
 
 .kh{max-width:680px;margin:0 auto;}
 
-.kh-progress{font-family:var(--sans);font-size:1rem;font-weight:600;letter-spacing:-.01em;color:var(--accent);margin-bottom:10px;}
+.kh-progress{font-family:var(--sans);font-size:1rem;font-weight:600;letter-spacing:-.01em;color:var(--merk-tekst);margin-bottom:10px;}
 .kh-bar{height:6px;border-radius:6px;background:#e3e1db;overflow:hidden;margin-bottom:30px;}
-.kh-bar span{display:block;height:100%;background:var(--accent);border-radius:4px;transition:width .3s ease;}
+.kh-bar span{display:block;height:100%;background:var(--merk-tekst);border-radius:4px;transition:width .3s ease;}
 
 .kh h2{font-size:clamp(1.7rem,1.3rem + 1.4vw,2.2rem);margin-bottom:8px;text-wrap:balance;}
 .kh .kh-hint{color:var(--sub);font-size:1.04rem;margin-bottom:24px;max-width:52ch;}
@@ -29,9 +29,9 @@
   cursor:pointer;
   transition:border-color .18s ease, background .18s ease, transform .18s ease;
 }
-.kh-opt:hover{border-color:var(--accent);background:#f8fbfa;transform:translateX(3px);}
+.kh-opt:hover{border-color:var(--merk-tekst);background:var(--merk-wash);transform:translateX(3px);}
 .kh-opt .kh-mark{flex-shrink:0;width:22px;height:22px;border-radius:50%;border:2px solid #cfccc4;transition:border-color .18s ease, background .18s ease;}
-.kh-opt:hover .kh-mark{border-color:var(--accent);background:rgba(63,116,104,.14);}
+.kh-opt:hover .kh-mark{border-color:var(--merk-tekst);background:rgba(var(--merk-rgb),.14);}
 .kh-opt b{display:block;font-weight:650;}
 .kh-opt small{display:block;color:var(--sub);font-size:.97rem;margin-top:2px;line-height:1.4;}
 
@@ -46,14 +46,14 @@
 .kh-result p{font-size:1.04rem;max-width:58ch;}
 /* De prijsindicatie is voor veel bezoekers de reden om de keuzehulp in te vullen,
    dus die krijgt een eigen vlak in plaats van een regel tussen de tekst. */
-.kh-prijsblok{background:var(--cream);border-radius:18px;padding:20px 22px;margin:22px 0 4px;}
-.kh-prijslabel{display:inline-block;font-family:var(--sans);font-size:.95rem;font-weight:600;letter-spacing:-.01em;color:var(--accent);margin-bottom:4px;}
-.kh-result .kh-price{font-family:var(--sans);font-size:1.3rem;font-weight:700;letter-spacing:-.02em;color:var(--cream-ink);margin:0 0 8px;}
+.kh-prijsblok{background:var(--merk-wash);border-radius:18px;padding:20px 22px;margin:22px 0 4px;}
+.kh-prijslabel{display:inline-block;font-family:var(--sans);font-size:.95rem;font-weight:600;letter-spacing:-.01em;color:var(--merk-tekst);margin-bottom:4px;}
+.kh-result .kh-price{font-family:var(--sans);font-size:1.3rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin:0 0 8px;}
 .kh-result .kh-prijsblok .kh-hint{margin:0;font-size:1rem;color:#3a4047;}
-.kh-result .kh-prijsblok .kh-hint a{color:var(--accent-deep);}
+.kh-result .kh-prijsblok .kh-hint a{color:var(--merk);}
 
 /* Groen als wij kunnen helpen, neutraal als we eerlijk doorverwijzen. */
-.kh-result.go{border-left:5px solid var(--accent-light);}
+.kh-result.go{border-left:5px solid var(--iwrap-mint);}
 
 .kh-result.stop{border-left:5px solid #cfccc4;}
 
@@ -62,16 +62,19 @@
 .kh-reviews:hover{border-bottom-color:currentColor;color:var(--ink);}
 .kh-sterren{color:#b8780a;letter-spacing:.06em;}
 .kh-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;}
-.kh-cta{display:inline-flex;align-items:center;gap:7px;background:var(--accent-deep);color:#fff;font-family:var(--sans);font-weight:600;font-size:1.04rem;text-decoration:none;min-height:54px;padding:15px 30px;border-radius:999px;transition:background .2s ease, transform .2s ease;}
-.kh-cta:hover{background:#244840;transform:translateY(-2px);}
+.kh-cta{display:inline-flex;align-items:center;gap:7px;background:var(--merk);color:#fff;font-family:var(--sans);font-weight:600;font-size:1.04rem;text-decoration:none;min-height:54px;padding:15px 30px;border-radius:999px;transition:background .2s ease, transform .2s ease;}
+.kh-cta:hover{background:var(--merk-hover);transform:translateY(-2px);}
+/* De knop naar iWrap (bij de uitkomst herstel) in het mint van iWrap. */
+.kh-cta.iwrap{background:var(--iwrap);}
+.kh-cta.iwrap:hover{background:var(--iwrap-hover);}
 .kh-cta.ghost{background:#fff;color:var(--ink);border:1px solid rgba(34,38,42,.18);}
-.kh-cta.ghost:hover{background:#f3f8f6;color:var(--accent-deep);}
+.kh-cta.ghost:hover{background:var(--merk-wash);color:var(--merk);}
 /* Op de contentpagina's krijgt elke link de linkkleur; hier niet: de hoofdknop is wit op groen. */
 body.page .kh-actions a.kh-cta{color:#fff;}
-body.page .kh-actions a.kh-cta.ghost{color:var(--accent-deep);}
+body.page .kh-actions a.kh-cta.ghost{color:var(--merk);}
 
 .kh-restart{margin-top:20px;font-size:1rem;color:var(--sub);font-family:var(--sans);}
-.kh-restart button{background:none;border:none;padding:0;font:inherit;color:var(--accent-deep);text-decoration:underline;cursor:pointer;}
+.kh-restart button{background:none;border:none;padding:0;font:inherit;color:var(--merk);text-decoration:underline;cursor:pointer;}
 
 @media (prefers-reduced-motion: reduce){
   .kh-opt:hover{transform:none;}
