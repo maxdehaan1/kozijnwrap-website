@@ -4,36 +4,28 @@
   "noindex": true,
   "title": "Pagina niet gevonden | Kozijnwrap.nl",
   "description": "Deze pagina bestaat niet (meer). Ga terug naar het overzicht of bekijk de blog.",
-  "bodyClass": "page theme-blog",
+  "bodyClass": "page breed-pagina",
   "ogType": "website",
-  "css": ["style", "content", "blog"],
+  "css": [
+    "style",
+    "content"
+  ],
   "jsonld": []
 }
 -->
 <section class="hero">
-  <div class="wrap">
-    <span class="tag">404</span>
+  <div class="wrap breed">
+    <p class="opschrift">404</p>
     <h1>Deze pagina bestaat niet</h1>
-    <p class="lede">Misschien is de link verouderd, of is er een typefout in het adres geslopen. Hieronder kom je alsnog waar je wezen moet.</p>
+    <p class="lede">Misschien is de link verouderd, of zit er een typefout in het adres. Hieronder kom je alsnog waar je wezen moet.</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="blog-grid">
-      <a class="post-card" href="/kozijnherstel">
-        <span class="post-tag herstel">Kozijnherstel</span>
-        <h2>Kozijn beschadigd of verkleurd?</h2>
-        <p>Wanneer herstel aan de orde is, hoe het proces werkt en waar je op let bij het kiezen van een partij.</p>
-        <span class="read">Naar kozijnherstel →</span>
-      </a>
-      <a class="post-card" href="/kozijnwrappen">
-        <span class="post-tag wrappen">Kozijnwrappen</span>
-        <h2>Andere kleur gewenst?</h2>
-        <p>Wat wrappen precies is, op welke kozijnen het kan en wat je van het resultaat mag verwachten.</p>
-        <span class="read">Naar kozijnwrappen →</span>
-      </a>
-    </div>
-    <p class="lead-out">Of bekijk <a href="/blog">alle artikelen op de blog</a>.</p>
+<section class="sectie-dun">
+  <div class="wrap breed">
+    {{route}}
+    <p class="vgl-noot">Of lees verder in <a href="/blog">de kennisbank</a>.</p>
   </div>
 </section>
+
+<div class="ruimte-onder"></div>

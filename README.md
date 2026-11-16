@@ -21,6 +21,56 @@ kleine opdracht welkom is — vrijwel niemand neemt dat uit zichzelf aan.
 Wrappen doet iWrap niet zelf. Die helft van de site is er om wrappen-zoekers te vangen die
 eigenlijk herstel nodig hebben; de échte wrapvraag loopt eerlijk dood.
 
+## De indeling (november 2026)
+
+Max (16 november 2026): "het doel moet duidelijk zijn en uiteindelijk is het belangrijkst dat
+het complementair is aan de iwrap website." Daarom is de site ingedeeld rond de vraag van de
+bezoeker, niet rond diensten. **kozijnwrap.nl zoekt uit wat je kozijn nodig heeft, iwrap.nl
+doet het herstel.** Elke pagina hoort bij één stap van die route:
+
+| Stap | Pagina | Wat hij doet |
+|---|---|---|
+| 1. Herken wat je ziet | `/wat-zie-je` | Tien dingen die je aan een kozijn kunt zien, met foto, wat het is en wat je kunt doen. Elke klacht krijgt een uitkomst. |
+| 2. Vergelijk je opties | `/vergelijken` | Herstellen, nieuwe kleur (wrappen), schilderen en vervangen naast elkaar: wanneer, kosten (zonder bedragen), overlast, hoe lang het meegaat. |
+| 3. Kies | `/keuzehulp` | Vier vragen, één uitkomst. |
+| 4. Laten doen | iwrap.nl | Herstel nodig? Dan gaat de bezoeker naar het offerteformulier van iwrap.nl, met de klacht erbij. |
+
+Daarnaast de twee optiepagina's (`/kozijnherstel`, `/kozijnwrappen`), de kennisbank (`/blog`,
+in drie groepen) en `/over-deze-site`. De homepage laat de route in het klein zien.
+
+**Hoe het een geheel wordt (vaste onderdelen, in `build.py` en `css/onderdelen.css`):**
+- **Uitkomstlabels**: overal dezelfde gekleurde labels voor waar iets op uitkomt: mint =
+  herstellen (wat iWrap doet), en neutraal voor nieuwe kleur, schilder en vervangen. Op de
+  klachten, in de vergelijking, in de keuzehulp en bij de artikelen.
+- **Eén set lijniconen** (`ICONEN` in `build.py`), voor klachten, opties en de route.
+- **Hetzelfde 3D-kozijn als iwrap.nl**: de voor/na-schuif bovenaan (verweerd en hersteld,
+  in hetzelfde beeld), de nieuwe kleur (crème en antraciet) en de drie vaste stappen
+  (toplaag eraf, reinigen, nieuwe folie). Gerenderd uit de 3D-animatie van iwrap.nl.
+- **Dezelfde klachtfoto's als iwrap.nl**, zodat iemand op beide sites hetzelfde herkent.
+- **"Volgende stap"** onderaan elke pagina, naar de logische volgende stap van de route, en
+  de **iWrap-brug**: herstel nodig, dan iWrap, met het logo, het reviewcijfer en de knop
+  naar het offerteformulier.
+- **Artikelen**: bovenaan "In dit artikel" (uit de koppen) en de leestijd, onderaan
+  verwante artikelen en de brug.
+
+**Codes in de bron** (`src/pages/`), door `build.py` vervangen:
+
+| Code | Wordt |
+|---|---|
+| `{{schuif:voor\|na\|label voor\|label na\|alt voor\|alt na[\|positie[\|klasse]]}}` | De voor/na-schuif (`js/voorna.js`). Beelden als `<naam>-800.webp`, `-1400.webp`, `-1400.jpg`, 4:3. Klasse `kleur`: wit label in plaats van terracotta. |
+| `{{uit:herstel}}` | Een uitkomstlabel: `herstel`, `kleur`, `schilder`, `vervangen`, `glas`, `schoon` (`UITKOMST`). |
+| `{{icoon:i-zon}}`, `{{icoon:i-zon\|icoon klein}}` | Een lijnicoon uit `ICONEN`. |
+| `{{offerte:medium}}`, `{{offerte:medium\|klacht}}` | De link naar het offerteformulier van iwrap.nl, met utm-codes en de klacht. |
+| `{{route}}`, `{{levensduur}}` | De vier stappen; de levensduur van kozijn en folie. |
+| `{{volgende}}` | "Volgende stap" voor deze pagina (`VOLGENDE`), met de route in het klein. |
+| `{{brug}}`, `{{brug:medium\|Kop}}`, `{{brug:medium\|Kop\|reviews}}` | De brug naar iWrap, eventueel met drie reviews. |
+| `{{kennisbank}}`, `{{kennisbank:kort}}`, `{{artikelen:blog/a,blog/b}}` | De kennisbank per thema, kort (homepage), of losse tegels. |
+
+De pagina `/keuzehulp` begint bij vraag twee met `?materiaal=kunststof` of `onbekend` (en
+toont meteen de uitkomst bij `aluminium` en `hout`): zo werkt de eerste vraag op de homepage.
+Alle knoppen naar iWrap hebben `utm_campaign=herstel`; `vercel.json` van iwrap.nl stuurt die
+door naar `/offerte` (en `herstel-zakelijk` naar de pagina voor VvE's).
+
 ## Bewerken en bouwen
 
 De HTML in de repo-root is **gegenereerd** — bewerk die bestanden niet met de hand.
@@ -40,10 +90,10 @@ Een nieuwe pagina toevoegen = één bestand in `src/pages/` zetten en bouwen; st
 de navigatie, dan zet je hem in de lijst `NAV` bovenin `build.py` (`FOOTER` staat daar
 direct onder, voor pagina's die alleen onderaan hoeven te staan).
 
-Een **blogartikel** komt vanzelf in het uitklapmenu onder "Blog" te staan zodra je in
-het metadatablok `navLabel` (korte menuregel), `groep` (`herstel` of `wrappen`) en
-`orde` (volgnummer binnen die kolom) invult. Laat je `navLabel` weg, dan staat het
-artikel wel op het blogoverzicht maar niet in het menu.
+Een **artikel** komt vanzelf in de kennisbank (`/blog`) zodra je in het metadatablok
+`thema` (`herkennen`, `kiezen` of `kleur`, zie `THEMAS`), `orde` (plek binnen het thema) en
+`kaart` (de korte tekst op de tegel) invult. De titel komt uit de `<h1>`. Leestijd, "In dit
+artikel", verwante artikelen en de brug zet `build.py` er zelf bij.
 
 ## Structuur
 
@@ -52,26 +102,32 @@ build.py              Generator: bouwt src/pages/ naar de root
 vercel.json           cleanUrls, cachekoppen, securitykoppen
 src/pages/            De bron van elke pagina (metadata + inhoud)
 
-index.html            Landingspagina — de tweesplitsing        (gegenereerd)
-keuzehulp.html        4 vragen → uitkomst, de conversiemotor   (gegenereerd)
-kozijnherstel.html    Kozijnherstel, het werk dat iWrap doet   (gegenereerd)
-kozijnwrappen.html    Kozijnwrappen, eerlijk doodlopend         (gegenereerd)
-over-deze-site.html   Herkomst en disclosure                    (gegenereerd)
-404.html              Niet-gevonden-pagina                      (gegenereerd)
-blog/                 Overzicht + 10 artikelen                  (gegenereerd)
-sitemap.xml                                                     (gegenereerd)
+index.html            Homepage: wat heeft je kozijn nodig, de route   (gegenereerd)
+wat-zie-je.html       Stap 1: elke klacht met foto en uitkomst       (gegenereerd)
+vergelijken.html      Stap 2: de vier opties naast elkaar             (gegenereerd)
+keuzehulp.html        Stap 3: vier vragen, één uitkomst               (gegenereerd)
+kozijnherstel.html    Herstellen, het werk dat iWrap doet             (gegenereerd)
+kozijnwrappen.html    Wrappen: eerst de vraag of het herstel is       (gegenereerd)
+over-deze-site.html   Wie hier achter zit, en privacy                 (gegenereerd)
+404.html              Niet gevonden, met de route                     (gegenereerd)
+blog/                 Kennisbank + 10 artikelen                       (gegenereerd)
+sitemap.xml                                                           (gegenereerd)
 
 css/
-  style.css           Gedeeld: variabelen, typografie, header, footer, .callout / .note
-  home.css            Alleen index.html (hero, de twee kleurblokken, polaroid)
-  content.css         Tekstpagina's en blog (hero-band, checklists, feiten, partnerblokken)
-  blog.css            Blogoverzicht, artikelen, diagrammen
+  style.css           Basis: kleuren, letters, kop en voet, .callout
+  onderdelen.css      De vaste onderdelen (knoppen, labels, schuif, route, brug, tegels)
+  home.css            Alleen de homepage
+  content.css         Tekstpagina's: koppen, lijsten, foto's, veelgestelde vragen
+  blog.css            Artikelen: kruimelpad, diagrammen, slotkader
   keuzehulp.css       Alleen de keuzehulp
-
+js/
+  voorna.js           De voor/na-schuif
 images/               Elke foto als .webp met een .jpg ernaast als terugval
-  og-image-v2.jpg     Deelafbeelding (WhatsApp, LinkedIn). Geef die bij elke herziening
-                      een nieuw volgnummer: /images/ staat op een cache van een jaar met
-                      immutable, dus onder dezelfde naam blijft de oude hangen.
+  kozijn3d-*.webp     Het 3D-kozijn van iwrap.nl: verweerd, hersteld, antraciet
+  stap-*.webp         De drie stappen uit de 3D-werkwijze van iwrap.nl
+  symptoom-*.webp     Dezelfde klachtfoto's als op iwrap.nl
+  og-image-v3.jpg     Deelafbeelding. Geef die bij elke herziening een nieuw volgnummer:
+                      /images/ staat op een cache van een jaar met immutable.
 ```
 
 ## Bewegingen
@@ -89,8 +145,7 @@ licht en rustig, de kleuren van iWrap (mint `#a3cdc2`, donker mint `#2f5a50` voo
 links, mint `#3f7468` als tekstkleur, papier `#f7f6f3`, antraciet `#22262a`), een zachte
 mintgloed bovenaan elke pagina, een wit doorschijnend menu dat blijft staan (op een telefoon
 scrolt het mee), witte vlakken met een zachte rand, en een lichte voet. Elke paginakop is licht
-(daarvoor had elk thema een eigen gekleurde band); het iWrap-blok op /kozijnherstel is het ene
-donkere vlak. De oude variabelenamen (`--cream`, `--anthracite`, `--accent`) staan nog in
+(daarvoor had elk thema een eigen gekleurde band); donker mint is er alleen voor wat je moet doen: de knoppen, de keuzehulp op de homepage, de iWrap-stap van de route en de optie herstellen. De oude variabelenamen (`--cream`, `--anthracite`, `--accent`) staan nog in
 `style.css` maar wijzen naar de nieuwe kleuren.
 
 - **Letters**: het lettertype van het apparaat zelf (San Francisco op een Mac en iPhone,

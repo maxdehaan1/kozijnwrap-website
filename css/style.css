@@ -1,7 +1,8 @@
 /* ---------------------------------------------------------------------------
    Gedeelde basis voor élke pagina: kleuren, typografie, header, footer en de
-   twee soorten kanttekening. Paginaspecifiek werk staat in home.css (de
-   landingspagina), content.css (tekstpagina's en blog) en blog.css.
+   twee soorten kanttekening. De vaste onderdelen (knoppen, labels, de schuif,
+   de route, de brug naar iWrap) staan in onderdelen.css; paginaspecifiek werk in
+   home.css, content.css (tekstpagina's), blog.css en keuzehulp.css.
    --------------------------------------------------------------------------- */
 
 :root{
@@ -68,130 +69,61 @@ summary:focus-visible,
 
 /* Header ------------------------------------------------------------------ */
 
-/* Eigen stapelcontext boven de hero: die heeft z-index 1, waardoor het
-   uitklapmenu er anders achter verdwijnt. */
+/* Sinds november 2026: links het woordmerk, in het midden de route (wat zie je, vergelijken) en de
+   twee opties, rechts de keuzehulp en de knop naar iWrap. Geen uitklapmenu meer. Wit en
+   doorschijnend, en hij blijft staan; op een telefoon scrolt hij mee. */
 header.site{
-  padding:14px 0;position:sticky;top:0;z-index:70;
-  background:rgba(255,255,255,.78);
+  padding:12px 0;position:sticky;top:0;z-index:70;
+  background:rgba(255,255,255,.8);
   -webkit-backdrop-filter:saturate(1.8) blur(20px);backdrop-filter:saturate(1.8) blur(20px);
   border-bottom:1px solid rgba(34,38,42,.07);
 }
 @supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){header.site{background:rgba(255,255,255,.97);}}
-/* Op een telefoon is de kop drie regels hoog (woordmerk, menu, knop): daar scrolt hij gewoon mee. */
 @media (max-width:760px){ header.site{position:relative;} }
-.nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;max-width:1100px;margin:0 auto;padding:0 24px;}
-/* Woordmerk. De naam is echte tekst — geen plaatje — dus voorleessoftware en
-   zoekmachines lezen 'm gewoon. De spanning zit in het contrast: een lichte
-   cursieve schreef boven een zware schreefloze, strak op elkaar gestapeld. */
-.brand{display:inline-flex;align-items:baseline;line-height:1;text-decoration:none;transition:opacity .2s ease;}
+.nav{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"brand links knoppen";align-items:center;gap:8px 28px;max-width:1100px;margin:0 auto;padding:0 24px;}
+
+/* Woordmerk: de naam is echte tekst, geen plaatje, dus voorleessoftware en zoekmachines lezen hem
+   gewoon. "kozijn" in mint, "wrap" extra vet. */
+.brand{grid-area:brand;display:inline-flex;align-items:baseline;line-height:1;text-decoration:none;transition:opacity .2s ease;}
 .brand:hover{opacity:.72;}
-/* Woordmerk en slogan naast elkaar in plaats van gestapeld: drie regels onder
-   elkaar maakten van het logo een tekstblok, en er stond ruim 250px ongebruikte
-   ruimte naast. Zo blijft de balk ook laag. */
-.brand-lockup{display:flex;align-items:center;gap:20px;}
-.brand .w1{font-family:var(--sans);font-weight:500;font-size:1.55rem;letter-spacing:-.04em;color:var(--accent);}
-.brand .w2{font-family:var(--sans);font-weight:800;font-size:1.55rem;letter-spacing:-.045em;color:var(--ink);}
-/* De slogan hangt onder het woordmerk en lijnt uit met "wrap", niet met het
-   ingesprongen "kozijn". Staat alleen op de homepage: daar introduceer je het
-   merk, elders kost hij alleen ruimte. */
-.brand-slogan{font-family:var(--sans);font-size:.94rem;line-height:1.3;color:var(--sub);margin:0;padding-left:20px;border-left:1px solid var(--line);max-width:19ch;}
-@media (max-width:1000px){ .brand-slogan{display:none;} }
+.brand .w1{font-family:var(--sans);font-weight:500;font-size:1.5rem;letter-spacing:-.04em;color:var(--accent);}
+.brand .w2{font-family:var(--sans);font-weight:800;font-size:1.5rem;letter-spacing:-.045em;color:var(--ink);}
 .brand .tld{font-size:.5em;font-weight:600;letter-spacing:0;margin-left:.06em;color:var(--accent);}
 
-.navlinks{display:flex;flex-wrap:wrap;align-items:center;gap:24px;font-family:var(--sans);font-size:.95rem;font-weight:500;letter-spacing:-.01em;}
-.navlinks a{color:#3a4047;text-decoration:none;position:relative;padding:6px 0 4px;transition:color .2s ease;}
+.navlinks{grid-area:links;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 26px;font-family:var(--sans);font-size:.98rem;font-weight:500;letter-spacing:-.01em;}
+.navlinks a{color:#3a4047;text-decoration:none;position:relative;padding:8px 0 6px;transition:color .2s ease;}
 .navlinks a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;border-radius:2px;background:var(--accent-light);transition:right .25s ease;}
 .navlinks a:hover{color:var(--ink);}
-.navlinks a:hover::after{right:0;}
+.navlinks a:hover::after,.navlinks a.current::after{right:0;}
 .navlinks a.current{color:var(--ink);font-weight:600;}
-.navlinks a.current::after{right:0;background:var(--accent-light);}
-.nav-right{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;}
+.alleen-smal{display:none;}
 
-/* Uitklapmenu ---------------------------------------------------------------- */
-
-/* De artikelen waren alleen via het blogoverzicht te vinden. Dit paneel laat
-   vanuit elke pagina zien wat er is. Opent op hover én op toetsenbordfocus:
-   :focus-within op de wrapper vangt de focus op de Blog-link zelf, waarna de
-   links in het paneel zichtbaar en dus tabbaar worden. */
-.has-dd{position:relative;}
-.dd-caret{font-size:.62em;opacity:.55;margin-left:1px;}
-.dd{
-  position:absolute;
-  top:100%;
-  right:0;
-  left:auto;
-  translate:0 8px;
-  z-index:60;
-  min-width:520px;
-  padding:22px 26px 18px;
-  background:#fff;
-  border:1px solid var(--rand-zacht);
-  border-radius:20px;
-  box-shadow:0 24px 48px -24px rgba(34,38,42,.35);
-  opacity:0;
-  visibility:hidden;
-  transition:opacity .18s ease, translate .18s ease, visibility 0s .18s;
-}
-/* Onzichtbare brug, zodat het paneel niet dichtklapt als je er met de muis
-   naartoe beweegt. */
-.dd::before{content:"";position:absolute;top:-10px;left:0;right:0;height:10px;}
-.has-dd:hover .dd,
-.has-dd:focus-within .dd{opacity:1;visibility:visible;translate:0 0;transition-delay:0s;}
-
-.dd-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;}
-.dd-kop{font-family:var(--sans);font-size:.92rem;font-weight:600;letter-spacing:-.01em;color:var(--ink);margin:0 0 8px;padding-bottom:7px;border-bottom:1px solid #e9e7e2;}
-.dd-col ul{list-style:none;margin:0;padding:0;}
-.dd-col li + li{margin-top:1px;}
-.dd .dd-col a{display:block;padding:8px 10px;margin:0 -10px;border-radius:9px;font-size:.97rem;line-height:1.35;color:var(--ink);text-decoration:none;transition:background .15s ease, color .15s ease;}
-.dd .dd-col a::after{display:none;}
-.dd .dd-col a:hover{background:rgba(63,116,104,.1);color:var(--accent-deep);}
-.dd-alle{display:inline-block;margin-top:16px;padding-top:14px;border-top:1px solid #e9e7e2;width:100%;font-family:var(--sans);font-size:.97rem;font-weight:600;color:var(--accent-deep);text-decoration:none;}
-.dd-alle::after{display:none;}
-.dd-alle:hover{text-decoration:underline;}
-
-/* Knop naar de uitvoerende partij -------------------------------------------- */
-
-/* Het enige gevulde, donkere element in de balk, en daarmee vanzelf het eerste
-   waar je oog op valt. De gouden gloed ademt langzaam — genoeg om op te vallen,
-   te traag om af te leiden. */
-.nav-cta{
-  display:inline-flex;align-items:center;
-  padding:11px 22px;min-height:46px;
-  border-radius:999px;
-  background:var(--accent-deep);
-  color:#fff;
-  text-decoration:none;
-  line-height:1.2;
-  transition:background .2s ease, transform .2s ease;
-}
-/* "Uitvoerende partij" stond er in piepkleine hoofdletters boven; dat leest niemand. Het staat
-   nog in de knop voor voorleessoftware, en op de site zelf zegt "Uitleg van iWrap" het al. */
-.nav-cta-sub{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
-.nav-cta-main{font-family:var(--sans);font-size:.98rem;font-weight:600;letter-spacing:-.01em;white-space:nowrap;}
+.nav-knoppen{grid-area:knoppen;display:flex;align-items:center;gap:10px;}
+.nav-kh,.nav-cta{display:inline-flex;align-items:center;min-height:46px;padding:10px 20px;border-radius:999px;font-family:var(--sans);font-size:.98rem;font-weight:600;letter-spacing:-.01em;line-height:1.2;white-space:nowrap;text-decoration:none;transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;}
+.nav-kh{color:var(--ink);background:rgba(255,255,255,.7);border:1px solid rgba(34,38,42,.18);}
+.nav-kh:hover,.nav-kh.current{border-color:var(--accent);color:var(--accent-deep);}
+/* Het enige gevulde, donkere element in de balk: daar valt je oog vanzelf eerst op. */
+.nav-cta{background:var(--accent-deep);color:#fff;}
 .nav-cta:hover{background:#244840;transform:translateY(-1px);}
+@media (prefers-reduced-motion: reduce){ .nav-cta:hover{transform:none;} }
 
-@media (prefers-reduced-motion: reduce){
-  .nav-cta:hover{transform:none;}
-  .dd{transition:none;}
+@media (max-width:1080px){
+  .nav{grid-template-columns:auto minmax(0,1fr);grid-template-areas:"brand knoppen" "links links";}
+  .nav-knoppen{justify-self:end;}
+  .navlinks{justify-content:flex-start;gap:2px 22px;}
 }
-
-@media (max-width:900px){ .dd{min-width:0;width:min(92vw,520px);} }
-/* Onder deze breedte is hoveren geen bruikbare interactie meer; de Blog-link
-   gaat dan gewoon naar het overzicht. */
-@media (max-width:760px){ .dd{display:none;} .dd-caret{display:none;} }
 @media (max-width:560px){
-  .brand .w1,.brand .w2{font-size:1.32rem;}
-  .navlinks{gap:14px;font-size:.92rem;}
-  .nav-right{gap:10px 14px;width:100%;justify-content:space-between;}
-  .nav-cta{padding:9px 16px;min-height:42px;}
-  .nav-cta-main{font-size:.92rem;}
+  .nav{padding:0 16px;gap:6px 12px;}
+  .brand .w1,.brand .w2{font-size:1.3rem;}
+  .nav-kh{display:none;}
+  .alleen-smal{display:inline;}
+  .navlinks{gap:0 16px;font-size:.95rem;}
+  .nav-cta{min-height:44px;padding:9px 16px;font-size:.94rem;}
 }
 
 /* Kanttekeningen ----------------------------------------------------------- */
 
-/* Bewust twee soorten, met een duidelijk verschil in gewicht: .callout voor
-   iets dat de lezer écht moet meenemen, .note voor een terzijde. Eerder deden
-   beide zich voor als .tip, met per stylesheet een andere uitwerking. */
+/* Een kanttekening die de lezer echt moet meenemen. */
 .callout{
   background:var(--mint-wash);
   border-left:4px solid var(--accent-light);
@@ -205,25 +137,26 @@ header.site{
 .callout b{color:var(--accent-deep);}
 .callout>:last-child{margin-bottom:0;}
 
-.note{margin-top:16px;font-size:1rem;color:var(--sub);font-family:var(--sans);}
 
 /* Footer ------------------------------------------------------------------- */
 
-footer{background:#efede8;color:#3a4047;padding:56px 0 44px;font-size:1rem;font-family:var(--sans);}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px 48px;align-items:flex-start;max-width:1100px;}
-footer .fbrand strong{font-family:var(--sans);font-weight:800;font-size:1.25rem;letter-spacing:-.03em;color:var(--ink);display:block;margin-bottom:6px;}
-footer .fbrand p{max-width:44ch;margin:0;line-height:1.5;}
-footer .fbrand .fby{margin-top:10px;color:var(--sub);}
-/* Deze link staat in een <p> en kreeg daardoor het donkere accentgoud van de
-   lopende tekst — op de donkere footer maar 3,1:1. */
-footer .fbrand .fby a{color:var(--accent-deep);text-decoration:underline;}
-footer .fbrand .fby a:hover{color:var(--accent-deep);text-decoration:none;}
-footer .flinks{line-height:1.9;}
-footer a{color:#3a4047;text-decoration:none;}
-footer a:hover{color:var(--accent-deep);text-decoration:underline;}
-
-/* Slogan onder de merknaam in de footer. */
-footer .fbrand .fslogan{font-family:var(--sans);font-size:1.02rem;font-weight:600;color:var(--accent);margin:2px 0 8px;}
+/* Licht, met links het woordmerk en wie de site maakt (met het logo van iWrap), en rechts de route
+   in drie kolommen: uitzoeken, de opties en de rest. */
+footer{background:#efede8;color:#3a4047;padding:64px 0 52px;font-size:1rem;font-family:var(--sans);border-top:1px solid var(--line);}
+.fgrid{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:34px 40px;}
+.fbrand .brand .w1,.fbrand .brand .w2{font-size:1.4rem;}
+.fbrand p{max-width:40ch;margin:10px 0 0;line-height:1.55;}
+.fbrand .fslogan{font-weight:600;color:var(--accent);margin-top:8px;}
+.fby{display:inline-flex;align-items:center;gap:10px;margin-top:20px;color:var(--sub);text-decoration:none;font-size:.96rem;padding:8px 14px 8px 12px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid var(--rand-zacht);transition:border-color .2s ease;}
+.fby img{height:18px;width:auto;}
+.fby:hover{border-color:rgba(34,38,42,.2);}
+.fkop{font-weight:700;color:var(--ink);margin:6px 0 12px;font-size:1rem;}
+.fkolom ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;}
+.fkolom a{color:#3a4047;text-decoration:none;line-height:1.4;}
+.fkolom a:hover{color:var(--accent-deep);text-decoration:underline;text-underline-offset:3px;}
+.fkolom a[aria-current]{color:var(--ink);font-weight:600;}
+@media (max-width:900px){ .fgrid{grid-template-columns:repeat(3,minmax(0,1fr));} .fbrand{grid-column:1/-1;} }
+@media (max-width:560px){ .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 20px;} }
 
 /* Verfijning ---------------------------------------------------------------- */
 
@@ -242,22 +175,3 @@ footer .fbrand .fslogan{font-family:var(--sans);font-size:1.02rem;font-weight:60
     @keyframes reveal-in{ from{opacity:0;translate:0 20px;} to{opacity:1;translate:0 0;} }
   }
 }
-
-/* Een streep in de merkkleur boven de footer, als afsluiting van de pagina. */
-footer{border-top:1px solid var(--line);}
-
-/* Accentstreep onder een kop. Verving een handgetekend golfje dat niet paste bij
-   de rest; deze opbouw — kort en zwaar boven lang en licht — is dezelfde als die
-   van het woordmerk. */
-.rule{display:none;}
-.rule::before,.rule::after{content:"";display:block;height:4px;border-radius:4px;}
-.rule::before{width:52px;background:var(--accent);}
-.rule::after{width:104px;margin-top:5px;background:var(--line);opacity:.85;}
-body.home .rule::before,
-body.theme-wrap .rule::before,
-body.theme-blog .rule::before{background:var(--accent-light);}
-body.home .rule::after,
-body.theme-wrap .rule::after,
-body.theme-blog .rule::after{background:rgba(255,255,255,.28);}
-body.theme-herstel .rule::before{background:var(--accent-deep);}
-body.theme-herstel .rule::after{background:rgba(34,38,42,.22);}

@@ -3,8 +3,7 @@
    geen formulier, geen server, geen inbox die iemand moet bijhouden.
    --------------------------------------------------------------------------- */
 
-.kh{max-width:640px;margin:0 auto;}
-.kh-step[hidden]{display:none !important;}
+.kh{max-width:680px;margin:0 auto;}
 
 .kh-progress{font-family:var(--sans);font-size:1rem;font-weight:600;letter-spacing:-.01em;color:var(--accent);margin-bottom:10px;}
 .kh-bar{height:6px;border-radius:6px;background:#e3e1db;overflow:hidden;margin-bottom:30px;}
@@ -42,7 +41,7 @@
 /* Uitkomst ------------------------------------------------------------------- */
 
 .kh-result{border-radius:24px;padding:32px 34px;border:1px solid var(--rand-zacht);background:#fff;}
-.kh-result .kh-verdict{font-family:var(--sans);font-size:.95rem;font-weight:600;letter-spacing:-.01em;padding:6px 14px;border-radius:999px;display:inline-block;margin-bottom:14px;}
+.kh-result .kh-verdict{margin-bottom:14px;}
 .kh-result h2{font-size:clamp(1.6rem,1.3rem + 1vw,2rem);}
 .kh-result p{font-size:1.04rem;max-width:58ch;}
 /* De prijsindicatie is voor veel bezoekers de reden om de keuzehulp in te vullen,
@@ -55,9 +54,9 @@
 
 /* Groen als wij kunnen helpen, neutraal als we eerlijk doorverwijzen. */
 .kh-result.go{border-left:5px solid var(--accent-light);}
-.kh-result.go .kh-verdict{background:var(--cream);color:var(--cream-ink);}
+
 .kh-result.stop{border-left:5px solid #cfccc4;}
-.kh-result.stop .kh-verdict{background:#efede8;color:#50575e;}
+
 
 .kh-reviews{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin-top:16px;font-size:1rem;color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;}
 .kh-reviews:hover{border-bottom-color:currentColor;color:var(--ink);}

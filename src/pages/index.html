@@ -1,16 +1,17 @@
 <!--
 {
   "slug": "index",
-  "title": "Kozijnwrap.nl — Kozijn herstellen of van kleur veranderen?",
-  "description": "Wat is het verschil tussen kozijnherstel en kozijnwrappen, wanneer heb je wat nodig, en wat kost het? Met een keuzehulp van vier vragen.",
+  "title": "Kozijnwrap.nl — Wat heeft jouw kozijn nodig?",
+  "description": "Herstellen, een nieuwe kleur, schilderen of vervangen? Herken wat je aan je kunststof kozijn ziet, vergelijk je opties en weet in vier vragen wat bij jouw kozijn past.",
   "bodyClass": "home",
   "ogType": "website",
-  "ogTitle": "Kozijnwrap.nl — Kozijn herstellen of van kleur veranderen?",
-  "ogDescription": "Wat is het verschil tussen kozijnherstel en kozijnwrappen, wanneer heb je wat nodig, en wat kost het? Met een keuzehulp van vier vragen.",
+  "ogTitle": "Kozijnwrap.nl — Wat heeft jouw kozijn nodig?",
+  "ogDescription": "Herken wat je aan je kozijn ziet, vergelijk herstellen, een nieuwe kleur, schilderen en vervangen, en weet in vier vragen wat bij jouw kozijn past.",
   "css": [
     "style",
     "home"
   ],
+  "preload": ["kozijn3d-verweerd", "(max-width:900px) 100vw, 560px"],
   "fonts": "",
   "jsonld": [
     {
@@ -18,101 +19,163 @@
       "@type": "WebSite",
       "name": "Kozijnwrap.nl",
       "url": "https://kozijnwrap.nl/",
-      "description": "Uitleg over kozijnherstel en kozijnwrappen, met een keuzehulp die je vertelt welke van de twee jouw kozijn nodig heeft.",
-      "inLanguage": "nl-NL"
+      "description": "Uitleg over kunststof kozijnen: herken wat je ziet, vergelijk herstellen, een nieuwe kleur, schilderen en vervangen, en weet met een keuzehulp wat jouw kozijn nodig heeft.",
+      "inLanguage": "nl-NL",
+      "publisher": {"@type": "Organization", "name": "iWrap", "url": "https://iwrap.nl"}
     }
   ]
 }
 -->
-<section class="hero">
-  <div class="wrap hero-grid">
+<section class="hero-home">
+  <div class="wrap hero-raster">
     <div class="hero-tekst">
-      <h1>Kozijn herstellen, of een nieuwe look?</h1>
-      <p class="lede">Ze worden vaak door elkaar gehaald, maar het zijn twee verschillende vragen met een heel ander antwoord. Hieronder zie je welke van de twee bij jou hoort.</p>
-      <p class="trust">Uitleg van iWrap — al {{iwrap.jaren}} jaar gespecialiseerd in kozijnherstel</p>
+      <p class="opschrift">Uitleg van iWrap, al {{iwrap.jaren}} jaar specialist in kozijnherstel</p>
+      <h1>Wat heeft jouw kozijn nodig?</h1>
+      <p class="lede">Herstellen, een nieuwe kleur, schilderen of vervangen. Hier zie je wat je aan je kozijn ziet, wat je kunt doen en wat het oplevert. Zodat je het weet voordat je iemand belt.</p>
+      <div class="knoprij">
+        <a class="knop knop-primair" href="/keuzehulp">Doe de keuzehulp {{icoon:i-pijl|icoon klein}}</a>
+        <a class="knop knop-tweede" href="/wat-zie-je">Kijk wat je ziet</a>
+      </div>
+      <p class="hero-vertrouwen">
+        <a href="{{iwrap.reviews_url}}" target="_blank" rel="noopener"><span class="sterren" aria-hidden="true">★★★★★</span> <b>{{iwrap.reviews_score}}</b> uit {{iwrap.reviews_aantal}} Google-reviews van iWrap</a>
+        <span>Je hoeft nergens je gegevens achter te laten</span>
+      </p>
     </div>
-    <figure class="hero-beeld">
-      <picture>
-        <source type="image/webp" srcset="/images/proces-squeegee.webp">
-        <img src="/images/proces-squeegee.jpg" width="1372" height="896" fetchpriority="high" decoding="async"
-             alt="Nieuwe Renolit folie wordt met een rakel strak op een onderdorpel aangedrukt">
-      </picture>
+    <figure class="hero-schuif">
+      {{schuif:kozijn3d-verweerd|kozijn3d-hersteld|25 jaar zon|Hersteld|Een crème kunststof kozijn na 25 jaar zon: de folie is dof, ruw en gebarsten, en laat op de onderdorpel los|Hetzelfde kozijn na herstel: strak en egaal, in dezelfde kleur|56}}
+      <figcaption class="schuif-onder">Hetzelfde kozijn, na 25 jaar zon en na herstel. Het profiel blijft zitten: alleen de folie is nieuw.</figcaption>
     </figure>
   </div>
 </section>
 
-<div class="wrap">
-  <div class="fork">
-    <a class="path herstel" href="/kozijnherstel">
-      <svg class="damage" viewBox="0 0 200 200" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
-        <path d="M150,140 L158,136 L164,144 L160,154 L168,156 L162,166 L152,162 L146,170 L142,158 L132,160 L140,148 Z" />
-        <path d="M142,148 L128,128 L132,108 L118,93 L122,76 L112,62" />
-        <path d="M132,108 L144,102" />
-        <path d="M118,93 L104,88" />
-        <path d="M153,138 L158,113 L150,93 L156,70 L150,52" />
-        <path d="M150,93 L164,87" />
-        <path d="M156,70 L170,64" />
-        <path d="M163,150 L184,145 L198,152" />
-        <path d="M184,145 L192,132" />
-        <path d="M160,163 L177,178 L171,198" />
-        <path d="M177,178 L194,174" />
-        <path d="M148,166 L143,188 L151,198" />
-        <path d="M140,158 L115,165 L95,158 L70,168" />
-        <path d="M115,165 L107,181" />
-        <path d="M95,158 L86,142" />
-        <path d="M70,168 L58,180" />
-        <path d="M130,158 L120,175 L126,195" />
-      </svg>
-      <div class="head-row">
-        <span class="tag">Kozijnherstel</span>
-        <div class="snapshot">
-          <picture>
-            <source srcset="/images/kozijn-beschadigd-sm.webp" type="image/webp">
-            <img src="/images/kozijn-beschadigd-sm.jpg" alt="Close-up van een kunststof dorpel waarvan de folie bladdert en op een plek is losgetrokken" width="400" height="296" fetchpriority="high">
-          </picture>
-        </div>
-      </div>
-      <h2>Kozijn beschadigd of verkleurd?</h2>
-      <p>Voor kunststof kozijnen waarvan de Renolit folie loslaat, verkleurt of beschadigd is. Het kozijn zelf is nog goed — alleen de toplaag is aan vervanging toe. Het blijft gewoon zitten: geen sloopwerk, geen stucadoor, geen schilder.</p>
-      <span class="go">Bekijk kozijnherstel →</span>
-    </a>
-    <a class="path wrappen" href="/kozijnwrappen">
-      <div class="head-row">
-        <span class="tag">Kozijnwrappen</span>
-        <div class="swatches" aria-hidden="true"><span></span><span></span><span></span></div>
-      </div>
-      <h2>Andere kleur gewenst?</h2>
-      <p>Voor aluminium én kunststof kozijnen die technisch prima in orde zijn, maar een andere uitstraling of kleur mogen krijgen.</p>
-      <span class="go">Bekijk kozijnwrappen →</span>
-    </a>
-  </div>
-</div>
-
-<section class="guide">
+<section class="sectie wit">
   <div class="wrap">
-    <div class="kh-panel">
-      <span class="kh-panel-label">Keuzehulp · 4 vragen</span>
-      <h3>Wat heb je nodig, en wat kost het?</h3>
-      <p>Beantwoord vier korte vragen over je kozijn. Je hoort of folieherstel volstaat, of je beter kunt wrappen, of dat vervangen de enige echte optie is — en wat dat qua kosten betekent.</p>
-      <ul class="kh-panel-punten">
-        <li>Meteen duidelijkheid over de kosten</li>
-        <li>Je hoeft geen gegevens achter te laten</li>
-        <li>Klaar in een halve minuut</li>
-      </ul>
-      <a class="kh-panel-link" href="/keuzehulp">Start de keuzehulp →</a>
+    <div class="sectie-kop midden">
+      <p class="opschrift">Zo werkt deze site</p>
+      <h2>In vier stappen van twijfel naar weten</h2>
+      <p>Kozijnwrap.nl zoekt met je uit wat je kozijn nodig heeft. Is dat herstel, dan doet iWrap het werk.</p>
     </div>
-
-    <div class="tip-dark">“Ouder dan twintig jaar, dus toe aan vervanging” — die regel kom je overal tegen, en hij klopt niet. Een kunststof kozijnprofiel gaat <b>vijftig tot vijfenzeventig jaar</b> mee; de folie erop is een slijtlaag met tien jaar fabrieksgarantie. Ziet je kozijn er verweerd uit, dan is meestal alleen de jas versleten.</div>
+    {{route}}
   </div>
 </section>
 
-<section class="blog-teaser">
+<section class="sectie">
   <div class="wrap">
-    <svg class="teaser-arrow" width="90" height="54" viewBox="0 0 90 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M6,8 Q50,-4 78,36" stroke="#2f7355" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-      <path d="M78,36 L63,31 M78,36 L73,51" stroke="#2f7355" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    <p>Benieuwd naar tips en tricks over kozijnherstel en kozijnwrappen?</p>
-    <a class="teaser-link" href="/blog">Bekijk de blog →</a>
+    <div class="sectie-kop">
+      <p class="opschrift">Herken je dit?</p>
+      <h2>Wat zie je aan je kozijn?</h2>
+      <p>Dit zien we het vaakst. Het zit allemaal in de folie, en die kun je vervangen zonder dat het kozijn eruit hoeft.</p>
+    </div>
+    <div class="klachten">
+      <a class="klacht" href="/wat-zie-je#gebarsten">
+        <picture><source type="image/webp" srcset="/images/symptoom-gebarsten-640.webp"><img src="/images/symptoom-gebarsten-640.jpg" width="640" height="480" loading="lazy" decoding="async" alt="Onderdorpel waarvan de folie verweerd en opengebarsten is, met een losgesprongen schilfer"></picture>
+        <span class="tekst">{{uit:herstel}}<h3>Verweerd of gebarsten</h3><p>Dof en ruw geworden, en het barst open. Bijna altijd eerst aan de zonkant.</p></span>
+      </a>
+      <a class="klacht" href="/wat-zie-je#laat-los">
+        <picture><source type="image/webp" srcset="/images/symptoom-laat-los-640.webp"><img src="/images/symptoom-laat-los-640.jpg" width="640" height="427" loading="lazy" decoding="async" alt="Witte onderdorpel waarvan de folie op een rand loslaat"></picture>
+        <span class="tekst">{{uit:herstel}}<h3>De folie laat los</h3><p>Een hoek of rand komt omhoog. Het begint klein en wordt vanzelf groter.</p></span>
+      </a>
+      <a class="klacht" href="/wat-zie-je#blaasjes">
+        <picture><source type="image/webp" srcset="/images/symptoom-blaasjes-640.webp"><img src="/images/symptoom-blaasjes-640.jpg" width="640" height="400" loading="lazy" decoding="async" alt="Blaasjes en scheuren in de folie van een kunststof kozijn"></picture>
+        <span class="tekst">{{uit:herstel}}<h3>Blaasjes of scheuren</h3><p>Bobbels onder de folie, die na een paar seizoenen openscheuren.</p></span>
+      </a>
+      <a class="klacht" href="/wat-zie-je#lijmlaag">
+        <picture><source type="image/webp" srcset="/images/symptoom-lijmlaag-640.webp"><img src="/images/symptoom-lijmlaag-640.jpg" width="640" height="400" loading="lazy" decoding="async" alt="Losgescheurde witte folie op een kozijnstijl, met de gele lijmlaag eronder zichtbaar"></picture>
+        <span class="tekst">{{uit:herstel}}<h3>Je ziet er iets geels onder</h3><p>Dat is de lijmlaag, bloot komen te liggen waar de folie is losgescheurd.</p></span>
+      </a>
+      <a class="klacht" href="/wat-zie-je#plooien">
+        <picture><source type="image/webp" srcset="/images/symptoom-plooien-640.webp"><img src="/images/symptoom-plooien-640.jpg" width="640" height="400" loading="lazy" decoding="async" alt="Plooien in de folie op de hoek van een grijs kunststof kozijn"></picture>
+        <span class="tekst">{{uit:herstel}}<h3>Plooien of kreukels</h3><p>De folie trekt samen en kreukelt, vaak in een hoek of rond het beslag.</p></span>
+      </a>
+      <a class="klacht" href="/wat-zie-je#krassen">
+        <picture><source type="image/webp" srcset="/images/symptoom-krassen-640.webp"><img src="/images/symptoom-krassen-640.jpg" width="640" height="400" loading="lazy" decoding="async" alt="Stootschade in de folie van een witte onderdorpel"></picture>
+        <span class="tekst">{{uit:herstel}}<h3>Krassen of stootschade</h3><p>Een kras of een hoekje dat eruit ligt. Het profiel eronder is nog heel.</p></span>
+      </a>
+    </div>
+    <p class="onder-raster">Tocht het, klemt het, of zit er condens tussen de ruiten? Dat lost folie niet op. <a class="verder" href="/wat-zie-je#geen-folie">Kijk wat dan wel helpt {{icoon:i-pijl|icoon klein}}</a></p>
   </div>
 </section>
+
+<section class="sectie wit">
+  <div class="wrap">
+    <div class="sectie-kop">
+      <p class="opschrift">Het grootste misverstand</p>
+      <h2>Twintig jaar oud is nog niet versleten</h2>
+      <p>&ldquo;Ouder dan twintig jaar, dus toe aan vervanging.&rdquo; Die regel kom je overal tegen, en hij klopt niet. Het kozijn gaat veel langer mee dan de folie erop.</p>
+    </div>
+    {{levensduur}}
+  </div>
+</section>
+
+<section class="sectie">
+  <div class="wrap">
+    <div class="sectie-kop">
+      <p class="opschrift">Je opties</p>
+      <h2>Herstellen, een nieuwe kleur, schilderen of vervangen</h2>
+      <p>Vier routes, elk voor een ander probleem. Welke past, hangt af van wat je ziet en of het kozijn nog goed sluit.</p>
+    </div>
+    <div class="opties">
+      <a class="optie herstel" href="/vergelijken#herstellen">
+        <span class="optie-chip">Dit doet iWrap</span>
+        <span class="optie-icoon">{{icoon:i-herstel}}</span>
+        <h3>Herstellen</h3>
+        <p class="wanneer">Het kozijn sluit goed, maar de folie is versleten. Nieuwe folie, en het kozijn blijft zitten.</p>
+        <span class="verder">Vergelijk {{icoon:i-pijl|icoon klein}}</span>
+      </a>
+      <a class="optie" href="/vergelijken#nieuwe-kleur">
+        <span class="optie-icoon">{{icoon:i-kleur}}</span>
+        <h3>Nieuwe kleur</h3>
+        <p class="wanneer">Niets mis met het kozijn, maar je wilt een andere kleur. Dat heet wrappen.</p>
+        <span class="verder">Vergelijk {{icoon:i-pijl|icoon klein}}</span>
+      </a>
+      <a class="optie" href="/vergelijken#schilderen">
+        <span class="optie-icoon">{{icoon:i-schilder}}</span>
+        <h3>Schilderen</h3>
+        <p class="wanneer">Kan op kunststof zonder folie. Op folie gaat verf na een paar jaar bladderen.</p>
+        <span class="verder">Vergelijk {{icoon:i-pijl|icoon klein}}</span>
+      </a>
+      <a class="optie" href="/vergelijken#vervangen">
+        <span class="optie-icoon">{{icoon:i-vervangen}}</span>
+        <h3>Vervangen</h3>
+        <p class="wanneer">Als het profiel zelf kapot is: het tocht, klemt of is krom. Wel een verbouwing.</p>
+        <span class="verder">Vergelijk {{icoon:i-pijl|icoon klein}}</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sectie">
+  <div class="wrap">
+    <div class="kh-start">
+      <div class="kh-start-tekst">
+        <p class="opschrift">Keuzehulp &middot; 4 vragen</p>
+        <h2>Weet het in een halve minuut</h2>
+        <p>Vier korte vragen over je kozijn, en je weet of herstel volstaat, of het een kleurvraag is, of dat vervangen de enige echte optie is. Je hoeft geen gegevens achter te laten.</p>
+      </div>
+      <div class="kh-vraag-kaart">
+        <p class="kh-teller">Vraag 1 van 4</p>
+        <h3>Waarvan is je kozijn gemaakt?</h3>
+        <ul class="kh-keuzes">
+          <li><a href="/keuzehulp?materiaal=kunststof"><span>Kunststof</span><small>glad en licht, de meeste woningen</small></a></li>
+          <li><a href="/keuzehulp?materiaal=aluminium"><span>Aluminium</span><small>hard en koud, vaak bij nieuwbouw</small></a></li>
+          <li><a href="/keuzehulp?materiaal=hout"><span>Hout</span><small>geschilderd, met houtnerf</small></a></li>
+          <li><a href="/keuzehulp?materiaal=onbekend"><span>Weet ik niet</span><small>geen probleem, we lopen door</small></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie wit">
+  <div class="wrap">
+    <div class="sectie-kop">
+      <p class="opschrift">Kennisbank</p>
+      <h2>Lees je in, in je eigen tempo</h2>
+      <p>Uitgebreide artikelen uit {{iwrap.jaren}} jaar kozijnherstel, in gewone taal.</p>
+    </div>
+    {{kennisbank:kort}}
+    <p class="onder-raster"><a class="verder" href="/blog">Alle artikelen in de kennisbank {{icoon:i-pijl|icoon klein}}</a></p>
+  </div>
+</section>
+
+{{brug:home}}

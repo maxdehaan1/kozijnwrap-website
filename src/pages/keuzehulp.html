@@ -22,7 +22,7 @@
 -->
 <section class="hero">
   <div class="wrap">
-    <span class="tag">Keuzehulp</span>
+    <p class="opschrift">Stap 3 &middot; Doe de keuzehulp</p>
     <h1>Wat heeft jouw kozijn nodig, en wat kost het?</h1>
     <p class="lede">Vier vragen, en je weet of herstel volstaat, of je beter kunt wrappen, of dat vervangen de enige echte optie is — <b>en wat dat qua kosten betekent</b>. Je hoeft geen gegevens achter te laten.</p>
     <p class="hero-by">Opgesteld door <b>iWrap</b>, al {{iwrap.jaren}} jaar gespecialiseerd in kozijnherstel met Renolit folie.</p>
@@ -159,6 +159,12 @@
 
   var VOLGORDE = ["materiaal", "sluiting", "schade", "omvang"];
 
+  // Hetzelfde label als overal op de site: mint voor herstel, de rest neutraal (UITKOMST in build.py).
+  var LABEL = {
+    herstel: ["herstel", "i-herstel"], wrappen: ["kleur", "i-kleur"], vervangen: ["vervangen", "i-vervangen"],
+    hout: ["schilder", "i-schilder"], aluminium: ["kleur", "i-kleur"]
+  };
+
   var elVraag = document.getElementById("kh-vraag");
   var elUit = document.getElementById("kh-uitkomst");
   var elTitel = document.getElementById("kh-titel");
@@ -206,8 +212,9 @@
 
   function toonUitkomst(naam, omvang) {
     var u = UITKOMSTEN[naam];
+    var lb = LABEL[naam];
     var html = '<div class="kh-result ' + u.type + '">' +
-      '<span class="kh-verdict">' + u.verdict + "</span>" +
+      '<span class="uit uit-' + lb[0] + ' kh-verdict"><svg class="icoon klein" aria-hidden="true"><use href="#' + lb[1] + '"/></svg>' + u.verdict + "</span>" +
       "<h2 tabindex=\"-1\" id=\"kh-uitkomst-titel\">" + u.titel + "</h2>" +
       "<p>" + u.tekst + "</p>";
 
@@ -252,7 +259,18 @@
 
   function start() {
     pad = [];
+    klacht = "";
     toonVraag("materiaal", false);
+  }
+
+  // Wie op de homepage de eerste vraag al beantwoordde, komt hier binnen met ?materiaal=...
+  // en gaat meteen door naar vraag twee (of de uitkomst). Met "Vorige vraag" kan hij terug.
+  function begin() {
+    var keus = (location.search.match(/[?&]materiaal=(\w+)/) || [])[1];
+    pad = [];
+    if (keus === "kunststof" || keus === "onbekend") { pad.push("materiaal"); toonVraag("sluiting", false); }
+    else if (keus === "aluminium" || keus === "hout") { pad.push("materiaal"); toonUitkomst(keus); }
+    else start();
   }
 
   elTerug.addEventListener("click", function () {
@@ -260,6 +278,6 @@
     if (vorige) toonVraag(vorige, true);
   });
 
-  start();
+  begin();
 })();
 </script>
