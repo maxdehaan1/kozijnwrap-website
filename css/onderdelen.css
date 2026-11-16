@@ -39,6 +39,9 @@ h2[id],h3[id],section[id]{scroll-margin-top:110px;}
 a.knop{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:54px;padding:15px 28px;border-radius:999px;font-family:var(--sans);font-weight:600;font-size:1.04rem;letter-spacing:-.01em;line-height:1.2;text-decoration:none;transition:background .2s ease,transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
 a.knop.knop-primair{background:var(--merk);color:#fff;box-shadow:0 12px 26px -16px rgba(var(--merk-rgb),.9);}
 a.knop.knop-primair:hover{background:var(--merk-hover);transform:translateY(-1px);}
+/* Een knop die naar iWrap gaat: in het mint van iWrap, net als de knop in het menu en in de brug. */
+a.knop.knop-iwrap{background:var(--iwrap);color:#fff;box-shadow:0 12px 26px -16px rgba(var(--iwrap-rgb),.9);}
+a.knop.knop-iwrap:hover{background:var(--iwrap-hover);transform:translateY(-1px);}
 a.knop.knop-tweede{background:#fff;color:var(--ink);border:1px solid rgba(34,38,42,.16);}
 a.knop.knop-tweede:hover{border-color:rgba(34,38,42,.34);transform:translateY(-1px);}
 a.knop .icoon{transition:transform .2s ease;}
@@ -139,6 +142,7 @@ a.klacht:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(34,3
 .klacht-links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line);}
 .klacht-links a{font-size:1rem;font-weight:600;color:var(--merk);text-decoration:none;display:inline-flex;align-items:center;gap:5px;}
 .klacht-links a:hover{text-decoration:underline;text-underline-offset:3px;}
+.klacht-links a[href*="iwrap.nl"]{color:var(--iwrap);}
 
 /* Wat folie niet oplost: kaarten met een icoon in plaats van een foto. */
 .anders{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;}
@@ -167,7 +171,7 @@ a.klacht:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(34,3
 .ld-rij{display:grid;grid-template-columns:170px minmax(0,1fr);gap:8px 22px;align-items:center;margin-bottom:22px;}
 .ld-naam{font-weight:700;font-size:1.08rem;line-height:1.25;}
 .ld-naam small{display:block;font-weight:500;font-size:.96rem;color:var(--sub);margin-top:2px;}
-.ld-baan{position:relative;height:38px;border-radius:999px;background:#f1f0ec;}
+.ld-baan{position:relative;height:38px;border-radius:999px;background:var(--spoor);}
 .ld-balk{position:absolute;top:0;bottom:0;border-radius:999px;display:flex;align-items:center;padding:0 14px;font-size:.92rem;font-weight:600;white-space:nowrap;overflow:hidden;}
 .ld-profiel{left:0;width:100%;color:#fff;background:linear-gradient(90deg,var(--ink) 0 66.6%,rgba(34,38,42,.18) 100%);}
 .ld-folie{color:var(--ink);background:linear-gradient(90deg,var(--merk-vlak) 0 60%,rgba(var(--merk-licht-rgb),.3) 100%);width:32%;}
@@ -225,7 +229,7 @@ a.klacht:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(34,3
 .rs-rij{display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 22px;align-items:center;margin-bottom:20px;}
 .rs-naam{font-weight:700;font-size:1.08rem;}
 .rs-naam small{display:block;font-weight:500;color:var(--sub);font-size:.96rem;}
-.rs-baan{position:relative;height:38px;border-radius:999px;background:#f1f0ec;}
+.rs-baan{position:relative;height:38px;border-radius:999px;background:var(--spoor);}
 .rs-beurt{position:absolute;top:50%;width:38px;height:38px;margin-left:-19px;transform:translateY(-50%);border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;border:2px solid var(--line);color:var(--sub);}
 .rs-beurt .icoon{width:20px;height:20px;}
 .rs-folie .rs-beurt{background:var(--merk-vlak);border-color:var(--merk-vlak);color:var(--ink);}
@@ -273,7 +277,7 @@ a.klacht:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(34,3
 @media (prefers-reduced-motion: reduce){ .volgende-kaart:hover .volgende-pijl{transform:none;} }
 .route-mini{list-style:none;display:flex;flex-wrap:wrap;gap:8px 24px;margin:18px 0 0;padding:0 6px;font-size:.98rem;color:var(--sub);}
 .route-mini li{display:flex;align-items:center;gap:9px;}
-.route-mini .route-nr{width:28px;height:28px;font-size:.88rem;background:#ebe9e4;color:var(--sub);}
+.route-mini .route-nr{width:28px;height:28px;font-size:.88rem;background:var(--grijs-vlak);color:var(--sub);}
 .route-mini li.nu{color:var(--ink);font-weight:600;}
 .route-mini li.nu .route-nr{background:var(--merk-vlak);color:var(--ink);}
 .route-mini li.volgt .route-nr{background:var(--merk);color:#fff;}
@@ -452,7 +456,7 @@ a.klacht:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(34,3
 @media (prefers-reduced-motion: reduce){ .eerst-fotos a:hover img{transform:none;} }
 
 /* "Even eerlijk": wit vlak met een gestippelde rand, omdat het een doorverwijzing is. */
-.eerlijk{background:#fff;border:2px dashed #cfccc4;border-radius:32px;padding:clamp(24px,4vw,44px);}
+.eerlijk{background:#fff;border:2px dashed var(--streep);border-radius:32px;padding:clamp(24px,4vw,44px);}
 .eerlijk h2{font-size:clamp(1.6rem,1.3rem + 1vw,2.1rem);}
 .eerlijk p{color:#3a4047;}
 .eerlijk .lijst.vragen{margin-top:18px;}

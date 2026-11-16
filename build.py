@@ -147,9 +147,11 @@ LIVE_REVIEWS = """<script>
 
 _iwrap_reviews()
 
-# De kleuren van de site (css/style.css): "nacht" (nachtblauw, standaard), "hemel" (hemelsblauw),
-# "messing" (antraciet met messing) of "baksteen". Een ander palet: verander PALET en bouw opnieuw.
-PALET = "nacht"
+# De kleuren van de site (css/style.css): "hemel" (hemelsblauw, gekozen door Max op 17 november
+# 2026, de waarden in :root), "nacht" (nachtblauw), "messing" (antraciet met messing) of "baksteen".
+# Een ander palet: verander PALET en bouw opnieuw (en maak de deelafbeelding opnieuw, tools/maak_og.py).
+PALET = "hemel"
+STANDAARD_PALET = "hemel"
 PALETTEN = {
     "nacht": {"merk": "1F3D63", "licht": "9FBBE0", "papier": "F6F5F1"},
     "hemel": {"merk": "175A99", "licht": "8EC0EA", "papier": "F4F7FA"},
@@ -344,6 +346,11 @@ def render_route():
         <span class="verder">Offerte bij iWrap {{icoon:i-pijl|icoon klein}}</span>
       </a></li>
     </ol>"""
+
+
+def palet_attr():
+    """Het palet op <html>, als het niet het standaardpalet uit :root is."""
+    return (' data-palet="%s"' % PALET) if PALET != STANDAARD_PALET else ""
 
 
 def render_uit(naam):
@@ -561,7 +568,7 @@ def render_head(meta, ver):
     og_desc = meta.get("ogDescription") or meta["description"]
     # Nieuwe bestandsnaam bij elke herziening: /images/ staat op een cache van een
     # jaar met immutable, dus onder dezelfde naam zou de oude afbeelding blijven hangen.
-    img = SITE + "/images/og-image-v4.jpg"
+    img = SITE + "/images/og-image-v5.jpg"
 
     # De losse .html-URL's uit de oorspronkelijke structured data meeschrijven
     # naar de schone URL's, zodat canonical en schema niet uit elkaar lopen.
@@ -697,7 +704,7 @@ def build():
             "</body>\n"
             "</html>\n"
             % (
-                (' data-palet="%s"' % PALET) if PALET != "nacht" else "",
+                palet_attr(),
                 render_head(meta, ver),
                 meta["bodyClass"],
                 SPRITE,

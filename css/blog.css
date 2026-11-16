@@ -26,7 +26,7 @@ body.theme-blog:not(.breed-pagina) .hero h1{max-width:27ch;font-size:clamp(2.1re
    in plaats van verder te krimpen — het bijschrift blijft wél gewoon staan. */
 .diagram .dg-scroll{overflow-x:auto;overscroll-behavior-x:contain;}
 .diagram svg{display:block;width:100%;height:auto;min-width:520px;}
-.diagram figcaption{margin-top:14px;padding-top:14px;border-top:1px solid #e9e7e2;}
+.diagram figcaption{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);}
 .diagram .dg-label{font-family:var(--sans);font-size:15px;font-weight:700;fill:var(--ink);}
 .diagram .dg-sub{font-family:var(--sans);font-size:13px;fill:#50575e;}
 .diagram .dg-num{font-family:var(--sans);font-size:13px;font-weight:700;fill:#fff;}

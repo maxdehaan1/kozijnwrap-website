@@ -1,4 +1,4 @@
-"""De deelafbeelding (WhatsApp, LinkedIn): images/og-image-v4.jpg, in de kleuren van het palet.
+"""De deelafbeelding (WhatsApp, LinkedIn): images/og-image-v5.jpg, in de kleuren van het palet.
 
 Links het woordmerk en "Herstellen of wrappen?", rechts hetzelfde 3D-kozijn half crème (herstellen)
 en half antraciet (wrappen). Gebruik: python3 tools/maak_og.py   (ander palet: eerst PALET in
@@ -16,8 +16,8 @@ build = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(build)
 sys.path.append(os.path.join(os.path.dirname(ROOT), "iwrap-project", "beweging", "tools"))
 from cdp import Chrome
 
-UIT = os.path.join(ROOT, "images", "og-image-v4.jpg")
-palet = (' data-palet="%s"' % build.PALET) if build.PALET != "nacht" else ""
+UIT = os.path.join(ROOT, "images", "og-image-v5.jpg")
+palet = build.palet_attr()
 html = """<!doctype html><html lang="nl"%s><head><meta charset="utf-8">
 <link rel="stylesheet" href="../css/style.css">
 <style>

@@ -162,21 +162,24 @@ blijft staan (op een telefoon scrolt het mee), witte vlakken met een zachte rand
 
 **Kleur (sinds 17 november 2026).** kozijnwrap.nl heeft een eigen kleur (Max: "voer deze website
 uit maar dan met andere kleuren"), en het mint van iWrap staat alleen nog waar iWrap in beeld komt:
-de brug onderaan, de knop "Offerte bij iWrap", de iWrap-stap van de route, het label "Herstellen"
-en "Dit doet iWrap", en de uitkomst herstel (in de hero, de vergelijking en de keuzehulp). Zo zie
+de brug onderaan, elke knop en link naar iWrap (`.knop-iwrap`, de knop in het menu, "Dit herken
+ik"), de iWrap-stap van de route, het label "Herstellen" en "Dit doet iWrap", en de uitkomst
+herstel (in de hero, de vergelijking en de keuzehulp). Zo zie
 je meteen wat van de site zelf is en wat van het bedrijf dat het werk doet.
 
 Er zijn vier paletten, allemaal getoetst op 7:1 voor knoppen en grijze tekst:
 
 | Palet | `PALET` | Karakter | Merk | Tekst | Licht | Papier |
 |---|---|---|---|---|---|---|
-| **Nachtblauw** (in gebruik) | `nacht` | betrouwbaar en rustig, als een consumentengids | `#1f3d63` | `#2b5689` | `#9fbbe0` | `#f6f5f1` |
-| Hemelsblauw | `hemel` | fris, sluit aan op de lucht in het 3D-beeld | `#175a99` | `#175a99` | `#8ec0ea` | `#f4f7fa` |
+| Nachtblauw | `nacht` | betrouwbaar en rustig, als een consumentengids | `#1f3d63` | `#2b5689` | `#9fbbe0` | `#f6f5f1` |
+| **Hemelsblauw** (in gebruik, gekozen door Max) | `hemel` | fris, sluit aan op de lucht in het 3D-beeld | `#175a99` | `#175a99` | `#8ec0ea` | `#f4f7fa` |
 | Antraciet en messing | `messing` | chic, architectonisch | `#2a2e33` | `#74572a` | `#d4b97f` | `#f7f5f0` |
 | Baksteen | `baksteen` | warm, de Hollandse gevel | `#8f3e24` | `#8f3e24` | `#e2a78c` | `#f8f5f1` |
 
-Een ander palet: zet `PALET` in `build.py` op de naam en bouw opnieuw (de site krijgt dan
-`data-palet` op `<html>`; de blokken staan bovenin `css/style.css`). Het favicon kleurt mee; de
+Hemelsblauw staat in `:root`; een ander palet: zet `PALET` in `build.py` op de naam en bouw opnieuw
+(de site krijgt dan `data-palet` op `<html>`; de blokken staan bovenin `css/style.css`). Bij een
+blauw palet zijn de grijstinten koel (`--line`, `--voet`, `--spoor`, `--grijs-vlak`, `--streep`),
+bij de andere warm. Het favicon kleurt mee; de
 deelafbeelding maak je opnieuw met `python3 tools/maak_og.py` (geef hem een nieuw nummer).
 
 De kleuren lopen via variabelen in `:root` (zie het commentaar daar): `--merk` (knoppen, links),
@@ -194,7 +197,7 @@ De kleuren lopen via variabelen in `:root` (zie het commentaar daar): `--merk` (
   gevolgd door `wrap` in de inktkleur (extra vet), met `.nl` klein erachter. Echte tekst, dus
   voorleessoftware en zoekmachines lezen de naam gewoon. `WORDMARK` in `build.py`, `.brand` in
   `style.css`.
-- **Deelafbeelding**: `images/og-image-v4.jpg`: woordmerk, "Herstellen of wrappen?" en hetzelfde
+- **Deelafbeelding**: `images/og-image-v5.jpg`: woordmerk, "Herstellen of wrappen?" en hetzelfde
   3D-kozijn half crème en half antraciet. Gemaakt met `tools/maak_og.py`.
 - **Favicon**: een kozijn van voren met de onderdorpel in de lichte kleur van het palet: de
   dorpel is bijna altijd het eerst versleten. `FAVICON` in `build.py`, kleurt mee met `PALET`.

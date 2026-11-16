@@ -7,12 +7,12 @@
 
 :root{
   /* De kleuren van kozijnwrap.nl. Sinds 17 november 2026 heeft de site een eigen kleur (Max: "voer
-     deze website uit maar dan met andere kleuren"), en zit het mint van iWrap alleen nog op de
-     plekken waar iWrap in beeld komt: het blok onderaan (de brug), de knop "Offerte bij iWrap",
-     het label "Herstellen" en de uitkomst herstel. Zo zie je meteen wat van de site zelf is en wat
-     van het bedrijf dat het werk doet. Er zijn vier paletten; dit is Nachtblauw. Een ander palet:
-     zet PALET in build.py op "hemel", "messing" of "baksteen" (de blokken staan hieronder).
-     Voor oudere bezoekers: tekst 18px, grijs en de tekstkleur halen 7:1 op wit, knoppen ook.
+     deze website uit maar dan met andere kleuren"; gekozen: Hemelsblauw), en zit het mint van iWrap
+     alleen nog op de plekken waar iWrap in beeld komt: het blok onderaan (de brug), de knop
+     "Offerte bij iWrap", het label "Herstellen" en de uitkomst herstel. Zo zie je meteen wat van de
+     site zelf is en wat van het bedrijf dat het werk doet. Er zijn vier paletten; hieronder staat
+     Hemelsblauw. Een ander palet: zet PALET in build.py op "nacht", "messing" of "baksteen" (de
+     blokken staan hieronder). Voor oudere bezoekers: knoppen en grijze tekst halen 7:1.
 
      --merk         knoppen, links, alles wat je kunt aanklikken
      --merk-hover   dezelfde, iets donkerder (onder de muis)
@@ -22,11 +22,14 @@
      --merk-zacht   randjes en sporen
      --merk-wash    heel lichte vlakken (kanttekening, keuzehulp, "eerst even dit")
      --op-donker    lichte tekst op een vlak in --merk
-     --schade       versleten, schade (terracotta) */
-  --merk:#1f3d63; --merk-hover:#162f4e; --merk-tekst:#2b5689; --merk-licht:#9fbbe0;
-  --merk-vlak:#d6e3f3; --merk-zacht:#dde7f3; --merk-wash:#eef3f9; --op-donker:#d5e0ee;
-  --merk-rgb:31,61,99; --merk-licht-rgb:122,160,208;
-  --paper:#f6f5f1; --ink:#1e2531; --sub:#4d5664; --schade:#a8523a;
+     --schade       versleten, schade (terracotta)
+     --line, --voet, --spoor, --grijs-vlak, --streep: de grijstinten (lijnen, de voet, de lege
+     balken, nummertjes, gestippelde randen), koel bij een blauw palet en warm bij de andere. */
+  --merk:#175a99; --merk-hover:#124a80; --merk-tekst:#175a99; --merk-licht:#8ec0ea;
+  --merk-vlak:#d4e8f8; --merk-zacht:#dcebf8; --merk-wash:#eef6fd; --op-donker:#d8e9f7;
+  --merk-rgb:23,90,153; --merk-licht-rgb:110,170,225;
+  --paper:#f4f7fa; --ink:#1b2632; --sub:#4b5765; --schade:#a8523a;
+  --line:#dde4eb; --voet:#e8eef4; --spoor:#edf1f5; --grijs-vlak:#e3e9ef; --streep:#c5cfd9;
 
   /* iWrap: het mint van het logo, op alle paletten hetzelfde */
   --iwrap:#2f5a50; --iwrap-hover:#244840; --iwrap-mint:#a3cdc2; --iwrap-zacht:#dbece7; --iwrap-wash:#eef6f3;
@@ -35,17 +38,18 @@
                 radial-gradient(45% 90% at 8% -30%, rgba(163,205,194,.22), rgba(163,205,194,0) 70%);
 
   /* neutraal */
-  --white:#ffffff; --line:#e3e1db; --rand-zacht:rgba(34,38,42,.08);
+  --white:#ffffff; --rand-zacht:rgba(34,38,42,.08);
   --gloed:radial-gradient(55% 120% at 78% -20%, rgba(var(--merk-licht-rgb),.34), rgba(var(--merk-licht-rgb),0) 70%),
           radial-gradient(45% 90% at 8% -30%, rgba(var(--merk-licht-rgb),.2), rgba(var(--merk-licht-rgb),0) 70%);
   --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif;
 }
-/* Hemelsblauw: fris en helder, sluit aan op de lucht in het 3D-beeld */
-:root[data-palet="hemel"]{
-  --merk:#175a99; --merk-hover:#124a80; --merk-tekst:#175a99; --merk-licht:#8ec0ea;
-  --merk-vlak:#d4e8f8; --merk-zacht:#dcebf8; --merk-wash:#eef6fd; --op-donker:#d8e9f7;
-  --merk-rgb:23,90,153; --merk-licht-rgb:110,170,225;
-  --paper:#f4f7fa; --ink:#1b2632; --sub:#4b5765; --schade:#a8523a;
+/* Nachtblauw: betrouwbaar en rustig, als een goede consumentengids */
+:root[data-palet="nacht"]{
+  --merk:#1f3d63; --merk-hover:#162f4e; --merk-tekst:#2b5689; --merk-licht:#9fbbe0;
+  --merk-vlak:#d6e3f3; --merk-zacht:#dde7f3; --merk-wash:#eef3f9; --op-donker:#d5e0ee;
+  --merk-rgb:31,61,99; --merk-licht-rgb:122,160,208;
+  --paper:#f6f5f1; --ink:#1e2531; --sub:#4d5664; --schade:#a8523a;
+  --line:#e3e1db; --voet:#efede8; --spoor:#f1f0ec; --grijs-vlak:#ebe9e4; --streep:#cfccc4;
 }
 /* Antraciet en messing: de kleur van de populairste kozijnen, met warm messing */
 :root[data-palet="messing"]{
@@ -53,6 +57,7 @@
   --merk-vlak:#ede0c4; --merk-zacht:#eee4d0; --merk-wash:#f8f3e9; --op-donker:#e9dcc2;
   --merk-rgb:42,46,51; --merk-licht-rgb:214,184,128;
   --paper:#f7f5f0; --ink:#22262a; --sub:#53585e; --schade:#a8523a;
+  --line:#e3e1db; --voet:#efede8; --spoor:#f1f0ec; --grijs-vlak:#ebe9e4; --streep:#cfccc4;
 }
 /* Baksteen: warm, de kleur van de Hollandse gevel waar het kozijn in zit */
 :root[data-palet="baksteen"]{
@@ -60,6 +65,7 @@
   --merk-vlak:#f4dccf; --merk-zacht:#f2e2d8; --merk-wash:#fbf2ec; --op-donker:#f7ddd0;
   --merk-rgb:143,62,36; --merk-licht-rgb:220,150,120;
   --paper:#f8f5f1; --ink:#26211f; --sub:#5a524e; --schade:#b42318;
+  --line:#e3e1db; --voet:#efede8; --spoor:#f1f0ec; --grijs-vlak:#ebe9e4; --streep:#cfccc4;
 }
 
 *{box-sizing:border-box;}
@@ -172,7 +178,7 @@ header.site{
 
 /* Licht, met links het woordmerk en wie de site maakt (met het logo van iWrap), en rechts de route
    in drie kolommen: uitzoeken, de opties en de rest. */
-footer{background:#efede8;color:#3a4047;padding:64px 0 52px;font-size:1rem;font-family:var(--sans);border-top:1px solid var(--line);}
+footer{background:var(--voet);color:#3a4047;padding:64px 0 52px;font-size:1rem;font-family:var(--sans);border-top:1px solid var(--line);}
 .fgrid{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:34px 40px;}
 .fbrand .brand .w1,.fbrand .brand .w2{font-size:1.4rem;}
 .fbrand p{max-width:40ch;margin:10px 0 0;line-height:1.55;}

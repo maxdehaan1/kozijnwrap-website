@@ -6,7 +6,7 @@
 .kh{max-width:680px;margin:0 auto;}
 
 .kh-progress{font-family:var(--sans);font-size:1rem;font-weight:600;letter-spacing:-.01em;color:var(--merk-tekst);margin-bottom:10px;}
-.kh-bar{height:6px;border-radius:6px;background:#e3e1db;overflow:hidden;margin-bottom:30px;}
+.kh-bar{height:6px;border-radius:6px;background:var(--line);overflow:hidden;margin-bottom:30px;}
 .kh-bar span{display:block;height:100%;background:var(--merk-tekst);border-radius:4px;transition:width .3s ease;}
 
 .kh h2{font-size:clamp(1.7rem,1.3rem + 1.4vw,2.2rem);margin-bottom:8px;text-wrap:balance;}
@@ -30,7 +30,7 @@
   transition:border-color .18s ease, background .18s ease, transform .18s ease;
 }
 .kh-opt:hover{border-color:var(--merk-tekst);background:var(--merk-wash);transform:translateX(3px);}
-.kh-opt .kh-mark{flex-shrink:0;width:22px;height:22px;border-radius:50%;border:2px solid #cfccc4;transition:border-color .18s ease, background .18s ease;}
+.kh-opt .kh-mark{flex-shrink:0;width:22px;height:22px;border-radius:50%;border:2px solid var(--streep);transition:border-color .18s ease, background .18s ease;}
 .kh-opt:hover .kh-mark{border-color:var(--merk-tekst);background:rgba(var(--merk-rgb),.14);}
 .kh-opt b{display:block;font-weight:650;}
 .kh-opt small{display:block;color:var(--sub);font-size:.97rem;margin-top:2px;line-height:1.4;}
@@ -55,7 +55,7 @@
 /* Groen als wij kunnen helpen, neutraal als we eerlijk doorverwijzen. */
 .kh-result.go{border-left:5px solid var(--iwrap-mint);}
 
-.kh-result.stop{border-left:5px solid #cfccc4;}
+.kh-result.stop{border-left:5px solid var(--streep);}
 
 
 .kh-reviews{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin-top:16px;font-size:1rem;color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;}
