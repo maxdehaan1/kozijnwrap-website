@@ -5,23 +5,30 @@
    --------------------------------------------------------------------------- */
 
 :root{
-  --grey:#F6F8F5;
-  --ink:#1E2C26;
+  /* Sinds 16 november 2026 dezelfde stijl en kleuren als iwrap.nl en houtnerffolie.nl: het mint
+     van iWrap, het papier als achtergrond, witte vlakken met een zachte rand, een mintgloed
+     bovenaan en het lettertype van het apparaat zelf. De oude namen blijven, zodat de rest van
+     de opmaak gewoon meeloopt. Voor oudere bezoekers: tekst 18px, grijs dat 7:1 haalt. */
+  --grey:#f7f6f3;            /* achtergrond: het papier van iwrap.nl */
+  --paper:#f7f6f3;
+  --ink:#22262a;
   --white:#ffffff;
-  --cream:#E9F0EA;
-  --cream-ink:#26382F;
-  --anthracite:#3A5C4F;
-  --anthracite-deep:#22342C;
-  --sub:#64726A;
-  --line:#DBE4DD;
-  /* Diep groen als merkkleur: het verbindt deze site met iWrap en
-     houtnerffolie.nl, en het draagt het argument — herstellen in plaats van
-     vervangen. Taakverdeling: --accent voor lijnen, iconen en randen,
-     --accent-deep overal waar tekst bovenop komt (die haalt 7,0:1 met wit),
-     --accent-light voor tekst op de donkere vlakken. */
-  --accent:#4F8A6B;
-  --accent-deep:#3A6E56;
-  --accent-light:#A7CFB6; /* tegenhanger voor tekst op de donkere vlakken */
+  --cream:#eef6f3;           /* licht mint vlak */
+  --cream-ink:#22262a;
+  --anthracite:#2f5a50;      /* donker mint: de kaart en de knoppen */
+  --anthracite-deep:#22262a;
+  --sub:#50575e;
+  --line:#e3e1db;
+  --rand-zacht:rgba(34,38,42,.08);
+  --accent:#3f7468;          /* mint als lijn- en tekstkleur (5,4:1 op wit) */
+  --accent-deep:#2f5a50;     /* knoppen en links (7,9:1 met wit) */
+  --accent-light:#a3cdc2;    /* het mint van het logo: vlakken, en tekst op donker */
+  --mint:#a3cdc2;
+  --mint-soft:#dbece7;
+  --mint-wash:#eef6f3;
+  --gloed:radial-gradient(55% 120% at 78% -20%, rgba(163,205,194,.42), rgba(163,205,194,0) 70%),
+          radial-gradient(45% 90% at 8% -30%, rgba(163,205,194,.22), rgba(163,205,194,0) 70%);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif;
 }
 
 *{box-sizing:border-box;}
@@ -30,11 +37,15 @@ body{
   margin:0;
   background:var(--grey);
   color:var(--ink);
-  font-family:'Karla',Arial,sans-serif;
-  font-size:19px;
-  line-height:1.58;
+  font-family:var(--sans);
+  font-size:18px;
+  line-height:1.6;
+  letter-spacing:-.006em;
+  -webkit-font-smoothing:antialiased;
 }
-h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.14;margin:0 0 .4em;letter-spacing:-.01em;}
+h1,h2,h3{font-family:var(--sans);font-weight:700;line-height:1.1;margin:0 0 .45em;letter-spacing:-.03em;text-wrap:balance;}
+h3{letter-spacing:-.02em;line-height:1.25;}
+p,li,figcaption{text-wrap:pretty;}
 p{margin:0 0 1em;}
 a{color:inherit;}
 img{max-width:100%;height:auto;}
@@ -49,43 +60,51 @@ summary:focus-visible,
   outline:3px solid var(--accent);
   outline-offset:3px;
   box-shadow:0 0 0 3px rgba(255,255,255,.85);
-  border-radius:3px;
+  border-radius:4px;
 }
 
-.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:#fff;padding:12px 20px;font-family:'Karla',sans-serif;font-size:.9rem;font-weight:700;text-decoration:none;border-radius:0 0 8px 0;}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:#fff;padding:12px 20px;font-family:var(--sans);font-size:.9rem;font-weight:700;text-decoration:none;border-radius:0 0 8px 0;}
 .skip:focus{left:0;}
 
 /* Header ------------------------------------------------------------------ */
 
 /* Eigen stapelcontext boven de hero: die heeft z-index 1, waardoor het
    uitklapmenu er anders achter verdwijnt. */
-header.site{padding:20px 0;position:relative;z-index:70;}
+header.site{
+  padding:14px 0;position:sticky;top:0;z-index:70;
+  background:rgba(255,255,255,.78);
+  -webkit-backdrop-filter:saturate(1.8) blur(20px);backdrop-filter:saturate(1.8) blur(20px);
+  border-bottom:1px solid rgba(34,38,42,.07);
+}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){header.site{background:rgba(255,255,255,.97);}}
+/* Op een telefoon is de kop drie regels hoog (woordmerk, menu, knop): daar scrolt hij gewoon mee. */
+@media (max-width:760px){ header.site{position:relative;} }
 .nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;max-width:1100px;margin:0 auto;padding:0 24px;}
 /* Woordmerk. De naam is echte tekst — geen plaatje — dus voorleessoftware en
    zoekmachines lezen 'm gewoon. De spanning zit in het contrast: een lichte
    cursieve schreef boven een zware schreefloze, strak op elkaar gestapeld. */
-.brand{display:inline-flex;flex-direction:column;line-height:.8;text-decoration:none;transition:opacity .2s ease;}
+.brand{display:inline-flex;align-items:baseline;line-height:1;text-decoration:none;transition:opacity .2s ease;}
 .brand:hover{opacity:.72;}
 /* Woordmerk en slogan naast elkaar in plaats van gestapeld: drie regels onder
    elkaar maakten van het logo een tekstblok, en er stond ruim 250px ongebruikte
    ruimte naast. Zo blijft de balk ook laag. */
 .brand-lockup{display:flex;align-items:center;gap:20px;}
-.brand .w1{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:400;font-size:1.34rem;letter-spacing:-.005em;color:var(--accent-deep);margin-left:.55em;}
-.brand .w2{font-family:'Karla',Arial,sans-serif;font-weight:800;font-size:1.82rem;letter-spacing:-.045em;color:var(--ink);}
+.brand .w1{font-family:var(--sans);font-weight:500;font-size:1.55rem;letter-spacing:-.04em;color:var(--accent);}
+.brand .w2{font-family:var(--sans);font-weight:800;font-size:1.55rem;letter-spacing:-.045em;color:var(--ink);}
 /* De slogan hangt onder het woordmerk en lijnt uit met "wrap", niet met het
    ingesprongen "kozijn". Staat alleen op de homepage: daar introduceer je het
    merk, elders kost hij alleen ruimte. */
-.brand-slogan{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:.92rem;line-height:1.32;color:var(--sub);margin:0;padding-left:20px;border-left:1px solid var(--line);max-width:19ch;}
+.brand-slogan{font-family:var(--sans);font-size:.94rem;line-height:1.3;color:var(--sub);margin:0;padding-left:20px;border-left:1px solid var(--line);max-width:19ch;}
 @media (max-width:1000px){ .brand-slogan{display:none;} }
-.brand .tld{font-size:.4em;font-weight:700;letter-spacing:0;vertical-align:super;margin-left:.1em;color:var(--accent-deep);opacity:.75;}
+.brand .tld{font-size:.5em;font-weight:600;letter-spacing:0;margin-left:.06em;color:var(--accent);}
 
-.navlinks{display:flex;flex-wrap:wrap;gap:22px;font-family:'Karla',Arial,sans-serif;font-size:.85rem;}
-.navlinks a{color:var(--sub);text-decoration:none;position:relative;padding-bottom:2px;transition:color .2s ease;}
-.navlinks a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--accent);transition:right .25s ease;}
+.navlinks{display:flex;flex-wrap:wrap;align-items:center;gap:24px;font-family:var(--sans);font-size:.95rem;font-weight:500;letter-spacing:-.01em;}
+.navlinks a{color:#3a4047;text-decoration:none;position:relative;padding:6px 0 4px;transition:color .2s ease;}
+.navlinks a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;border-radius:2px;background:var(--accent-light);transition:right .25s ease;}
 .navlinks a:hover{color:var(--ink);}
 .navlinks a:hover::after{right:0;}
-.navlinks a.current{color:var(--ink);font-weight:700;}
-.navlinks a.current::after{right:0;background:var(--ink);}
+.navlinks a.current{color:var(--ink);font-weight:600;}
+.navlinks a.current::after{right:0;background:var(--accent-light);}
 .nav-right{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;}
 
 /* Uitklapmenu ---------------------------------------------------------------- */
@@ -106,9 +125,9 @@ header.site{padding:20px 0;position:relative;z-index:70;}
   min-width:520px;
   padding:22px 26px 18px;
   background:#fff;
-  border:1px solid #dce4dd;
-  border-radius:14px;
-  box-shadow:0 24px 48px -24px rgba(30,44,38,.45);
+  border:1px solid var(--rand-zacht);
+  border-radius:20px;
+  box-shadow:0 24px 48px -24px rgba(34,38,42,.35);
   opacity:0;
   visibility:hidden;
   transition:opacity .18s ease, translate .18s ease, visibility 0s .18s;
@@ -120,13 +139,13 @@ header.site{padding:20px 0;position:relative;z-index:70;}
 .has-dd:focus-within .dd{opacity:1;visibility:visible;translate:0 0;transition-delay:0s;}
 
 .dd-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;}
-.dd-kop{font-family:'Karla',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--sub);margin:0 0 8px;padding-bottom:7px;border-bottom:1px solid #e2eae3;}
+.dd-kop{font-family:var(--sans);font-size:.92rem;font-weight:600;letter-spacing:-.01em;color:var(--ink);margin:0 0 8px;padding-bottom:7px;border-bottom:1px solid #e9e7e2;}
 .dd-col ul{list-style:none;margin:0;padding:0;}
 .dd-col li + li{margin-top:1px;}
-.dd .dd-col a{display:block;padding:7px 9px;margin:0 -9px;border-radius:7px;font-size:.88rem;line-height:1.35;color:var(--ink);text-decoration:none;transition:background .15s ease, color .15s ease;}
+.dd .dd-col a{display:block;padding:8px 10px;margin:0 -10px;border-radius:9px;font-size:.97rem;line-height:1.35;color:var(--ink);text-decoration:none;transition:background .15s ease, color .15s ease;}
 .dd .dd-col a::after{display:none;}
-.dd .dd-col a:hover{background:rgba(79,138,107,.1);color:var(--accent-deep);}
-.dd-alle{display:inline-block;margin-top:16px;padding-top:14px;border-top:1px solid #e2eae3;width:100%;font-family:'Karla',sans-serif;font-size:.83rem;font-weight:700;color:var(--accent-deep);text-decoration:none;}
+.dd .dd-col a:hover{background:rgba(63,116,104,.1);color:var(--accent-deep);}
+.dd-alle{display:inline-block;margin-top:16px;padding-top:14px;border-top:1px solid #e9e7e2;width:100%;font-family:var(--sans);font-size:.97rem;font-weight:600;color:var(--accent-deep);text-decoration:none;}
 .dd-alle::after{display:none;}
 .dd-alle:hover{text-decoration:underline;}
 
@@ -136,33 +155,23 @@ header.site{padding:20px 0;position:relative;z-index:70;}
    waar je oog op valt. De gouden gloed ademt langzaam — genoeg om op te vallen,
    te traag om af te leiden. */
 .nav-cta{
-  display:inline-flex;
-  flex-direction:column;
-  gap:1px;
-  padding:9px 20px;
-  border-radius:120px;
-  background:var(--anthracite-deep);
+  display:inline-flex;align-items:center;
+  padding:11px 22px;min-height:46px;
+  border-radius:999px;
+  background:var(--accent-deep);
   color:#fff;
   text-decoration:none;
   line-height:1.2;
-  position:relative;
-  overflow:hidden;
-  animation:cta-glow 4s ease-in-out infinite;
   transition:background .2s ease, transform .2s ease;
 }
-.nav-cta-sub{font-family:'Karla',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-light);}
-.nav-cta-main{font-family:'Karla',sans-serif;font-size:.92rem;font-weight:700;white-space:nowrap;}
-.nav-cta:hover{background:#16211C;transform:translateY(-2px);}
-/* Glans die bij hover één keer overloopt. */
-.nav-cta::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(167,207,182,.3) 50%,transparent 65%);translate:-100% 0;}
-.nav-cta:hover::after{animation:cta-sheen .75s ease-out;}
-@keyframes cta-glow{0%,100%{box-shadow:0 0 0 0 rgba(79,138,107,0);}50%{box-shadow:0 0 0 5px rgba(79,138,107,.16);}}
-@keyframes cta-sheen{to{translate:100% 0;}}
+/* "Uitvoerende partij" stond er in piepkleine hoofdletters boven; dat leest niemand. Het staat
+   nog in de knop voor voorleessoftware, en op de site zelf zegt "Uitleg van iWrap" het al. */
+.nav-cta-sub{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.nav-cta-main{font-family:var(--sans);font-size:.98rem;font-weight:600;letter-spacing:-.01em;white-space:nowrap;}
+.nav-cta:hover{background:#244840;transform:translateY(-1px);}
 
 @media (prefers-reduced-motion: reduce){
-  .nav-cta{animation:none;}
   .nav-cta:hover{transform:none;}
-  .nav-cta:hover::after{animation:none;}
   .dd{transition:none;}
 }
 
@@ -171,12 +180,11 @@ header.site{padding:20px 0;position:relative;z-index:70;}
    gaat dan gewoon naar het overzicht. */
 @media (max-width:760px){ .dd{display:none;} .dd-caret{display:none;} }
 @media (max-width:560px){
-  .brand .w1{font-size:1.06rem;}
-  .brand .w2{font-size:1.42rem;}
-  .navlinks{gap:12px;font-size:.8rem;}
+  .brand .w1,.brand .w2{font-size:1.32rem;}
+  .navlinks{gap:14px;font-size:.92rem;}
   .nav-right{gap:10px 14px;width:100%;justify-content:space-between;}
-  .nav-cta{padding:8px 16px;}
-  .nav-cta-main{font-size:.85rem;}
+  .nav-cta{padding:9px 16px;min-height:42px;}
+  .nav-cta-main{font-size:.92rem;}
 }
 
 /* Kanttekeningen ----------------------------------------------------------- */
@@ -185,38 +193,37 @@ header.site{padding:20px 0;position:relative;z-index:70;}
    iets dat de lezer écht moet meenemen, .note voor een terzijde. Eerder deden
    beide zich voor als .tip, met per stylesheet een andere uitwerking. */
 .callout{
-  background:#fff;
-  border-left:4px solid var(--accent);
-  border-radius:0 10px 10px 0;
-  padding:20px 24px;
-  margin:22px 0;
-  font-size:1rem;
+  background:var(--mint-wash);
+  border-left:4px solid var(--accent-light);
+  border-radius:0 20px 20px 0;
+  padding:22px 26px;
+  margin:24px 0;
+  font-size:1.02rem;
   line-height:1.6;
   max-width:none;
-  box-shadow:0 8px 20px -16px rgba(0,0,0,.4);
 }
 .callout b{color:var(--accent-deep);}
 .callout>:last-child{margin-bottom:0;}
 
-.note{margin-top:16px;font-size:.96rem;color:var(--sub);font-family:'Karla',sans-serif;}
+.note{margin-top:16px;font-size:1rem;color:var(--sub);font-family:var(--sans);}
 
 /* Footer ------------------------------------------------------------------- */
 
-footer{background:var(--ink);color:#9aa79e;padding:38px 0 34px;font-size:.85rem;font-family:'Karla',sans-serif;}
+footer{background:#efede8;color:#3a4047;padding:56px 0 44px;font-size:1rem;font-family:var(--sans);}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px 48px;align-items:flex-start;max-width:1100px;}
-footer .fbrand strong{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:#fff;display:block;margin-bottom:6px;}
+footer .fbrand strong{font-family:var(--sans);font-weight:800;font-size:1.25rem;letter-spacing:-.03em;color:var(--ink);display:block;margin-bottom:6px;}
 footer .fbrand p{max-width:44ch;margin:0;line-height:1.5;}
-footer .fbrand .fby{margin-top:8px;color:#b4c0b8;}
+footer .fbrand .fby{margin-top:10px;color:var(--sub);}
 /* Deze link staat in een <p> en kreeg daardoor het donkere accentgoud van de
    lopende tekst — op de donkere footer maar 3,1:1. */
-footer .fbrand .fby a{color:#fff;text-decoration:underline;}
-footer .fbrand .fby a:hover{color:#fff;text-decoration:none;}
+footer .fbrand .fby a{color:var(--accent-deep);text-decoration:underline;}
+footer .fbrand .fby a:hover{color:var(--accent-deep);text-decoration:none;}
 footer .flinks{line-height:1.9;}
-footer a{color:#e7eee9;text-decoration:none;}
-footer a:hover{color:#fff;text-decoration:underline;}
+footer a{color:#3a4047;text-decoration:none;}
+footer a:hover{color:var(--accent-deep);text-decoration:underline;}
 
 /* Slogan onder de merknaam in de footer. */
-footer .fbrand .fslogan{font-family:'Fraunces',serif;font-size:1.02rem;color:var(--accent-light);margin:2px 0 8px;}
+footer .fbrand .fslogan{font-family:var(--sans);font-size:1.02rem;font-weight:600;color:var(--accent);margin:2px 0 8px;}
 
 /* Verfijning ---------------------------------------------------------------- */
 
@@ -237,12 +244,12 @@ footer .fbrand .fslogan{font-family:'Fraunces',serif;font-size:1.02rem;color:var
 }
 
 /* Een streep in de merkkleur boven de footer, als afsluiting van de pagina. */
-footer{border-top:3px solid var(--accent);}
+footer{border-top:1px solid var(--line);}
 
 /* Accentstreep onder een kop. Verving een handgetekend golfje dat niet paste bij
    de rest; deze opbouw — kort en zwaar boven lang en licht — is dezelfde als die
    van het woordmerk. */
-.rule{display:block;margin:6px 0 20px;}
+.rule{display:none;}
 .rule::before,.rule::after{content:"";display:block;height:4px;border-radius:4px;}
 .rule::before{width:52px;background:var(--accent);}
 .rule::after{width:104px;margin-top:5px;background:var(--line);opacity:.85;}
@@ -253,4 +260,4 @@ body.home .rule::after,
 body.theme-wrap .rule::after,
 body.theme-blog .rule::after{background:rgba(255,255,255,.28);}
 body.theme-herstel .rule::before{background:var(--accent-deep);}
-body.theme-herstel .rule::after{background:rgba(38,56,47,.22);}
+body.theme-herstel .rule::after{background:rgba(34,38,42,.22);}

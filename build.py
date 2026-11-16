@@ -125,9 +125,9 @@ _iwrap_reviews()
 # staat voor de nieuwe folie. Leesbaar tot 16px, waar een fijnere tekening dichtslibt.
 FAVICON = (
     "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>"
-    "<rect width='64' height='64' rx='14' fill='%2315211C'/>"
-    "<path d='M14 12h36v36H14z M22 20v20h20V20z' fill='%23E4EDE7' fill-rule='evenodd'/>"
-    "<path d='M14 40h36v8H14z' fill='%232F7355'/></svg>"
+    "<rect width='64' height='64' rx='14' fill='%232F5A50'/>"
+    "<path d='M14 12h36v36H14z M22 20v20h20V20z' fill='%23F7F6F3' fill-rule='evenodd'/>"
+    "<path d='M14 40h36v8H14z' fill='%23A3CDC2'/></svg>"
 )
 
 WORDMARK = (
@@ -160,12 +160,11 @@ def css_version():
 
 
 def fonts_href(extra_montserrat, ver):
-    """De lettertypen staan op de site zelf (css/fonts.css, fonts/): zo gaat het
-    IP-adres van een bezoeker niet naar Google en is er geen cookiebanner nodig."""
-    uit = '<link rel="stylesheet" href="/css/fonts.css?v=%s">\n' % ver
-    if extra_montserrat:
-        uit += '<link rel="stylesheet" href="/css/fonts-montserrat.css?v=%s">\n' % ver
-    return uit
+    """Sinds 16 november 2026 gebruikt de site het lettertype van het apparaat zelf (San Francisco
+    op een Mac en iPhone, Segoe UI op Windows), net als iwrap.nl en houtnerffolie.nl. Er wordt dus
+    geen lettertype meer geladen; css/fonts.css en fonts/ (Karla en Fraunces) worden niet meer
+    gebruikt."""
+    return ""
 
 
 def blog_menu():
@@ -318,7 +317,7 @@ def render_head(meta, ver):
     og_desc = meta.get("ogDescription") or meta["description"]
     # Nieuwe bestandsnaam bij elke herziening: /images/ staat op een cache van een
     # jaar met immutable, dus onder dezelfde naam zou de oude afbeelding blijven hangen.
-    img = SITE + "/images/og-image-v2.jpg"
+    img = SITE + "/images/og-image-v3.jpg"
 
     # De losse .html-URL's uit de oorspronkelijke structured data meeschrijven
     # naar de schone URL's, zodat canonical en schema niet uit elkaar lopen.

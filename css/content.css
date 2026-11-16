@@ -5,46 +5,46 @@
 
 body.page p{max-width:64ch;}
 body.page .wrap{max-width:740px;margin:0 auto;padding:0 24px;}
-body.page .hero{padding:52px 0 44px;margin-bottom:8px;box-shadow:0 8px 20px -12px rgba(0,0,0,.18);position:relative;z-index:1;}
+body.page .hero{padding:clamp(40px,5vw,70px) 0 clamp(36px,4.5vw,60px);margin-bottom:8px;position:relative;z-index:1;}
 .hero .wrap{max-width:740px;}
-.hero .tag{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:rgba(255,255,255,.22);padding:5px 12px;border-radius:20px;display:inline-block;margin-bottom:18px;}
-.hero h1{font-size:clamp(2rem,4.6vw,2.7rem);max-width:20ch;color:#fff;text-wrap:balance;}
-.hero p.lede{color:rgba(255,255,255,.92);font-size:1.08rem;max-width:56ch;}
+.hero .tag{font-family:var(--sans);font-size:1rem;font-weight:600;letter-spacing:-.01em;background:none;color:var(--accent);padding:0;border-radius:0;display:block;margin-bottom:10px;}
+.hero h1{font-size:clamp(2.3rem,1.45rem + 3vw,3.5rem);line-height:1.05;letter-spacing:-.035em;max-width:20ch;color:var(--ink);text-wrap:balance;}
+.hero p.lede{color:#3a4047;font-size:clamp(1.12rem,1.06rem + .3vw,1.24rem);line-height:1.55;max-width:56ch;}
 .doodle-line{display:block;margin:2px 0 16px;}
 .lead-out{margin-top:16px;}
 
-section{padding:42px 0;}
-section h2{font-size:1.55rem;}
+section{padding:clamp(40px,5vw,60px) 0;}
+section h2{font-size:clamp(1.7rem,1.3rem + 1.4vw,2.3rem);}
 /* Vervangt het tien keer herhaalde style="padding-top:0" in de HTML. */
 section.tight{padding-top:0;}
 
 .signals{list-style:none;margin:0;padding:0;}
-.signals li{padding:13px 0 13px 30px;position:relative;border-bottom:1px solid var(--line);font-size:1rem;}
+.signals li{padding:14px 0 14px 32px;position:relative;border-bottom:1px solid var(--line);font-size:1.02rem;}
 .signals li:last-child{border-bottom:none;}
-.signals li::before{content:"";position:absolute;left:2px;top:50%;transform:translateY(-50%);width:9px;height:9px;border-radius:50%;}
+.signals li::before{content:"";position:absolute;left:2px;top:50%;transform:translateY(-50%);width:10px;height:10px;border-radius:50%;}
 
 .steps{counter-reset:step;list-style:none;margin:0;padding:0;}
 .steps li{counter-increment:step;padding:16px 0 16px 48px;position:relative;border-bottom:1px solid var(--line);}
 .steps li:last-child{border-bottom:none;}
-.steps li::before{content:counter(step);position:absolute;left:0;top:50%;transform:translateY(-50%);width:32px;height:32px;background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Karla',sans-serif;font-size:.85rem;font-weight:700;}
-.steps .stitle{font-weight:600;font-size:1.08rem;margin-bottom:2px;}
-.steps p{font-size:.98rem;color:var(--sub);margin:0;max-width:56ch;}
+.steps li::before{content:counter(step);position:absolute;left:0;top:50%;transform:translateY(-50%);width:34px;height:34px;background:var(--mint);color:var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:.95rem;font-weight:700;}
+.steps .stitle{font-weight:650;font-size:1.14rem;letter-spacing:-.015em;margin-bottom:2px;}
+.steps p{font-size:1.02rem;color:var(--sub);margin:0;max-width:56ch;}
 
-.facts,.materials{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ink);margin-top:8px;}
+.facts,.materials{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;}
 @media (max-width:560px){ .facts{grid-template-columns:1fr;} }
 @media (max-width:600px){ .materials{grid-template-columns:1fr;} }
-.fact{background:#fff;padding:18px 20px;}
-.fact .n{font-family:'Karla',sans-serif;font-weight:700;font-size:.92rem;text-transform:uppercase;letter-spacing:.02em;}
-.fact p{font-size:.96rem;color:var(--sub);margin:4px 0 0;}
-.material{background:#fff;padding:24px 22px;}
-.material h3{font-size:1.15rem;margin-bottom:6px;}
-.material p{font-size:.98rem;color:var(--sub);margin:0;}
+.fact{background:#fff;border:1px solid var(--rand-zacht);border-radius:20px;padding:20px 22px;}
+.fact .n{font-family:var(--sans);font-weight:650;font-size:1.04rem;letter-spacing:-.01em;}
+.fact p{font-size:1rem;color:var(--sub);margin:4px 0 0;}
+.material{background:#fff;border:1px solid var(--rand-zacht);border-radius:20px;padding:26px 24px;}
+.material h3{font-size:1.22rem;margin-bottom:6px;}
+.material p{font-size:1.02rem;color:var(--sub);margin:0;}
 
 /* Beeld --------------------------------------------------------------------- */
 
 figure{margin:26px 0;}
-figure img{display:block;width:100%;border-radius:10px;}
-figcaption{font-family:'Karla',sans-serif;font-size:.85rem;color:var(--sub);margin-top:9px;line-height:1.45;}
+figure img{display:block;width:100%;border-radius:20px;}
+figcaption{font-family:var(--sans);font-size:.97rem;color:var(--sub);margin-top:10px;line-height:1.45;}
 
 /* Voor en na naast elkaar. Het label ligt óp de foto, zodat de twee beelden
    niet uit elkaar getrokken worden door een regel tekst ertussen. */
@@ -52,15 +52,15 @@ figcaption{font-family:'Karla',sans-serif;font-size:.85rem;color:var(--sub);marg
 @media (max-width:560px){ .beforeafter{grid-template-columns:1fr;} }
 .beforeafter figure{margin:0;position:relative;}
 .beforeafter img{aspect-ratio:4/3;object-fit:cover;box-shadow:0 10px 24px -18px rgba(0,0,0,.6);}
-.beforeafter .ba-label{position:absolute;top:12px;left:12px;font-family:'Karla',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.94);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.18);}
+.beforeafter .ba-label{position:absolute;top:12px;left:12px;font-family:var(--sans);font-size:.92rem;font-weight:700;letter-spacing:.01em;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.95);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.18);}
 .beforeafter figcaption{margin-top:8px;}
 
 /* Instapdrempel wegnemen: dit blok zegt expliciet dat een kleine klus welkom
    is. Vrijwel niemand met twee verweerde dorpels neemt aan dat een specialist
    daarvoor langskomt — en dat kost aanvragen. */
-.small-jobs{background:var(--cream);border-radius:12px;padding:24px 28px;margin:26px 0 0;}
-.small-jobs h3{font-size:1.15rem;margin:0 0 8px;color:var(--cream-ink);}
-.small-jobs p{margin:0;font-size:1rem;color:rgba(38,56,47,.85);max-width:60ch;}
+.small-jobs{background:var(--cream);border-radius:20px;padding:26px 30px;margin:26px 0 0;}
+.small-jobs h3{font-size:1.22rem;margin:0 0 8px;color:var(--cream-ink);}
+.small-jobs p{margin:0;font-size:1.02rem;color:#3a4047;max-width:60ch;}
 .small-jobs p + p{margin-top:10px;}
 
 /* Partnerblokken ------------------------------------------------------------ */
@@ -71,61 +71,61 @@ figcaption{font-family:'Karla',sans-serif;font-size:.85rem;color:var(--sub);marg
    gemaakt — en op een groene site viel die salie bovendien weg. Nu een donker
    vlak in de eigen huisstijl: het springt eruit als eigen stem, zonder te doen
    alsof het iemand anders is. Scheelt ook een heel lettertype. */
-.partner-story{background:var(--ink);color:#e7eee9;border-radius:16px;padding:34px 36px;}
-.partner-story .plabel{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-light);margin-bottom:10px;}
-.partner-story h2{color:#fff;font-size:1.45rem;}
-.partner-story p{font-size:1rem;line-height:1.7;color:#c9d6cd;max-width:68ch;}
+.partner-story{background:var(--ink);color:#eef1f3;border-radius:30px;padding:clamp(28px,4vw,44px) clamp(24px,4vw,44px);}
+.partner-story .plabel{font-family:var(--sans);font-size:1rem;font-weight:600;letter-spacing:-.01em;color:var(--accent-light);margin-bottom:10px;}
+.partner-story h2{color:#fff;font-size:clamp(1.6rem,1.3rem + 1vw,2.1rem);}
+.partner-story p{font-size:1.04rem;line-height:1.65;color:#d5dadf;max-width:68ch;}
 /* Een paar reviews van iWrap in het donkere vlak, elk aan te klikken naar Google. */
 .pquotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:20px;}
-.pquote{display:flex;flex-direction:column;gap:9px;background:rgba(255,255,255,.06);border:1px solid rgba(167,207,182,.28);border-radius:14px;padding:18px 20px;color:#e7eee9;text-decoration:none;transition:background .2s ease,transform .2s ease;}
-.pquote:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);color:#e7eee9;}
-.pq-sterren{color:#f0b429;letter-spacing:.08em;font-size:.95rem;line-height:1;}
-.pq-tekst{font-size:.95rem;line-height:1.6;}
-.pq-naam{margin-top:auto;font-family:'Karla',sans-serif;font-size:.82rem;font-weight:700;color:var(--accent-light);}
+.pquote{display:flex;flex-direction:column;gap:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:20px 22px;color:#eef1f3;text-decoration:none;transition:background .2s ease,transform .2s ease;}
+.pquote:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);color:#eef1f3;}
+.pq-sterren{color:#d9940a;letter-spacing:.08em;font-size:.95rem;line-height:1;}
+.pq-tekst{font-size:1.02rem;line-height:1.6;}
+.pq-naam{margin-top:auto;font-family:var(--sans);font-size:.95rem;font-weight:600;color:var(--accent-light);}
 .partner-story .plinks{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;}
-.partner-story .plink{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--ink);font-family:'Karla',sans-serif;font-weight:700;font-size:.92rem;text-decoration:none;padding:12px 24px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
-.partner-story .plink:hover{background:#e3ede6;transform:translateY(-1px);}
-.partner-story .plink.outline{background:transparent;color:var(--accent-light);border:1.5px solid rgba(167,207,182,.45);}
-.partner-story .plink.outline:hover{background:rgba(167,207,182,.12);color:var(--accent-light);}
+.partner-story .plink{display:inline-flex;align-items:center;gap:6px;background:var(--mint);color:var(--ink);font-family:var(--sans);font-weight:600;font-size:1.02rem;text-decoration:none;min-height:52px;padding:14px 26px;border-radius:999px;transition:background .2s ease, transform .2s ease;}
+.partner-story .plink:hover{background:#b6d8ce;transform:translateY(-1px);}
+.partner-story .plink.outline{background:transparent;color:var(--accent-light);border:1.5px solid rgba(163,205,194,.45);}
+.partner-story .plink.outline:hover{background:rgba(163,205,194,.12);color:var(--accent-light);}
 
-.partner-pending{background:#fff;border:2px dashed #bfc9c1;border-radius:16px;padding:34px 36px;}
-.partner-pending .plabel{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:10px;}
+.partner-pending{background:#fff;border:2px dashed #cfccc4;border-radius:30px;padding:clamp(28px,4vw,40px);}
+.partner-pending .plabel{font-family:var(--sans);font-size:1rem;font-weight:600;letter-spacing:-.01em;color:var(--accent);margin-bottom:10px;}
 .partner-pending h2{font-size:1.4rem;}
 .partner-pending p{font-size:1rem;line-height:1.7;color:var(--sub);max-width:68ch;}
 .partner-pending .plinks{margin-top:20px;}
-.partner-pending .plink{display:inline-flex;align-items:center;gap:6px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:12px 24px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
-.partner-pending .plink:hover{background:#2C5744;transform:translateY(-1px);}
+.partner-pending .plink{display:inline-flex;align-items:center;gap:6px;background:var(--accent-deep);color:#fff;font-family:var(--sans);font-weight:600;font-size:1.02rem;text-decoration:none;min-height:52px;padding:14px 26px;border-radius:999px;transition:background .2s ease, transform .2s ease;}
+.partner-pending .plink:hover{background:#244840;transform:translateY(-1px);}
 
 /* Veelgestelde vragen -------------------------------------------------------- */
 
-.faq{margin-top:8px;}
+.faq{margin-top:10px;background:#fff;border:1px solid var(--rand-zacht);border-radius:30px;padding:4px clamp(18px,3vw,32px);}
 .faq details{border-bottom:1px solid var(--line);}
 .faq details:last-child{border-bottom:none;}
-.faq summary{cursor:pointer;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 12px;margin:0 -12px;border-radius:8px;transition:background .2s ease;}
-.faq summary:hover{background:rgba(79,138,107,.08);}
+.faq summary{cursor:pointer;font-weight:600;font-size:1.1rem;letter-spacing:-.015em;line-height:1.35;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 12px;margin:0 -12px;border-radius:12px;transition:background .2s ease;}
+.faq summary:hover{background:rgba(63,116,104,.08);}
 .faq summary::-webkit-details-marker{display:none;}
-.faq summary::after{content:"+";font-family:'Karla',sans-serif;font-weight:700;font-size:1.3rem;flex-shrink:0;color:var(--sub);transition:transform .25s ease, color .2s ease;}
+.faq summary::after{content:"+";font-family:var(--sans);font-weight:700;font-size:1.3rem;flex-shrink:0;color:var(--sub);transition:transform .25s ease, color .2s ease;}
 .faq summary:hover::after{color:var(--accent-deep);}
 .faq details[open] summary::after{transform:rotate(45deg);color:var(--accent-deep);}
-.faq .a{margin:-6px 12px 16px;color:var(--sub);font-size:.98rem;max-width:64ch;}
+.faq .a{margin:-6px 0 20px;color:#3a4047;font-size:1.02rem;max-width:64ch;}
 
 /* Aanbevolen partij ---------------------------------------------------------- */
 
-.partybox{background:var(--ink);color:#fff;padding:36px 0;margin-top:8px;}
-.partybox .label{font-family:'Karla',sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#c0c9c2;margin-bottom:14px;}
-.partybox h2{color:#fff;font-size:1.4rem;}
-.partybox p{color:#c6cfc8;}
+.partybox{background:var(--accent-deep);color:#fff;padding:clamp(40px,5vw,60px) 0;margin-top:8px;}
+.partybox .label{font-family:var(--sans);font-size:1rem;font-weight:600;letter-spacing:-.01em;color:var(--mint);margin-bottom:12px;}
+.partybox h2{color:#fff;font-size:clamp(1.6rem,1.3rem + 1vw,2.1rem);}
+.partybox p{color:#e3ecea;}
 .badge-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;}
-.badge{display:inline-flex;align-items:center;gap:6px;font-family:'Karla',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:10px 18px;border-radius:24px;transition:transform .2s ease, box-shadow .2s ease, background .2s ease;}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-weight:600;font-size:1rem;text-decoration:none;min-height:50px;padding:13px 22px;border-radius:999px;transition:transform .2s ease, box-shadow .2s ease, background .2s ease;}
 .badge:hover{transform:translateY(-2px);box-shadow:0 6px 14px -6px rgba(0,0,0,.35);}
 /* Losse knop voor buiten de partybox, op een lichte achtergrond. */
-.cta-button{display:inline-flex;align-items:center;gap:7px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:14px 26px;border-radius:120px;margin-top:20px;transition:background .2s ease, transform .2s ease;}
-.cta-button:hover{background:#2C5744;transform:translateY(-2px);}
+.cta-button{display:inline-flex;align-items:center;gap:7px;background:var(--accent-deep);color:#fff;font-family:var(--sans);font-weight:600;font-size:1.04rem;text-decoration:none;min-height:54px;padding:15px 30px;border-radius:999px;margin-top:20px;transition:background .2s ease, transform .2s ease;}
+.cta-button:hover{background:#244840;transform:translateY(-2px);}
 @media (prefers-reduced-motion: reduce){ .cta-button:hover{transform:none;} }
 
-.badge.solid{background:var(--cream);color:var(--cream-ink);}
-.badge.gold{background:#2a4034;color:var(--accent-light);border:1px solid var(--accent);}
-.badge.gold:hover{background:#354d40;}
+.badge.solid{background:#fff;color:var(--ink);}
+.badge.gold{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);}
+.badge.gold:hover{background:rgba(255,255,255,.2);}
 
 /* Kleurthema per pagina — kozijnherstel = crème (het resultaat van herstel is
    vaak een klassiek crème-wit kozijn), kozijnwrappen = antraciet (de meest
@@ -137,26 +137,26 @@ figcaption{font-family:'Karla',sans-serif;font-size:.85rem;color:var(--sub);marg
 body.page p a,
 body.page li a{color:var(--accent-deep);}
 /* In de gekleurde hero-band zou dat goud op donker onleesbaar worden. */
-body.page .hero p a{color:#fff;text-decoration:underline;}
+body.page .hero p a{color:var(--accent-deep);text-decoration:underline;}
 body.theme-herstel .hero p a{color:var(--cream-ink);}
 
-body.theme-herstel .hero{background:var(--cream);color:var(--cream-ink);}
-body.theme-herstel .hero .tag{background:rgba(38,56,47,.12);}
+
+
 body.theme-herstel .hero h1{color:var(--cream-ink);}
-body.theme-herstel .hero p.lede{color:rgba(38,56,47,.82);}
+
 body.theme-herstel .signals li::before{background:var(--cream-ink);}
 body.theme-herstel .fact .n{color:var(--cream-ink);}
 
-body.theme-wrap .hero{background:var(--anthracite);color:#fff;}
+
 body.theme-wrap .signals li::before{background:var(--anthracite);}
 body.theme-wrap .fact .n{color:var(--anthracite);}
 
-body.theme-blog .hero{background:var(--ink);color:#fff;}
+
 body.theme-blog .signals li::before{background:var(--accent-deep);}
 body.theme-blog .fact .n{color:var(--accent-deep);}
 
 /* Wie de pagina schrijft, direct onder de inleiding in de gekleurde band. */
-.hero-by{font-family:'Karla',sans-serif;font-size:.88rem;margin:14px 0 0;opacity:.8;}
+.hero-by{font-family:var(--sans);font-size:1rem;margin:16px 0 0;color:var(--sub);}
 body.theme-herstel .hero-by{color:var(--cream-ink);}
 
 /* Verfijning ---------------------------------------------------------------- */
@@ -170,22 +170,30 @@ body.theme-herstel .hero-by{color:var(--cream-ink);}
 /* Onderstreping die niet met de tekst mee schreeuwt: dun, met wat lucht eronder,
    en pas bij hover op volle sterkte. */
 body.page p a,
-body.page li a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:rgba(58,110,86,.4);transition:text-decoration-color .2s ease;}
+body.page li a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:rgba(47,90,80,.4);transition:text-decoration-color .2s ease;}
 body.page p a:hover,
 body.page li a:hover{text-decoration-color:currentColor;}
-body.page .hero p a{text-decoration-color:rgba(255,255,255,.5);}
+body.page .hero p a{text-decoration-color:rgba(47,90,80,.45);}
 
 /* Alleen regels die daadwerkelijk een link zijn lichten op — anders suggereer je
    klikbaarheid bij gewone tekst. */
 .signals li{border-radius:7px;transition:background .18s ease;}
-.signals li:has(a):hover{background:rgba(79,138,107,.07);}
+.signals li:has(a):hover{background:rgba(63,116,104,.07);}
 
 /* Beeld iets meer body geven: een haarscherpe rand plus een zachte slagschaduw. */
-figure img{box-shadow:0 0 0 1px rgba(30,44,38,.07), 0 20px 34px -26px rgba(30,44,38,.55);}
+figure img{box-shadow:0 0 0 1px rgba(34,38,42,.07), 0 20px 34px -26px rgba(34,38,42,.55);}
 
 /* De gekleurde hero-banden waren vlak; een heel licht verloop geeft diepte. */
-body.theme-herstel .hero{background:linear-gradient(168deg,#EFF4F0 0%,var(--cream) 70%);}
-body.theme-wrap .hero{background:linear-gradient(168deg,#44685A 0%,var(--anthracite) 70%);}
-body.theme-blog .hero{background:linear-gradient(168deg,#263630 0%,var(--ink) 70%);}
-.partybox{background:linear-gradient(165deg,#28382F 0%,var(--ink) 65%);}
-.partner-story{background:linear-gradient(160deg,#27372F 0%,var(--ink) 70%);}
+
+
+
+
+
+
+/* Sinds november 2026: elke paginakop licht met de mintgloed, zoals iwrap.nl en houtnerffolie.nl.
+   (Daarvoor had elk thema een eigen gekleurde band: crème, antraciet en donkergroen.) */
+body.page .hero{background:var(--gloed),var(--paper);color:var(--ink);}
+body.theme-wrap .signals li::before,body.theme-herstel .signals li::before{background:var(--accent-light);}
+body.theme-blog .signals li::before{background:var(--accent-light);}
+body.theme-wrap .fact .n,body.theme-herstel .fact .n,body.theme-blog .fact .n{color:var(--ink);}
+figure img{box-shadow:0 0 0 1px rgba(34,38,42,.06), 0 24px 40px -30px rgba(34,38,42,.45);}

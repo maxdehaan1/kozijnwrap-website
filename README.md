@@ -84,17 +84,31 @@ statisch. Alles staat achter `prefers-reduced-motion: no-preference`.
 
 ## Huisstijl
 
-- **Letters**: Fraunces (koppen) en Karla (lopende tekst). Montserrat staat alléén op
-  kozijnherstel.html, voor het iWrap-blok — dat leent bewust de eigen huisstijl van iWrap,
-  zodat zichtbaar is dat daar het uitvoerende bedrijf aan het woord is.
-- **Woordmerk**: de naam ís het logo — `kozijn` in Fraunces cursief boven `wrap.nl` in
-  Karla 800, strak gestapeld. De spanning zit in het contrast tussen de lichte schreef en
-  de zware schreefloze, niet in een icoon. Het blijft échte tekst (geen plaatje), dus
-  voorleessoftware en zoekmachines lezen de naam gewoon. Markup staat als `WORDMARK` in
-  `build.py`, opmaak onder `.brand` in `style.css`; die twee horen bij elkaar.
-- **Favicon**: wél een beeldmerk, want een woordmerk van twee regels is op 16px
-  onleesbaar. Een kozijn van voren met de onderdorpel in goud — de dorpel is bijna altijd
-  het eerst versleten. Staat als `FAVICON` in `build.py`.
+Sinds 16 november 2026 **dezelfde stijl als iwrap.nl en houtnerffolie.nl** ("iets meer Apple"):
+licht en rustig, de kleuren van iWrap (mint `#a3cdc2`, donker mint `#2f5a50` voor knoppen en
+links, mint `#3f7468` als tekstkleur, papier `#f7f6f3`, antraciet `#22262a`), een zachte
+mintgloed bovenaan elke pagina, een wit doorschijnend menu dat blijft staan (op een telefoon
+scrolt het mee), witte vlakken met een zachte rand, en een lichte voet. Elke paginakop is licht
+(daarvoor had elk thema een eigen gekleurde band); het iWrap-blok op /kozijnherstel is het ene
+donkere vlak. De oude variabelenamen (`--cream`, `--anthracite`, `--accent`) staan nog in
+`style.css` maar wijzen naar de nieuwe kleuren.
+
+- **Letters**: het lettertype van het apparaat zelf (San Francisco op een Mac en iPhone,
+  Segoe UI op Windows, Roboto op Android), `--sans` in `style.css`. Koppen vet en strak,
+  lopende tekst 18px. Er wordt geen lettertype meer geladen; `css/fonts*.css` en `fonts/`
+  (Karla, Fraunces, Montserrat) worden niet meer gebruikt.
+- **Voor oudere bezoekers**: kleine teksten minstens 15px, grijs dat 7:1 haalt, knoppen
+  minstens 50px hoog en geen piepkleine hoofdletters met spaties ertussen (labels als
+  "Kozijnherstel" zijn gewone letters in het mint).
+- **Woordmerk**: de naam ís het logo: `kozijn` in mint (normaal gewicht) direct gevolgd door
+  `wrap` in antraciet (extra vet), met `.nl` klein erachter. Het blijft échte tekst (geen
+  plaatje), dus voorleessoftware en zoekmachines lezen de naam gewoon. Markup staat als
+  `WORDMARK` in `build.py`, opmaak onder `.brand` in `style.css`; die twee horen bij elkaar.
+- **Deelafbeelding**: `images/og-image-v3.jpg` (woordmerk, slogan en de werkfoto, in de
+  nieuwe stijl).
+- **Favicon**: wél een beeldmerk, want een woordmerk is op 16px onleesbaar. Een kozijn van
+  voren met de onderdorpel in mint, op donker mint: de dorpel is bijna altijd het eerst
+  versleten. Staat als `FAVICON` in `build.py`.
 - **Slogan**: "Weet wat je kozijn nodig heeft" — constante `SLOGAN` in `build.py`. Staat
   als lockup onder het woordmerk in de header (alléén op de homepage), in de footer, en
   op de deelafbeelding.

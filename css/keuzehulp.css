@@ -6,12 +6,12 @@
 .kh{max-width:640px;margin:0 auto;}
 .kh-step[hidden]{display:none !important;}
 
-.kh-progress{font-family:'Karla',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sub);margin-bottom:10px;}
-.kh-bar{height:4px;border-radius:4px;background:#dce4dd;overflow:hidden;margin-bottom:28px;}
+.kh-progress{font-family:var(--sans);font-size:1rem;font-weight:600;letter-spacing:-.01em;color:var(--accent);margin-bottom:10px;}
+.kh-bar{height:6px;border-radius:6px;background:#e3e1db;overflow:hidden;margin-bottom:30px;}
 .kh-bar span{display:block;height:100%;background:var(--accent);border-radius:4px;transition:width .3s ease;}
 
-.kh h2{font-size:1.6rem;margin-bottom:6px;text-wrap:balance;}
-.kh .kh-hint{color:var(--sub);font-size:.98rem;margin-bottom:22px;max-width:52ch;}
+.kh h2{font-size:clamp(1.7rem,1.3rem + 1.4vw,2.2rem);margin-bottom:8px;text-wrap:balance;}
+.kh .kh-hint{color:var(--sub);font-size:1.04rem;margin-bottom:24px;max-width:52ch;}
 
 .kh-options{display:grid;gap:10px;margin:0;padding:0;list-style:none;}
 .kh-opt{
@@ -21,57 +21,57 @@
   width:100%;
   text-align:left;
   background:#fff;
-  border:1.5px solid #d9e1da;
-  border-radius:11px;
-  padding:17px 20px;
-  font-family:'Karla',Arial,sans-serif;
-  font-size:1rem;
+  border:1.5px solid var(--line);
+  border-radius:18px;
+  padding:19px 22px;
+  font-family:var(--sans);
+  font-size:1.06rem;
   color:var(--ink);
   cursor:pointer;
   transition:border-color .18s ease, background .18s ease, transform .18s ease;
 }
-.kh-opt:hover{border-color:var(--accent);background:#fafcfa;transform:translateX(3px);}
-.kh-opt .kh-mark{flex-shrink:0;width:22px;height:22px;border-radius:50%;border:2px solid #cbd6cd;transition:border-color .18s ease, background .18s ease;}
-.kh-opt:hover .kh-mark{border-color:var(--accent);background:rgba(79,138,107,.14);}
-.kh-opt b{display:block;font-weight:700;}
-.kh-opt small{display:block;color:var(--sub);font-size:.87rem;margin-top:2px;line-height:1.4;}
+.kh-opt:hover{border-color:var(--accent);background:#f8fbfa;transform:translateX(3px);}
+.kh-opt .kh-mark{flex-shrink:0;width:22px;height:22px;border-radius:50%;border:2px solid #cfccc4;transition:border-color .18s ease, background .18s ease;}
+.kh-opt:hover .kh-mark{border-color:var(--accent);background:rgba(63,116,104,.14);}
+.kh-opt b{display:block;font-weight:650;}
+.kh-opt small{display:block;color:var(--sub);font-size:.97rem;margin-top:2px;line-height:1.4;}
 
-.kh-back{margin-top:22px;background:none;border:none;padding:6px 0;font-family:'Karla',sans-serif;font-size:.9rem;color:var(--sub);cursor:pointer;text-decoration:underline;}
+.kh-back{margin-top:22px;background:none;border:none;padding:8px 0;font-family:var(--sans);font-size:1rem;color:var(--sub);cursor:pointer;text-decoration:underline;}
 .kh-back:hover{color:var(--ink);}
 
 /* Uitkomst ------------------------------------------------------------------- */
 
-.kh-result{border-radius:14px;padding:30px 32px;border:1px solid #dbe3dc;background:#fff;}
-.kh-result .kh-verdict{font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:20px;display:inline-block;margin-bottom:14px;}
-.kh-result h2{font-size:1.5rem;}
-.kh-result p{font-size:1rem;max-width:58ch;}
+.kh-result{border-radius:24px;padding:32px 34px;border:1px solid var(--rand-zacht);background:#fff;}
+.kh-result .kh-verdict{font-family:var(--sans);font-size:.95rem;font-weight:600;letter-spacing:-.01em;padding:6px 14px;border-radius:999px;display:inline-block;margin-bottom:14px;}
+.kh-result h2{font-size:clamp(1.6rem,1.3rem + 1vw,2rem);}
+.kh-result p{font-size:1.04rem;max-width:58ch;}
 /* De prijsindicatie is voor veel bezoekers de reden om de keuzehulp in te vullen,
    dus die krijgt een eigen vlak in plaats van een regel tussen de tekst. */
-.kh-prijsblok{background:var(--cream);border-radius:10px;padding:18px 20px;margin:22px 0 4px;}
-.kh-prijslabel{display:inline-block;font-family:'Karla',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(38,56,47,.7);margin-bottom:4px;}
-.kh-result .kh-price{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;color:var(--cream-ink);margin:0 0 8px;}
-.kh-result .kh-prijsblok .kh-hint{margin:0;font-size:.9rem;color:rgba(38,56,47,.78);}
+.kh-prijsblok{background:var(--cream);border-radius:18px;padding:20px 22px;margin:22px 0 4px;}
+.kh-prijslabel{display:inline-block;font-family:var(--sans);font-size:.95rem;font-weight:600;letter-spacing:-.01em;color:var(--accent);margin-bottom:4px;}
+.kh-result .kh-price{font-family:var(--sans);font-size:1.3rem;font-weight:700;letter-spacing:-.02em;color:var(--cream-ink);margin:0 0 8px;}
+.kh-result .kh-prijsblok .kh-hint{margin:0;font-size:1rem;color:#3a4047;}
 .kh-result .kh-prijsblok .kh-hint a{color:var(--accent-deep);}
 
 /* Groen als wij kunnen helpen, neutraal als we eerlijk doorverwijzen. */
-.kh-result.go{border-left:5px solid var(--accent);}
+.kh-result.go{border-left:5px solid var(--accent-light);}
 .kh-result.go .kh-verdict{background:var(--cream);color:var(--cream-ink);}
-.kh-result.stop{border-left:5px solid #aeb8b0;}
-.kh-result.stop .kh-verdict{background:#e6ebe6;color:#4d5a51;}
+.kh-result.stop{border-left:5px solid #cfccc4;}
+.kh-result.stop .kh-verdict{background:#efede8;color:#50575e;}
 
-.kh-reviews{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin-top:16px;font-size:.92rem;color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;}
+.kh-reviews{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin-top:16px;font-size:1rem;color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;}
 .kh-reviews:hover{border-bottom-color:currentColor;color:var(--ink);}
-.kh-sterren{color:#c98a0c;letter-spacing:.06em;}
+.kh-sterren{color:#b8780a;letter-spacing:.06em;}
 .kh-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;}
-.kh-cta{display:inline-flex;align-items:center;gap:7px;background:var(--accent-deep);color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:14px 26px;border-radius:120px;transition:background .2s ease, transform .2s ease;}
-.kh-cta:hover{background:#2C5744;transform:translateY(-2px);}
-.kh-cta.ghost{background:#fff;color:var(--accent-deep);border:1.5px solid #d5ded7;}
-.kh-cta.ghost:hover{background:#f2f6f2;color:var(--accent-deep);}
+.kh-cta{display:inline-flex;align-items:center;gap:7px;background:var(--accent-deep);color:#fff;font-family:var(--sans);font-weight:600;font-size:1.04rem;text-decoration:none;min-height:54px;padding:15px 30px;border-radius:999px;transition:background .2s ease, transform .2s ease;}
+.kh-cta:hover{background:#244840;transform:translateY(-2px);}
+.kh-cta.ghost{background:#fff;color:var(--ink);border:1px solid rgba(34,38,42,.18);}
+.kh-cta.ghost:hover{background:#f3f8f6;color:var(--accent-deep);}
 /* Op de contentpagina's krijgt elke link de linkkleur; hier niet: de hoofdknop is wit op groen. */
 body.page .kh-actions a.kh-cta{color:#fff;}
 body.page .kh-actions a.kh-cta.ghost{color:var(--accent-deep);}
 
-.kh-restart{margin-top:20px;font-size:.9rem;color:var(--sub);font-family:'Karla',sans-serif;}
+.kh-restart{margin-top:20px;font-size:1rem;color:var(--sub);font-family:var(--sans);}
 .kh-restart button{background:none;border:none;padding:0;font:inherit;color:var(--accent-deep);text-decoration:underline;cursor:pointer;}
 
 @media (prefers-reduced-motion: reduce){
