@@ -668,6 +668,10 @@ def build():
         scripts = ""
         if 'class="vergelijk' in body:
             scripts += '\n<script defer src="/js/voorna.js?v=%s"></script>' % ver
+        # De hero met het 3D-kozijn: eerst de motor (dezelfde als op iwrap.nl), dan de vier verhalen.
+        if "data-kozijn-keuze" in body:
+            scripts += ('\n<script defer src="/js/kozijn-3d.js?v=%s"></script>'
+                        '\n<script defer src="/js/kozijn-keuze.js?v=%s"></script>' % (ver, ver))
         live = "\n" + LIVE_REVIEWS if ("data-rv" in body or "iwrapReviews" in body) else ""
         out = ROOT / (meta["slug"] + ".html")
         out.parent.mkdir(parents=True, exist_ok=True)

@@ -43,15 +43,28 @@ in drie groepen) en `/over-deze-site`. De homepage laat de route in het klein zi
   herstellen (wat iWrap doet), en neutraal voor nieuwe kleur, schilder en vervangen. Op de
   klachten, in de vergelijking, in de keuzehulp en bij de artikelen.
 - **Eén set lijniconen** (`ICONEN` in `build.py`), voor klachten, opties en de route.
-- **Hetzelfde 3D-kozijn als iwrap.nl**: de voor/na-schuif bovenaan (verweerd en hersteld,
-  in hetzelfde beeld), de nieuwe kleur (crème en antraciet) en de drie vaste stappen
-  (toplaag eraf, reinigen, nieuwe folie). Gerenderd uit de 3D-animatie van iwrap.nl.
+- **Hetzelfde 3D-kozijn als iwrap.nl**: de hero (zie hieronder), de nieuwe kleur als schuif op
+  /kozijnwrappen (crème en antraciet) en de drie vaste stappen op /kozijnherstel (toplaag eraf,
+  reinigen, nieuwe folie). Gerenderd uit de 3D-animatie van iwrap.nl.
 - **Dezelfde klachtfoto's als iwrap.nl**, zodat iemand op beide sites hetzelfde herkent.
 - **"Volgende stap"** onderaan elke pagina, naar de logische volgende stap van de route, en
   de **iWrap-brug**: herstel nodig, dan iWrap, met het logo, het reviewcijfer en de knop
   naar het offerteformulier.
 - **Artikelen**: bovenaan "In dit artikel" (uit de koppen) en de leestijd, onderaan
   verwante artikelen en de brug.
+
+**De hero: "Herstellen of wrappen?"** (Max, 17 november 2026: de hero moet voor déze site werken
+en het verschil tussen wrappen en herstellen en de opties laten zien). Links het 3D-kozijn, rechts
+de vier keuzes. Elke keuze speelt een eigen kort verhaal, live getekend met de motor van iwrap.nl:
+herstellen (oude folie eraf, nieuwe erop, zelfde kleur), wrappen (antraciet over een goed crème
+kozijn), schilderen (verfroller, dan drie jaar later bladdert het) en vervangen (het tocht, het
+kozijn gaat eruit, er zakt een nieuw in). Linksboven in beeld staat wat je ziet. Hij speelt de vier
+na elkaar zodra hij in beeld is en pauzeert daarbuiten; een klik op een keuze speelt die keuze. Er
+is een pauzeknop. Bij "minder beweging" staat per keuze het eindbeeld stil; zonder WebGL2 wisselen
+foto's (`images/keuze-*.jpg`). Het startbeeld (`images/keuze-start-*`) staat er tot het canvas
+tekent. Bron: `beweging/3d kozijn/kozijn-keuze.js` in iwrap-project, gekopieerd naar
+`js/kozijn-keuze.js`; de motor zelf is `js/kozijn-3d.js` (dezelfde als op iwrap.nl). Na een
+wijziging daar: beide bestanden opnieuw kopiëren en de beelden opnieuw maken (zie de LEES MIJ daar).
 
 **Codes in de bron** (`src/pages/`), door `build.py` vervangen:
 
@@ -102,7 +115,7 @@ build.py              Generator: bouwt src/pages/ naar de root
 vercel.json           cleanUrls, cachekoppen, securitykoppen
 src/pages/            De bron van elke pagina (metadata + inhoud)
 
-index.html            Homepage: wat heeft je kozijn nodig, de route   (gegenereerd)
+index.html            Homepage: herstellen of wrappen? (3D), de route (gegenereerd)
 wat-zie-je.html       Stap 1: elke klacht met foto en uitkomst       (gegenereerd)
 vergelijken.html      Stap 2: de vier opties naast elkaar             (gegenereerd)
 keuzehulp.html        Stap 3: vier vragen, één uitkomst               (gegenereerd)
@@ -121,9 +134,12 @@ css/
   blog.css            Artikelen: kruimelpad, diagrammen, slotkader
   keuzehulp.css       Alleen de keuzehulp
 js/
-  voorna.js           De voor/na-schuif
+  voorna.js           De voor/na-schuif (op /kozijnwrappen)
+  kozijn-3d.js        De 3D-motor van iwrap.nl (kopie; bron in iwrap-project/beweging/3d kozijn)
+  kozijn-keuze.js     De hero: vier korte 3D-verhalen en de speler (kopie, zelfde bron)
 images/               Elke foto als .webp met een .jpg ernaast als terugval
-  kozijn3d-*.webp     Het 3D-kozijn van iwrap.nl: verweerd, hersteld, antraciet
+  keuze-*             Startbeeld van de hero, en per keuze het eindbeeld (zonder WebGL)
+  kozijn3d-*.webp     Het 3D-kozijn van iwrap.nl: hersteld en antraciet (de schuif op /kozijnwrappen)
   stap-*.webp         De drie stappen uit de 3D-werkwijze van iwrap.nl
   symptoom-*.webp     Dezelfde klachtfoto's als op iwrap.nl
   og-image-v3.jpg     Deelafbeelding. Geef die bij elke herziening een nieuw volgnummer:

@@ -10,7 +10,7 @@
    4. Uitkomstlabels                    11. Volgende stap en de kleine route
    5. De voor/na-schuif                 12. De brug naar iWrap
    6. De route                          13. Artikelen: inhoud en tegels
-   7. Klachten en opties                14. De kennisbank
+   7. Klachten en optie-iconen                14. De kennisbank
    --------------------------------------------------------------------------- */
 
 /* 1. Iconen, breedtes en hulpklassen -------------------------------------- */
@@ -150,26 +150,14 @@ a.klacht:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(34,3
 .anders-kaart p{font-size:1.02rem;color:#3a4047;margin:0;line-height:1.5;max-width:none;}
 .anders-kaart .verder{margin-top:auto;padding-top:6px;}
 
-/* De vier opties: herstellen, nieuwe kleur, schilderen, vervangen. */
-.opties{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;}
-@media (max-width:980px){ .opties{grid-template-columns:repeat(2,minmax(0,1fr));} }
-@media (max-width:560px){ .opties{grid-template-columns:1fr;} }
-.optie{position:relative;display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid var(--rand-zacht);border-radius:26px;padding:26px 24px 24px;color:var(--ink);text-decoration:none;transition:transform .25s ease,box-shadow .25s ease;}
-a.optie:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(34,38,42,.45);}
-.optie-icoon{width:54px;height:54px;border-radius:16px;background:var(--grey);color:var(--ink);display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
+/* Het icoon van een optie (herstellen, nieuwe kleur, schilderen, vervangen) in een zacht vlak, en het
+   labeltje "Dit doet iWrap". Gebruikt in de hero en in de vergelijking. */
+.optie-icoon{width:54px;height:54px;border-radius:16px;background:var(--grey);color:var(--ink);display:flex;align-items:center;justify-content:center;margin-bottom:8px;flex-shrink:0;}
 .optie-icoon .icoon{width:28px;height:28px;}
-.optie h3{font-size:1.3rem;margin:0;}
-.optie .wanneer{font-size:1.02rem;color:var(--sub);margin:0;line-height:1.5;}
-.optie .wie{font-size:.96rem;color:var(--sub);margin:6px 0 0;}
-.optie .verder{margin-top:auto;padding-top:12px;}
-.optie.herstel{background:var(--accent-deep);border-color:transparent;color:#fff;}
-.optie.herstel .optie-icoon{background:var(--mint);color:var(--ink);}
-.optie.herstel .wanneer,.optie.herstel .wie{color:#dfe9e6;}
-.optie.herstel .verder{color:var(--mint);}
-.optie-chip{position:absolute;top:22px;right:20px;font-size:.88rem;font-weight:700;padding:5px 11px;border-radius:999px;background:var(--mint);color:var(--ink);}
+.optie-chip{font-size:.88rem;font-weight:700;padding:5px 11px;border-radius:999px;background:var(--mint);color:var(--ink);}
 
 @media (prefers-reduced-motion: reduce){
-  a.route-stap:hover,a.klacht:hover,a.optie:hover{transform:none;}
+  a.route-stap:hover,a.klacht:hover{transform:none;}
 }
 
 /* 8. De levensduur ----------------------------------------------------------- */
@@ -222,7 +210,6 @@ a.optie:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(34,38
 .vgl-kop .optie-icoon{margin:0;}
 .vgl-kolom.herstel .optie-icoon{background:var(--mint);}
 .vgl-kop h2,.vgl-kop h3{font-size:1.36rem;letter-spacing:-.022em;margin:0;}
-.optie-chip.vast{position:static;}
 .vgl-wie{font-size:.98rem;color:var(--sub);line-height:1.35;}
 .vgl-noot{margin:20px 4px 0;font-size:1.02rem;color:var(--sub);max-width:none !important;}
 .vgl-noot a{color:var(--accent-deep);}

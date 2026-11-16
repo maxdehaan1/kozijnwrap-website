@@ -6,20 +6,59 @@
    De onderdelen zelf staan in onderdelen.css.
    --------------------------------------------------------------------------- */
 
-.hero-home{background:var(--gloed),var(--paper);padding:clamp(36px,5.5vw,84px) 0 clamp(52px,6.5vw,96px);}
-.hero-raster{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(28px,4.5vw,64px);align-items:center;}
-.hero-home h1{font-size:clamp(2.7rem,1.55rem + 4.3vw,4.7rem);line-height:.98;letter-spacing:-.048em;margin:0 0 .32em;max-width:11ch;}
-.hero-home .lede{font-size:clamp(1.15rem,1.05rem + .45vw,1.36rem);line-height:1.5;color:#3a4047;max-width:44ch;margin:0;}
-.hero-home .knoprij{margin-top:30px;}
-.hero-vertrouwen{display:flex;flex-wrap:wrap;gap:6px 22px;margin:26px 0 0;font-size:1rem;color:var(--sub);}
-.hero-vertrouwen a{color:var(--ink);text-decoration:none;}
-.hero-vertrouwen a:hover{text-decoration:underline;text-underline-offset:3px;}
-.hero-vertrouwen .sterren{color:#c98a0b;letter-spacing:.06em;}
-.hero-schuif{margin:0;}
-@media (max-width:900px){
-  .hero-raster{grid-template-columns:1fr;}
-  .hero-home h1{max-width:14ch;}
+/* De hero: "Herstellen of wrappen?" met het 3D-kozijn van iwrap.nl. Links het beeld, rechts de vier
+   keuzes; elke keuze speelt zijn eigen korte verhaal (js/kozijn-keuze.js). Op een telefoon staan ze
+   onder elkaar. */
+.hero-keuze{background:var(--gloed),var(--paper);padding:clamp(30px,4.6vw,68px) 0 clamp(52px,6.5vw,96px);}
+.hk-kop{text-align:center;max-width:860px;margin:0 auto clamp(26px,3.4vw,46px);}
+.hk-kop h1{font-size:clamp(2.7rem,1.45rem + 4.8vw,5rem);line-height:.98;letter-spacing:-.05em;margin:0 0 .26em;}
+.hk-kop .lede{font-size:clamp(1.12rem,1.04rem + .42vw,1.34rem);line-height:1.5;color:#3a4047;max-width:56ch;margin:0 auto;}
+.hk-podium{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(16px,2.2vw,28px);align-items:start;}
+@media (max-width:900px){ .hk-podium{grid-template-columns:1fr;} }
+
+/* Het beeld: de poster staat er tot het canvas getekend heeft (of altijd, zonder WebGL) */
+.hk-beeld{position:relative;margin:0;aspect-ratio:4/3;border-radius:30px;overflow:hidden;background:linear-gradient(180deg,#9dbdd6 0%,#d7e5ee 62%,#ecebe6 100%);box-shadow:0 0 0 1px rgba(34,38,42,.06),0 44px 80px -48px rgba(34,38,42,.55);}
+.hk-beeld picture,.hk-beeld canvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.hk-poster{display:block;width:100%;height:100%;object-fit:cover;transition:opacity .45s ease;}
+.hk-getekend .hk-poster{opacity:0;}
+.hk-geen-webgl canvas{display:none;}
+.hk-beeld canvas.hk-in{animation:hk-in .5s ease;}
+@keyframes hk-in{from{opacity:.15;}to{opacity:1;}}
+.hk-status{position:absolute;left:16px;top:16px;margin:0;max-width:calc(100% - 32px);padding:8px 15px;border-radius:999px;background:rgba(255,255,255,.94);color:var(--ink);font-size:.98rem;font-weight:700;letter-spacing:-.01em;line-height:1.25;box-shadow:0 6px 18px -10px rgba(0,0,0,.45);transition:background .3s ease,color .3s ease;}
+.hk-status.hk-rood{background:#a8523a;color:#fff;}
+.hk-status.hk-mint{background:var(--mint);color:var(--ink);}
+.hk-status.hk-donker{background:var(--ink);color:#fff;}
+.hk-pauze{position:absolute;right:14px;bottom:14px;width:46px;height:46px;border:0;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 6px 18px -10px rgba(0,0,0,.5);cursor:pointer;}
+.hk-pauze::before,.hk-pauze::after{content:"";position:absolute;top:50%;left:50%;}
+.hk-pauze[data-stand="pauze"]::before{width:14px;height:16px;margin:-8px 0 0 -7px;border-left:4.5px solid var(--ink);border-right:4.5px solid var(--ink);box-sizing:border-box;}
+.hk-pauze[data-stand="speel"]::before{margin:-8px 0 0 -4px;border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent var(--ink);}
+.hk-pauze:hover{background:#fff;}
+
+/* De vier keuzes: een kaart per keuze, de gekozen kaart open met een balkje dat meeloopt */
+.hk-opties{display:flex;flex-direction:column;gap:10px;}
+.hk-keus{background:#fff;border:1px solid var(--rand-zacht);border-radius:22px;overflow:hidden;transition:border-color .25s ease,box-shadow .25s ease;}
+.hk-keus:has(.is-nu){border-color:rgba(63,116,104,.45);box-shadow:0 22px 40px -30px rgba(47,90,80,.55);}
+.hk-optie{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"icoon naam" "icoon kort";gap:2px 14px;align-items:center;width:100%;padding:14px 16px;border:0;background:none;color:var(--ink);font:inherit;text-align:left;cursor:pointer;}
+.hk-optie .optie-icoon{grid-area:icoon;width:46px;height:46px;margin:0;border-radius:14px;}
+.hk-optie .optie-icoon .icoon{width:24px;height:24px;}
+.hk-optie.is-nu .optie-icoon{background:var(--mint);}
+.hk-naam{grid-area:naam;font-size:1.14rem;font-weight:700;letter-spacing:-.018em;line-height:1.2;}
+.hk-kort{grid-area:kort;font-size:.98rem;color:var(--sub);line-height:1.35;}
+.hk-balk{position:absolute;left:16px;right:16px;bottom:0;height:3px;border-radius:3px;background:transparent;overflow:hidden;}
+.hk-optie.is-nu .hk-balk{background:var(--mint-soft);}
+.hk-balk i{display:block;height:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;}
+.hk-optie:hover .hk-naam{color:var(--accent-deep);}
+.hk-optie:focus-visible{outline:3px solid var(--accent);outline-offset:-3px;border-radius:22px;}
+.hk-paneel{display:none;padding:12px 18px 16px 76px;font-size:1.02rem;line-height:1.5;color:#3a4047;}
+.hk-optie[aria-expanded="true"] + .hk-paneel{display:block;}
+.hk-paneel p{margin:0;}
+.hk-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:10px !important;}
+.hk-verder{display:flex;flex-wrap:wrap;gap:6px 22px;margin:8px 4px 0;font-size:1.02rem;}
+@media (max-width:560px){
+  .hk-paneel{padding:10px 16px 16px;}
+  .hk-status{left:12px;top:12px;font-size:.92rem;padding:7px 13px;}
 }
+@media (prefers-reduced-motion: reduce){ .hk-beeld canvas.hk-in{animation:none;} }
 
 /* Een zin onder een raster, met een link erachter. */
 .onder-raster{margin:26px 0 0;font-size:1.06rem;color:#3a4047;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;}
