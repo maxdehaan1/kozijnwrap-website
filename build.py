@@ -253,7 +253,7 @@ def render_brug(medium, kop=None, reviews=False):
         'herstellen met Renolit folie, door heel Nederland. Wij besteden niets uit.</p>\n'
         '        <ul class="brug-punten">\n'
         '          <li>%s Een vaste prijs op basis van je foto&rsquo;s</li>\n'
-        '          <li>%s Tien jaar fabrieksgarantie op de folie, vijf op de montage</li>\n'
+        '          <li>%s Tien jaar Renolit-garantie op de folie, vijf op de uitvoering</li>\n'
         '          <li>%s <a href="%s" target="_blank" rel="noopener"><span data-rv="score">%s</span> uit <span data-rv="aantal">%s</span> Google-reviews</a></li>\n'
         '        </ul>\n'
         '        <div class="knoprij">\n'
@@ -312,7 +312,7 @@ def render_levensduur():
         '<div class="ld-baan"><span class="ld-balk ld-folie">Nieuw</span><span class="ld-balk ld-folie">Herstel</span>'
         '<span class="ld-balk ld-folie">Herstel</span></div></div>\n'
         '  <div class="ld-as" aria-hidden="true"><span>0</span><span>25 jaar</span><span>50 jaar</span><span>75 jaar</span></div>\n'
-        '  <div class="ld-uitleg"><p>De folie is een <b>slijtlaag</b>, met tien jaar fabrieksgarantie. Ziet je kozijn '
+        '  <div class="ld-uitleg"><p>De folie is een <b>slijtlaag</b>, met tien jaar Renolit-garantie. Ziet je kozijn '
         'er na twintig jaar verweerd uit, dan doet het precies wat je mag verwachten: de jas is versleten, het '
         'kozijn niet. Die jas vervangen kan twee, drie keer in een kozijnleven.</p></div>\n'
         '</div>')
