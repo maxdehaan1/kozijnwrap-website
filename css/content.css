@@ -10,13 +10,13 @@ body.page .wrap{max-width:740px;margin:0 auto;padding:0 24px;}
 /* Elke paginakop licht, met de mintgloed, zoals iwrap.nl en houtnerffolie.nl. */
 body.page .hero{position:relative;z-index:1;background:var(--gloed),var(--paper);color:var(--ink);padding:clamp(40px,5vw,72px) 0 clamp(36px,4.5vw,60px);margin-bottom:8px;}
 .hero .wrap{max-width:740px;}
-.hero h1{font-size:clamp(2.3rem,1.45rem + 3vw,3.5rem);line-height:1.05;letter-spacing:-.035em;max-width:20ch;color:var(--ink);text-wrap:balance;}
+.hero h1{font-size:clamp(2.1rem,1.35rem + 2.75vw,3.2rem);line-height:1.09;letter-spacing:-.026em;max-width:20ch;color:var(--ink);text-wrap:balance;}
 .hero p.lede{color:#3a4047;font-size:clamp(1.12rem,1.06rem + .3vw,1.24rem);line-height:1.55;max-width:56ch;}
 /* Wie de pagina schrijft, direct onder de inleiding (de keuzehulp). */
 .hero-by{font-family:var(--sans);font-size:1rem;margin:16px 0 0;color:var(--sub);}
 
 section{padding:clamp(40px,5vw,60px) 0;}
-section h2{font-size:clamp(1.7rem,1.3rem + 1.4vw,2.3rem);}
+section h2{font-size:clamp(1.56rem,1.2rem + 1.3vw,2.1rem);}
 
 /* Lijsten in de lopende tekst: een bolletje in de kleur van de site en een dunne lijn ertussen. */
 .signals{list-style:none;margin:0;padding:0;}
@@ -38,13 +38,13 @@ figcaption{font-family:var(--sans);font-size:.97rem;color:var(--sub);margin-top:
 @media (max-width:560px){ .beforeafter{grid-template-columns:1fr;} }
 .beforeafter figure{margin:0;position:relative;}
 .beforeafter img{aspect-ratio:4/3;object-fit:cover;}
-.beforeafter .ba-label{position:absolute;top:12px;left:12px;font-family:var(--sans);font-size:.92rem;font-weight:700;letter-spacing:.01em;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.95);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.18);}
+.beforeafter .ba-label{position:absolute;top:12px;left:12px;font-family:var(--kop);font-size:.92rem;font-weight:700;letter-spacing:.01em;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.95);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.18);}
 .beforeafter figcaption{margin-top:8px;}
 
 /* Een kleine klus is welkom: bijna niemand met twee verweerde dorpels neemt aan dat een
    specialist daarvoor langskomt. */
 .small-jobs{background:var(--merk-wash);border-radius:22px;padding:26px 30px;margin:26px 0 0;}
-.small-jobs h3{font-size:1.22rem;margin:0 0 8px;}
+.small-jobs h3{font-size:1.13rem;margin:0 0 8px;}
 .small-jobs p{margin:0;font-size:1.02rem;color:#3a4047;max-width:60ch;}
 
 /* Veelgestelde vragen ---------------------------------------------------------- */
@@ -53,7 +53,7 @@ figcaption{font-family:var(--sans);font-size:.97rem;color:var(--sub);margin-top:
 .sectie.wit .faq{background:var(--paper);border-color:transparent;}
 .faq details{border-bottom:1px solid var(--line);}
 .faq details:last-child{border-bottom:none;}
-.faq summary{cursor:pointer;font-weight:600;font-size:1.1rem;letter-spacing:-.015em;line-height:1.35;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 12px;margin:0 -12px;border-radius:12px;transition:background .2s ease;}
+.faq summary{cursor:pointer;font-family:var(--kop);font-weight:600;font-size:1.03rem;letter-spacing:-.008em;line-height:1.38;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 12px;margin:0 -12px;border-radius:12px;transition:background .2s ease;}
 .faq summary:hover{background:rgba(var(--merk-rgb),.08);}
 .faq summary::-webkit-details-marker{display:none;}
 .faq summary::after{content:"+";font-family:var(--sans);font-weight:700;font-size:1.3rem;flex-shrink:0;color:var(--sub);transition:transform .25s ease,color .2s ease;}

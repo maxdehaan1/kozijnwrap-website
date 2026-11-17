@@ -625,6 +625,7 @@ def render_head(meta, ver):
 <meta name="twitter:description" content="{ogdesc}">
 <meta name="twitter:image" content="{img}">
 {jsonld}
+<link rel="preload" href="/fonts/montserrat-latin-83a31c81.woff2" as="font" type="font/woff2" crossorigin>
 {css}{preload}""".format(
         title=meta["title"],
         desc=meta["description"],

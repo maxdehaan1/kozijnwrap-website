@@ -5,6 +5,17 @@
    home.css, content.css (tekstpagina's), blog.css en keuzehulp.css.
    --------------------------------------------------------------------------- */
 
+/* Montserrat (koppen, menu, knoppen, het woordmerk), sinds 17 november 2026 net als op iwrap.nl en
+   houtnerffolie.nl: de letter van het iWrap-logo. Op de site zelf in plaats van bij Google, dan gaat
+   het IP-adres van een bezoeker nergens heen. Eén variabel bestand voor alle gewichten (100 tot 900);
+   latin-ext wordt alleen opgehaald als een pagina zulke letters heeft. Het latin-bestand wordt in de
+   <head> vooraf geladen (build.py). Licentie: SIL Open Font License. */
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/montserrat-latin-ext-a93986ac.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/montserrat-latin-83a31c81.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+/* Terugval: Arial op de maat van Montserrat (breedte en hoogte). Zo staat een kop al op de goede plek
+   voordat Montserrat binnen is, en verspringt er niets als hij komt. */
+@font-face{font-family:"Montserrat-terugval";src:local("Arial"),local("ArialMT"),local("Liberation Sans");size-adjust:113.4%;ascent-override:85%;descent-override:22%;line-gap-override:0%;}
+
 :root{
   /* De kleuren van kozijnwrap.nl. Sinds 17 november 2026 heeft de site een eigen kleur (Max: "voer
      deze website uit maar dan met andere kleuren"; gekozen: Hemelsblauw), en zit het mint van iWrap
@@ -42,6 +53,8 @@
   --gloed:radial-gradient(55% 120% at 78% -20%, rgba(var(--merk-licht-rgb),.34), rgba(var(--merk-licht-rgb),0) 70%),
           radial-gradient(45% 90% at 8% -30%, rgba(var(--merk-licht-rgb),.2), rgba(var(--merk-licht-rgb),0) 70%);
   --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif;
+  /* koppen, menu, knoppen en het woordmerk */
+  --kop:"Montserrat","Montserrat-terugval",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 }
 /* Nachtblauw: betrouwbaar en rustig, als een goede consumentengids */
 :root[data-palet="nacht"]{
@@ -79,9 +92,15 @@ body{
   line-height:1.6;
   letter-spacing:-.006em;
   -webkit-font-smoothing:antialiased;
+  overflow-wrap:break-word;
 }
-h1,h2,h3{font-family:var(--sans);font-weight:700;line-height:1.1;margin:0 0 .45em;letter-spacing:-.03em;text-wrap:balance;}
-h3{letter-spacing:-.02em;line-height:1.25;}
+h1,h2,h3{font-family:var(--kop);font-weight:700;line-height:1.13;margin:0 0 .45em;letter-spacing:-.022em;text-wrap:balance;}
+h3{letter-spacing:-.012em;line-height:1.27;}
+/* Montserrat is breder dan de letter van het apparaat: op een smal scherm mag een lang woord in een
+   kop afbreken ("kozijn-onderdorpel"), zodat het nooit buiten beeld loopt. */
+@media (max-width:480px){
+  h1,h2,h3,summary,figcaption{-webkit-hyphens:auto;hyphens:auto;hyphenate-limit-chars:12 5 5;}
+}
 p,li,figcaption{text-wrap:pretty;}
 p{margin:0 0 1em;}
 a{color:inherit;}
@@ -100,7 +119,7 @@ summary:focus-visible,
   border-radius:4px;
 }
 
-.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:#fff;padding:12px 20px;font-family:var(--sans);font-size:.9rem;font-weight:700;text-decoration:none;border-radius:0 0 8px 0;}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:#fff;padding:12px 20px;font-family:var(--kop);font-size:.9rem;font-weight:700;text-decoration:none;border-radius:0 0 8px 0;}
 .skip:focus{left:0;}
 
 /* Header ------------------------------------------------------------------ */
@@ -122,11 +141,11 @@ header.site{
    gewoon. "kozijn" in de kleur van de site, "wrap" extra vet. */
 .brand{grid-area:brand;display:inline-flex;align-items:baseline;line-height:1;text-decoration:none;transition:opacity .2s ease;}
 .brand:hover{opacity:.72;}
-.brand .w1{font-family:var(--sans);font-weight:500;font-size:1.5rem;letter-spacing:-.04em;color:var(--merk-tekst);}
-.brand .w2{font-family:var(--sans);font-weight:800;font-size:1.5rem;letter-spacing:-.045em;color:var(--ink);}
+.brand .w1{font-family:var(--kop);font-weight:500;font-size:1.4rem;letter-spacing:-.03em;color:var(--merk-tekst);}
+.brand .w2{font-family:var(--kop);font-weight:800;font-size:1.4rem;letter-spacing:-.035em;color:var(--ink);}
 .brand .tld{font-size:.5em;font-weight:600;letter-spacing:0;margin-left:.06em;color:var(--merk-tekst);}
 
-.navlinks{grid-area:links;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 26px;font-family:var(--sans);font-size:.98rem;font-weight:500;letter-spacing:-.01em;}
+.navlinks{grid-area:links;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 24px;font-family:var(--kop);font-size:.94rem;font-weight:500;letter-spacing:-.005em;}
 .navlinks a{color:#3a4047;text-decoration:none;position:relative;padding:8px 0 6px;transition:color .2s ease;}
 .navlinks a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;border-radius:2px;background:var(--merk-licht);transition:right .25s ease;}
 .navlinks a:hover{color:var(--ink);}
@@ -135,7 +154,7 @@ header.site{
 .alleen-smal{display:none;}
 
 .nav-knoppen{grid-area:knoppen;display:flex;align-items:center;gap:10px;}
-.nav-kh,.nav-cta{display:inline-flex;align-items:center;min-height:46px;padding:10px 20px;border-radius:999px;font-family:var(--sans);font-size:.98rem;font-weight:600;letter-spacing:-.01em;line-height:1.2;white-space:nowrap;text-decoration:none;transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;}
+.nav-kh,.nav-cta{display:inline-flex;align-items:center;min-height:46px;padding:10px 20px;border-radius:999px;font-family:var(--kop);font-size:.94rem;font-weight:600;letter-spacing:-.005em;line-height:1.2;white-space:nowrap;text-decoration:none;transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;}
 .nav-kh{color:var(--ink);background:rgba(255,255,255,.7);border:1px solid rgba(34,38,42,.18);}
 .nav-kh:hover,.nav-kh.current{border-color:var(--merk-tekst);color:var(--merk);}
 /* Het enige gevulde, donkere element in de balk: daar valt je oog vanzelf eerst op. */
@@ -150,7 +169,7 @@ header.site{
 }
 @media (max-width:560px){
   .nav{padding:0 16px;gap:6px 12px;}
-  .brand .w1,.brand .w2{font-size:1.3rem;}
+  .brand .w1,.brand .w2{font-size:1.22rem;}
   .nav-kh{display:none;}
   .alleen-smal{display:inline;}
   .navlinks{gap:0 16px;font-size:.95rem;}
@@ -180,7 +199,7 @@ header.site{
    in drie kolommen: uitzoeken, de opties en de rest. */
 footer{background:var(--voet);color:#3a4047;padding:64px 0 52px;font-size:1rem;font-family:var(--sans);border-top:1px solid var(--line);}
 .fgrid{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:34px 40px;}
-.fbrand .brand .w1,.fbrand .brand .w2{font-size:1.4rem;}
+.fbrand .brand .w1,.fbrand .brand .w2{font-size:1.32rem;}
 .fbrand p{max-width:40ch;margin:10px 0 0;line-height:1.55;}
 .fbrand .fslogan{font-weight:600;color:var(--merk-tekst);margin-top:8px;}
 .fby{display:inline-flex;align-items:center;gap:10px;margin-top:20px;color:var(--sub);text-decoration:none;font-size:.96rem;padding:8px 14px 8px 12px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid var(--rand-zacht);transition:border-color .2s ease;}

@@ -11,7 +11,7 @@
    onder elkaar. */
 .hero-keuze{background:var(--gloed),var(--paper);padding:clamp(30px,4.6vw,68px) 0 clamp(52px,6.5vw,96px);}
 .hk-kop{text-align:center;max-width:860px;margin:0 auto clamp(26px,3.4vw,46px);}
-.hk-kop h1{font-size:clamp(2.7rem,1.45rem + 4.8vw,5rem);line-height:.98;letter-spacing:-.05em;margin:0 0 .26em;}
+.hk-kop h1{font-size:clamp(2.5rem,1.35rem + 4.4vw,4.6rem);line-height:1.02;letter-spacing:-.034em;margin:0 0 .26em;}
 .hk-kop .lede{font-size:clamp(1.12rem,1.04rem + .42vw,1.34rem);line-height:1.5;color:#3a4047;max-width:56ch;margin:0 auto;}
 .hk-podium{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(16px,2.2vw,28px);align-items:start;}
 @media (max-width:900px){ .hk-podium{grid-template-columns:1fr;} }
@@ -24,7 +24,7 @@
 .hk-geen-webgl canvas{display:none;}
 .hk-beeld canvas.hk-in{animation:hk-in .5s ease;}
 @keyframes hk-in{from{opacity:.15;}to{opacity:1;}}
-.hk-status{position:absolute;left:16px;top:16px;margin:0;max-width:calc(100% - 32px);padding:8px 15px;border-radius:999px;background:rgba(255,255,255,.94);color:var(--ink);font-size:.98rem;font-weight:700;letter-spacing:-.01em;line-height:1.25;box-shadow:0 6px 18px -10px rgba(0,0,0,.45);transition:background .3s ease,color .3s ease;}
+.hk-status{position:absolute;left:16px;top:16px;margin:0;max-width:calc(100% - 32px);padding:8px 15px;border-radius:999px;background:rgba(255,255,255,.94);color:var(--ink);font-family:var(--kop);font-size:.96rem;font-weight:700;letter-spacing:-.005em;line-height:1.25;box-shadow:0 6px 18px -10px rgba(0,0,0,.45);transition:background .3s ease,color .3s ease;}
 .hk-status.hk-rood{background:var(--schade);color:#fff;}
 .hk-status.hk-mint{background:var(--iwrap-mint);color:var(--ink);}
 .hk-status.hk-donker{background:var(--ink);color:#fff;}
@@ -42,7 +42,7 @@
 .hk-optie .optie-icoon{grid-area:icoon;width:46px;height:46px;margin:0;border-radius:14px;}
 .hk-optie .optie-icoon .icoon{width:24px;height:24px;}
 .hk-optie.is-nu .optie-icoon{background:var(--merk-vlak);}
-.hk-naam{grid-area:naam;font-size:1.14rem;font-weight:700;letter-spacing:-.018em;line-height:1.2;}
+.hk-naam{grid-area:naam;font-family:var(--kop);font-size:1.07rem;font-weight:700;letter-spacing:-.01em;line-height:1.22;}
 .hk-kort{grid-area:kort;font-size:.98rem;color:var(--sub);line-height:1.35;}
 .hk-balk{position:absolute;left:16px;right:16px;bottom:0;height:3px;border-radius:3px;background:transparent;overflow:hidden;}
 .hk-optie.is-nu .hk-balk{background:var(--merk-zacht);}
@@ -68,11 +68,11 @@
 .kh-start::before{content:"";position:absolute;right:-12%;bottom:-70%;width:80%;height:150%;background:radial-gradient(closest-side,rgba(var(--merk-licht-rgb),.32),rgba(var(--merk-licht-rgb),0));pointer-events:none;}
 .kh-start > *{position:relative;}
 .kh-start .opschrift{color:var(--merk-vlak);}
-.kh-start h2{color:#fff;font-size:clamp(2rem,1.35rem + 2.2vw,3rem);line-height:1.05;letter-spacing:-.037em;margin:0 0 .35em;}
+.kh-start h2{color:#fff;font-size:clamp(1.85rem,1.25rem + 2vw,2.75rem);line-height:1.09;letter-spacing:-.027em;margin:0 0 .35em;}
 .kh-start p{color:var(--op-donker);font-size:1.08rem;max-width:44ch;margin:0;}
 .kh-vraag-kaart{background:#fff;color:var(--ink);border-radius:28px;padding:clamp(20px,2.6vw,30px);box-shadow:0 30px 60px -36px rgba(0,0,0,.55);}
 .kh-teller{font-size:.98rem;color:var(--sub) !important;margin:0 0 4px !important;}
-.kh-vraag-kaart h3{font-size:1.4rem;margin:0 0 16px;}
+.kh-vraag-kaart h3{font-size:1.3rem;margin:0 0 16px;}
 .kh-keuzes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .kh-keuzes a{display:flex;flex-direction:column;gap:3px;min-height:72px;padding:14px 16px;border-radius:18px;border:1.5px solid var(--line);color:var(--ink);text-decoration:none;font-weight:700;font-size:1.06rem;line-height:1.25;transition:border-color .2s ease,background .2s ease;}
 .kh-keuzes small{font-weight:400;font-size:.95rem;color:var(--sub);}

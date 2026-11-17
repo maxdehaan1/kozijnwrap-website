@@ -156,8 +156,8 @@ statisch. Alles staat achter `prefers-reduced-motion: no-preference`.
 
 ## Huisstijl
 
-Licht en rustig, "iets meer Apple" (sinds 16 november 2026): het lettertype van het apparaat
-zelf, grote strakke koppen, een zachte gloed bovenaan elke pagina, een wit doorschijnend menu dat
+Licht en rustig, "iets meer Apple" (sinds 16 november 2026): koppen in Montserrat en lopende
+tekst in het lettertype van het apparaat zelf, grote strakke koppen, een zachte gloed bovenaan elke pagina, een wit doorschijnend menu dat
 blijft staan (op een telefoon scrolt het mee), witte vlakken met een zachte rand en een lichte voet.
 
 **Kleur (sinds 17 november 2026).** kozijnwrap.nl heeft een eigen kleur (Max: "voer deze website
@@ -188,9 +188,14 @@ De kleuren lopen via variabelen in `:root` (zie het commentaar daar): `--merk` (
 (lichte tekst op `--merk`) en `--schade` (terracotta). Het mint van iWrap: `--iwrap`,
 `--iwrap-mint`, `--iwrap-wash` en verder. Zet nergens een losse kleurcode in de opmaak.
 
-- **Letters**: het lettertype van het apparaat zelf (San Francisco op een Mac en iPhone,
-  Segoe UI op Windows, Roboto op Android), `--sans`. Koppen vet en strak, lopende tekst 18px.
-  `css/fonts*.css` en `fonts/` worden niet meer gebruikt.
+- **Letters**: koppen, menu, knoppen, opschriften, labels en het woordmerk in Montserrat, de
+  letter van het iWrap-logo (sinds 17 november 2026, net als op iwrap.nl en houtnerffolie.nl;
+  `--kop`). Lopende tekst in het lettertype van het apparaat zelf (San Francisco op een Mac en
+  iPhone, Segoe UI op Windows, Roboto op Android), `--sans`, 18px. Montserrat staat op de site
+  zelf (`fonts/`, één variabel bestand voor alle gewichten, gedeclareerd bovenin
+  `css/style.css`) en wordt in de `<head>` vooraf geladen; de terugval `Montserrat-terugval`
+  (Arial op maat) zorgt dat er niets verspringt. Op een smal scherm mogen lange woorden in koppen
+  afbreken. De teksten in het 3D-beeld (canvas) en de getekende diagrammen blijven in `--sans`.
 - **Voor oudere bezoekers**: kleine teksten minstens 15px, grijs dat 7:1 haalt, knoppen
   minstens 50px hoog en geen piepkleine hoofdletters met spaties ertussen.
 - **Woordmerk**: de naam is het logo: `kozijn` in `--merk-tekst` (normaal gewicht) direct
