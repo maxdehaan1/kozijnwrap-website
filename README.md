@@ -202,8 +202,9 @@ De kleuren lopen via variabelen in `:root` (zie het commentaar daar): `--merk` (
   gevolgd door `wrap` in de inktkleur (extra vet), met `.nl` klein erachter. Echte tekst, dus
   voorleessoftware en zoekmachines lezen de naam gewoon. `WORDMARK` in `build.py`, `.brand` in
   `style.css`.
-- **Deelafbeelding**: `images/og-image-v5.jpg`: woordmerk, "Herstellen of wrappen?" en hetzelfde
-  3D-kozijn half crème en half antraciet. Gemaakt met `tools/maak_og.py`.
+- **Deelafbeelding**: `images/og-image-v6.jpg`: woordmerk en "Herstellen of wrappen?" in
+  Montserrat, en hetzelfde 3D-kozijn half crème en half antraciet. Gemaakt met
+  `tools/maak_og.py`; geef een nieuwe versie een nieuw nummer (`/images/` staat een jaar in de cache).
 - **Favicon**: een kozijn van voren met de onderdorpel in de lichte kleur van het palet: de
   dorpel is bijna altijd het eerst versleten. `FAVICON` in `build.py`, kleurt mee met `PALET`.
 - **Slogan**: "Weet wat je kozijn nodig heeft" (`SLOGAN` in `build.py`): in de footer en als

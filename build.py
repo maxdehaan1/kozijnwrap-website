@@ -568,7 +568,7 @@ def render_head(meta, ver):
     og_desc = meta.get("ogDescription") or meta["description"]
     # Nieuwe bestandsnaam bij elke herziening: /images/ staat op een cache van een
     # jaar met immutable, dus onder dezelfde naam zou de oude afbeelding blijven hangen.
-    img = SITE + "/images/og-image-v5.jpg"
+    img = SITE + "/images/og-image-v6.jpg"
 
     # De losse .html-URL's uit de oorspronkelijke structured data meeschrijven
     # naar de schone URL's, zodat canonical en schema niet uit elkaar lopen.
