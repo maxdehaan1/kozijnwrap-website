@@ -31,7 +31,7 @@ doet het herstel.** Elke pagina hoort bij één stap van die route:
 | Stap | Pagina | Wat hij doet |
 |---|---|---|
 | 1. Herken wat je ziet | `/wat-zie-je` | Tien dingen die je aan een kozijn kunt zien, met foto, wat het is en wat je kunt doen. Elke klacht krijgt een uitkomst. |
-| 2. Vergelijk je opties | `/vergelijken` | Herstellen, nieuwe kleur (wrappen), schilderen en vervangen naast elkaar: wanneer, kosten (zonder bedragen), overlast, hoe lang het meegaat. |
+| 2. Vergelijk je opties | `/vergelijken` | Herstellen, nieuwe kleur (wrappen) en vervangen naast elkaar: wanneer, kosten (zonder bedragen), overlast, hoe lang het meegaat. |
 | 3. Kies | `/keuzehulp` | Vier vragen, één uitkomst. |
 | 4. Laten doen | iwrap.nl | Herstel nodig? Dan gaat de bezoeker naar het offerteformulier van iwrap.nl, met de klacht erbij. |
 
@@ -40,7 +40,7 @@ in drie groepen) en `/over-deze-site`. De homepage laat de route in het klein zi
 
 **Hoe het een geheel wordt (vaste onderdelen, in `build.py` en `css/onderdelen.css`):**
 - **Uitkomstlabels**: overal dezelfde gekleurde labels voor waar iets op uitkomt: mint =
-  herstellen (wat iWrap doet), en neutraal voor nieuwe kleur, schilder en vervangen. Op de
+  herstellen (wat iWrap doet), en neutraal voor nieuwe kleur, vervangen en (bij houten kozijnen) schilder. Op de
   klachten, in de vergelijking, in de keuzehulp en bij de artikelen.
 - **Eén set lijniconen** (`ICONEN` in `build.py`), voor klachten, opties en de route.
 - **Hetzelfde 3D-kozijn als iwrap.nl**: de hero (zie hieronder), de nieuwe kleur als schuif op
@@ -74,7 +74,11 @@ de drie keuzes. Elke keuze speelt een eigen kort verhaal, live getekend met de m
   helemaal versleten is en kapot en lekt"): helemaal versleten folie, een barst door de hoek, water dat
   binnenkomt en van de dorpel drupt, condens tussen het glas (een lekke ruit) en tocht ("Het kozijn
   is kapot en lekt", "Het tocht en het klemt"); dan gaat het eruit en zakt er een nieuw in.
-Schilderen staat er sinds 19 november 2026 niet meer in (Max: "niet van toepassing op de site").
+Schilderen staat er sinds 19 november 2026 niet meer in, en ook nergens anders op de site (Max: "niet van
+toepassing op de site"; "overal weg"): niet in de vergelijking, de route, de voet of de kennisbank, en de twee
+artikelen erover zijn weg (doorverwezen in `vercel.json`: schilderen naar /kozijnherstel, wrappen of schilderen naar
+/kozijnwrappen). Wat er nog staat, gaat over iets anders: stuc- en schilderwerk als nadeel van vervangen, en de
+schilder als adres voor houten kozijnen.
 Linksboven in beeld staat wat je ziet. Hij speelt de drie na elkaar zodra hij in beeld is en pauzeert
 daarbuiten; daarna staat er 5,5 seconden een kaart over het beeld met "Welke past bij jouw kozijn?" en
 de knop naar de keuzehulp (`.hk-slot`), en dan begint het opnieuw. Een klik op een keuze speelt die
@@ -142,7 +146,7 @@ kozijnherstel.html    Herstellen, het werk dat iWrap doet             (gegeneree
 kozijnwrappen.html    Wrappen: eerst de vraag of het herstel is       (gegenereerd)
 over-deze-site.html   Wie hier achter zit, en privacy                 (gegenereerd)
 404.html              Niet gevonden, met de route                     (gegenereerd)
-blog/                 Kennisbank + 10 artikelen                       (gegenereerd)
+blog/                 Kennisbank + 8 artikelen                        (gegenereerd)
 sitemap.xml                                                           (gegenereerd)
 
 css/
@@ -311,7 +315,7 @@ Gebruik in de bronbestanden root-relatieve links (`/blog/renolit-folie-uitgelegd
 - Bezoekers worden geteld met Vercel Web Analytics (zonder cookies). De uitgaande links naar
   iwrap.nl hebben UTM-tags (`utm_source=kozijnwrap.nl`, `utm_medium` per plek), dus in de
   statistieken van iwrap.nl is te zien hoeveel aanvragen hiervandaan komen.
-- De symptoompagina's staan er (folie laat los, kozijn verkleurd, onderdorpel, schilderen).
+- De symptoompagina's staan er (folie laat los, kozijn verkleurd, onderdorpel).
   Kandidaten voor een volgende ronde: krassen en stootschade, kozijn schoonmaken, en
   "kozijn 20 jaar oud — vervangen of niet". Schrijf ze vanuit wat iemand ziét, niet vanuit
   de vakterm: daar zit de kleine particuliere klus, en daar schrijven de grote

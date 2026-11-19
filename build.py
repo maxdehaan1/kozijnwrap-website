@@ -41,7 +41,6 @@ FOOTER_KOLOMMEN = [
                    ("keuzehulp", "/keuzehulp", "Keuzehulp")]),
     ("De opties", [("kozijnherstel", "/kozijnherstel", "Kozijn herstellen"),
                    ("kozijnwrappen", "/kozijnwrappen", "Kozijn wrappen"),
-                   ("blog/kunststof-kozijnen-schilderen", "/blog/kunststof-kozijnen-schilderen", "Schilderen"),
                    ("blog/kozijn-vervangen-of-herstellen", "/blog/kozijn-vervangen-of-herstellen", "Vervangen of herstellen")]),
     ("Meer", [("blog/index", "/blog", "Kennisbank"),
               ("over-deze-site", "/over-deze-site", "Over deze site"),
@@ -56,7 +55,7 @@ ROUTE = [
     ("keuzehulp", "/keuzehulp", "Doe de keuzehulp", "i-vraag"),
 ]
 VOLGENDE = {
-    "wat-zie-je": ("vergelijken", "Je weet wat je ziet. Wat zijn je opties?", "Herstellen, een nieuwe kleur, schilderen of vervangen, naast elkaar."),
+    "wat-zie-je": ("vergelijken", "Je weet wat je ziet. Wat zijn je opties?", "Herstellen, een nieuwe kleur of vervangen, naast elkaar."),
     "vergelijken": ("keuzehulp", "Welke optie past bij jouw kozijn?", "Vier vragen, en je weet het. Je hoeft geen gegevens achter te laten."),
     "kozijnherstel": ("keuzehulp", "Twijfel je of herstel bij jou kan?", "Vier vragen, en je weet het."),
     "kozijnwrappen": ("wat-zie-je", "Zit er schade of verkleuring op je kozijn?", "Dan is het meestal geen wrapvraag maar herstel. Kijk wat je ziet."),
@@ -225,8 +224,8 @@ UITKOMST = {
 # en zijn plek met "orde"; "kaart" is de korte tekst op de tegel.
 THEMAS = [
     ("herkennen", "Wat zie je?", "Loslaten, verweren, de onderdorpel: wat er met de folie gebeurt.", "i-oog"),
-    ("kiezen", "Herstellen, schilderen of vervangen?", "Wat elke route kost, wat hij oplevert en wanneer hij niet werkt.", "i-weegschaal"),
-    ("kleur", "Een andere kleur", "Wrappen, schilderen en de kleur die iedereen kiest.", "i-kleur"),
+    ("kiezen", "Herstellen of vervangen?", "Wat elke route kost, wat hij oplevert en wanneer hij niet werkt.", "i-weegschaal"),
+    ("kleur", "Een andere kleur", "Wrappen en de kleur die iedereen kiest.", "i-kleur"),
 ]
 
 
@@ -333,7 +332,7 @@ def render_route():
       <li><a class="route-stap" href="/vergelijken">
         <span class="route-boven"><span class="route-nr">2</span>{{icoon:i-weegschaal}}</span>
         <h3>Vergelijk je opties</h3>
-        <p>Herstellen, een nieuwe kleur, schilderen of vervangen: wanneer, wat het in huis betekent en hoe lang het meegaat.</p>
+        <p>Herstellen, een nieuwe kleur of vervangen: wanneer, wat het in huis betekent en hoe lang het meegaat.</p>
         <span class="verder">Vergelijken {{icoon:i-pijl|icoon klein}}</span>
       </a></li>
       <li><a class="route-stap" href="/keuzehulp">

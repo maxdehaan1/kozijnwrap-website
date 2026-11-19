@@ -7,6 +7,16 @@
       "source": "/blog/houtnerffolie-renolit-exofol",
       "destination": "/blog/renolit-folie-uitgelegd",
       "permanent": true
+    },
+    {
+      "source": "/blog/kunststof-kozijnen-schilderen",
+      "destination": "/kozijnherstel",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kozijn-wrappen-of-schilderen",
+      "destination": "/kozijnwrappen",
+      "permanent": true
     }
   ],
   "headers": [
