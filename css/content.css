@@ -4,19 +4,31 @@
    staat in style.css, de vaste onderdelen in onderdelen.css.
    --------------------------------------------------------------------------- */
 
-body.page p{max-width:64ch;}
-body.page .wrap{max-width:740px;margin:0 auto;padding:0 24px;}
+/* Regellengte (compositieronde): lopende tekst niet breder dan zo'n 85 tekens. De tekstkolom is 660px
+   (eerst 692px, 90 tot 96 tekens per regel) en een alinea maximaal 36em. Reken in em, niet in ch: ch
+   is in deze letter breder dan een gemiddeld teken. */
+body.page p{max-width:36em;}
+body.page .wrap{max-width:708px;margin:0 auto;padding:0 24px;}
 
-/* Elke paginakop licht, met de mintgloed, zoals iwrap.nl en houtnerffolie.nl. */
-body.page .hero{position:relative;z-index:1;background:var(--gloed),var(--paper);color:var(--ink);padding:clamp(40px,5vw,72px) 0 clamp(36px,4.5vw,60px);margin-bottom:8px;}
-.hero .wrap{max-width:740px;}
-.hero h1{font-size:clamp(2.1rem,1.35rem + 2.75vw,3.2rem);line-height:1.09;letter-spacing:-.026em;max-width:20ch;color:var(--ink);text-wrap:balance;}
-.hero p.lede{color:#3a4047;font-size:clamp(1.12rem,1.06rem + .3vw,1.24rem);line-height:1.55;max-width:56ch;}
+/* Elke paginakop licht, met de mintgloed, zoals iwrap.nl en houtnerffolie.nl. Onderin precies één
+   sectie-eenheid: het blok eronder begint zonder eigen ruimte (zie "Ritme" in onderdelen.css). */
+body.page .hero{position:relative;z-index:1;background:var(--gloed),var(--paper);color:var(--ink);padding:clamp(40px,5vw,72px) 0 var(--sectie);}
+.hero .wrap{max-width:708px;}
+.hero .wrap > :last-child{margin-bottom:0;}
+.hero h1{max-width:20ch;color:var(--ink);text-wrap:balance;}
+.hero p.lede{color:#3a4047;font-size:var(--lede-kop);line-height:1.55;max-width:34em;}
 /* Wie de pagina schrijft, direct onder de inleiding (de keuzehulp). */
 .hero-by{font-family:var(--sans);font-size:1rem;margin:16px 0 0;color:var(--sub);}
 
-section{padding:clamp(40px,5vw,60px) 0;}
-section h2{font-size:clamp(1.56rem,1.2rem + 1.3vw,2.1rem);}
+/* Elk blok één sectie-eenheid boven en onder; de regels voor twee blokken na elkaar staan bij "Ritme"
+   in onderdelen.css. */
+main > section{padding:var(--sectie) 0;}
+section > .wrap > :first-child{margin-top:0;}
+section > .wrap > :last-child{margin-bottom:0;}
+/* Een kop in de lopende tekst staat dichter bij de tekst eronder dan bij die erboven: eerst stond er
+   boven een kop maar 18px, net zoveel als eronder, net als op iwrap.nl (2em). */
+body.page:not(.breed-pagina) main section > .wrap > h2:not(:first-child){margin-top:2em;}
+body.page:not(.breed-pagina) main section > .wrap > h3:not(:first-child){margin-top:1.7em;}
 
 /* Lijsten in de lopende tekst: een bolletje in de kleur van de site en een dunne lijn ertussen. */
 .signals{list-style:none;margin:0;padding:0;}
@@ -44,8 +56,8 @@ figcaption{font-family:var(--sans);font-size:.97rem;color:var(--sub);margin-top:
 /* Een kleine klus is welkom: bijna niemand met twee verweerde dorpels neemt aan dat een
    specialist daarvoor langskomt. */
 .small-jobs{background:var(--merk-wash);border-radius:22px;padding:26px 30px;margin:26px 0 0;}
-.small-jobs h3{font-size:1.13rem;margin:0 0 8px;}
-.small-jobs p{margin:0;font-size:1.02rem;color:#3a4047;max-width:60ch;}
+.small-jobs h3{font-size:var(--kaart-titel);margin:0 0 8px;}
+.small-jobs p{margin:0;font-size:var(--kaart-tekst);color:#3a4047;max-width:36em;}
 
 /* Veelgestelde vragen ---------------------------------------------------------- */
 
@@ -59,7 +71,7 @@ figcaption{font-family:var(--sans);font-size:.97rem;color:var(--sub);margin-top:
 .faq summary::after{content:"+";font-family:var(--sans);font-weight:700;font-size:1.3rem;flex-shrink:0;color:var(--sub);transition:transform .25s ease,color .2s ease;}
 .faq summary:hover::after{color:var(--merk);}
 .faq details[open] summary::after{transform:rotate(45deg);color:var(--merk);}
-.faq .a{margin:-6px 0 20px;color:#3a4047;font-size:1.02rem;max-width:64ch;}
+.faq .a{margin:-6px 0 20px;color:#3a4047;font-size:1.02rem;max-width:36em;}
 
 /* Links in de lopende tekst ------------------------------------------------------ */
 

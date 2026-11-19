@@ -9,7 +9,7 @@
 .kh-bar{height:6px;border-radius:6px;background:var(--line);overflow:hidden;margin-bottom:30px;}
 .kh-bar span{display:block;height:100%;background:var(--merk-tekst);border-radius:4px;transition:width .3s ease;}
 
-.kh h2{font-size:clamp(1.56rem,1.2rem + 1.3vw,2.02rem);margin-bottom:8px;text-wrap:balance;}
+.kh h2{margin-bottom:8px;text-wrap:balance;}
 .kh .kh-hint{color:var(--sub);font-size:1.04rem;margin-bottom:24px;max-width:52ch;}
 
 .kh-options{display:grid;gap:10px;margin:0;padding:0;list-style:none;}
@@ -42,8 +42,7 @@
 
 .kh-result{border-radius:24px;padding:32px 34px;border:1px solid var(--rand-zacht);background:#fff;}
 .kh-result .kh-verdict{margin-bottom:14px;}
-.kh-result h2{font-size:clamp(1.48rem,1.2rem + .92vw,1.85rem);}
-.kh-result p{font-size:1.04rem;max-width:58ch;}
+.kh-result p{font-size:1.04rem;max-width:36em;}
 /* De prijsindicatie is voor veel bezoekers de reden om de keuzehulp in te vullen,
    dus die krijgt een eigen vlak in plaats van een regel tussen de tekst. */
 .kh-prijsblok{background:var(--merk-wash);border-radius:18px;padding:20px 22px;margin:22px 0 4px;}

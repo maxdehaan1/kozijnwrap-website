@@ -196,6 +196,46 @@ De kleuren lopen via variabelen in `:root` (zie het commentaar daar): `--merk` (
   `css/style.css`) en wordt in de `<head>` vooraf geladen; de terugval `Montserrat-terugval`
   (Arial op maat) zorgt dat er niets verspringt. Op een smal scherm mogen lange woorden in koppen
   afbreken. De teksten in het 3D-beeld (canvas) en de getekende diagrammen blijven in `--sans`.
+  **Eén reeks maten** (compositieronde, 19 november 2026, dezelfde als op iwrap.nl), als
+  variabelen in `:root` van `css/style.css`: `--h1` `clamp(2.1rem,1.45rem + 2.3vw,3.1rem)`, `--h2`
+  `clamp(1.65rem,1.25rem + 1.35vw,2.3rem)` en `--h3` `clamp(1.14rem,1.06rem + .3vw,1.28rem)`: op
+  een breed scherm 50 / 37 / 20px, op een telefoon 34 / 26 / 18px. `h1`, `h2` en `h3` krijgen die
+  maat in `style.css`; een onderdeel zet er geen eigen maat overheen. Dus ook de homepagekop
+  ("Herstellen of wrappen?", eerst 74px), een artikelkop, de brug, de keuzehulp en het blauwe
+  vlak met de eerste vraag hebben dezelfde maten. Een kop in een kanttekening (De vuistregel, Even
+  eerlijk) en de titel van Volgende stap en van het slotkader in een artikel zijn een `--h3`. In
+  een kaart is de titel `1.18rem` (`--kaart-titel`) en de tekst `1.02rem` grijs
+  (`--kaart-tekst`): de route, de signalen, de drie stappen, de kennisbank, de artikeltegels, de
+  vergelijking en de rest. Alleen de klachtkaarten met een foto hebben een titel van `1.11rem`,
+  zodat "Dof, ruw en vol haarscheuren" op één regel past. De inleiding onder een sectiekop is
+  `--lede` (19,5px), op een paginakop `--lede-kop` (20px). Een kop breekt op een breed scherm
+  nooit op een los woord, en titels in een rij kaarten staan allemaal op één regel. Zijn ze daar te
+  lang voor (de artikeltegels, de kennisbank op de homepage, "Zo kijk je" en "Dit lost nieuwe
+  folie niet op" op /wat-zie-je), dan staan de regels eronder met subgrid toch op één lijn. De
+  vier signalen op /kozijnherstel staan in twee kolommen in plaats van vier smalle (eerst brak
+  "Krassen of / stootschade").
+- **Regellengte**: lopende tekst niet breder dan zo'n 85 tekens. De tekstkolom van een artikel en
+  van de andere tekstpagina's is 660px (`body.page .wrap` 708px met 24px marge, de paginakop
+  even breed), een alinea maximaal `36em`. De inleiding onder een kop en op een paginakop `34em`,
+  de tekst in een kanttekening `36em`, de zin onder de vergelijking `35em`. Reken in `em`, niet in
+  `ch`: `ch` is in deze letter breder dan een gemiddeld teken (64ch was zo'n 95 tekens).
+- **Witruimte**: één sectie-eenheid (`--sectie`: 100px op een breed scherm, 56px op een telefoon)
+  tussen twee blokken met dezelfde achtergrond, en aan elke kant van een kleurrand (wit en papier)
+  één eenheid. Elk blok in `main` (`.sectie`, `.sectie-dun`, `.volgende`, `.brug`, `.verwant` en
+  de tekstsecties) heeft die ruimte boven en onder; volgt het op een blok met dezelfde
+  achtergrond, dan valt de ruimte erboven weg (zie "Ritme" bovenin `css/onderdelen.css`). Eerst
+  gold die regel ook voor papier na wit, en dan stond de kop van zo'n sectie tegen de kleurrand.
+  Onder elke paginakop staat precies één eenheid (de kop houdt die zelf onderin), ook op een
+  artikel. Wat als eerste of laatste in een blok staat, voegt geen eigen marge toe; `.ruimte-onder`
+  is niet meer nodig. Een kop in de lopende tekst heeft erboven `2em` en eronder `.45em`, zodat hij
+  bij de tekst eronder hoort.
+- **Compositie**: wat naast elkaar staat, is ongeveer even hoog. Op /kozijnwrappen staan naast
+  "Zit er schade op je kunststof kozijn?" één hoge foto en twee gestapelde foto's, even hoog als de
+  tekst (eerst drie kleine foto's van half die hoogte). Controleer na een wijziging in de opmaak
+  de pagina's op 1440x900, 1366x768 en 390 breed met schermafdrukken die scherm voor scherm worden
+  gemaakt (een schermafdruk van de hele pagina in één keer geeft in Chrome afwijkingen), en meet
+  koppen met een los woord, rijen kaarttitels, regellengtes en de witruimte tussen blokken (alleen
+  100/200 op een breed scherm en 56/112 op een telefoon zijn goed).
 - **Voor oudere bezoekers**: kleine teksten minstens 15px, grijs dat 7:1 haalt, knoppen
   minstens 50px hoog en geen piepkleine hoofdletters met spaties ertussen.
 - **Woordmerk**: de naam is het logo: `kozijn` in `--merk-tekst` (normaal gewicht) direct

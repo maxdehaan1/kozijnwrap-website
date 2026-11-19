@@ -4,8 +4,9 @@
    --------------------------------------------------------------------------- */
 
 /* Artikelkoppen zijn een stuk langer dan paginakoppen; op 20ch braken ze in
-   vier korte regeltjes terwijl er ruimte zat naast stond. */
-body.theme-blog:not(.breed-pagina) .hero h1{max-width:27ch;font-size:clamp(1.95rem,1.3rem + 2.4vw,2.85rem);}
+   vier korte regeltjes terwijl er ruimte zat naast stond. Sinds de compositieronde
+   hebben ze dezelfde maat als elke andere h1. */
+body.theme-blog:not(.breed-pagina) .hero h1{max-width:none;}
 
 .breadcrumb{font-family:var(--sans);font-size:.95rem;color:var(--sub);margin-bottom:14px;}
 .breadcrumb a{color:var(--merk);text-decoration:none;font-weight:500;}
@@ -37,7 +38,7 @@ body.theme-blog:not(.breed-pagina) .hero h1{max-width:27ch;font-size:clamp(1.95r
    ronde knop. De tekst verschilt per artikel. */
 .article-cta{background:#fff;border:1px solid var(--rand-zacht);border-radius:28px;padding:28px 32px 30px;margin-top:44px;}
 .article-cta .volgende-label{display:block;margin-bottom:6px;}
-.article-cta h3{margin:0 0 8px;font-size:clamp(1.25rem,1.06rem + .74vw,1.6rem);letter-spacing:-.02em;line-height:1.24;}
+.article-cta h3{margin:0 0 8px;}
 .article-cta p{color:var(--sub);margin:0 0 20px;max-width:none;}
 .article-cta .cta-row{display:flex;flex-wrap:wrap;gap:10px;}
 .article-cta a.cta-link{display:inline-flex;align-items:center;gap:6px;min-height:54px;padding:15px 28px;border-radius:999px;background:var(--merk);color:#fff;font-family:var(--kop);font-weight:600;font-size:1rem;text-decoration:none;transition:background .2s ease,transform .2s ease;}
@@ -47,6 +48,5 @@ body.theme-blog:not(.breed-pagina) .hero h1{max-width:27ch;font-size:clamp(1.95r
 @media (prefers-reduced-motion: reduce){ .article-cta a.cta-link:hover{transform:none;} }
 @media (max-width:560px){ .article-cta{padding:24px;} .article-cta a.cta-link{padding:14px 22px;} }
 
-/* Tussen de kop van een artikel en de eerste alinea hoeft geen dubbele witruimte. */
-body.theme-blog:not(.breed-pagina) .hero{padding-bottom:clamp(20px,2.6vw,32px);}
-body.theme-blog:not(.breed-pagina) .hero + section{padding-top:clamp(12px,2vw,24px);}
+/* Tussen de kop van een artikel en de eerste alinea staat, net als onder elke paginakop, precies één
+   sectie-eenheid (compositieronde; eerst 79px tegen 168px op de andere pagina's). */
