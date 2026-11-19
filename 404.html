@@ -23,9 +23,9 @@
 
 <link rel="preload" href="/fonts/montserrat-latin-83a31c81.woff2" as="font" type="font/woff2" crossorigin>
 <meta name="robots" content="noindex">
-<link rel="stylesheet" href="/css/style.css?v=b2fbf9a1">
-<link rel="stylesheet" href="/css/onderdelen.css?v=b2fbf9a1">
-<link rel="stylesheet" href="/css/content.css?v=b2fbf9a1">
+<link rel="stylesheet" href="/css/style.css?v=e1ccdaf4">
+<link rel="stylesheet" href="/css/onderdelen.css?v=e1ccdaf4">
+<link rel="stylesheet" href="/css/content.css?v=e1ccdaf4">
 </head>
 <body class="page breed-pagina">
 
@@ -35,17 +35,19 @@
 <header class="site">
   <div class="nav">
     <a class="brand" href="/" aria-label="kozijnwrap.nl, naar de homepage"><span class="w1">kozijn</span><span class="w2">wrap<span class="tld">.nl</span></span></a>
-    <nav class="navlinks" aria-label="Hoofdnavigatie">
+    <nav class="navlinks" id="hoofdmenu" aria-label="Hoofdnavigatie">
       <a href="/wat-zie-je">Wat zie je?</a>
       <a href="/vergelijken">Vergelijken</a>
       <a href="/kozijnherstel">Herstellen</a>
       <a href="/kozijnwrappen">Wrappen</a>
       <a href="/blog">Kennisbank</a>
       <a class="alleen-smal" href="/keuzehulp">Keuzehulp</a>
+      <a class="knop knop-iwrap menu-iwrap" href="https://iwrap.nl/contact/?utm_source=kozijnwrap.nl&amp;utm_medium=menu&amp;utm_campaign=herstel" target="_blank" rel="noopener">Offerte aanvragen bij iWrap</a>
     </nav>
     <div class="nav-knoppen">
       <a class="nav-kh" href="/keuzehulp">Keuzehulp</a>
-      <a class="nav-cta" href="https://iwrap.nl/contact/?utm_source=kozijnwrap.nl&amp;utm_medium=header&amp;utm_campaign=herstel" target="_blank" rel="noopener">Offerte bij iWrap</a>
+      <a class="nav-cta knop-iwrap" href="https://iwrap.nl/contact/?utm_source=kozijnwrap.nl&amp;utm_medium=header&amp;utm_campaign=herstel" target="_blank" rel="noopener" aria-label="Offerte aanvragen bij iWrap"><span class="lang">Offerte bij iWrap</span><span class="kort" aria-hidden="true">Offerte</span></a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="hoofdmenu"><span class="bars" aria-hidden="true"></span><span class="nav-toggle-woord">Menu</span></button>
     </div>
   </div>
 </header>
@@ -101,7 +103,6 @@
       <a class="brand" href="/" aria-label="kozijnwrap.nl, naar de homepage"><span class="w1">kozijn</span><span class="w2">wrap<span class="tld">.nl</span></span></a>
       <p class="fslogan">Weet wat je kozijn nodig heeft</p>
       <p>Uitleg over kunststof kozijnen: wat je ziet, wat je kunt doen en wat het oplevert. Zodat je weet wat je kozijn nodig heeft voordat je iemand belt.</p>
-      <a class="fby" href="https://iwrap.nl?utm_source=kozijnwrap.nl&amp;utm_medium=footer" target="_blank" rel="noopener"><span>Een site van</span><img src="/images/iwrap-logo.svg" width="96" height="20" alt="iWrap" loading="lazy"></a>
     </div>
     <nav class="fkolom" aria-label="Uitzoeken">
       <p class="fkop">Uitzoeken</p>
@@ -116,7 +117,16 @@
       <ul><li><a href="/blog">Kennisbank</a></li><li><a href="/over-deze-site">Over deze site</a></li><li><a href="/over-deze-site#privacy">Privacy</a></li></ul>
     </nav>
   </div>
+  <div class="wrap familie">
+    <p class="familie-kop">De sites van iWrap</p>
+    <ul class="familie-lijst">
+      <li><a class="familie-site" href="%s?utm_source=kozijnwrap.nl&amp;utm_medium=familie" target="_blank" rel="noopener"><span class="fam-merk"><img src="/images/iwrap-logo.svg" width="96" height="20" alt="iWrap" loading="lazy"></span><span class="fam-rol">Kozijnen laten herstellen en een offerte aanvragen</span></a></li>
+      <li><span class="familie-site is-hier" aria-current="page"><span class="fam-merk fam-kw"><span class="f1">kozijn</span><span class="f2">wrap</span><span class="f3">.nl</span></span><span class="fam-rol">Uitzoeken wat je kozijn nodig heeft</span><span class="fam-hier">Je bent hier</span></span></li>
+      <li><span class="familie-site"><span class="fam-merk fam-hn"><span class="f1">houtnerf</span><span class="f2">folie</span><span class="f3">.nl</span></span><span class="fam-rol">Alles over Renolit folie en de kleuren</span></span></li>
+    </ul>
+  </div>
 </footer>
 
+<script defer src="/js/menu.js?v=e1ccdaf4"></script>
 </body>
 </html>

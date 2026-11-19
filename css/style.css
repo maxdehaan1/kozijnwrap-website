@@ -144,7 +144,7 @@ summary:focus-visible,
 
 /* Sinds november 2026: links het woordmerk, in het midden de route (wat zie je, vergelijken) en de
    twee opties, rechts de keuzehulp en de knop naar iWrap. Geen uitklapmenu meer. Wit en
-   doorschijnend, en hij blijft staan; op een telefoon scrolt hij mee. */
+   doorschijnend, en hij blijft staan, ook op een telefoon. */
 header.site{
   padding:12px 0;position:sticky;top:0;z-index:70;
   background:rgba(255,255,255,.8);
@@ -152,7 +152,8 @@ header.site{
   border-bottom:1px solid rgba(34,38,42,.07);
 }
 @supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){header.site{background:rgba(255,255,255,.97);}}
-@media (max-width:760px){ header.site{position:relative;} }
+/* Ook op een telefoon blijft de balk staan, zodat Menu en de knop naar iWrap altijd binnen bereik zijn,
+   net als op iwrap.nl en houtnerffolie.nl (19 november 2026; eerst scrolde hij hier mee). */
 .nav{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"brand links knoppen";align-items:center;gap:8px 28px;max-width:1100px;margin:0 auto;padding:0 24px;}
 
 /* Woordmerk: de naam is echte tekst, geen plaatje, dus voorleessoftware en zoekmachines lezen hem
@@ -180,25 +181,53 @@ header.site{
 .nav-cta:hover{background:var(--iwrap-hover);transform:translateY(-1px);}
 @media (prefers-reduced-motion: reduce){ .nav-cta:hover{transform:none;} }
 
+.nav-cta{gap:8px;}
+.nav-cta .kort{display:none;}
+#hoofdmenu .menu-iwrap,.nav-toggle,.menu-laag{display:none;}
+html.menu-open{overflow:hidden;}
+
+/* Het menu op een telefoon en tablet (tot 1080px), op alle drie de sites van iWrap hetzelfde: een knop
+   met het woord "Menu" (open: "Sluiten"), want alleen drie streepjes herkent niet iedereen. Het paneel
+   klapt van boven over de pagina open, met grote regels die makkelijk aan te tikken zijn, en onderin
+   de knop naar iWrap. Erachter een donkere laag; gedrag in js/menu.js. */
 @media (max-width:1080px){
-  .nav{grid-template-columns:auto minmax(0,1fr);grid-template-areas:"brand knoppen" "links links";}
-  .nav-knoppen{justify-self:end;}
-  .navlinks{justify-content:flex-start;gap:2px 22px;}
+  .nav{grid-template-columns:auto minmax(0,1fr);grid-template-areas:"brand knoppen";}
+  .nav-knoppen{justify-self:end;gap:8px;}
+  .nav-toggle{display:inline-flex;align-items:center;gap:9px;height:44px;padding:0 15px 0 13px;border:1px solid rgba(34,38,42,.2);background:#fff;border-radius:12px;color:var(--ink);font-family:var(--kop);font-size:.94rem;font-weight:600;letter-spacing:-.005em;cursor:pointer;transition:border-color .2s ease;}
+  .nav-toggle:hover{border-color:rgba(34,38,42,.4);}
+  .bars,.bars::before,.bars::after{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;}
+  .bars{position:relative;transition:background-color 0s linear .15s;}
+  .bars::before,.bars::after{content:"";position:absolute;left:0;transition:translate .15s ease .15s,rotate .15s ease;}
+  .bars::before{top:-6px;} .bars::after{top:6px;}
+  .nav-toggle[aria-expanded="true"] .bars{background-color:transparent;transition-delay:.12s;}
+  .nav-toggle[aria-expanded="true"] .bars::before,.nav-toggle[aria-expanded="true"] .bars::after{transition:translate .15s ease,rotate .15s ease .15s;}
+  .nav-toggle[aria-expanded="true"] .bars::before{translate:0 6px;rotate:45deg;}
+  .nav-toggle[aria-expanded="true"] .bars::after{translate:0 -6px;rotate:-45deg;}
+  .navlinks{position:absolute;left:0;right:0;top:100%;z-index:80;flex-direction:column;flex-wrap:nowrap;align-items:stretch;justify-content:flex-start;gap:0;padding:4px max(24px,calc(50% - 526px)) 22px;background:#fff;border-bottom:1px solid var(--line);font-size:1.18rem;box-shadow:0 18px 30px -18px rgba(27,38,50,.4);max-height:calc(100vh - 68px);max-height:calc(100dvh - 68px);overflow-y:auto;overscroll-behavior:contain;clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .3s ease,visibility 0s linear .3s;}
+  .navlinks.open{clip-path:inset(0 0 -60px 0);visibility:visible;transition-delay:0s;}
+  .navlinks a{padding:16px 0;border-bottom:1px solid var(--line);color:var(--ink);}
+  .navlinks a::after{display:none;}
+  .navlinks a.current{font-weight:700;color:var(--merk);}
+  .navlinks .alleen-smal{display:block;}
+  #hoofdmenu .menu-iwrap{display:flex;margin-top:18px;padding:15px 22px;border-bottom:0;color:#fff;font-size:1rem;}
+  .menu-laag{display:block;position:fixed;inset:0;z-index:60;background:rgba(27,38,50,.3);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility 0s linear .3s;}
+  .menu-laag.open{opacity:1;visibility:visible;transition-delay:0s;}
 }
+@media (max-width:760px){ .nav-kh{display:none;} }
+/* Op een telefoon: het woordmerk, een korte knop naar iWrap ("Offerte", met het beeldmerk) en Menu op
+   één regel. Onder 360px past die knop er niet meer naast; hij staat dan onderin het menu. */
 @media (max-width:560px){
-  .nav{padding:0 24px;gap:6px 12px;}
-  .brand .w1,.brand .w2{font-size:1.22rem;}
-  .nav-kh{display:none;}
-  .alleen-smal{display:inline;}
-  .navlinks{gap:0 16px;font-size:.95rem;}
-  .nav-cta{min-height:44px;padding:9px 16px;font-size:.94rem;}
+  .brand .w1,.brand .w2{font-size:1.2rem;}
+  .nav-cta{min-height:44px;padding:9px 14px 9px 12px;}
+  .nav-cta .lang{display:none;}
+  .nav-cta .kort{display:inline;}
 }
-/* Op een heel smal scherm (320px) passen het woordmerk en de knop met de marge van 24px net naast elkaar,
-   zoals op iwrap.nl: het woordmerk iets kleiner en de knop iets smaller. */
-@media (max-width:359px){
-  .brand .w1,.brand .w2{font-size:1.08rem;}
-  .nav-cta{padding:9px 12px;}
+@media (max-width:399px){
+  .nav{padding:0 16px;gap:6px 10px;}
+  .brand .w1,.brand .w2{font-size:1.06rem;}
+  .navlinks{padding-inline:16px;}
 }
+@media (max-width:359px){ .nav-cta{display:none;} }
 
 /* Kanttekeningen ----------------------------------------------------------- */
 
@@ -226,9 +255,6 @@ footer{background:var(--voet);color:#3a4047;padding:64px 0 52px;font-size:1rem;f
 .fbrand .brand .w1,.fbrand .brand .w2{font-size:1.32rem;}
 .fbrand p{max-width:40ch;margin:10px 0 0;line-height:1.55;}
 .fbrand .fslogan{font-weight:600;color:var(--merk-tekst);margin-top:8px;}
-.fby{display:inline-flex;align-items:center;gap:10px;margin-top:20px;color:var(--sub);text-decoration:none;font-size:.96rem;padding:8px 14px 8px 12px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid var(--rand-zacht);transition:border-color .2s ease;}
-.fby img{height:18px;width:auto;}
-.fby:hover{border-color:rgba(34,38,42,.2);}
 .fkop{font-weight:700;color:var(--ink);margin:6px 0 12px;font-size:1rem;}
 .fkolom ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;}
 .fkolom a{color:#3a4047;text-decoration:none;line-height:1.4;}
@@ -236,6 +262,24 @@ footer{background:var(--voet);color:#3a4047;padding:64px 0 52px;font-size:1rem;f
 .fkolom a[aria-current]{color:var(--ink);font-weight:600;}
 @media (max-width:900px){ .fgrid{grid-template-columns:repeat(3,minmax(0,1fr));} .fbrand{grid-column:1/-1;} }
 @media (max-width:560px){ .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 20px;} }
+
+/* De familieregel: de drie sites van iWrap en wat elke site doet, onderaan alle drie de sites hetzelfde.
+   Elke naam in zijn eigen woordmerk; de kleuren van de andere sites staan hier als variabelen. Deze
+   site linkt alleen naar iwrap.nl. */
+footer .familie{--fam-kw:#175a99;--fam-hn-goud:#876430;--fam-hn-navy:#13294b;margin-top:44px;}
+.familie-kop{margin:0 0 14px;padding-top:30px;border-top:1px solid var(--line);font-family:var(--kop);font-weight:700;font-size:1rem;color:var(--ink);}
+.familie-lijst{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.familie-site{display:flex;flex-direction:column;gap:7px;height:100%;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.75);border:1px solid var(--rand-zacht);color:inherit;text-decoration:none;transition:border-color .2s ease,background .2s ease;}
+a.familie-site:hover{border-color:rgba(var(--iwrap-rgb),.45);background:#fff;}
+.familie-site.is-hier{background:transparent;border-style:dashed;}
+.fam-merk{display:flex;align-items:baseline;min-height:24px;font-family:var(--kop);font-size:1.16rem;line-height:1;letter-spacing:-.03em;}
+.fam-merk img{height:21px;width:auto;align-self:center;}
+.fam-merk .f1{font-weight:500;} .fam-merk .f2{font-weight:800;letter-spacing:-.035em;} .fam-merk .f3{font-size:.55em;font-weight:600;letter-spacing:0;margin-left:.06em;}
+.fam-kw .f1,.fam-kw .f3{color:var(--fam-kw);} .fam-kw .f2{color:var(--ink);}
+.fam-hn .f1,.fam-hn .f3{color:var(--fam-hn-goud);} .fam-hn .f2{color:var(--fam-hn-navy);}
+.fam-rol{font-size:.96rem;line-height:1.45;color:var(--sub);}
+.fam-hier{margin-top:auto;padding-top:2px;font-family:var(--kop);font-size:.94rem;font-weight:600;color:var(--merk-tekst);}
+@media (max-width:760px){ .familie-lijst{grid-template-columns:minmax(0,1fr);} }
 
 /* Verfijning ---------------------------------------------------------------- */
 

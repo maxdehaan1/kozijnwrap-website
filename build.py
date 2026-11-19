@@ -257,7 +257,7 @@ def render_brug(medium, kop=None, reviews=False):
         '          <li>%s <a href="%s" target="_blank" rel="noopener"><span data-rv="score">%s</span> uit <span data-rv="aantal">%s</span> Google-reviews</a></li>\n'
         '        </ul>\n'
         '        <div class="knoprij">\n'
-        '          <a class="knop knop-primair" href="%s" target="_blank" rel="noopener">Offerte aanvragen bij iWrap %s</a>\n'
+        '          <a class="knop knop-iwrap" href="%s" target="_blank" rel="noopener">Offerte aanvragen bij iWrap %s</a>\n'
         '          <a class="knop knop-tweede" href="%s?utm_source=kozijnwrap.nl&amp;utm_medium=%s" target="_blank" rel="noopener">Naar iwrap.nl</a>\n'
         '        </div>\n      </div>\n'
         '      <figure class="brug-beeld"><picture><source type="image/webp" srcset="/images/proces-squeegee.webp">'
@@ -301,20 +301,23 @@ def render_schuif(m, eerste):
 
 
 def render_levensduur():
-    """{{levensduur}}: het kozijnprofiel gaat 50 tot 75 jaar mee, de folie 15 tot 25. Op dezelfde
-    schaal naast elkaar, zodat je ziet dat de folie twee, drie keer opnieuw kan in een kozijnleven."""
+    """{{levensduur}}: het kozijnprofiel gaat 50 tot 75 jaar mee. De folie die er nu op zit ging 15 tot 25
+    jaar mee; na het herstel komt er een veel sterkere folie op, die naar verwachting veel langer meegaat.
+    Daar hangt iWrap geen jaartal aan (Max, 19 november 2026), dus die balk loopt open uit."""
     return (
         '<div class="levensduur" role="img" aria-label="Een kunststof kozijnprofiel gaat 50 tot 75 jaar mee. '
-        'De folie erop 15 tot 25 jaar, dus in één kozijnleven kan de folie twee of drie keer opnieuw.">\n'
+        'De folie die er nu op zit, ging 15 tot 25 jaar mee. Na het herstel komt er een veel sterkere folie op, '
+        'die naar verwachting veel langer meegaat.">\n'
         '  <div class="ld-rij"><div class="ld-naam">Het kozijn<small>50 tot 75 jaar</small></div>'
         '<div class="ld-baan"><span class="ld-balk ld-profiel">Kunststof profiel</span></div></div>\n'
-        '  <div class="ld-rij"><div class="ld-naam">De folie<small>15 tot 25 jaar</small></div>'
-        '<div class="ld-baan"><span class="ld-balk ld-folie">Nieuw</span><span class="ld-balk ld-folie">Herstel</span>'
-        '<span class="ld-balk ld-folie">Herstel</span></div></div>\n'
+        '  <div class="ld-rij"><div class="ld-naam">De folie<small>Eerst 15 tot 25 jaar</small></div>'
+        '<div class="ld-baan"><span class="ld-balk ld-folie ld-oud">Oude folie</span>'
+        '<span class="ld-balk ld-folie ld-nieuw">Nieuwe folie, veel sterker</span></div></div>\n'
         '  <div class="ld-as" aria-hidden="true"><span>0</span><span>25 jaar</span><span>50 jaar</span><span>75 jaar</span></div>\n'
-        '  <div class="ld-uitleg"><p>De folie is een <b>slijtlaag</b>, met tien jaar Renolit-garantie. Ziet je kozijn '
-        'er na twintig jaar verweerd uit, dan doet het precies wat je mag verwachten: de jas is versleten, het '
-        'kozijn niet. Die jas vervangen kan twee, drie keer in een kozijnleven.</p></div>\n'
+        '  <div class="ld-uitleg"><p>De folie is een <b>slijtlaag</b>. Ziet je kozijn er na twintig jaar verweerd uit, '
+        'dan doet het precies wat je mag verwachten: de jas is versleten, het kozijn niet. De nieuwe jas is veel '
+        'sterker dan de oude en gaat naar verwachting veel langer mee. Tien jaar is de garantie op de folie, niet '
+        'hoe lang hij meegaat.</p></div>\n'
         '</div>')
 
 
@@ -515,7 +518,9 @@ def css_version():
 
 def render_nav(slug):
     """Het menu: de route (wat zie je, vergelijken) en de twee optiepagina's, met rechts de
-    keuzehulp en de knop naar iWrap. Geen uitklapmenu meer: de kennisbank is één pagina."""
+    keuzehulp en de knop naar iWrap. Tot 1080px breed staan de links achter een knop met het woord
+    "Menu", net als op iwrap.nl en houtnerffolie.nl (js/menu.js); onderin dat paneel nog een keer de
+    knop naar iWrap."""
     current = "blog/index" if slug.startswith("blog/") else slug
     links = "\n".join(
         '      <a %shref="%s">%s</a>' % ('class="current" aria-current="page" ' if s_ == current else "", u, label)
@@ -525,16 +530,20 @@ def render_nav(slug):
         '<header class="site">\n'
         '  <div class="nav">\n'
         '    <a class="brand" href="/" aria-label="kozijnwrap.nl, naar de homepage">%s</a>\n'
-        '    <nav class="navlinks" aria-label="Hoofdnavigatie">\n%s\n'
+        '    <nav class="navlinks" id="hoofdmenu" aria-label="Hoofdnavigatie">\n%s\n'
         '      <a class="alleen-smal%s" href="/keuzehulp">Keuzehulp</a>\n'
+        '      <a class="knop knop-iwrap menu-iwrap" href="%s" target="_blank" rel="noopener">Offerte aanvragen bij iWrap</a>\n'
         '    </nav>\n'
         '    <div class="nav-knoppen">\n'
         '      <a%s href="/keuzehulp">Keuzehulp</a>\n'
-        '      <a class="nav-cta" href="%s" target="_blank" rel="noopener">Offerte bij iWrap</a>\n'
+        '      <a class="nav-cta knop-iwrap" href="%s" target="_blank" rel="noopener" aria-label="Offerte aanvragen bij iWrap">'
+        '<span class="lang">Offerte bij iWrap</span><span class="kort" aria-hidden="true">Offerte</span></a>\n'
+        '      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="hoofdmenu">'
+        '<span class="bars" aria-hidden="true"></span><span class="nav-toggle-woord">Menu</span></button>\n'
         '    </div>\n'
         '  </div>\n'
-        '</header>' % (WORDMARK, links, " current" if current == "keuzehulp" else "", kh,
-                       offerte_link("header"))
+        '</header>' % (WORDMARK, links, " current" if current == "keuzehulp" else "",
+                       offerte_link("menu"), kh, offerte_link("header"))
     )
 
 
@@ -554,12 +563,31 @@ def render_footer(slug):
         '      <p class="fslogan">%s</p>\n'
         "      <p>Uitleg over kunststof kozijnen: wat je ziet, wat je kunt doen en wat het oplevert. "
         "Zodat je weet wat je kozijn nodig heeft voordat je iemand belt.</p>\n"
-        '      <a class="fby" href="%s?utm_source=kozijnwrap.nl&amp;utm_medium=footer" target="_blank" rel="noopener">'
-        '<span>Een site van</span><img src="/images/iwrap-logo.svg" width="96" height="20" alt="iWrap" loading="lazy"></a>\n'
         "    </div>\n%s\n"
-        "  </div>\n"
-        "</footer>" % (WORDMARK, SLOGAN, IWRAP["site"], kolommen)
+        "  </div>\n%s"
+        "</footer>" % (WORDMARK, SLOGAN, kolommen, render_familie())
     )
+
+
+def render_familie():
+    """De familieregel onderaan alle drie de sites: welke sites er zijn en wat elke site doet.
+    Deze site linkt alleen naar iwrap.nl, niet naar houtnerffolie.nl (Max, 19 november 2026: de
+    zustersites sturen door naar iWrap, niet naar elkaar)."""
+    return (
+        '  <div class="wrap familie">\n'
+        '    <p class="familie-kop">De sites van iWrap</p>\n'
+        '    <ul class="familie-lijst">\n'
+        '      <li><a class="familie-site" href="%s?utm_source=kozijnwrap.nl&amp;utm_medium=familie" target="_blank" rel="noopener">'
+        '<span class="fam-merk"><img src="/images/iwrap-logo.svg" width="96" height="20" alt="iWrap" loading="lazy"></span>'
+        '<span class="fam-rol">Kozijnen laten herstellen en een offerte aanvragen</span></a></li>\n'
+        '      <li><span class="familie-site is-hier" aria-current="page">'
+        '<span class="fam-merk fam-kw"><span class="f1">kozijn</span><span class="f2">wrap</span><span class="f3">.nl</span></span>'
+        '<span class="fam-rol">Uitzoeken wat je kozijn nodig heeft</span><span class="fam-hier">Je bent hier</span></span></li>\n'
+        '      <li><span class="familie-site">'
+        '<span class="fam-merk fam-hn"><span class="f1">houtnerf</span><span class="f2">folie</span><span class="f3">.nl</span></span>'
+        '<span class="fam-rol">Alles over Renolit folie en de kleuren</span></span></li>\n'
+        '    </ul>\n'
+        '  </div>\n')
 
 
 def render_head(meta, ver):
@@ -683,7 +711,7 @@ def build():
         if slug.startswith("blog/") and slug != "blog/index":
             body = artikel_opmaak(meta, body)
         assert "{{" not in body, "onbekende code in %s: %s" % (slug, body[body.index("{{"):body.index("{{") + 40])
-        scripts = ""
+        scripts = '\n<script defer src="/js/menu.js?v=%s"></script>' % ver
         if 'class="vergelijk' in body:
             scripts += '\n<script defer src="/js/voorna.js?v=%s"></script>' % ver
         # De hero met het 3D-kozijn: eerst de motor (dezelfde als op iwrap.nl), dan de vier verhalen.

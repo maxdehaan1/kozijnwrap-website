@@ -24,9 +24,9 @@
 {"@context":"https://schema.org","@type":"WebSite","name":"Kozijnwrap.nl","url":"https://kozijnwrap.nl/","description":"Uitleg over kunststof kozijnen: herken wat je ziet, vergelijk herstellen, een nieuwe kleur, schilderen en vervangen, en weet met een keuzehulp wat jouw kozijn nodig heeft.","inLanguage":"nl-NL","publisher":{"@type":"Organization","name":"iWrap","url":"https://iwrap.nl"}}
 </script>
 <link rel="preload" href="/fonts/montserrat-latin-83a31c81.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/style.css?v=b2fbf9a1">
-<link rel="stylesheet" href="/css/onderdelen.css?v=b2fbf9a1">
-<link rel="stylesheet" href="/css/home.css?v=b2fbf9a1">
+<link rel="stylesheet" href="/css/style.css?v=e1ccdaf4">
+<link rel="stylesheet" href="/css/onderdelen.css?v=e1ccdaf4">
+<link rel="stylesheet" href="/css/home.css?v=e1ccdaf4">
 <link rel="preload" as="image" type="image/webp" fetchpriority="high" imagesrcset="/images/keuze-start-800.webp 800w, /images/keuze-start-1400.webp 1400w" imagesizes="(max-width:900px) 100vw, 660px">
 </head>
 <body class="home">
@@ -37,17 +37,19 @@
 <header class="site">
   <div class="nav">
     <a class="brand" href="/" aria-label="kozijnwrap.nl, naar de homepage"><span class="w1">kozijn</span><span class="w2">wrap<span class="tld">.nl</span></span></a>
-    <nav class="navlinks" aria-label="Hoofdnavigatie">
+    <nav class="navlinks" id="hoofdmenu" aria-label="Hoofdnavigatie">
       <a href="/wat-zie-je">Wat zie je?</a>
       <a href="/vergelijken">Vergelijken</a>
       <a href="/kozijnherstel">Herstellen</a>
       <a href="/kozijnwrappen">Wrappen</a>
       <a href="/blog">Kennisbank</a>
       <a class="alleen-smal" href="/keuzehulp">Keuzehulp</a>
+      <a class="knop knop-iwrap menu-iwrap" href="https://iwrap.nl/contact/?utm_source=kozijnwrap.nl&amp;utm_medium=menu&amp;utm_campaign=herstel" target="_blank" rel="noopener">Offerte aanvragen bij iWrap</a>
     </nav>
     <div class="nav-knoppen">
       <a class="nav-kh" href="/keuzehulp">Keuzehulp</a>
-      <a class="nav-cta" href="https://iwrap.nl/contact/?utm_source=kozijnwrap.nl&amp;utm_medium=header&amp;utm_campaign=herstel" target="_blank" rel="noopener">Offerte bij iWrap</a>
+      <a class="nav-cta knop-iwrap" href="https://iwrap.nl/contact/?utm_source=kozijnwrap.nl&amp;utm_medium=header&amp;utm_campaign=herstel" target="_blank" rel="noopener" aria-label="Offerte aanvragen bij iWrap"><span class="lang">Offerte bij iWrap</span><span class="kort" aria-hidden="true">Offerte</span></a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="hoofdmenu"><span class="bars" aria-hidden="true"></span><span class="nav-toggle-woord">Menu</span></button>
     </div>
   </div>
 </header>
@@ -206,11 +208,11 @@
       <h2>Twintig jaar oud is nog niet versleten</h2>
       <p>&ldquo;Ouder dan twintig jaar, dus toe aan vervanging.&rdquo; Die regel kom je overal tegen, en hij klopt niet. Het kozijn gaat veel langer mee dan de folie erop.</p>
     </div>
-    <div class="levensduur" role="img" aria-label="Een kunststof kozijnprofiel gaat 50 tot 75 jaar mee. De folie erop 15 tot 25 jaar, dus in één kozijnleven kan de folie twee of drie keer opnieuw.">
+    <div class="levensduur" role="img" aria-label="Een kunststof kozijnprofiel gaat 50 tot 75 jaar mee. De folie die er nu op zit, ging 15 tot 25 jaar mee. Na het herstel komt er een veel sterkere folie op, die naar verwachting veel langer meegaat.">
   <div class="ld-rij"><div class="ld-naam">Het kozijn<small>50 tot 75 jaar</small></div><div class="ld-baan"><span class="ld-balk ld-profiel">Kunststof profiel</span></div></div>
-  <div class="ld-rij"><div class="ld-naam">De folie<small>15 tot 25 jaar</small></div><div class="ld-baan"><span class="ld-balk ld-folie">Nieuw</span><span class="ld-balk ld-folie">Herstel</span><span class="ld-balk ld-folie">Herstel</span></div></div>
+  <div class="ld-rij"><div class="ld-naam">De folie<small>Eerst 15 tot 25 jaar</small></div><div class="ld-baan"><span class="ld-balk ld-folie ld-oud">Oude folie</span><span class="ld-balk ld-folie ld-nieuw">Nieuwe folie, veel sterker</span></div></div>
   <div class="ld-as" aria-hidden="true"><span>0</span><span>25 jaar</span><span>50 jaar</span><span>75 jaar</span></div>
-  <div class="ld-uitleg"><p>De folie is een <b>slijtlaag</b>, met tien jaar Renolit-garantie. Ziet je kozijn er na twintig jaar verweerd uit, dan doet het precies wat je mag verwachten: de jas is versleten, het kozijn niet. Die jas vervangen kan twee, drie keer in een kozijnleven.</p></div>
+  <div class="ld-uitleg"><p>De folie is een <b>slijtlaag</b>. Ziet je kozijn er na twintig jaar verweerd uit, dan doet het precies wat je mag verwachten: de jas is versleten, het kozijn niet. De nieuwe jas is veel sterker dan de oude en gaat naar verwachting veel langer mee. Tien jaar is de garantie op de folie, niet hoe lang hij meegaat.</p></div>
 </div>
   </div>
 </section>
@@ -265,7 +267,7 @@
           <li><svg class="icoon klein" aria-hidden="true"><use href="#i-vink"/></svg> <a href="https://search.google.com/local/reviews?placeid=ChIJyzBbwf-FxkcRIdeuLPGJt9U" target="_blank" rel="noopener"><span data-rv="score">4,9</span> uit <span data-rv="aantal">84</span> Google-reviews</a></li>
         </ul>
         <div class="knoprij">
-          <a class="knop knop-primair" href="https://iwrap.nl/contact/?utm_source=kozijnwrap.nl&amp;utm_medium=home&amp;utm_campaign=herstel" target="_blank" rel="noopener">Offerte aanvragen bij iWrap <svg class="icoon klein" aria-hidden="true"><use href="#i-pijl"/></svg></a>
+          <a class="knop knop-iwrap" href="https://iwrap.nl/contact/?utm_source=kozijnwrap.nl&amp;utm_medium=home&amp;utm_campaign=herstel" target="_blank" rel="noopener">Offerte aanvragen bij iWrap <svg class="icoon klein" aria-hidden="true"><use href="#i-pijl"/></svg></a>
           <a class="knop knop-tweede" href="https://iwrap.nl?utm_source=kozijnwrap.nl&amp;utm_medium=home" target="_blank" rel="noopener">Naar iwrap.nl</a>
         </div>
       </div>
@@ -281,7 +283,6 @@
       <a class="brand" href="/" aria-label="kozijnwrap.nl, naar de homepage"><span class="w1">kozijn</span><span class="w2">wrap<span class="tld">.nl</span></span></a>
       <p class="fslogan">Weet wat je kozijn nodig heeft</p>
       <p>Uitleg over kunststof kozijnen: wat je ziet, wat je kunt doen en wat het oplevert. Zodat je weet wat je kozijn nodig heeft voordat je iemand belt.</p>
-      <a class="fby" href="https://iwrap.nl?utm_source=kozijnwrap.nl&amp;utm_medium=footer" target="_blank" rel="noopener"><span>Een site van</span><img src="/images/iwrap-logo.svg" width="96" height="20" alt="iWrap" loading="lazy"></a>
     </div>
     <nav class="fkolom" aria-label="Uitzoeken">
       <p class="fkop">Uitzoeken</p>
@@ -296,10 +297,19 @@
       <ul><li><a href="/blog">Kennisbank</a></li><li><a href="/over-deze-site">Over deze site</a></li><li><a href="/over-deze-site#privacy">Privacy</a></li></ul>
     </nav>
   </div>
+  <div class="wrap familie">
+    <p class="familie-kop">De sites van iWrap</p>
+    <ul class="familie-lijst">
+      <li><a class="familie-site" href="%s?utm_source=kozijnwrap.nl&amp;utm_medium=familie" target="_blank" rel="noopener"><span class="fam-merk"><img src="/images/iwrap-logo.svg" width="96" height="20" alt="iWrap" loading="lazy"></span><span class="fam-rol">Kozijnen laten herstellen en een offerte aanvragen</span></a></li>
+      <li><span class="familie-site is-hier" aria-current="page"><span class="fam-merk fam-kw"><span class="f1">kozijn</span><span class="f2">wrap</span><span class="f3">.nl</span></span><span class="fam-rol">Uitzoeken wat je kozijn nodig heeft</span><span class="fam-hier">Je bent hier</span></span></li>
+      <li><span class="familie-site"><span class="fam-merk fam-hn"><span class="f1">houtnerf</span><span class="f2">folie</span><span class="f3">.nl</span></span><span class="fam-rol">Alles over Renolit folie en de kleuren</span></span></li>
+    </ul>
+  </div>
 </footer>
 
-<script defer src="/js/kozijn-3d.js?v=b2fbf9a1"></script>
-<script defer src="/js/kozijn-keuze.js?v=b2fbf9a1"></script>
+<script defer src="/js/menu.js?v=e1ccdaf4"></script>
+<script defer src="/js/kozijn-3d.js?v=e1ccdaf4"></script>
+<script defer src="/js/kozijn-keuze.js?v=e1ccdaf4"></script>
 <script>
 (function () {
   var velden = document.querySelectorAll("[data-rv]");

@@ -50,6 +50,17 @@ in drie groepen) en `/over-deze-site`. De homepage laat de route in het klein zi
 - **"Volgende stap"** onderaan elke pagina, naar de logische volgende stap van de route, en
   de **iWrap-brug**: herstel nodig, dan iWrap, met het logo, het reviewcijfer en de knop
   naar het offerteformulier.
+- **De knop naar iWrap** (`.knop-iwrap`, 19 november 2026): op deze site en op houtnerffolie.nl
+  dezelfde, in de knopkleur van iwrap.nl met het beeldmerk van iWrap ervoor (als plaatje in
+  `onderdelen.css`, dus elke knop met die klasse krijgt het vanzelf). In de kopbalk "Offerte bij
+  iWrap" (op een telefoon "Offerte"), in de blokken "Offerte aanvragen bij iWrap".
+- **De familieregel** onderaan elke pagina: "De sites van iWrap", drie kaartjes met elk de naam
+  in zijn eigen woordmerk en wat die site doet (`render_familie`). Deze site linkt daar alleen
+  naar iwrap.nl, **niet naar houtnerffolie.nl**: de zustersites sturen door naar iWrap, niet naar
+  elkaar (Max, 19 november 2026).
+- **Het menu** staat tot 1080px breed achter een knop met het woord "Menu" (open: "Sluiten"),
+  met grote regels en onderin de knop naar iWrap (`js/menu.js`), net als op iwrap.nl en
+  houtnerffolie.nl. De kopbalk blijft ook op een telefoon staan.
 - **Artikelen**: bovenaan "In dit artikel" (uit de koppen) en de leestijd, onderaan
   verwante artikelen en de brug.
 
@@ -134,6 +145,7 @@ css/
   blog.css            Artikelen: kruimelpad, diagrammen, slotkader
   keuzehulp.css       Alleen de keuzehulp
 js/
+  menu.js             Het menu op telefoon en tablet (zelfde bestand als op houtnerffolie.nl)
   voorna.js           De voor/na-schuif (op /kozijnwrappen)
   kozijn-3d.js        De 3D-motor van iwrap.nl (kopie; bron in iwrap-project/beweging/3d kozijn)
   kozijn-keuze.js     De hero: vier korte 3D-verhalen en de speler (kopie, zelfde bron)
@@ -158,7 +170,7 @@ statisch. Alles staat achter `prefers-reduced-motion: no-preference`.
 
 Licht en rustig, "iets meer Apple" (sinds 16 november 2026): koppen in Montserrat en lopende
 tekst in het lettertype van het apparaat zelf, grote strakke koppen, een zachte gloed bovenaan elke pagina, een wit doorschijnend menu dat
-blijft staan (op een telefoon scrolt het mee), witte vlakken met een zachte rand en een lichte voet.
+blijft staan (ook op een telefoon), witte vlakken met een zachte rand en een lichte voet.
 
 **Kleur (sinds 17 november 2026).** kozijnwrap.nl heeft een eigen kleur (Max: "voer deze website
 uit maar dan met andere kleuren"), en het mint van iWrap staat alleen nog waar iWrap in beeld komt:
@@ -309,10 +321,18 @@ Gebruik in de bronbestanden root-relatieve links (`/blog/renolit-folie-uitgelegd
   Renolit folie is één product met één garantietermijn, ongeacht kleur of structuur. Eerder
   stonden er drie verschillende levensduren op de site en dat is voor een klant alleen maar
   verwarrend.
-- houtnerffolie.nl blijft de plek voor de diepte: decors, kleuren en specificaties. Het
-  artikel [renolit-folie-uitgelegd](src/pages/blog/renolit-folie-uitgelegd.html) legt de
-  basis uit en verwijst daarheen in plaats van het over te doen. Ga daar geen kleurenoverzicht
-  of specificatietabel bouwen, dan concurreren de twee sites alsnog met elkaar.
+- **Levensduur** (Max, 19 november 2026, op alle drie de sites hetzelfde): 15 tot 25 jaar gaat
+  over de **oude** folie die er nu op zit. De nieuwe folie is veel sterker en gaat naar
+  verwachting veel langer mee; noem daar **geen jaartal** bij. Tien jaar is de garantie, niet de
+  levensduur. Daarom loopt de balk "Nieuwe folie" in `{{levensduur}}` open uit.
+- **Kleur** (Max, 19 november 2026): iWrap herstelt aangetaste kozijnen, bijna altijd in dezelfde
+  kleur; een andere kleur kan bij het herstel. Kozijnen omkleuren waarvan de folie nog goed is
+  (wrappen) doet iWrap niet. Dat zegt deze site al; iwrap.nl zegt het sinds die dag ook zo.
+- houtnerffolie.nl blijft de plek voor de diepte: decors, kleuren en specificaties. Ga hier geen
+  kleurenoverzicht of specificatietabel bouwen, dan concurreren de twee sites alsnog met elkaar.
+  Maar link er **niet** heen: deze site stuurt door naar iWrap (Max, 19 november 2026). Het
+  artikel [renolit-folie-uitgelegd](src/pages/blog/renolit-folie-uitgelegd.html) verwijst voor de
+  kleur van je kozijn daarom naar iWrap, dat de passende folie opzoekt aan de hand van je foto's.
 
 ## Samenwerking met iwrap.nl
 
