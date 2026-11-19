@@ -66,16 +66,24 @@ in drie groepen) en `/over-deze-site`. De homepage laat de route in het klein zi
 
 **De hero: "Herstellen of wrappen?"** (Max, 17 november 2026: de hero moet voor déze site werken
 en het verschil tussen wrappen en herstellen en de opties laten zien). Links het 3D-kozijn, rechts
-de vier keuzes. Elke keuze speelt een eigen kort verhaal, live getekend met de motor van iwrap.nl:
-herstellen (oude folie eraf, nieuwe erop, zelfde kleur), wrappen (antraciet over een goed crème
-kozijn), schilderen (verfroller, dan drie jaar later bladdert het) en vervangen (het tocht, het
-kozijn gaat eruit, er zakt een nieuw in). Linksboven in beeld staat wat je ziet. Hij speelt de vier
-na elkaar zodra hij in beeld is en pauzeert daarbuiten; een klik op een keuze speelt die keuze. Er
-is een pauzeknop. Bij "minder beweging" staat per keuze het eindbeeld stil; zonder WebGL2 wisselen
-foto's (`images/keuze-*.jpg`). Het startbeeld (`images/keuze-start-*`) staat er tot het canvas
-tekent. Bron: `beweging/3d kozijn/kozijn-keuze.js` in iwrap-project, gekopieerd naar
-`js/kozijn-keuze.js`; de motor zelf is `js/kozijn-3d.js` (dezelfde als op iwrap.nl). Na een
-wijziging daar: beide bestanden opnieuw kopiëren en de beelden opnieuw maken (zie de LEES MIJ daar).
+de drie keuzes. Elke keuze speelt een eigen kort verhaal, live getekend met de motor van iwrap.nl:
+- **herstellen:** duidelijk aangetaste folie (dezelfde verwering als in de werkwijzefilm en 25 jaar zon
+  op iwrap.nl), dan in één haal de oude folie eraf en de nieuwe erop, in dezelfde kleur;
+- **wrappen:** antraciet over een goed crème kozijn;
+- **vervangen:** het kozijn zelf is kapot (Max, 19 november 2026: "echt duidelijker dat het kozijn
+  helemaal versleten is en kapot en lekt"): helemaal versleten folie, een barst door de hoek, water dat
+  binnenkomt en van de dorpel drupt, condens tussen het glas (een lekke ruit) en tocht ("Het kozijn
+  is kapot en lekt", "Het tocht en het klemt"); dan gaat het eruit en zakt er een nieuw in.
+Schilderen staat er sinds 19 november 2026 niet meer in (Max: "niet van toepassing op de site").
+Linksboven in beeld staat wat je ziet. Hij speelt de drie na elkaar zodra hij in beeld is en pauzeert
+daarbuiten; daarna staat er 5,5 seconden een kaart over het beeld met "Welke past bij jouw kozijn?" en
+de knop naar de keuzehulp (`.hk-slot`), en dan begint het opnieuw. Een klik op een keuze speelt die
+keuze en blijft daar staan. Er is een pauzeknop. Bij "minder beweging" staat per keuze het eindbeeld
+stil (en komt de kaart niet); zonder WebGL2 wisselen foto's (`images/keuze-*.jpg`). Het startbeeld
+(`images/keuze-start-*`) staat er tot het canvas tekent. Bron: `beweging/3d kozijn/kozijn-keuze.js` in
+iwrap-project, gekopieerd naar `js/kozijn-keuze.js`; de motor zelf is `js/kozijn-3d.js` (dezelfde als
+op iwrap.nl). Na een wijziging daar: beide bestanden opnieuw kopiëren en de beelden opnieuw maken met
+`python3 keuze_beelden.py` (zie de LEES MIJ daar).
 
 **Codes in de bron** (`src/pages/`), door `build.py` vervangen:
 

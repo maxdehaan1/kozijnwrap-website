@@ -38,7 +38,7 @@
     <div class="hk-kop">
       <p class="opschrift">Weet wat je kozijn nodig heeft</p>
       <h1>Herstellen of wrappen?</h1>
-      <p class="lede">Is de folie versleten, dan herstel je hem. Is het kozijn nog goed en wil je een andere kleur, dan wrap je hem. Kies hieronder en zie het verschil, ook met schilderen en vervangen.</p>
+      <p class="lede">Is de folie versleten, dan herstel je hem. Is het kozijn nog goed en wil je een andere kleur, dan wrap je hem. Kies hieronder en zie het verschil, ook met vervangen.</p>
     </div>
     <div class="hk-podium" data-kozijn-keuze>
       <figure class="hk-beeld">
@@ -49,6 +49,12 @@
         <canvas aria-hidden="true"></canvas>
         <p class="hk-status">Versleten folie</p>
         <button class="hk-pauze" type="button" data-stand="speel" aria-label="Animatie afspelen" hidden></button>
+        <!-- Na de drie verhalen: de knop naar de keuzehulp (js/kozijn-keuze.js zet hem aan en uit) -->
+        <div class="hk-slot" aria-hidden="true">
+          <p class="hk-slot-kop">Welke past bij jouw kozijn?</p>
+          <p class="hk-slot-tekst">Vier vragen, en je weet wat je kozijn nodig heeft.</p>
+          <a class="knop knop-primair" href="/keuzehulp" tabindex="-1">Doe de keuzehulp {{icoon:i-pijl|icoon klein}}</a>
+        </div>
       </figure>
       <div class="hk-opties">
         <div class="hk-keus">
@@ -76,22 +82,10 @@
           </div>
         </div>
         <div class="hk-keus">
-          <button class="hk-optie" type="button" data-optie="verf" data-poster="/images/keuze-verf-1000.jpg" aria-expanded="false" aria-controls="hk-verf">
-            <span class="optie-icoon">{{icoon:i-schilder}}</span>
-            <span class="hk-naam">Schilderen</span>
-            <span class="hk-kort">Alleen op kunststof zonder folie</span>
-            <span class="hk-balk" aria-hidden="true"><i></i></span>
-          </button>
-          <div class="hk-paneel" id="hk-verf">
-            <p>Op folie gaat verf na twee, drie jaar bladderen: de folie eronder laat los en neemt de verf mee.</p>
-            <p class="hk-links"><a class="verder" href="/blog/kunststof-kozijnen-schilderen">Kun je kunststof schilderen? {{icoon:i-pijl|icoon klein}}</a></p>
-          </div>
-        </div>
-        <div class="hk-keus">
           <button class="hk-optie" type="button" data-optie="vervang" data-poster="/images/keuze-vervang-1000.jpg" aria-expanded="false" aria-controls="hk-vervang">
             <span class="optie-icoon">{{icoon:i-vervangen}}</span>
             <span class="hk-naam">Vervangen</span>
-            <span class="hk-kort">Het profiel zelf is op: het tocht of klemt</span>
+            <span class="hk-kort">Het kozijn zelf is kapot: het lekt, tocht of klemt</span>
             <span class="hk-balk" aria-hidden="true"><i></i></span>
           </button>
           <div class="hk-paneel" id="hk-vervang">
