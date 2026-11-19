@@ -3,7 +3,7 @@
    geen formulier, geen server, geen inbox die iemand moet bijhouden.
    --------------------------------------------------------------------------- */
 
-.kh{max-width:680px;margin:0 auto;}
+.kh{max-width:660px;margin:0;}
 
 .kh-progress{font-family:var(--kop);font-size:1rem;font-weight:600;letter-spacing:-.01em;color:var(--merk-tekst);margin-bottom:10px;}
 .kh-bar{height:6px;border-radius:6px;background:var(--line);overflow:hidden;margin-bottom:30px;}

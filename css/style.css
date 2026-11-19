@@ -39,7 +39,7 @@
   --merk:#175a99; --merk-hover:#124a80; --merk-tekst:#175a99; --merk-licht:#8ec0ea;
   --merk-vlak:#d4e8f8; --merk-zacht:#dcebf8; --merk-wash:#eef6fd; --op-donker:#d8e9f7;
   --merk-rgb:23,90,153; --merk-licht-rgb:110,170,225;
-  --paper:#f4f7fa; --ink:#1b2632; --sub:#4b5765; --schade:#a8523a;
+  --paper:#f4f7fa; --ink:#1b2632; --sub:#424c58; --schade:#a8523a;
   --line:#dde4eb; --voet:#e8eef4; --spoor:#edf1f5; --grijs-vlak:#e3e9ef; --streep:#c5cfd9;
 
   /* iWrap: het mint van het logo, op alle paletten hetzelfde */
@@ -76,7 +76,7 @@
   --merk:#1f3d63; --merk-hover:#162f4e; --merk-tekst:#2b5689; --merk-licht:#9fbbe0;
   --merk-vlak:#d6e3f3; --merk-zacht:#dde7f3; --merk-wash:#eef3f9; --op-donker:#d5e0ee;
   --merk-rgb:31,61,99; --merk-licht-rgb:122,160,208;
-  --paper:#f6f5f1; --ink:#1e2531; --sub:#4d5664; --schade:#a8523a;
+  --paper:#f6f5f1; --ink:#1e2531; --sub:#454d5a; --schade:#a8523a;
   --line:#e3e1db; --voet:#efede8; --spoor:#f1f0ec; --grijs-vlak:#ebe9e4; --streep:#cfccc4;
 }
 /* Antraciet en messing: de kleur van de populairste kozijnen, met warm messing */
@@ -84,7 +84,7 @@
   --merk:#2a2e33; --merk-hover:#1b1e22; --merk-tekst:#74572a; --merk-licht:#d4b97f;
   --merk-vlak:#ede0c4; --merk-zacht:#eee4d0; --merk-wash:#f8f3e9; --op-donker:#e9dcc2;
   --merk-rgb:42,46,51; --merk-licht-rgb:214,184,128;
-  --paper:#f7f5f0; --ink:#22262a; --sub:#53585e; --schade:#a8523a;
+  --paper:#f7f5f0; --ink:#22262a; --sub:#494d52; --schade:#a8523a;
   --line:#e3e1db; --voet:#efede8; --spoor:#f1f0ec; --grijs-vlak:#ebe9e4; --streep:#cfccc4;
 }
 /* Baksteen: warm, de kleur van de Hollandse gevel waar het kozijn in zit */
@@ -92,7 +92,7 @@
   --merk:#8f3e24; --merk-hover:#75311b; --merk-tekst:#8f3e24; --merk-licht:#e2a78c;
   --merk-vlak:#f4dccf; --merk-zacht:#f2e2d8; --merk-wash:#fbf2ec; --op-donker:#f7ddd0;
   --merk-rgb:143,62,36; --merk-licht-rgb:220,150,120;
-  --paper:#f8f5f1; --ink:#26211f; --sub:#5a524e; --schade:#b42318;
+  --paper:#f8f5f1; --ink:#26211f; --sub:#524b47; --schade:#b42318;
   --line:#e3e1db; --voet:#efede8; --spoor:#f1f0ec; --grijs-vlak:#ebe9e4; --streep:#cfccc4;
 }
 
@@ -137,7 +137,7 @@ summary:focus-visible,
   border-radius:4px;
 }
 
-.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:#fff;padding:12px 20px;font-family:var(--kop);font-size:.9rem;font-weight:700;text-decoration:none;border-radius:0 0 8px 0;}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:#fff;padding:12px 20px;font-family:var(--kop);font-size:.94rem;font-weight:700;text-decoration:none;border-radius:0 0 8px 0;}
 .skip:focus{left:0;}
 
 /* Header ------------------------------------------------------------------ */
@@ -186,12 +186,18 @@ header.site{
   .navlinks{justify-content:flex-start;gap:2px 22px;}
 }
 @media (max-width:560px){
-  .nav{padding:0 16px;gap:6px 12px;}
+  .nav{padding:0 24px;gap:6px 12px;}
   .brand .w1,.brand .w2{font-size:1.22rem;}
   .nav-kh{display:none;}
   .alleen-smal{display:inline;}
   .navlinks{gap:0 16px;font-size:.95rem;}
   .nav-cta{min-height:44px;padding:9px 16px;font-size:.94rem;}
+}
+/* Op een heel smal scherm (320px) passen het woordmerk en de knop met de marge van 24px net naast elkaar,
+   zoals op iwrap.nl: het woordmerk iets kleiner en de knop iets smaller. */
+@media (max-width:359px){
+  .brand .w1,.brand .w2{font-size:1.08rem;}
+  .nav-cta{padding:9px 12px;}
 }
 
 /* Kanttekeningen ----------------------------------------------------------- */

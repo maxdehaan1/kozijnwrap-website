@@ -57,6 +57,9 @@ a.knop .icoon{transition:transform .2s ease;}
 a.knop:hover .icoon{transform:translateX(3px);}
 @media (prefers-reduced-motion: reduce){ a.knop:hover,a.knop:hover .icoon{transform:none;} }
 @media (max-width:560px){ a.knop{padding:14px 22px;} }
+/* Op een telefoon vullen de knoppen in een rij de regel: passen er twee naast elkaar, dan delen ze hem,
+   anders staat elke knop even breed onder de vorige (uitlijning zoals iwrap.nl). */
+@media (max-width:560px){ .knoprij > a.knop,.cta-row > a.cta-link,.kh-actions > .kh-cta{flex:1 1 auto;justify-content:center;} }
 
 /* Een tekstlink met een pijl erachter, voor onderaan een kaart of rij. */
 .verder{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--merk);text-decoration:none;}
@@ -71,6 +74,9 @@ a.verder:hover,a:hover .verder{text-decoration:underline;text-underline-offset:3
 /* De inleiding onder een kop: niet breder dan zo'n 75 tekens (34em), ook onder een gecentreerde kop. */
 .sectie-kop p:not(.opschrift){font-size:var(--lede);line-height:1.55;color:#3a4047;margin:0;max-width:34em;}
 .sectie-kop.midden p:not(.opschrift){margin:0 auto;}
+/* Op een telefoon (tot 700px) staat alles links: gecentreerde alinea's van drie of vier regels lezen
+   slecht (uitlijning zoals iwrap.nl). */
+@media (max-width:700px){ .sectie-kop.midden,.sectie-kop.midden p:not(.opschrift){text-align:left;margin-left:0;margin-right:0;} }
 
 /* 4. Uitkomstlabels ---------------------------------------------------------- */
 
@@ -116,7 +122,9 @@ a.route-stap:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(
 .route-stap h3{font-size:var(--kaart-titel);margin:0;}
 .route-stap p{font-size:1.02rem;color:var(--sub);margin:0;line-height:1.5;}
 .route-stap .verder{margin-top:auto;padding-top:14px;}
-.route-stap.iwrap{background:var(--iwrap);border-color:transparent;color:#fff;}
+/* Een tint donkerder dan de knoppen van iWrap: dan haalt de mintkleurige link "Offerte bij iWrap" 5,8:1
+   in plaats van 4,47:1 (leesbaarheid, 19 november 2026). */
+.route-stap.iwrap{background:var(--iwrap-hover);border-color:transparent;color:#fff;}
 .route-stap.iwrap .route-nr{background:var(--iwrap-mint);color:var(--ink);}
 .route-stap.iwrap p{color:var(--iwrap-op-donker);}
 .route-stap.iwrap .verder{color:var(--iwrap-mint);}
@@ -177,7 +185,7 @@ a.klacht:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(34,3
    labeltje "Dit doet iWrap". Gebruikt in de hero en in de vergelijking. */
 .optie-icoon{width:54px;height:54px;border-radius:16px;background:var(--paper);color:var(--ink);display:flex;align-items:center;justify-content:center;margin-bottom:8px;flex-shrink:0;}
 .optie-icoon .icoon{width:28px;height:28px;}
-.optie-chip{font-size:.88rem;font-weight:700;padding:5px 11px;border-radius:999px;background:var(--iwrap-mint);color:var(--ink);}
+.optie-chip{font-size:.94rem;font-weight:700;padding:5px 11px;border-radius:999px;background:var(--iwrap-mint);color:var(--ink);}
 
 @media (prefers-reduced-motion: reduce){
   a.route-stap:hover,a.klacht:hover{transform:none;}
@@ -192,7 +200,7 @@ a.klacht:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(34,3
 .ld-naam{font-weight:700;font-size:1.08rem;line-height:1.25;}
 .ld-naam small{display:block;font-weight:500;font-size:.96rem;color:var(--sub);margin-top:2px;}
 .ld-baan{position:relative;height:38px;border-radius:999px;background:var(--spoor);}
-.ld-balk{position:absolute;top:0;bottom:0;border-radius:999px;display:flex;align-items:center;padding:0 14px;font-size:.92rem;font-weight:600;white-space:nowrap;overflow:hidden;}
+.ld-balk{position:absolute;top:0;bottom:0;border-radius:999px;display:flex;align-items:center;padding:0 14px;font-size:.94rem;font-weight:600;white-space:nowrap;overflow:hidden;}
 .ld-profiel{left:0;width:100%;color:#fff;background:linear-gradient(90deg,var(--ink) 0 66.6%,rgba(34,38,42,.18) 100%);}
 .ld-folie{color:var(--ink);background:linear-gradient(90deg,var(--merk-vlak) 0 60%,rgba(var(--merk-licht-rgb),.3) 100%);width:32%;}
 .ld-folie:nth-child(1){left:0;}
@@ -205,7 +213,7 @@ a.klacht:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(34,3
 @media (max-width:640px){
   .ld-rij{grid-template-columns:1fr;}
   .ld-as{margin-left:0;}
-  .ld-balk{font-size:.86rem;padding:0 10px;}
+  .ld-balk{padding:0 10px;}
 }
 
 /* 9. De drie stappen ----------------------------------------------------------- */
@@ -254,7 +262,7 @@ a.klacht:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(34,3
 .rs-beurt .icoon{width:20px;height:20px;}
 .rs-folie .rs-beurt{background:var(--merk-vlak);border-color:var(--merk-vlak);color:var(--ink);}
 .rs-folie .rs-garantie{position:absolute;left:0;top:0;bottom:0;width:66.6%;border-radius:999px;background:linear-gradient(90deg,rgba(var(--merk-licht-rgb),.55),rgba(var(--merk-licht-rgb),.2));}
-.rs-garantie span{position:absolute;left:52px;top:50%;transform:translateY(-50%);font-size:.92rem;font-weight:600;color:var(--merk);}
+.rs-garantie span{position:absolute;left:52px;top:50%;transform:translateY(-50%);font-size:.94rem;font-weight:600;color:var(--merk);}
 .rs-as{display:flex;justify-content:space-between;margin:2px 0 0 172px;font-size:.94rem;color:var(--sub);}
 @media (max-width:640px){ .rs-rij{grid-template-columns:1fr;} .rs-as{margin-left:0;} }
 
@@ -296,7 +304,7 @@ a.klacht:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(34,3
 @media (prefers-reduced-motion: reduce){ .volgende-kaart:hover .volgende-pijl{transform:none;} }
 .route-mini{list-style:none;display:flex;flex-wrap:wrap;gap:8px 24px;margin:18px 0 0;padding:0 6px;font-size:.98rem;color:var(--sub);}
 .route-mini li{display:flex;align-items:center;gap:9px;}
-.route-mini .route-nr{width:28px;height:28px;font-size:.88rem;background:var(--grijs-vlak);color:var(--sub);}
+.route-mini .route-nr{width:30px;height:30px;font-size:.94rem;background:var(--grijs-vlak);color:var(--sub);}
 .route-mini li.nu{color:var(--ink);font-weight:600;}
 .route-mini li.nu .route-nr{background:var(--merk-vlak);color:var(--ink);}
 .route-mini li.volgt .route-nr{background:var(--merk);color:#fff;}
@@ -373,7 +381,7 @@ a.klacht:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(34,3
 /* 14. De kennisbank --------------------------------------------------------------- */
 
 .kb-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
-.kb-nav a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:10px 18px;border-radius:999px;background:#fff;border:1px solid rgba(34,38,42,.14);color:var(--ink) !important;text-decoration:none !important;font-weight:600;font-size:1rem;}
+.kb-nav a{display:inline-flex;align-items:center;gap:8px;min-height:54px;padding:10px 18px;border-radius:999px;background:#fff;border:1px solid rgba(34,38,42,.14);color:var(--ink) !important;text-decoration:none !important;font-weight:600;font-size:1rem;}
 .kb-nav a:hover{border-color:rgba(34,38,42,.3);}
 .kb-nav .icoon{color:var(--merk-tekst);}
 .kb-groep{padding:clamp(28px,4vw,48px) 0;}
@@ -502,7 +510,7 @@ a.klacht:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(34,3
 .eerst-fotos a{position:relative;display:block;border-radius:20px;overflow:hidden;color:#fff;text-decoration:none;}
 .eerst-fotos img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .4s ease;}
 .eerst-fotos a:hover img{transform:scale(1.04);}
-.eerst-fotos span{position:absolute;left:10px;bottom:10px;font-size:.92rem;font-weight:700;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.94);color:var(--ink);}
+.eerst-fotos span{position:absolute;left:10px;bottom:10px;font-size:.94rem;font-weight:700;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.94);color:var(--ink);}
 @media (max-width:860px){ .eerst{grid-template-columns:1fr;} }
 @media (prefers-reduced-motion: reduce){ .eerst-fotos a:hover img{transform:none;} }
 

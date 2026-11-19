@@ -8,12 +8,17 @@
    (eerst 692px, 90 tot 96 tekens per regel) en een alinea maximaal 36em. Reken in em, niet in ch: ch
    is in deze letter breder dan een gemiddeld teken. */
 body.page p{max-width:36em;}
-body.page .wrap{max-width:708px;margin:0 auto;padding:0 24px;}
+/* Eén rand (uitlijning zoals iwrap.nl, 19 november 2026): ook op de tekstpagina's (artikelen, over deze
+   site, de keuzehulp) staan de kop en de tekst op de linkerrand van de inhoud, recht onder het logo, in een
+   kolom van 660px. Eerst stond die kolom in het midden, op een andere rand dan het logo en dan de brede
+   pagina's. :where houdt de regel licht, zodat een alinea zijn 36em houdt. */
+body.page .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+:where(body.page:not(.breed-pagina) main > section:not(.hero,.brug,.volgende,.verwant) > .wrap:not(.breed)) > *{max-width:660px;}
 
 /* Elke paginakop licht, met de mintgloed, zoals iwrap.nl en houtnerffolie.nl. Onderin precies één
    sectie-eenheid: het blok eronder begint zonder eigen ruimte (zie "Ritme" in onderdelen.css). */
 body.page .hero{position:relative;z-index:1;background:var(--gloed),var(--paper);color:var(--ink);padding:clamp(40px,5vw,72px) 0 var(--sectie);}
-.hero .wrap{max-width:708px;}
+.hero .wrap{max-width:1100px;}
 .hero .wrap > :last-child{margin-bottom:0;}
 .hero h1{max-width:20ch;color:var(--ink);text-wrap:balance;}
 .hero p.lede{color:#3a4047;font-size:var(--lede-kop);line-height:1.55;max-width:34em;}
@@ -50,7 +55,7 @@ figcaption{font-family:var(--sans);font-size:.97rem;color:var(--sub);margin-top:
 @media (max-width:560px){ .beforeafter{grid-template-columns:1fr;} }
 .beforeafter figure{margin:0;position:relative;}
 .beforeafter img{aspect-ratio:4/3;object-fit:cover;}
-.beforeafter .ba-label{position:absolute;top:12px;left:12px;font-family:var(--kop);font-size:.92rem;font-weight:700;letter-spacing:.01em;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.95);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.18);}
+.beforeafter .ba-label{position:absolute;top:12px;left:12px;font-family:var(--kop);font-size:.94rem;font-weight:700;letter-spacing:.01em;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.95);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.18);}
 .beforeafter figcaption{margin-top:8px;}
 
 /* Een kleine klus is welkom: bijna niemand met twee verweerde dorpels neemt aan dat een

@@ -215,8 +215,8 @@ De kleuren lopen via variabelen in `:root` (zie het commentaar daar): `--merk` (
   vier signalen op /kozijnherstel staan in twee kolommen in plaats van vier smalle (eerst brak
   "Krassen of / stootschade").
 - **Regellengte**: lopende tekst niet breder dan zo'n 85 tekens. De tekstkolom van een artikel en
-  van de andere tekstpagina's is 660px (`body.page .wrap` 708px met 24px marge, de paginakop
-  even breed), een alinea maximaal `36em`. De inleiding onder een kop en op een paginakop `34em`,
+  van de andere tekstpagina's is 660px, op de linkerrand van de inhoud (zie Uitlijning), een alinea
+  maximaal `36em`. De inleiding onder een kop en op een paginakop `34em`,
   de tekst in een kanttekening `36em`, de zin onder de vergelijking `35em`. Reken in `em`, niet in
   `ch`: `ch` is in deze letter breder dan een gemiddeld teken (64ch was zo'n 95 tekens).
 - **Witruimte**: één sectie-eenheid (`--sectie`: 100px op een breed scherm, 56px op een telefoon)
@@ -236,8 +236,26 @@ De kleuren lopen via variabelen in `:root` (zie het commentaar daar): `--merk` (
   gemaakt (een schermafdruk van de hele pagina in één keer geeft in Chrome afwijkingen), en meet
   koppen met een los woord, rijen kaarttitels, regellengtes en de witruimte tussen blokken (alleen
   100/200 op een breed scherm en 56/112 op een telefoon zijn goed).
-- **Voor oudere bezoekers**: kleine teksten minstens 15px, grijs dat 7:1 haalt, knoppen
-  minstens 50px hoog en geen piepkleine hoofdletters met spaties ertussen.
+- **Voor oudere bezoekers** (leesbaarheid zoals iwrap.nl, 19 november 2026): lopende tekst 18px,
+  alle andere zichtbare tekst minstens `.94rem` (15px), ook labels op foto's en balken, de nummers
+  van de kleine route en de chip "Dit doet iWrap". Alleen de letters in getekende diagrammen (SVG)
+  schalen mee, en het woordmerk is het logo. Grijze tekst (`--sub`) haalt 7:1 op papier, wit, de
+  voet en de lichte vlakken: in Hemelsblauw `#424c58` (eerst `#4b5765`, 6,85:1 op papier); de
+  andere drie paletten zijn op dezelfde manier een tint donkerder. Knoppen zijn minstens 54px hoog
+  (ook de themaknoppen van de kennisbank), de knoppen in de kopbalk 44px. Geen kleine hoofdletters
+  met spaties ertussen. De iWrap-stap van de route staat op `--iwrap-hover`, een tint donkerder
+  dan de knoppen: dan haalt de mintkleurige link "Offerte bij iWrap" 5,8:1 (eerst 4,47:1). De
+  sterren bij de reviews zijn versiering (het cijfer staat erbij), net als op iwrap.nl.
+- **Uitlijning** (zoals iwrap.nl): één rand. De kopbalk en de inhoud zijn even breed (`.nav` en
+  `.wrap` allebei 1100px met 24px marge, ook op een telefoon): het woordmerk staat recht boven de
+  koppen en de knop naar iWrap eindigt waar de inhoud eindigt. Ook op de tekstpagina's (artikelen,
+  over deze site, de keuzehulp) staan de kop en de tekst op die linkerrand, in een kolom van 660px;
+  eerst stond die kolom in het midden. Een artikelkop is daar maximaal 18em breed. Op een telefoon
+  (tot 700px) staat alles links, ook de kop van de homepage en "In vier stappen". Op een telefoon
+  vullen de knoppen in een rij de regel, zodat gestapelde knoppen even breed zijn. Lijsten hebben
+  hier allemaal een eigen opmaak (bolletjes, vinkjes, stappen) en staan op de tekstrand. Op een heel
+  smal scherm (onder 360px) zijn het woordmerk en de knop in de kopbalk iets kleiner, zodat ze naast
+  elkaar passen.
 - **Woordmerk**: de naam is het logo: `kozijn` in `--merk-tekst` (normaal gewicht) direct
   gevolgd door `wrap` in de inktkleur (extra vet), met `.nl` klein erachter. Echte tekst, dus
   voorleessoftware en zoekmachines lezen de naam gewoon. `WORDMARK` in `build.py`, `.brand` in

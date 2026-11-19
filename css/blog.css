@@ -5,8 +5,9 @@
 
 /* Artikelkoppen zijn een stuk langer dan paginakoppen; op 20ch braken ze in
    vier korte regeltjes terwijl er ruimte zat naast stond. Sinds de compositieronde
-   hebben ze dezelfde maat als elke andere h1. */
-body.theme-blog:not(.breed-pagina) .hero h1{max-width:none;}
+   hebben ze dezelfde maat als elke andere h1, en sinds de uitlijnronde staan ze op de
+   linkerrand: 18em breed, dan breekt elke artikelkop in twee of drie gelijke regels. */
+body.theme-blog:not(.breed-pagina) .hero h1{max-width:18em;}
 
 .breadcrumb{font-family:var(--sans);font-size:.95rem;color:var(--sub);margin-bottom:14px;}
 .breadcrumb a{color:var(--merk);text-decoration:none;font-weight:500;}
